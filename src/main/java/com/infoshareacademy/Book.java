@@ -3,14 +3,14 @@ package com.infoshareacademy;
 public class Book {
     private String kind;
     private String title;
-    private String hasAudio;
+    private boolean hasAudio;
     private String genre;
     private String author;
 
     public Book() {
     }
 
-    public Book(String kind, String title, String hasAudio, String genre, String author) {
+    public Book(String kind, String title, boolean hasAudio, String genre, String author) {
         this.kind = kind;
         this.title = title;
         this.hasAudio = hasAudio;
@@ -34,11 +34,11 @@ public class Book {
         this.title = title;
     }
 
-    public String getHasAudio() {
+    public boolean getHasAudio() {
         return hasAudio;
     }
 
-    public void setHasAudio(String hasAudio) {
+    public void setHasAudio(boolean hasAudio) {
         this.hasAudio = hasAudio;
     }
 
