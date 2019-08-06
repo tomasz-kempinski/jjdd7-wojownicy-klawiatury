@@ -15,7 +15,7 @@ public class Menu {
             reservations();
         } else if (choice.equals("9")){
         } else {
-            System.out.println("Podaj wartosc 1 lub 2 lub 9!!");
+            System.out.println("Podaj wartosc 1, 2 lub 9!!");
             menu();
         }
     }
