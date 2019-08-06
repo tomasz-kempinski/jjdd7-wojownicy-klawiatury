@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
     public void menu(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Co chcesz zrobic ? \n 1- Przegladanie zbiorow \n 2- Rezerwacja pozycji/anulowanie rezerwacji");
+        System.out.println("Co chcesz zrobic ? \n 1- Przegladanie zbiorow \n 2- Rezerwacja pozycji/anulowanie rezerwacji \n 9- Zakoncz program");
         String choice = scanner.nextLine();
 
         if (choice.equals("1")){
@@ -13,6 +13,7 @@ public class Menu {
 
         } else if(choice.equals("2")){
             reservations();
+        } else if (choice.equals("9")){
         } else {
             System.out.println("Podaj wartosc 1 lub 2 !!");
             menu();
@@ -53,13 +54,18 @@ public class Menu {
             System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
             String name = scanner.nextLine();
 
-            if (name.length()<3){
+            if (name.equals("9")){
+                menu();
+                return null;
+            }else if (name.length()<3){
                 System.out.println("Podaj prawidlowe dane !");
                 reservations();
+                return null;
             }
 
         if (name.equals("9")){
             menu();
+
         } else {
             System.out.println(" 1- rezerwacja \n 2- anulowanie rezerwacji \n 9- powrot do poczatku");
             String choice = scanner.nextLine();
