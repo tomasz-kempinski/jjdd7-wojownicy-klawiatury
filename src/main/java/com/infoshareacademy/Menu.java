@@ -15,14 +15,14 @@ public class Menu {
             reservations();
         } else if (choice.equals("9")){
         } else {
-            System.out.println("Podaj wartosc 1 lub 2 !!");
+            System.out.println("Podaj wartosc 1 lub 2 lub 9!!");
             menu();
         }
     }
 
     public void browsingCollections(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" 1- Lista ksiazek \n 2-Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio). \n 3- Przegladanie pojedynczej pozycji \n 9- powrot");
+        System.out.println(" 1- Lista ksiazek \n 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio). \n 3- Przegladanie pojedynczej pozycji \n 9- powrot");
         String choice = scanner.nextLine();
 
         switch (choice) {
@@ -40,11 +40,14 @@ public class Menu {
                 break;
             case "9":
                 menu();
+                break;
             default:
                 System.out.println("Podaj wlasciwa wartosc !");
                 browsingCollections();
                 break;
+
         }
+        return;
     }
 
     public String reservations(){
@@ -72,11 +75,12 @@ public class Menu {
             switch (choice) {
                 case "1":
                     System.out.println(name + " rezerwacja");
-                    break;
+
+                    return name;
 
                 case "2":
                     System.out.println(name + " anulowanie rezerwacji");
-                    break;
+                    return name;
 
                 case "9":
                     menu();
