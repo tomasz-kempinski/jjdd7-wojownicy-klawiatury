@@ -35,7 +35,10 @@ class Menu {
 
     private void browsingCollections() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" 1- Lista ksiazek \n 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio). \n 3- Przegladanie pojedynczej pozycji \n 9- powrot");
+        System.out.println(" 1- Lista ksiazek");
+        System.out.println(" 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio)");
+        System.out.println(" 3- Przegladanie pojedynczej pozycji");
+        System.out.println(" 9- Powrot");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
