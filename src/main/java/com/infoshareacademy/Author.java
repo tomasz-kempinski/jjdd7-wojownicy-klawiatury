@@ -1,20 +1,20 @@
 package com.infoshareacademy;
 
 public class Author {
-    private String name;
+    private String authorName;
 
     public Author() {
     }
 
-    public Author(String name) {
-        this.name = name;
+    public Author(String authorName) {
+        this.authorName = authorName;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 }

@@ -1,21 +1,20 @@
 package com.infoshareacademy;
 
-public class Book {
+public class Book extends Author {
     private String kind;
     private String title;
     private boolean hasAudio;
     private String genre;
-    private String author;
 
     public Book() {
     }
 
-    public Book(String kind, String title, boolean hasAudio, String genre, String author) {
+    public Book(String authorName, String kind, String title, boolean hasAudio, String genre, String author) {
+        super(authorName);
         this.kind = kind;
         this.title = title;
         this.hasAudio = hasAudio;
         this.genre = genre;
-        this.author = author;
     }
 
     public String getKind() {
@@ -50,11 +49,4 @@ public class Book {
         this.genre = genre;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }
