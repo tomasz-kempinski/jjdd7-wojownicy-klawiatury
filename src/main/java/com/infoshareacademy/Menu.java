@@ -1,11 +1,11 @@
 package com.infoshareacademy;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Co chcesz zrobic ?");
         System.out.println("1- Przegladanie zbiorow");
         System.out.println("2- Rezerwacja pozycji/anulowanie rezerwacji");
@@ -31,7 +31,6 @@ class Menu {
             System.out.println("Podaj wlasciwa wartosc !");
             menu();
         }
-
     }
 
     private void browsingCollections() {
@@ -59,7 +58,6 @@ class Menu {
                     System.out.println("Podaj wlasciwa wartosc !");
                     browsingCollections();
                     break;
-
             }
         } else {
             System.out.println("Podaj wlasciwa wartosc! ");
@@ -69,8 +67,8 @@ class Menu {
 
     private String reservations() {
         //trzeba bedzie ogarnac jakos polaczenie z rezerwacjami albo anulowaniem
-        Scanner scanner = new Scanner(System.in);
 
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
         String name = scanner.nextLine();
 
@@ -81,10 +79,19 @@ class Menu {
             System.out.println("Podaj prawidlowe dane !");
             reservations();
             return null;
+        } else {
+            reservationMenu(name);
         }
+        return null;
+    }
+
+
+    private String reservationMenu(String name) {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println(" 1- rezerwacja");
         System.out.println(" 2- anulowanie rezerwacji");
+        System.out.println(" 3- Popraw imie i nazwisko");
         System.out.println(" 9- powrot do poczatku");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
@@ -92,24 +99,26 @@ class Menu {
                 case 1:
                     System.out.println(name + " rezerwacja");
                     return name;
-
                 case 2:
                     System.out.println(name + " anulowanie rezerwacji");
                     return name;
-
+                case 3:
+                    reservations();
+                    break;
                 case 9:
                     menu();
                     break;
 
                 default:
                     System.out.println("Podaj prawidlowe wartosci !");
-                    reservations();
+                    reservationMenu(name);
                     break;
             }
-        }else {
+        } else {
             System.out.println("Podaj wlasciwa wartosc !!");
-            reservations();
+            reservationMenu(name);
         }
         return null;
     }
+
 }
