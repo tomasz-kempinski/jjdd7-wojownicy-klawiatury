@@ -1,21 +1,23 @@
 package com.infoshareacademy;
 
+import java.util.List;
+
 public class Book {
     private String kind;
     private String title;
     private boolean hasAudio;
-    private String genre;
+    private List<String> genre;
     private String author;
 
     public Book() {
     }
 
-    public Book(String author, String kind, String title, boolean hasAudio, String genre) {
-        this.author = author;
+    public Book(String kind, String title, boolean hasAudio, List<String> genre, String author) {
         this.kind = kind;
         this.title = title;
         this.hasAudio = hasAudio;
         this.genre = genre;
+        this.author = author;
     }
 
     public String getKind() {
@@ -34,7 +36,7 @@ public class Book {
         this.title = title;
     }
 
-    public boolean getHasAudio() {
+    public boolean isHasAudio() {
         return hasAudio;
     }
 
@@ -42,16 +44,12 @@ public class Book {
         this.hasAudio = hasAudio;
     }
 
-    public String getGenre() {
+    public List<String> getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(List<String> genre) {
         this.genre = genre;
-    }
-
-    public boolean isHasAudio() {
-        return hasAudio;
     }
 
     public String getAuthor() {
