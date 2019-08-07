@@ -63,6 +63,7 @@ class Menu {
             }
         } else {
             System.out.println("Podaj wlasciwa wartosc! ");
+            browsingCollections();
         }
     }
 
