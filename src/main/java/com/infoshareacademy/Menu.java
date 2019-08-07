@@ -15,7 +15,6 @@ class Menu {
             switch (choice) {
                 case 1:
                     browsingCollections();
-
                     break;
                 case 2:
                     reservations();
