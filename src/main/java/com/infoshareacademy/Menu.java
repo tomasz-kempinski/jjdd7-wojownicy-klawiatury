@@ -6,10 +6,10 @@ class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Co chcesz zrobic ?");
-        System.out.println("1- Przegladanie zbiorow");
-        System.out.println("2- Rezerwacja pozycji/anulowanie rezerwacji");
-        System.out.println("9- Zakoncz program");
+        System.out.println(" Co chcesz zrobic ?");
+        System.out.println(" 1- Przegladanie zbiorow");
+        System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
+        System.out.println(" 9- Zakoncz program");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
