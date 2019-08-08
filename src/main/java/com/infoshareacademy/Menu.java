@@ -33,6 +33,7 @@ class Menu {
     }
 
     private void browsingCollections() {
+        BookList bookList = new BookList();
         Scanner scanner = new Scanner(System.in);
         System.out.println(" 1- Lista ksiazek");
         System.out.println(" 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio)");
@@ -42,8 +43,8 @@ class Menu {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    //zamienic na klase generujaca liste ksiazek
                     System.out.println("Lista ksiazek");
+                    bookList.listBooks();
                     break;
                 case 2:
                     //zamienic na klase wyszukujaca ksiazke
