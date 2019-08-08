@@ -17,6 +17,8 @@ public class Parser {
         List<Book> books = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
         });
 
-        System.out.println(books);
+        System.out.println(books.get(1));
+
+
     }
 }
