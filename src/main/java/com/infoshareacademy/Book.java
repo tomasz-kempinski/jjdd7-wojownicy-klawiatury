@@ -27,7 +27,7 @@ public class Book {
     private String genre;
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("kind")
     public String getKind() {
@@ -97,7 +97,6 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", hasAudio=" + hasAudio +
                 ", genre='" + genre + '\'' +
-                ", additionalProperties=" + additionalProperties +
                 '}';
     }
 }
