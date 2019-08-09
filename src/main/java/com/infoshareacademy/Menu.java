@@ -45,14 +45,17 @@ class Menu {
                 case 1:
                     System.out.println("Lista ksiazek");
                     bookList.listBooks();
+                    decision();
                     break;
                 case 2:
                     //zamienic na klase wyszukujaca ksiazke
                     System.out.println("Wyszukiwanie ksiazek");
+                    decision();
                     break;
                 case 3:
                     //zamienic na klase dajaca mozliwosc przegladanie pojedynczej pozycji
                     System.out.println("Przegladanie pojedynczej pozycji");
+                    decision();
                     break;
                 case 9:
                     menu();
@@ -101,9 +104,11 @@ class Menu {
             switch (choice) {
                 case 1:
                     System.out.println(name + " rezerwacja");
+                    decision();
                     return name;
                 case 2:
                     System.out.println(name + " anulowanie rezerwacji");
+                    decision();
                     return name;
                 case 3:
                     reservations();
@@ -122,6 +127,30 @@ class Menu {
             reservationMenu(name);
         }
         return null;
+    }
+    private void decision(){
+        Scanner scanner = new Scanner(System.in);
+        int decision;
+        System.out.println(" 1- Powrot do menu ");
+        System.out.println(" 2- Wyjscie ");
+        if (scanner.hasNextInt()){
+            decision = scanner.nextInt();
+            switch (decision){
+                case 1:
+                    menu();
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println(" Podaj wlasciwe dane !");
+                    decision();
+            }
+
+        } else {
+            System.out.println(" Podaj wlasciwe dane !");
+            decision ();
+        }
+
     }
 
 }
