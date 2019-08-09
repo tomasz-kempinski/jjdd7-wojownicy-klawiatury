@@ -27,7 +27,7 @@ public class Book {
     private String genre;
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private Map<String, Object> additionalProperties = new HashMap<> ( );
 
     @JsonProperty("kind")
     public String getKind() {
@@ -86,17 +86,17 @@ public class Book {
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+        this.additionalProperties.put (name, value);
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "kind='" + kind + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", hasAudio=" + hasAudio +
-                ", genre='" + genre + '\'' +
-                '}';
+                "\nkind='" + kind + '\'' +
+                "\ntitle='" + title + '\'' +
+                "\nauthor='" + author + '\'' +
+                "\nhasAudio=" + hasAudio +
+                "\ngenre='" + genre + '\'' +
+                "\n}";
     }
 }
