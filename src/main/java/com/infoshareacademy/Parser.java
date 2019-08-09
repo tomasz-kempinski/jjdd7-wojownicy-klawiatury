@@ -10,14 +10,14 @@ import java.util.List;
 
 @JsonIgnoreProperties(value = {"full_sort_key", "url", "cover_color", "cover", "epoch", "href", "simple_thumb", "slug", "cover_thumb", "liked"})
 class Parser {
-    public void parseFileToObjects(String file) {
+    public void parseFileToObjects() {
         ObjectMapper mapper = new ObjectMapper ( );
         List<Book> books = null;
         try {
-            books = mapper.readValue (new File (file), new TypeReference<List<Book>> ( ) {
+            books = mapper.readValue (new File (getClass ( ).getClassLoader ( ).getResource ("books.json").getFile ( )), new TypeReference<List<Book>> ( ) {
             });
         } catch (IOException e) {
-            System.out.println ("Problem with IO occured");
+            System.out.println ("Problem with IO occurred");
         }
         System.out.println (books);
     }
