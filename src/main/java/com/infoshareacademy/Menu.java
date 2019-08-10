@@ -1,5 +1,4 @@
 package com.infoshareacademy;
-
 import java.util.Scanner;
 
 class Menu {
@@ -48,13 +47,13 @@ class Menu {
                     decision();
                     break;
                 case 2:
-                    //zamienic na klase wyszukujaca ksiazke
                     System.out.println("Wyszukiwanie ksiazek");
+                    System.out.println("Funkcja w czasie implementacji");
                     decision();
                     break;
                 case 3:
-                    //zamienic na klase dajaca mozliwosc przegladanie pojedynczej pozycji
                     System.out.println("Przegladanie pojedynczej pozycji");
+                    System.out.println("Funkcja w czasie implementacji");
                     decision();
                     break;
                 case 9:
@@ -72,7 +71,6 @@ class Menu {
     }
 
     private String reservations() {
-        //trzeba bedzie ogarnac jakos polaczenie z rezerwacjami albo anulowaniem
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
@@ -104,10 +102,12 @@ class Menu {
             switch (choice) {
                 case 1:
                     System.out.println(name + " rezerwacja");
+                    System.out.println("Funkcja w czasie implementacji");
                     decision();
                     return name;
                 case 2:
                     System.out.println(name + " anulowanie rezerwacji");
+                    System.out.println("Funkcja w czasie implementacji");
                     decision();
                     return name;
                 case 3:
@@ -145,7 +145,6 @@ class Menu {
                     System.out.println(" Podaj wlasciwe dane !");
                     decision();
             }
-
         } else {
             System.out.println(" Podaj wlasciwe dane !");
             decision ();
