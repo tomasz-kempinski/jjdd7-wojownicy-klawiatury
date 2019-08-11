@@ -6,7 +6,7 @@
     "url": "https://wolnelektury.pl/katalog/lektura/20-000-mil-podmorskiej-zeglugi/",
     "cover_color": "#961060",
     "author": "Jules Gabriel Verne",
-    "coqver": "book/cover/20-000-mil-podmorskiej-zeglugi.jpg",
+    "cover": "book/cover/20-000-mil-podmorskiej-zeglugi.jpg",
     "epoch": "Pozytywizm",
     "href": "https://wolnelektury.pl/api/books/20-000-mil-podmorskiej-zeglugi/",
     "has_audio": false,
