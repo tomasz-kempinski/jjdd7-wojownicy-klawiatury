@@ -10,7 +10,6 @@ class Parser {
     private static List<Book> books;
     public void parseFileToObjects() {
         ObjectMapper mapper = new ObjectMapper ( );
-
         try {
             books = mapper.readValue (new File (Objects.requireNonNull (getClass ( ).getClassLoader ( ).getResource ("books.json")).getFile ( )), new TypeReference<List<Book>> ( ) {
             });
@@ -20,7 +19,6 @@ class Parser {
             System.out.println ("Problem with NullPointerException");
         }
     }
-
     public static List<Book> getBooks() {
         return books;
     }
