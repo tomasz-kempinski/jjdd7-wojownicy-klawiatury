@@ -1,4 +1,5 @@
 package com.infoshareacademy;
+
 import java.util.Scanner;
 
 class Menu {
@@ -71,7 +72,6 @@ class Menu {
     }
 
     private String reservations() {
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
         String name = scanner.nextLine();
@@ -88,7 +88,6 @@ class Menu {
         }
         return null;
     }
-
 
     private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
@@ -116,7 +115,6 @@ class Menu {
                 case 9:
                     menu();
                     break;
-
                 default:
                     System.out.println("Podaj prawidlowe wartosci !");
                     reservationMenu(name);
@@ -128,14 +126,15 @@ class Menu {
         }
         return null;
     }
-    private void decision(){
+
+    private void decision() {
         Scanner scanner = new Scanner(System.in);
         int decision;
         System.out.println(" 1- Powrot do menu ");
         System.out.println(" 2- Wyjscie ");
-        if (scanner.hasNextInt()){
+        if (scanner.hasNextInt()) {
             decision = scanner.nextInt();
-            switch (decision){
+            switch (decision) {
                 case 1:
                     menu();
                     break;
@@ -147,9 +146,7 @@ class Menu {
             }
         } else {
             System.out.println(" Podaj wlasciwe dane !");
-            decision ();
+            decision();
         }
-
     }
-
 }
