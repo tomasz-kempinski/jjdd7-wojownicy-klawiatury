@@ -3,9 +3,11 @@ package com.infoshareacademy;
 import java.util.Scanner;
 import java.util.List;
 
+import static com.infoshareacademy.Parser.*;
+
 class BookList {
     void listBooks() {
-        List<Book> books = Parser.getBooks();
+        List<Book> books = getBooks();
         int lines = 20;
         int bookCounter = 0;
         int currentLine;
