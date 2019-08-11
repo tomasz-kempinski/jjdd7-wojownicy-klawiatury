@@ -1,6 +1,5 @@
 package com.infoshareacademy;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@JsonIgnoreProperties(value = {"full_sort_key", "url", "cover_color", "cover", "epoch", "href", "simple_thumb", "slug", "cover_thumb", "liked"})
 class Parser {
     private static List<Book> books;
     public void parseFileToObjects() {

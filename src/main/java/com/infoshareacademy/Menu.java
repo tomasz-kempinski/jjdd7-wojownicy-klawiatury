@@ -75,7 +75,7 @@ class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
         String name = scanner.nextLine();
-
+      
         if (name.equals("9")) {
             menu();
             return null;
@@ -108,6 +108,7 @@ class Menu {
                     System.out.println(name + " anulowanie rezerwacji");
                     System.out.println("Funkcja w czasie implementacji");
                     decision();
+
                     return name;
                 case 3:
                     reservations();
