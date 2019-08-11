@@ -1,24 +1,25 @@
 package com.infoshareacademy;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Book {
+
+    @JsonProperty("kind")
     private String kind;
+    @JsonProperty("title")
     private String title;
-    private boolean hasAudio;
-    private List<String> genre;
+    @JsonProperty("author")
     private String author;
+    @JsonProperty("has_audio")
+    private Boolean hasAudio;
+    @JsonProperty("genre")
+    private String genre;
 
-    public Book() {
-    }
-
-    public Book(String kind, String title, boolean hasAudio, List<String> genre, String author) {
-        this.kind = kind;
-        this.title = title;
-        this.hasAudio = hasAudio;
-        this.genre = genre;
-        this.author = author;
-    }
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public String getKind() {
         return kind;
@@ -36,27 +37,48 @@ public class Book {
         this.title = title;
     }
 
-    public boolean isHasAudio() {
-        return hasAudio;
-    }
-
-    public void setHasAudio(boolean hasAudio) {
-        this.hasAudio = hasAudio;
-    }
-
-    public List<String> getGenre() {
-        return genre;
-    }
-
-    public void setGenre(List<String> genre) {
-        this.genre = genre;
-    }
-
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Boolean getHasAudio() {
+        return hasAudio;
+    }
+
+    public void setHasAudio(Boolean hasAudio) {
+        this.hasAudio = hasAudio;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "\nkind='" + kind + '\'' +
+                "\ntitle='" + title + '\'' +
+                "\nauthor='" + author + '\'' +
+                "\nhasAudio=" + hasAudio +
+                "\ngenre='" + genre + '\'' +
+                "\n}";
     }
 }
