@@ -6,10 +6,10 @@ class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Co chcesz zrobic ?");
-        System.out.println("1- Przegladanie zbiorow");
-        System.out.println("2- Rezerwacja pozycji/anulowanie rezerwacji");
-        System.out.println("9- Zakoncz program");
+        System.out.println(" Co chcesz zrobic ?");
+        System.out.println(" 1- Przegladanie zbiorow");
+        System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
+        System.out.println(" 9- Zakoncz program");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
@@ -33,6 +33,7 @@ class Menu {
     }
 
     private void browsingCollections() {
+        BookList bookList = new BookList();
         Scanner scanner = new Scanner(System.in);
         System.out.println(" 1- Lista ksiazek");
         System.out.println(" 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio)");
@@ -42,16 +43,19 @@ class Menu {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    //zamienic na klase generujaca liste ksiazek
                     System.out.println("Lista ksiazek");
+                    bookList.listBooks();
+                    decision();
                     break;
                 case 2:
-                    //zamienic na klase wyszukujaca ksiazke
                     System.out.println("Wyszukiwanie ksiazek");
+                    System.out.println("Funkcja w czasie implementacji");
+                    decision();
                     break;
                 case 3:
-                    //zamienic na klase dajaca mozliwosc przegladanie pojedynczej pozycji
                     System.out.println("Przegladanie pojedynczej pozycji");
+                    System.out.println("Funkcja w czasie implementacji");
+                    decision();
                     break;
                 case 9:
                     menu();
@@ -68,8 +72,6 @@ class Menu {
     }
 
     private String reservations() {
-        //trzeba bedzie ogarnac jakos polaczenie z rezerwacjami albo anulowaniem
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
         String name = scanner.nextLine();
@@ -87,7 +89,6 @@ class Menu {
         return null;
     }
 
-
     private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
 
@@ -100,9 +101,14 @@ class Menu {
             switch (choice) {
                 case 1:
                     System.out.println(name + " rezerwacja");
+                    System.out.println("Funkcja w czasie implementacji");
+                    decision();
                     return name;
                 case 2:
                     System.out.println(name + " anulowanie rezerwacji");
+                    System.out.println("Funkcja w czasie implementacji");
+                    decision();
+
                     return name;
                 case 3:
                     reservations();
@@ -110,7 +116,6 @@ class Menu {
                 case 9:
                     menu();
                     break;
-
                 default:
                     System.out.println("Podaj prawidlowe wartosci !");
                     reservationMenu(name);
@@ -123,4 +128,26 @@ class Menu {
         return null;
     }
 
+    private void decision() {
+        Scanner scanner = new Scanner(System.in);
+        int decision;
+        System.out.println(" 1- Powrot do menu ");
+        System.out.println(" 2- Wyjscie ");
+        if (scanner.hasNextInt()) {
+            decision = scanner.nextInt();
+            switch (decision) {
+                case 1:
+                    menu();
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println(" Podaj wlasciwe dane !");
+                    decision();
+            }
+        } else {
+            System.out.println(" Podaj wlasciwe dane !");
+            decision();
+        }
+    }
 }

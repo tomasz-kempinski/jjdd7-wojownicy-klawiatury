@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Book {
 
     @JsonProperty("kind")
