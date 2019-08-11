@@ -75,7 +75,7 @@ class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
         String name = scanner.nextLine();
-      
+
         if (name.equals("9")) {
             menu();
             return null;
