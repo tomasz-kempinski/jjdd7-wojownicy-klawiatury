@@ -17,7 +17,7 @@ public class BookList {
             do {
                 currentPage++;
                 currentLine++;
-                System.out.println(bookCounter + 1 + ". " + books.get(bookCounter).getTitle() + "  " +books.get(bookCounter).getAuthor());
+                System.out.println(bookCounter + 1 + ". \"" + books.get(bookCounter).getTitle() + "\" - " + books.get(bookCounter).getAuthor());
                 bookCounter++;
             } while (currentLine < lines && currentPage< books.size());
             System.out.println("Enter- Kontynuuj wyświetlanie Z- Zakoncz");
