@@ -16,7 +16,7 @@ class BookList {
         Scanner scanner = new Scanner(System.in);
         do {
             if (currentPage > 0) {
-                System.out.println("Enter- Kontynuuj wyświetlanie Z- Zakoncz");
+                System.out.println("Enter- Kontynuuj wyświetlanie Z- Zakończ");
                 nextPageCheck = scanner.nextLine();
                 if (nextPageCheck.equals("Z") || nextPageCheck.equals("z")) {
                     break;
