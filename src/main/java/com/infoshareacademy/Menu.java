@@ -35,8 +35,8 @@ class Menu {
     private void browsingCollections() {
         BookList bookList = new BookList();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" 1- Lista ksiażek");
-        System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
+        System.out.println(" 1- Lista książek");
+        System.out.println(" 2- Wyszukiwanie książek (wg autora, tytułu, wersji audio)");
         System.out.println(" 3- Przeglądanie pojedynczej pozycji");
         System.out.println(" 9- Powrót");
         if (scanner.hasNextInt()) {
@@ -92,10 +92,10 @@ class Menu {
     private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(" 1- rezerwacja");
-        System.out.println(" 2- anulowanie rezerwacji");
+        System.out.println(" 1- Rezerwacja");
+        System.out.println(" 2- Anulowanie rezerwacji");
         System.out.println(" 3- Popraw imię i nazwisko");
-        System.out.println(" 9- powrót do poczatku");
+        System.out.println(" 9- Powrót do poczatku");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
@@ -105,7 +105,7 @@ class Menu {
                     decision();
                     return name;
                 case 2:
-                    System.out.println(name + " anulowanie rezerwacji");
+                    System.out.println(" " + name + " anulowanie rezerwacji");
                     System.out.println(" Funkcja w czasie implementacji");
                     decision();
 

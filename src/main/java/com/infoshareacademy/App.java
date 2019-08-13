@@ -5,6 +5,6 @@ public class App {
         Parser parser = new Parser();
         parser.parseFileToObjects();
         Menu menu = new Menu();
-        menu.menu();
+    menu.menu();
     }
 }
