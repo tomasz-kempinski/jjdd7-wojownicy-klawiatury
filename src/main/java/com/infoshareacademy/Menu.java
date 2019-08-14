@@ -6,7 +6,7 @@ class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(" Co chcesz zrobić ?");
+        System.out.println(" Co chcesz zrobić?");
         System.out.println(" 1- Przeglądanie zbiorów");
         System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
         System.out.println(" 9- Zakończ program");
@@ -27,7 +27,7 @@ class Menu {
                     break;
             }
         } else {
-            System.out.println(" Podaj właściwą wartość !");
+            System.out.println(" Podaj właściwą wartość!");
             menu();
         }
     }
@@ -61,12 +61,12 @@ class Menu {
                     menu();
                     break;
                 default:
-                    System.out.println(" Podaj własciwa wartość !");
+                    System.out.println(" Podaj własciwa wartość!");
                     browsingCollections();
                     break;
             }
         } else {
-            System.out.println(" Podaj własciwą wartość! ");
+            System.out.println(" Podaj własciwą wartość!");
             browsingCollections();
         }
     }
@@ -80,7 +80,7 @@ class Menu {
             menu();
             return null;
         } else if (name.length() < 3) {
-            System.out.println(" Podaj prawidłowe dane !");
+            System.out.println(" Podaj prawidłowe dane!");
             reservations();
             return null;
         } else {
@@ -117,12 +117,12 @@ class Menu {
                     menu();
                     break;
                 default:
-                    System.out.println(" Podaj prawidłowe wartości !");
+                    System.out.println(" Podaj prawidłowe wartości!");
                     reservationMenu(name);
                     break;
             }
         } else {
-            System.out.println(" Podaj właściwą wartość !!");
+            System.out.println(" Podaj właściwą wartość!");
             reservationMenu(name);
         }
         return null;
@@ -142,11 +142,11 @@ class Menu {
                 case 2:
                     break;
                 default:
-                    System.out.println(" Podaj właściwe dane !");
+                    System.out.println(" Podaj właściwe dane!");
                     decision();
             }
         } else {
-            System.out.println(" Podaj właściwe dane !");
+            System.out.println(" Podaj właściwe dane!");
             decision();
         }
     }
