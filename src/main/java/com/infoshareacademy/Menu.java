@@ -45,7 +45,6 @@ class Menu {
                 case 1:
                     System.out.println(" Lista książek");
                     bookList.listBooks();
-                    decision();
                     break;
                 case 2:
                     System.out.println(" Wyszukiwanie książek");
@@ -53,8 +52,9 @@ class Menu {
                     decision();
                     break;
                 case 3:
+                    SingleBookView singleBookView = new SingleBookView();
                     System.out.println(" Przeglądanie pojedynczej pozycji");
-                    System.out.println(" Funkcja w czasie implementacji");
+                    singleBookView.selectBook();
                     decision();
                     break;
                 case 9:
