@@ -101,10 +101,10 @@ class Menu {
         for (int i = 0; i < 90; i++) {
             System.out.println("");
         }
-        System.out.println(" 1- rezerwacja");
-        System.out.println(" 2- anulowanie rezerwacji");
+        System.out.println(" 1- Rezerwacja");
+        System.out.println(" 2- Anulowanie rezerwacji");
         System.out.println(" 3- Popraw imię i nazwisko");
-        System.out.println(" 9- powrót do poczatku");
+        System.out.println(" 9- Powrót do poczatku");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
@@ -114,7 +114,7 @@ class Menu {
                     decision();
                     return name;
                 case 2:
-                    System.out.println(name + " anulowanie rezerwacji");
+                    System.out.println(" " + name + " anulowanie rezerwacji");
                     System.out.println(" Funkcja w czasie implementacji");
                     decision();
                     return name;
