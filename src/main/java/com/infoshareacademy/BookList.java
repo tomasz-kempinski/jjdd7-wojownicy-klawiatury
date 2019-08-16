@@ -19,9 +19,11 @@ class BookList {
                 System.out.println("Enter- Kontynuuj wyświetlanie Z- Zakończ W- wyświetl szczegóły książki ");
                 nextPageCheck = scanner.nextLine();
                 if (nextPageCheck.equals("Z") || nextPageCheck.equals("z")) {
+                    Menu menu = new Menu();
+                    menu.menu();
                     break;
                 }
-                if ((nextPageCheck.equals("W") || nextPageCheck.equals("w"))){
+                if ((nextPageCheck.equals("W") || nextPageCheck.equals("w"))) {
                     SingleBookView singleBookView = new SingleBookView();
                     singleBookView.selectBook();
                     break;
@@ -31,7 +33,7 @@ class BookList {
             do {
                 currentPage++;
                 currentLine++;
-                System.out.println(bookCounter  + ". \"" + books.get(bookCounter).getTitle() + "\" - " + books.get(bookCounter).getAuthor());
+                System.out.println(bookCounter + ". \"" + books.get(bookCounter).getTitle() + "\" - " + books.get(bookCounter).getAuthor());
                 bookCounter++;
             } while (currentLine < lines && currentPage < books.size());
         } while (currentPage < books.size());
