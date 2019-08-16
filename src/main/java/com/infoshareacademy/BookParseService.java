@@ -7,13 +7,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-class Parser {
-    private static List<Book> books;
+class BookParseService {
 
     public void parseFileToObjects() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            books = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
+            BookRepository.books = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
             });
         } catch (IOException e) {
             System.out.println("Problem with IO occurred");
@@ -22,7 +21,4 @@ class Parser {
         }
     }
 
-    public static List<Book> getBooks() {
-        return books;
-    }
 }
