@@ -2,7 +2,7 @@ package com.infoshareacademy;
 
 import java.util.Scanner;
 
-public class FavoriteBooks {
+public class FavouriteBooks {
     public void favoriteBooksMenu(){
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<90; i++){

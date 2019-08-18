@@ -23,8 +23,8 @@ class Menu {
                     reservations();
                     break;
                 case 3:
-                    FavoriteBooks favoriteBooks = new FavoriteBooks();
-                    favoriteBooks.favoriteBooksMenu();
+                    FavouriteBooks favouriteBooks = new FavouriteBooks();
+                    favouriteBooks.favoriteBooksMenu();
                     break;
                 case 9:
                     break;
