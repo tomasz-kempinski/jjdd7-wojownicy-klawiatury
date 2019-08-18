@@ -5,7 +5,9 @@ import java.util.Scanner;
 class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
-
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
         System.out.println(" Co chcesz zrobić?");
         System.out.println(" 1- Przeglądanie zbiorów");
         System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
@@ -33,19 +35,21 @@ class Menu {
     }
 
     private void browsingCollections() {
-        BookList bookList = new BookList();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" 1- Lista książek");
-        System.out.println(" 2- Wyszukiwanie książek (wg autora, tytułu, wersji audio)");
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
+        System.out.println(" 1- Lista ksiażek");
+        System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
         System.out.println(" 3- Przeglądanie pojedynczej pozycji");
         System.out.println(" 9- Powrót");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
+                    BookList bookList = new BookList();
                     System.out.println(" Lista książek");
                     bookList.listBooks();
-                    decision();
                     break;
                 case 2:
                     System.out.println(" Wyszukiwanie książek");
@@ -53,9 +57,9 @@ class Menu {
                     decision();
                     break;
                 case 3:
+                    SingleBookView singleBookView = new SingleBookView();
                     System.out.println(" Przeglądanie pojedynczej pozycji");
-                    System.out.println(" Funkcja w czasie implementacji");
-                    decision();
+                    singleBookView.selectBook();
                     break;
                 case 9:
                     menu();
@@ -66,13 +70,16 @@ class Menu {
                     break;
             }
         } else {
-            System.out.println(" Podaj własciwą wartość! ");
+            System.out.println(" Podaj własciwą wartość!");
             browsingCollections();
         }
     }
 
     private String reservations() {
         Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
         System.out.println(" Podaj Imię i Nazwisko     (9- powrót do początku)");
         String name = scanner.nextLine();
 
@@ -91,7 +98,9 @@ class Menu {
 
     private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
-
+        for (int i = 0; i < 90; i++) {
+            System.out.println("");
+        }
         System.out.println(" 1- Rezerwacja");
         System.out.println(" 2- Anulowanie rezerwacji");
         System.out.println(" 3- Popraw imię i nazwisko");
@@ -108,7 +117,6 @@ class Menu {
                     System.out.println(" " + name + " anulowanie rezerwacji");
                     System.out.println(" Funkcja w czasie implementacji");
                     decision();
-
                     return name;
                 case 3:
                     reservations();
@@ -130,6 +138,9 @@ class Menu {
 
     private void decision() {
         Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 90; i++) {
+            System.out.println("");
+        }
         int decision;
         System.out.println(" 1- Powrót do menu ");
         System.out.println(" 2- Wyjście ");
