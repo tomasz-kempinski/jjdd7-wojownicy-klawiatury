@@ -1,17 +1,21 @@
 package com.infoshareacademy;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavouriteBooks {
     public void favoriteBooksMenu(){
         Scanner scanner = new Scanner(System.in);
-        for (int i=0; i<90; i++){
-            System.out.println("");
+        try {
+            if (System.getProperty("os.name").contains("Mac") || System.getProperty("os.name").contains("Linux")) {
+                System.out.println(System.getProperty("os.name"));
+                Runtime.getRuntime().exec("clear");
+            } else if (System.getProperty("os.name").contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            }
+        }catch (IOException e){
+            System.out.println("Błąd systemu operacyjnego");
         }
         System.out.println( "1- Wyświetlenie ulubionych książek");
         System.out.println( "2- Dodanie ulubionej książki");
