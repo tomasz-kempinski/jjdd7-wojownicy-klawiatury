@@ -1,8 +1,8 @@
 package com.infoshareacademy;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import static com.infoshareacademy.Parser.getBooks;
 
 public class BookSorter {
@@ -12,9 +12,9 @@ public class BookSorter {
     public void sortByAuthor() {
         config.loadConfig("sortByAuthor");
         String property = config.getProperty();
-        if (property.equals("ASC")){
+        if (property.equals("ASC")) {
             books.sort(Comparator.comparing(Book::getAuthor));
-        } else if (property.equals("DSC")){
+        } else if (property.equals("DSC")) {
             books.sort(Comparator.comparing(Book::getAuthor).reversed());
         }
     }
@@ -22,9 +22,9 @@ public class BookSorter {
     public void sortByTitle() {
         config.loadConfig("sortByTitle");
         String property = config.getProperty();
-        if (property.equals("ASC")){
+        if (property.equals("ASC")) {
             books.sort(Comparator.comparing(Book::getTitle));
-        } else if (property.equals("DSC")){
+        } else if (property.equals("DSC")) {
             books.sort(Comparator.comparing(Book::getTitle).reversed());
         }
     }
