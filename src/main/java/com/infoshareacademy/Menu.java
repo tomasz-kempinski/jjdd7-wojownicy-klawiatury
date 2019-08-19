@@ -1,5 +1,6 @@
 package com.infoshareacademy;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class Menu {
@@ -38,7 +39,7 @@ class Menu {
         }
     }
 
-    private void browsingCollections() {
+    private void browsingCollections(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -79,7 +80,7 @@ class Menu {
         }
     }
 
-    private String reservations() {
+    private String reservations(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -100,7 +101,7 @@ class Menu {
         return null;
     }
 
-    private String reservationMenu(String name) {
+    private String reservationMenu(String name){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");
@@ -140,7 +141,7 @@ class Menu {
         return null;
     }
 
-    private void decision() {
+    private void decision(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");

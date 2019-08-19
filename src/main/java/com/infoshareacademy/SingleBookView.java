@@ -2,6 +2,7 @@ package com.infoshareacademy;
 
 import com.github.freva.asciitable.AsciiTable;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class SingleBookView {
     BookList bookList = new BookList();
     List<Book> books = getBooks();
 
-    public void selectBook() {
+    public void selectBook(){
         Scanner scanner = new Scanner(System.in);
         List<Book> books = getBooks();
         int choice;
@@ -46,7 +47,7 @@ public class SingleBookView {
         }
     }
 
-    private void singleBookView(int bookNumber) {
+    private void singleBookView(int bookNumber){
         Scanner scanner = new Scanner(System.in);
         String hasAudio;
         int choice;

@@ -1,5 +1,10 @@
 package com.infoshareacademy;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavouriteBooks {
@@ -38,10 +43,27 @@ public class FavouriteBooks {
     }
 
     private void favouriteBooksList(){
+        try {
+            File file = new File("favouriteBooks.txt");
+            Scanner scanner = new Scanner(file);
+            String books = scanner.nextLine();
+            char[] favouriteBooksChar = books.toCharArray();
+            System.out.println(Arrays.toString(favouriteBooksChar));
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Brak pliku");
+        }
 
     }
 
-    public void favouriteBooksAdd(int book){
+    public void favouriteBooksAdd(int book) {
+        try {
+            PrintWriter writer = new PrintWriter("favouriteBooks.txt");
+            writer.println("zzz");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(" Brak pliku z książkami");
+        }
 
     }
 
