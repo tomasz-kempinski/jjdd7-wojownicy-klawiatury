@@ -1,17 +1,25 @@
 package com.infoshareacademy;
 
-import java.util.Collections;
-
 public class BookSorter {
     private Config config = new Config();
 
-    public void sortByAuthor(){
+    public void sortByAuthor() {
         config.loadConfig("sortByAuthor");
-        config.getProperty();
+        String property = config.getProperty();
+        if (property.equals("ASC")){
+
+        } else if (property.equals("DSC")){
+
+        }
     }
 
-    public void sortByTitle(){
+    public void sortByTitle() {
         config.loadConfig("sortByTitle");
-        config.getProperty();
+        String property = config.getProperty();
+        if (property.equals("ASC")){
+
+        } else if (property.equals("DSC")){
+
+        }
     }
 }
