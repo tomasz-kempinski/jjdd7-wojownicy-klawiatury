@@ -5,11 +5,13 @@ import java.util.Scanner;
 class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println(" Co chcesz zrobic ?");
-        System.out.println(" 1- Przegladanie zbiorow");
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
+        System.out.println(" Co chcesz zrobić?");
+        System.out.println(" 1- Przeglądanie zbiorów");
         System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
-        System.out.println(" 9- Zakoncz program");
+        System.out.println(" 9- Zakończ program");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
@@ -22,65 +24,70 @@ class Menu {
                 case 9:
                     break;
                 default:
-                    System.out.println("Podaj wartosc 1, 2 lub 9!!");
+                    System.out.println(" Podaj wartość 1, 2 lub 9!!");
                     menu();
                     break;
             }
         } else {
-            System.out.println("Podaj wlasciwa wartosc !");
+            System.out.println(" Podaj właściwą wartość!");
             menu();
         }
     }
 
     private void browsingCollections() {
-        BookList bookList = new BookList();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" 1- Lista ksiazek");
-        System.out.println(" 2- Wyszukiwanie ksiazek (wg autora, tytulu, wersji audio)");
-        System.out.println(" 3- Przegladanie pojedynczej pozycji");
-        System.out.println(" 9- Powrot");
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
+        System.out.println(" 1- Lista ksiażek");
+        System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
+        System.out.println(" 3- Przeglądanie pojedynczej pozycji");
+        System.out.println(" 9- Powrót");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Lista ksiazek");
+                    BookList bookList = new BookList();
+                    System.out.println(" Lista książek");
                     bookList.listBooks();
-                    decision();
                     break;
                 case 2:
-                    System.out.println("Wyszukiwanie ksiazek");
-                    System.out.println("Funkcja w czasie implementacji");
+                    System.out.println(" Wyszukiwanie książek");
+                    System.out.println(" Funkcja w czasie implementacji");
                     decision();
                     break;
                 case 3:
-                    System.out.println("Przegladanie pojedynczej pozycji");
-                    System.out.println("Funkcja w czasie implementacji");
-                    decision();
+                    SingleBookView singleBookView = new SingleBookView();
+                    System.out.println(" Przeglądanie pojedynczej pozycji");
+                    singleBookView.selectBook();
                     break;
                 case 9:
                     menu();
                     break;
                 default:
-                    System.out.println("Podaj wlasciwa wartosc !");
+                    System.out.println(" Podaj własciwa wartość!");
                     browsingCollections();
                     break;
             }
         } else {
-            System.out.println("Podaj wlasciwa wartosc! ");
+            System.out.println(" Podaj własciwą wartość!");
             browsingCollections();
         }
     }
 
     private String reservations() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj Imie i Nazwisko     (9- powrot do poczatku)");
+        for (int i = 0; i < 40; i++) {
+            System.out.println("");
+        }
+        System.out.println(" Podaj Imię i Nazwisko     (9- powrót do początku)");
         String name = scanner.nextLine();
 
         if (name.equals("9")) {
             menu();
             return null;
         } else if (name.length() < 3) {
-            System.out.println("Podaj prawidlowe dane !");
+            System.out.println(" Podaj prawidłowe dane!");
             reservations();
             return null;
         } else {
@@ -91,24 +98,25 @@ class Menu {
 
     private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println(" 1- rezerwacja");
-        System.out.println(" 2- anulowanie rezerwacji");
-        System.out.println(" 3- Popraw imie i nazwisko");
-        System.out.println(" 9- powrot do poczatku");
+        for (int i = 0; i < 90; i++) {
+            System.out.println("");
+        }
+        System.out.println(" 1- Rezerwacja");
+        System.out.println(" 2- Anulowanie rezerwacji");
+        System.out.println(" 3- Popraw imię i nazwisko");
+        System.out.println(" 9- Powrót do poczatku");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
                     System.out.println(name + " rezerwacja");
-                    System.out.println("Funkcja w czasie implementacji");
+                    System.out.println(" Funkcja w czasie implementacji");
                     decision();
                     return name;
                 case 2:
-                    System.out.println(name + " anulowanie rezerwacji");
-                    System.out.println("Funkcja w czasie implementacji");
+                    System.out.println(" " + name + " anulowanie rezerwacji");
+                    System.out.println(" Funkcja w czasie implementacji");
                     decision();
-
                     return name;
                 case 3:
                     reservations();
@@ -117,12 +125,12 @@ class Menu {
                     menu();
                     break;
                 default:
-                    System.out.println("Podaj prawidlowe wartosci !");
+                    System.out.println(" Podaj prawidłowe wartości!");
                     reservationMenu(name);
                     break;
             }
         } else {
-            System.out.println("Podaj wlasciwa wartosc !!");
+            System.out.println(" Podaj właściwą wartość!");
             reservationMenu(name);
         }
         return null;
@@ -130,9 +138,12 @@ class Menu {
 
     private void decision() {
         Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 90; i++) {
+            System.out.println("");
+        }
         int decision;
-        System.out.println(" 1- Powrot do menu ");
-        System.out.println(" 2- Wyjscie ");
+        System.out.println(" 1- Powrót do menu ");
+        System.out.println(" 2- Wyjście ");
         if (scanner.hasNextInt()) {
             decision = scanner.nextInt();
             switch (decision) {
@@ -142,11 +153,11 @@ class Menu {
                 case 2:
                     break;
                 default:
-                    System.out.println(" Podaj wlasciwe dane !");
+                    System.out.println(" Podaj właściwe dane!");
                     decision();
             }
         } else {
-            System.out.println(" Podaj wlasciwe dane !");
+            System.out.println(" Podaj właściwe dane!");
             decision();
         }
     }
