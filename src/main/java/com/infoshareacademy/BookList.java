@@ -1,8 +1,8 @@
 package com.infoshareacademy;
 
-import java.util.List;
+import static com.infoshareacademy.Parser.getBooks;
 
-import static com.infoshareacademy.Parser.*;
+import java.util.List;
 
 class BookList {
 
