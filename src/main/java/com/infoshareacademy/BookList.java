@@ -1,9 +1,9 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.Parser.getBooks;
-
-import java.util.List;
 import java.util.Scanner;
+import java.util.List;
+
+import static com.infoshareacademy.Parser.*;
 
 class BookList {
 
@@ -17,15 +17,15 @@ class BookList {
     String nextPageCheck;
     do {
       if (currentPage > 0) {
-        System.out
-            .println("Enter- Kontynuuj wyświetlanie Z- Zakończ W- wyświetl szczegóły książki ");
+        System.out.println(
+            "\nEnter- Kontynuuj wyświetlanie || Z- Zakończ || W- wyświetl szczegóły książki ");
         nextPageCheck = scanner.nextLine();
-        if (nextPageCheck.equals("Z") || nextPageCheck.equals("z")) {
+        if (nextPageCheck.equalsIgnoreCase("Z")) {
           Menu menu = new Menu();
           menu.menu();
           break;
         }
-        if ((nextPageCheck.equals("W") || nextPageCheck.equals("w"))) {
+        if (nextPageCheck.equalsIgnoreCase("W")) {
           SingleBookView singleBookView = new SingleBookView();
           singleBookView.selectBook();
           break;
@@ -36,7 +36,7 @@ class BookList {
         currentPage++;
         currentLine++;
         System.out.println(
-            bookCounter + ". \"" + books.get(bookCounter).getTitle() + "\" - " + books
+            bookCounter + 1 + ". \"" + books.get(bookCounter).getTitle() + "\" - " + books
                 .get(bookCounter).getAuthor());
         bookCounter++;
       } while (currentLine < lines && currentPage < books.size());
