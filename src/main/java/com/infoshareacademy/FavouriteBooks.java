@@ -5,19 +5,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavouriteBooks {
+    ScreenCleaner screenCleaner = new ScreenCleaner();
     public void favoriteBooksMenu(){
         Scanner scanner = new Scanner(System.in);
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                System.out.println(System.getProperty("os.name"));
-                Runtime.getRuntime().exec("clear");
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        }catch (IOException e){
-            System.out.println("Błąd systemu operacyjnego");
-        }
         System.out.println( "1- Wyświetlenie ulubionych książek");
         System.out.println( "2- Dodanie ulubionej książki");
         System.out.println( "3- Usunięcie ulubionej książki");
@@ -27,19 +17,24 @@ public class FavouriteBooks {
             int choice = scanner.nextInt();
             switch (choice){
                 case 1:
+                    screenCleaner.cleanScreen();
                     favouriteBooksList();
                     break;
                 case 2:
+                    screenCleaner.cleanScreen();
                     favouriteBooksAdd(-1);
                     break;
                 case 3:
+                    screenCleaner.cleanScreen();
                     favouriteBookRemove();
                     break;
                 case 9:
+                    screenCleaner.cleanScreen();
                     Menu menu = new Menu();
                     menu.menu();
                     break;
                 default:
+                    screenCleaner.cleanScreen();
                     favoriteBooksMenu();
                     break;
 

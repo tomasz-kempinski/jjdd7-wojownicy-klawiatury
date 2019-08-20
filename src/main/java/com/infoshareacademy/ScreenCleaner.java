@@ -3,7 +3,7 @@ package com.infoshareacademy;
 import java.io.IOException;
 
 public class ScreenCleaner {
-    public void screenClean(){
+    public void cleanScreen(){
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 Runtime.getRuntime().exec("cls");

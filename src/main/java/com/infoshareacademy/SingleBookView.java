@@ -11,6 +11,7 @@ import static com.infoshareacademy.Parser.getBooks;
 public class SingleBookView {
     private BookList bookList = new BookList();
     private List<Book> books = getBooks();
+    private ScreenCleaner screenCleaner = new ScreenCleaner();
 
     public void selectBook(){
         Scanner scanner = new Scanner(System.in);
@@ -21,8 +22,10 @@ public class SingleBookView {
         if (scanner.hasNextInt()) {
             bookNumber = scanner.nextInt();
             if (bookNumber <= books.size()) {
+                screenCleaner.cleanScreen();
                 singleBookView(bookNumber);
             } else {
+                screenCleaner.cleanScreen();
                 System.out.println(" Podaj liczbę odpowiadającą książce!");
                 System.out.println(" 1- Wyświetl listę książek 2- Wyszukaj książkę");
                 System.out.println(" 3- Wpisz numer książki ponownie");
@@ -30,9 +33,11 @@ public class SingleBookView {
                     choice = scanner.nextInt();
                     switch (choice) {
                         case 1:
+                            screenCleaner.cleanScreen();
                             bookList.listBooks();
                             break;
-                        case 2: //trzeba dodać przejście do wyszukiwania książek
+                        case 2:
+                            screenCleaner.cleanScreen();
                             System.out.println("Wyszukiwanie książek");
                             break;
                         default:
@@ -42,6 +47,7 @@ public class SingleBookView {
 
             }
         } else {
+            screenCleaner.cleanScreen();
             System.out.println(" Podaj liczbę!");
             selectBook();
         }
@@ -56,9 +62,7 @@ public class SingleBookView {
         } else {
             hasAudio = "nie";
         }
-        for (int i = 0; i < 90; i++) {
-            System.out.println("");
-        }
+        screenCleaner.cleanScreen();
         String[][] data = {
                 {"     Autor       ", books.get(bookNumber).getAuthor()},
                 {"     Tytuł       ", books.get(bookNumber).getTitle()},
@@ -73,16 +77,21 @@ public class SingleBookView {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
+                    screenCleaner.cleanScreen();
                     selectBook();
                     break;
                 case 2:
+                    screenCleaner.cleanScreen();
                     Menu menu = new Menu();
                     menu.menu();
                     break;
                 case 3:
+                    screenCleaner.cleanScreen();
                     bookList.listBooks();
                     break;
-                case 4://dodać przejście do wyszukiwania książek
+                case 4:
+                    screenCleaner.cleanScreen();
+                    break;
                 default:
                     System.out.println("Podaj prawidłową wartość!");
                     singleBookView(bookNumber);
