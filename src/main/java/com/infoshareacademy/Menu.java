@@ -1,16 +1,18 @@
 package com.infoshareacademy;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class Menu {
     void menu() {
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 90; i++) {
             System.out.println("");
         }
         System.out.println(" Co chcesz zrobić?");
         System.out.println(" 1- Przeglądanie zbiorów");
         System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
+        System.out.println(" 3- Ulubione książki");
         System.out.println(" 9- Zakończ program");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
@@ -21,10 +23,13 @@ class Menu {
                 case 2:
                     reservations();
                     break;
+                case 3:
+                    FavouriteBooks favouriteBooks = new FavouriteBooks();
+                    favouriteBooks.favoriteBooksMenu();
+                    break;
                 case 9:
                     break;
                 default:
-                    System.out.println(" Podaj wartość 1, 2 lub 9!!");
                     menu();
                     break;
             }
@@ -34,7 +39,7 @@ class Menu {
         }
     }
 
-    private void browsingCollections() {
+    private void browsingCollections(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -77,7 +82,7 @@ class Menu {
         }
     }
 
-    private String reservations() {
+    private String reservations(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -98,7 +103,7 @@ class Menu {
         return null;
     }
 
-    private String reservationMenu(String name) {
+    private String reservationMenu(String name){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");
@@ -138,7 +143,7 @@ class Menu {
         return null;
     }
 
-    private void decision() {
+    private void decision(){
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");
