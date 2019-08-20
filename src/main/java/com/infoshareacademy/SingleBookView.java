@@ -9,8 +9,8 @@ import java.util.Scanner;
 import static com.infoshareacademy.Parser.getBooks;
 
 public class SingleBookView {
-    BookList bookList = new BookList();
-    List<Book> books = getBooks();
+    private BookList bookList = new BookList();
+    private List<Book> books = getBooks();
 
     public void selectBook(){
         Scanner scanner = new Scanner(System.in);
