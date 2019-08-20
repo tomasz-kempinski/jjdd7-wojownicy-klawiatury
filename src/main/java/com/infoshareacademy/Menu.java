@@ -53,17 +53,18 @@ class Menu {
             switch (choice) {
                 case 1:
                     BookList bookList = new BookList();
-                    System.out.println(" Lista książek");
+                    System.out.println("==================== Lista książek ====================\n");
                     bookList.listBooks();
                     break;
                 case 2:
-                    System.out.println(" Wyszukiwanie książek");
-                    System.out.println(" Funkcja w czasie implementacji");
+                    System.out.println(" Wyszukiwanie książek\n");
+                    BookSearcher bookSearcher = new BookSearcher();
+                    bookSearcher.listBooksFound();
                     decision();
                     break;
                 case 3:
                     SingleBookView singleBookView = new SingleBookView();
-                    System.out.println(" Przeglądanie pojedynczej pozycji");
+                    System.out.println(" Przeglądanie pojedynczej pozycji\n");
                     singleBookView.selectBook();
                     break;
                 case 9:
