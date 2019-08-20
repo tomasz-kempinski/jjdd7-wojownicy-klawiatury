@@ -1,14 +1,11 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.Parser.getBooksTemplate;
-
 import java.util.Comparator;
 import java.util.List;
 
 public class BookSorter {
 
   private Config config = new Config();
-
 
   public void sortByAuthor(List<Book> listOfBooks) {
     config.loadConfig("sortByAuthor");
