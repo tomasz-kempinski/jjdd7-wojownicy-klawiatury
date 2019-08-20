@@ -7,7 +7,6 @@ import static com.infoshareacademy.Parser.*;
 class BookList {
 
   void listBooks() {
-    List<Book> books = getBooks();
-    BooksPrinter.printListOfBooks(books);
+    BooksPrinter.printListOfBooks(BookDAO.getBooks());
   }
 }
