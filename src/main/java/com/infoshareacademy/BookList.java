@@ -6,8 +6,8 @@ import static com.infoshareacademy.Parser.getBooks;
 
 class BookList {
 
-    void listBooks() {
-        List<Book> books = getBooks();
-        BooksPrinter.printListOfBooks(books);
-    }
+  void listBooks() {
+    List<Book> books = getBooks();
+    BooksPrinter.printListOfBooks(books);
+  }
 }
