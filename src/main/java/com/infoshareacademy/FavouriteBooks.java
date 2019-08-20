@@ -8,11 +8,12 @@ public class FavouriteBooks {
     public void favoriteBooksMenu(){
         Scanner scanner = new Scanner(System.in);
         try {
-            if (System.getProperty("os.name").contains("Mac") || System.getProperty("os.name").contains("Linux")) {
+            if (System.getProperty("os.name").contains("Windows")) {
                 System.out.println(System.getProperty("os.name"));
                 Runtime.getRuntime().exec("clear");
-            } else if (System.getProperty("os.name").contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
             }
         }catch (IOException e){
             System.out.println("Błąd systemu operacyjnego");
