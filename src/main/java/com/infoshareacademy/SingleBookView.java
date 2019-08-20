@@ -2,7 +2,6 @@ package com.infoshareacademy;
 
 import com.github.freva.asciitable.AsciiTable;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class SingleBookView {
     BookList bookList = new BookList();
     List<Book> books = getBooks();
 
-    public void selectBook(){
+    public void selectBook() {
         Scanner scanner = new Scanner(System.in);
         List<Book> books = getBooks();
         int choice;
@@ -32,8 +31,10 @@ public class SingleBookView {
                         case 1:
                             bookList.listBooks();
                             break;
-                        case 2: //trzeba dodać przejście do wyszukiwania książek
-                            System.out.println("Wyszukiwanie książek");
+                        case 2:
+                            System.out.println(" Wyszukiwanie książek\n");
+                            BookSearcher bookSearcher = new BookSearcher();
+                            bookSearcher.listBooksFound();
                             break;
                         default:
                             selectBook();
@@ -47,7 +48,7 @@ public class SingleBookView {
         }
     }
 
-    private void singleBookView(int bookNumber){
+    private void singleBookView(int bookNumber) {
         Scanner scanner = new Scanner(System.in);
         String hasAudio;
         int choice;
@@ -82,7 +83,11 @@ public class SingleBookView {
                 case 3:
                     bookList.listBooks();
                     break;
-                case 4://dodać przejście do wyszukiwania książek
+                case 4:
+                    System.out.println(" Wyszukiwanie książek\n");
+                    BookSearcher bookSearcher = new BookSearcher();
+                    bookSearcher.listBooksFound();
+                    break;
                 default:
                     System.out.println("Podaj prawidłową wartość!");
                     singleBookView(bookNumber);

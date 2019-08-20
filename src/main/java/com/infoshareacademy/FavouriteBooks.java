@@ -1,11 +1,14 @@
 package com.infoshareacademy;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavouriteBooks {
-    public void favoriteBooksMenu(){
+    public void favoriteBooksMenu() {
         Scanner scanner = new Scanner(System.in);
         try {
             if (System.getProperty("os.name").contains("Mac") || System.getProperty("os.name").contains("Linux")) {
@@ -14,17 +17,17 @@ public class FavouriteBooks {
             } else if (System.getProperty("os.name").contains("Windows")) {
                 Runtime.getRuntime().exec("cls");
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Błąd systemu operacyjnego");
         }
-        System.out.println( "1- Wyświetlenie ulubionych książek");
-        System.out.println( "2- Dodanie ulubionej książki");
-        System.out.println( "3- Usunięcie ulubionej książki");
-        System.out.println( "9- Powrót do menu");
+        System.out.println("1- Wyświetlenie ulubionych książek");
+        System.out.println("2- Dodanie ulubionej książki");
+        System.out.println("3- Usunięcie ulubionej książki");
+        System.out.println("9- Powrót do menu");
 
-        if (scanner.hasNextInt()){
+        if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     favouriteBooksList();
                     break;
@@ -46,15 +49,14 @@ public class FavouriteBooks {
         }
     }
 
-    private void favouriteBooksList(){
+    private void favouriteBooksList() {
         try {
             File file = new File("favouriteBooks.txt");
             Scanner scanner = new Scanner(file);
             String books = scanner.nextLine();
             char[] favouriteBooksChar = books.toCharArray();
             System.out.println(Arrays.toString(favouriteBooksChar));
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("Brak pliku");
         }
 
@@ -71,7 +73,7 @@ public class FavouriteBooks {
 
     }
 
-    private void favouriteBookRemove(){
+    private void favouriteBookRemove() {
 
     }
 }

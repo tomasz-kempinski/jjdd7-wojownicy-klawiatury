@@ -1,6 +1,5 @@
 package com.infoshareacademy;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class Menu {
@@ -9,7 +8,7 @@ class Menu {
         for (int i = 0; i < 90; i++) {
             System.out.println("");
         }
-        System.out.println(" Co chcesz zrobić?");
+        System.out.println(" Co chcesz zrobić?\n");
         System.out.println(" 1- Przeglądanie zbiorów");
         System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
         System.out.println(" 3- Ulubione książki");
@@ -39,7 +38,7 @@ class Menu {
         }
     }
 
-    private void browsingCollections(){
+    private void browsingCollections() {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -53,19 +52,19 @@ class Menu {
             switch (choice) {
                 case 1:
                     BookList bookList = new BookList();
-                    System.out.println("==================== Lista książek ====================\n");
+                    System.out.println("\n########################### Lista książek ###########################\n");
                     bookList.listBooks();
                     decision();
                     break;
                 case 2:
-                    System.out.println(" Wyszukiwanie książek\n");
+                    System.out.println("\n######################### Wyszukiwanie książek #########################\n");
                     BookSearcher bookSearcher = new BookSearcher();
                     bookSearcher.listBooksFound();
                     decision();
                     break;
                 case 3:
                     SingleBookView singleBookView = new SingleBookView();
-                    System.out.println(" Przeglądanie pojedynczej pozycji\n");
+                    System.out.println("\n################### Przeglądanie pojedynczej pozycji ####################\n");
                     singleBookView.selectBook();
                     break;
                 case 9:
@@ -82,7 +81,7 @@ class Menu {
         }
     }
 
-    private String reservations(){
+    private String reservations() {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 40; i++) {
             System.out.println("");
@@ -103,7 +102,7 @@ class Menu {
         return null;
     }
 
-    private String reservationMenu(String name){
+    private String reservationMenu(String name) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");
@@ -143,7 +142,7 @@ class Menu {
         return null;
     }
 
-    private void decision(){
+    private void decision() {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 90; i++) {
             System.out.println("");
