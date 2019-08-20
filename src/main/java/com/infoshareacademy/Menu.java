@@ -50,7 +50,6 @@ class Menu {
                     BookList bookList = new BookList();
                     System.out.println("==================== Lista książek ====================\n");
                     bookList.listBooks();
-                    decision();
                     break;
                 case 2:
                     System.out.println(" Wyszukiwanie książek\n");
