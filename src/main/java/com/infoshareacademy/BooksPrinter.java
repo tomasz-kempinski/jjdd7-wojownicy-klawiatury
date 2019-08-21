@@ -18,7 +18,7 @@ public class BooksPrinter {
       if (currentPage > 0) {
         System.out
             .println(
-                " \nEnter- Kontynuuj wyświetlanie || Z- Zakończ || W- Wyświetl szczegóły książki ");
+                " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ || W -> Wyświetl szczegóły książki ");
         nextPageCheck = scanner.nextLine();
         if (nextPageCheck.equalsIgnoreCase("Z")) {
           Menu menu = new Menu();
@@ -44,3 +44,4 @@ public class BooksPrinter {
     } while (currentPage < listOfBooks.size());
   }
 }
+

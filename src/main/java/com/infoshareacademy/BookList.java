@@ -2,10 +2,13 @@ package com.infoshareacademy;
 
 import static com.infoshareacademy.Parser.getBooks;
 
+
 import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
+
+
 
 public class BookList {
 
@@ -16,7 +19,7 @@ public class BookList {
     String nextPageCheck;
     System.out
         .println(
-            " Enter- Zakończ program || W- Wyświetl szczegóły książki || P- Powrót do menu ");
+            " \n Enter -> Zakończ program || W -> Wyświetl szczegóły książki || P -> Powrót do menu ");
     nextPageCheck = scanner.nextLine();
 
     if (nextPageCheck.equalsIgnoreCase("W")) {

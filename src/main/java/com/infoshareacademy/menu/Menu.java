@@ -2,14 +2,12 @@ package com.infoshareacademy.menu;
 
 import com.infoshareacademy.BookList;
 import com.infoshareacademy.BookSearcher;
-import com.infoshareacademy.FavouriteBooks;
 import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
 public class Menu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
-
   public void menu() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
@@ -25,8 +23,7 @@ public class Menu {
           break;
         case 2:
           screenCleaner.cleanScreen();
-          FavouriteBooks favouriteBooks = new FavouriteBooks();
-          favouriteBooks.favoriteBooksMenu();
+          System.out.println("\n########################### Ulubione Książki ###########################\n");
           break;
         case 9:
           break;
@@ -53,13 +50,13 @@ public class Menu {
         case 1:
           screenCleaner.cleanScreen();
           BookList bookList = new BookList();
-          System.out.println("==================== Lista książek ====================\n");
+          System.out.println("\n########################### Lista książek ###########################\n");
           bookList.listBooks();
           screenCleaner.cleanScreen();
           break;
         case 2:
           screenCleaner.cleanScreen();
-          System.out.println(" Wyszukiwanie książek\n");
+          System.out.println("\n######################### Wyszukiwanie książek #########################\n");
           BookSearcher bookSearcher = new BookSearcher();
           bookSearcher.listBooksFound();
           screenCleaner.cleanScreen();
@@ -68,7 +65,7 @@ public class Menu {
         case 3:
           screenCleaner.cleanScreen();
           SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
-          System.out.println(" Przeglądanie pojedynczej pozycji\n");
+          System.out.println("\n################### Przeglądanie pojedynczej pozycji ####################\n");
           singleBookViewMenu.selectBook();
           break;
         case 9:

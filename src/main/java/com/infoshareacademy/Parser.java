@@ -17,8 +17,7 @@ public class Parser {
       });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
-    } catch (NullPointerException n) {
-      System.out.println("Problem with NullPointerException");
+
     }
   }
 

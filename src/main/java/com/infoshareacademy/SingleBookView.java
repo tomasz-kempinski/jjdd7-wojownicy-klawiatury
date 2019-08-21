@@ -2,6 +2,7 @@ package com.infoshareacademy;
 
 import static com.infoshareacademy.Parser.getBooks;
 
+
 import com.github.freva.asciitable.AsciiTable;
 import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
@@ -9,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SingleBookView {
-
   private BookList bookList = new BookList();
   private List<Book> books = getBooks();
   private ScreenCleaner screenCleaner = new ScreenCleaner();

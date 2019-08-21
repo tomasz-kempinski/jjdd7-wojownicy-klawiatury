@@ -40,7 +40,8 @@ public class SingleBookViewMenu {
               break;
             case 2:
               screenCleaner.cleanScreen();
-              System.out.println("Wyszukiwanie książek");
+              System.out.println(" Wyszukiwanie książek");
+
               break;
             default:
               selectBook();
