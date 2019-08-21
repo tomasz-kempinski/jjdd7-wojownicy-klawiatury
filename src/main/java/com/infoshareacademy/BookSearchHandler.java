@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class BookSearcher {
+public class BookSearchHandler {
 
   private List<Book> books;
 
-  public BookSearcher() {
+  public BookSearchHandler() {
     this.books = getBookRepository();
   }
 
-  public void listBooksFound() {
+  public void listFoundBooks() {
     final List<Book> booksFound = findBooks(provideAuthor(), provideTitle(), provideAudio());
     BooksPrinter.printListOfBooks(booksFound);
   }

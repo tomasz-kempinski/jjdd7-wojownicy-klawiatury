@@ -33,8 +33,8 @@ public class SingleBookView {
               break;
             case 2:
               System.out.println(" Wyszukiwanie książek\n");
-              BookSearcher bookSearcher = new BookSearcher();
-              bookSearcher.listBooksFound();
+              BookSearchHandler bookSearchHandler = new BookSearchHandler();
+              bookSearchHandler.listFoundBooks();
               break;
             default:
               selectBook();
@@ -85,8 +85,8 @@ public class SingleBookView {
           break;
         case 4:
           System.out.println(" Wyszukiwanie książek\n");
-          BookSearcher bookSearcher = new BookSearcher();
-          bookSearcher.listBooksFound();
+          BookSearchHandler bookSearchHandler = new BookSearchHandler();
+          bookSearchHandler.listFoundBooks();
           break;
         default:
           System.out.println("Podaj prawidłową wartość!");
@@ -95,4 +95,3 @@ public class SingleBookView {
     }
   }
 }
-
