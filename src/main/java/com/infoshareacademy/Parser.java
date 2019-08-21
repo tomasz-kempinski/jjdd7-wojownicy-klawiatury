@@ -8,21 +8,19 @@ import java.util.List;
 
 public class Parser {
 
-  private static List<Book> books;
+  private static List<Book> booksTemplate;
 
   public void parseFileToObjects() {
     ObjectMapper mapper = new ObjectMapper();
     try {
-      books = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
+      booksTemplate = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
       });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
-    } catch (NullPointerException n) {
-      System.out.println("Problem with NullPointerException");
     }
   }
 
-  public static List<Book> getBooks() {
-    return books;
+  public static List<Book> getBooksTemplate() {
+    return booksTemplate;
   }
 }
