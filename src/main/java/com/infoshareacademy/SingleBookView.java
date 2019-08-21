@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SingleBookView {
 
-  private BookList bookList = new BookList();
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void singleBookView(int bookNumber) {

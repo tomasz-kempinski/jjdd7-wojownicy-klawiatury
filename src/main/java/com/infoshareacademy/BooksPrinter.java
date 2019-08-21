@@ -33,8 +33,7 @@ class BooksPrinter {
           }
           if (nextPageCheck.equalsIgnoreCase("W")) {
             screenCleaner.cleanScreen();
-            SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
-            singleBookViewMenu.selectBook();
+            new SingleBookViewMenu().selectBook();
             break;
           }
         }
