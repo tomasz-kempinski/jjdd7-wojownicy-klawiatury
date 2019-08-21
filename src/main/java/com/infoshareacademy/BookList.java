@@ -1,8 +1,10 @@
 package com.infoshareacademy;
 
+import com.infoshareacademy.repository.BookRepository;
+
 class BookList {
 
   void listBooks() {
-    BooksPrinter.printListOfBooks(BookDAO.getBooks());
+    BooksPrinter.printListOfBooks(BookRepository.getBooks());
   }
 }
