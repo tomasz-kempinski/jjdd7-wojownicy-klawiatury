@@ -7,18 +7,11 @@ import java.util.Scanner;
 
 class BooksPrinter {
 
-<<<<<<< HEAD
-  public static void printListOfBooks(List<Book> listOfBooks) {
-    Scanner scanner = new Scanner(System.in)
-    BookSorter bookSorter = new BookSorter();
-    bookSorter.sortByTitle(listOfBooks);
-=======
   static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in);
     BookSorter bookSorter = new BookSorter();
     bookSorter.sortByTitle(listOfBooks);
     ScreenCleaner screenCleaner = new ScreenCleaner();
->>>>>>> develop
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
@@ -56,10 +49,7 @@ class BooksPrinter {
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
   }
 }
 

@@ -3,10 +3,7 @@ package com.infoshareacademy;
 import static com.infoshareacademy.Parser.getBooksTemplate;
 
 import com.github.freva.asciitable.AsciiTable;
-<<<<<<< HEAD
 
-
-=======
 >>>>>>> develop
 import java.util.List;
 
