@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
+
   public void menu() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
@@ -23,7 +24,15 @@ public class Menu {
           break;
         case 2:
           screenCleaner.cleanScreen();
-          System.out.println("\n########################### Ulubione Książki ###########################\n");
+          System.out.println(
+              "\n########################### Ulubione Książki ###########################\n");
+          System.out
+              .println(" funkcja w czasie implementacji 1- powrót do Menu 2- zakończ program");
+          String choiceInIplementsMethod = scanner.next();
+          if (choiceInIplementsMethod.equals("1")) {
+            screenCleaner.cleanScreen();
+            menu();
+          }
           break;
         case 9:
           break;
@@ -50,22 +59,23 @@ public class Menu {
         case 1:
           screenCleaner.cleanScreen();
           BookList bookList = new BookList();
-          System.out.println("\n########################### Lista książek ###########################\n");
+          System.out
+              .println("\n########################### Lista książek ###########################\n");
           bookList.listBooks();
           screenCleaner.cleanScreen();
           break;
         case 2:
           screenCleaner.cleanScreen();
-          System.out.println("\n######################### Wyszukiwanie książek #########################\n");
+          System.out.println(
+              "\n######################### Wyszukiwanie książek #########################\n");
           BookSearchHandler bookSearchHandler = new BookSearchHandler();
           bookSearchHandler.listFoundBooks();
-          screenCleaner.cleanScreen();
-          decision();
           break;
         case 3:
           screenCleaner.cleanScreen();
           SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
-          System.out.println("\n################### Przeglądanie pojedynczej pozycji ####################\n");
+          System.out.println(
+              "\n################### Przeglądanie pojedynczej pozycji ####################\n");
           singleBookViewMenu.selectBook();
           break;
         case 9:
@@ -82,33 +92,6 @@ public class Menu {
       screenCleaner.cleanScreen();
       System.out.println(" Podaj własciwą wartość!");
       browsingCollections();
-    }
-  }
-
-  private void decision() {
-    Scanner scanner = new Scanner(System.in);
-    int decision;
-    System.out.println(" 1- Powrót do menu ");
-    System.out.println(" 2- Wyjście ");
-    if (scanner.hasNextInt()) {
-      decision = scanner.nextInt();
-      switch (decision) {
-        case 1:
-          screenCleaner.cleanScreen();
-          menu();
-          break;
-        case 2:
-          screenCleaner.cleanScreen();
-          break;
-        default:
-          screenCleaner.cleanScreen();
-          System.out.println(" Podaj właściwe dane!");
-          decision();
-      }
-    } else {
-      screenCleaner.cleanScreen();
-      System.out.println(" Podaj właściwe dane!");
-      decision();
     }
   }
 }
