@@ -7,8 +7,7 @@ import java.util.List;
 
 class BookList {
 
-  void listBooks() {
-    List<Book> books = getBookRepository();
-    BooksPrinter.printListOfBooks(books);
-  }
+    void listBooks() {
+        BooksPrinter.printListOfBooks(getBookRepository());
+    }
 }
