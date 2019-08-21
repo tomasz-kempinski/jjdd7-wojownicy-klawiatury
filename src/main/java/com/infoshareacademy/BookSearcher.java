@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static com.infoshareacademy.Parser.getBooks;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
 public class BookSearcher {
 
   private List<Book> books;
 
   public BookSearcher() {
-    this.books = getBooks();
+    this.books = getBookRepository();
   }
 
   public void listBooksFound() {

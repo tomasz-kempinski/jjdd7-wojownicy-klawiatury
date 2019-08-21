@@ -5,16 +5,16 @@ import com.github.freva.asciitable.AsciiTable;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.infoshareacademy.Parser.getBooks;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
 public class SingleBookView {
 
   BookList bookList = new BookList();
-  List<Book> books = getBooks();
+  List<Book> books = getBookRepository();
 
   public void selectBook() {
     Scanner scanner = new Scanner(System.in);
-    List<Book> books = getBooks();
+    List<Book> books = getBookRepository();
     int choice;
     int bookNumber;
     System.out.println(" Podaj numer książki, którą chcesz zobaczyć");
