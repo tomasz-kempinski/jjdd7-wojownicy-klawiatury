@@ -1,16 +1,5 @@
 package com.infoshareacademy;
 
-<<<<<<< HEAD
-import java.util.List;
-
-class BookRepository {
-    static List<Book> books;
-
-    static List<Book> getBooks() {
-        return books;
-    }
-}
-=======
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,4 +18,3 @@ class BookRepository {
 
 
 
->>>>>>> JJDD7WK-9

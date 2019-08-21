@@ -1,11 +1,10 @@
 package com.infoshareacademy;
 
-import com.github.freva.asciitable.AsciiTable;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
+import com.github.freva.asciitable.AsciiTable;
 import java.util.List;
 import java.util.Scanner;
-
-import static com.infoshareacademy.BookRepository.getBookRepository;
 
 public class SingleBookView {
 
