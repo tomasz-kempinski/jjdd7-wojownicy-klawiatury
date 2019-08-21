@@ -11,6 +11,7 @@ class BooksPrinter {
     Scanner scanner = new Scanner(System.in);
     BookSorter bookSorter = new BookSorter();
     bookSorter.sortByTitle(listOfBooks);
+    ScreenCleaner screenCleaner = new ScreenCleaner();
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
@@ -26,10 +27,12 @@ class BooksPrinter {
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("Z")) {
             Menu menu = new Menu();
+            screenCleaner.cleanScreen();
             menu.menu();
             break;
           }
           if (nextPageCheck.equalsIgnoreCase("W")) {
+            screenCleaner.cleanScreen();
             SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
             singleBookViewMenu.selectBook();
             break;
