@@ -14,7 +14,7 @@ class Parser {
   public void parseFileToObjects() {
     ObjectMapper mapper = new ObjectMapper();
     try {
-      books = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
+      booksTemplate = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
       });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");

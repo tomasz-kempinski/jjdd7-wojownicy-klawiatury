@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static com.infoshareacademy.Parser.getBooks;
+import static com.infoshareacademy.BookDAO.getBooks;
 
 public class BookSearchHandler {
 
