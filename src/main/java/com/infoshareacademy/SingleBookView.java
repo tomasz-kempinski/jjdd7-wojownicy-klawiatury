@@ -3,6 +3,7 @@ package com.infoshareacademy;
 import static com.infoshareacademy.Parser.getBooksTemplate;
 
 import com.github.freva.asciitable.AsciiTable;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,8 +32,10 @@ public class SingleBookView {
             case 1:
               bookList.listBooks();
               break;
-            case 2: //trzeba dodać przejście do wyszukiwania książek
-              System.out.println("Wyszukiwanie książek");
+            case 2:
+              System.out.println(" Wyszukiwanie książek\n");
+              BookSearchHandler bookSearchHandler = new BookSearchHandler();
+              bookSearchHandler.listFoundBooks();
               break;
             default:
               selectBook();
@@ -81,7 +84,11 @@ public class SingleBookView {
         case 3:
           bookList.listBooks();
           break;
-        case 4://dodać przejście do wyszukiwania książek
+        case 4:
+          System.out.println(" Wyszukiwanie książek\n");
+          BookSearchHandler bookSearchHandler = new BookSearchHandler();
+          bookSearchHandler.listFoundBooks();
+          break;
         default:
           System.out.println("Podaj prawidłową wartość!");
           singleBookView(bookNumber);

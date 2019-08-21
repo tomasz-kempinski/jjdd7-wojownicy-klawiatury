@@ -6,26 +6,29 @@ class Menu {
 
   void menu() {
     Scanner scanner = new Scanner(System.in);
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < 90; i++) {
       System.out.println("");
     }
-    System.out.println(" Co chcesz zrobić?");
+    System.out.println(" Co chcesz zrobić?\n");
     System.out.println(" 1- Przeglądanie zbiorów");
     System.out.println(" 2- Rezerwacja pozycji/anulowanie rezerwacji");
+    System.out.println(" 3- Ulubione książki");
     System.out.println(" 9- Zakończ program");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
       switch (choice) {
         case 1:
-          browsingCollections();
+          browseCollections();
           break;
         case 2:
           reservations();
           break;
+        case 3:
+          System.out.println(" Funkcja w czasie implementacji");
+          break;
         case 9:
           break;
         default:
-          System.out.println(" Podaj wartość 1, 2 lub 9!!");
           menu();
           break;
       }
@@ -35,7 +38,7 @@ class Menu {
     }
   }
 
-  private void browsingCollections() {
+  private void browseCollections() {
     Scanner scanner = new Scanner(System.in);
     for (int i = 0; i < 40; i++) {
       System.out.println("");
@@ -49,18 +52,22 @@ class Menu {
       switch (choice) {
         case 1:
           BookList bookList = new BookList();
-          System.out.println("==================== Lista książek ====================\n");
+          System.out
+              .println("\n########################### Lista książek ###########################\n");
           bookList.listBooks();
+          decision();
           break;
         case 2:
-          System.out.println(" Wyszukiwanie książek\n");
-          BookSearcher bookSearcher = new BookSearcher();
-          bookSearcher.listBooksFound();
+          System.out.println(
+              "\n######################### Wyszukiwanie książek #########################\n");
+          BookSearchHandler bookSearchHandler = new BookSearchHandler();
+          bookSearchHandler.listFoundBooks();
           decision();
           break;
         case 3:
           SingleBookView singleBookView = new SingleBookView();
-          System.out.println(" Przeglądanie pojedynczej pozycji\n");
+          System.out.println(
+              "\n################### Przeglądanie pojedynczej pozycji ####################\n");
           singleBookView.selectBook();
           break;
         case 9:
@@ -68,12 +75,12 @@ class Menu {
           break;
         default:
           System.out.println(" Podaj własciwa wartość!");
-          browsingCollections();
+          browseCollections();
           break;
       }
     } else {
       System.out.println(" Podaj własciwą wartość!");
-      browsingCollections();
+      browseCollections();
     }
   }
 
