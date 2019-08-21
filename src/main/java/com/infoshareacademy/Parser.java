@@ -17,7 +17,6 @@ public class Parser {
       });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
-
     }
   }
 
