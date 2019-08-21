@@ -7,6 +7,8 @@ public class BooksPrinter {
 
   public static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in);
+    BookSorter bookSorter = new BookSorter();
+    bookSorter.sortByTitle(listOfBooks);
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
