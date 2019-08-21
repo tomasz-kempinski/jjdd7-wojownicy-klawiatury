@@ -3,19 +3,23 @@ package com.infoshareacademy;
 import static com.infoshareacademy.Parser.getBooksTemplate;
 
 import com.github.freva.asciitable.AsciiTable;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> develop
 import java.util.List;
-import java.util.Scanner;
 
 public class SingleBookView {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
 
-  private BookList bookList = new BookList();
-  private List<Book> books = getBooks();
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void singleBookView(int bookNumber) {
+<<<<<<< HEAD
     String hasAudio;
     if (books.get(bookNumber).getHasAudio()) {
       hasAudio = "tak";
@@ -37,61 +41,24 @@ public class SingleBookView {
 
   public void selectBook() {
     Scanner scanner = new Scanner(System.in);
+=======
+>>>>>>> develop
     List<Book> books = getBooksTemplate();
-    int choice;
-    int bookNumber;
-    System.out.println(" Podaj numer książki, którą chcesz zobaczyć");
-    if (scanner.hasNextInt()) {
-      bookNumber = scanner.nextInt();
-      if (bookNumber <= books.size()) {
-        singleBookView(bookNumber);
-      } else {
-        System.out.println(" Podaj liczbę odpowiadającą książce!");
-        System.out.println(" 1- Wyświetl listę książek 2- Wyszukaj książkę");
-        System.out.println(" 3- Wpisz numer książki ponownie");
-        if (scanner.hasNextInt()) {
-          choice = scanner.nextInt();
-          switch (choice) {
-            case 1:
-              bookList.listBooks();
-              break;
-            case 2:
-              System.out.println(" Wyszukiwanie książek\n");
-              BookSearchHandler bookSearchHandler = new BookSearchHandler();
-              bookSearchHandler.listFoundBooks();
-              break;
-            default:
-              selectBook();
-          }
-        }
-
-      }
-    } else {
-      System.out.println(" Podaj liczbę!");
-      selectBook();
-    }
-  }
-
-  private void singleBookView(int bookNumber) {
-    Scanner scanner = new Scanner(System.in);
     String hasAudio;
-    int choice;
     if (books.get(bookNumber).getHasAudio()) {
       hasAudio = "tak";
     } else {
       hasAudio = "nie";
     }
-    for (int i = 0; i < 90; i++) {
-      System.out.println("");
-    }
+    screenCleaner.cleanScreen();
     String[][] data = {
         {"     Autor       ", books.get(bookNumber).getAuthor()},
         {"     Tytuł       ", books.get(bookNumber).getTitle()},
         {"Rodzaj Literacki ", books.get(bookNumber).getKind()},
         {"Gatunek Literacki", books.get(bookNumber).getGenre()},
         {"  Wersja audio   ", hasAudio}};
-
     System.out.println(AsciiTable.getTable(data));
+<<<<<<< HEAD
     System.out.println(" 1- Wyświetlenie innej książki    2- Powrót do Menu");
     System.out.println(" 3- Lista książek                 4- Wyszukiwanie książek");
     if (scanner.hasNextInt()) {
@@ -117,6 +84,8 @@ public class SingleBookView {
           singleBookView(bookNumber);
       }
     }
+>>>>>>> develop
+=======
 >>>>>>> develop
   }
 }

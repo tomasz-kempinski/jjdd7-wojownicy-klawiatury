@@ -1,16 +1,10 @@
 package com.infoshareacademy;
 
-<<<<<<< HEAD
-import static com.infoshareacademy.Parser.getBooks;
-
 import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
-=======
 import com.infoshareacademy.repository.BookRepository;
->>>>>>> develop
-
 public class BookList {
 
 <<<<<<< HEAD
@@ -34,6 +28,14 @@ public class BookList {
     }
 =======
   void listBooks() {
+    BooksPrinter.printListOfBooks(BookRepository.getBooks());
+>>>>>>> develop
+=======
+import com.infoshareacademy.repository.BookRepository;
+
+public class BookList {
+
+  public void listBooks() {
     BooksPrinter.printListOfBooks(BookRepository.getBooks());
 >>>>>>> develop
   }

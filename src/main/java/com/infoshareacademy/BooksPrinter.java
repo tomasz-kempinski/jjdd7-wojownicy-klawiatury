@@ -5,12 +5,20 @@ import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
 
-public class BooksPrinter {
+class BooksPrinter {
 
+<<<<<<< HEAD
   public static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in)
     BookSorter bookSorter = new BookSorter();
     bookSorter.sortByTitle(listOfBooks);
+=======
+  static void printListOfBooks(List<Book> listOfBooks) {
+    Scanner scanner = new Scanner(System.in);
+    BookSorter bookSorter = new BookSorter();
+    bookSorter.sortByTitle(listOfBooks);
+    ScreenCleaner screenCleaner = new ScreenCleaner();
+>>>>>>> develop
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
@@ -22,16 +30,17 @@ public class BooksPrinter {
       do {
         if (currentPage > 0) {
           System.out.println(
-                  " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ || W -> Wyświetl szczegóły książki ");
+              " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ wyświetlanie || W -> Wyświetl szczegóły książki ");
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("Z")) {
             Menu menu = new Menu();
+            screenCleaner.cleanScreen();
             menu.menu();
             break;
           }
           if (nextPageCheck.equalsIgnoreCase("W")) {
-            SingleBookView singleBookView = new SingleBookView();
-            singleBookView.selectBook();
+            screenCleaner.cleanScreen();
+            new SingleBookViewMenu().selectBook();
             break;
           }
         }
@@ -47,6 +56,10 @@ public class BooksPrinter {
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
   }
 }
+
