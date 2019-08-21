@@ -1,5 +1,6 @@
 package com.infoshareacademy;
 
+import com.infoshareacademy.menu.Menu;
 import java.io.FileNotFoundException;
 
 public class App {

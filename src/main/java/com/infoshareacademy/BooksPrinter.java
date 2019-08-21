@@ -1,5 +1,7 @@
 package com.infoshareacademy;
 
+import com.infoshareacademy.menu.Menu;
+import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +18,7 @@ public class BooksPrinter {
       if (currentPage > 0) {
         System.out
             .println(
-                " \nEnter- Kontynuuj wyświetlanie || Z- Zakończ || W- wyświetl szczegóły książki ");
+                " \nEnter- Kontynuuj wyświetlanie || Z- Zakończ || W- Wyświetl szczegóły książki ");
         nextPageCheck = scanner.nextLine();
         if (nextPageCheck.equalsIgnoreCase("Z")) {
           Menu menu = new Menu();
@@ -24,8 +26,8 @@ public class BooksPrinter {
           break;
         }
         if (nextPageCheck.equalsIgnoreCase("W")) {
-          SingleBookView singleBookView = new SingleBookView();
-          singleBookView.selectBook();
+          SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
+          singleBookViewMenu.selectBook();
           break;
         }
       }

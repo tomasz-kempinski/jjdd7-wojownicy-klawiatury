@@ -1,9 +1,9 @@
 package com.infoshareacademy;
 
+import com.infoshareacademy.menu.Menu;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavouriteBooks {
@@ -52,7 +52,8 @@ public class FavouriteBooks {
       Scanner scanner = new Scanner(file);
       String books = scanner.nextLine();
       char[] favouriteBooksChar = books.toCharArray();
-      System.out.println(Arrays.toString(favouriteBooksChar));
+      SingleBookView singleBookView = new SingleBookView();
+      singleBookView.singleBookView(favouriteBooksChar[0]);
     } catch (FileNotFoundException e) {
       System.out.println("Brak pliku z książkami");
     }
