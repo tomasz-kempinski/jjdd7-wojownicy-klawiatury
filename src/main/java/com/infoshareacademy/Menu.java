@@ -18,7 +18,7 @@ class Menu {
       int choice = scanner.nextInt();
       switch (choice) {
         case 1:
-          browsingCollections();
+          browseCollections();
           break;
         case 2:
           reservations();
@@ -38,7 +38,7 @@ class Menu {
     }
   }
 
-  private void browsingCollections() {
+  private void browseCollections() {
     Scanner scanner = new Scanner(System.in);
     for (int i = 0; i < 40; i++) {
       System.out.println("");
@@ -60,8 +60,8 @@ class Menu {
         case 2:
           System.out.println(
               "\n######################### Wyszukiwanie książek #########################\n");
-          BookSearcher bookSearcher = new BookSearcher();
-          bookSearcher.listBooksFound();
+          BookSearchHandler bookSearchHandler = new BookSearchHandler();
+          bookSearchHandler.listFoundBooks();
           decision();
           break;
         case 3:
@@ -75,12 +75,12 @@ class Menu {
           break;
         default:
           System.out.println(" Podaj własciwa wartość!");
-          browsingCollections();
+          browseCollections();
           break;
       }
     } else {
       System.out.println(" Podaj własciwą wartość!");
-      browsingCollections();
+      browseCollections();
     }
   }
 

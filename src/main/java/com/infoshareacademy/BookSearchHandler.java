@@ -6,15 +6,15 @@ import java.util.stream.Collectors;
 
 import static com.infoshareacademy.Parser.getBooks;
 
-public class BookSearcher {
+public class BookSearchHandler {
 
   private List<Book> books;
 
-  public BookSearcher() {
+  public BookSearchHandler() {
     this.books = getBooks();
   }
 
-  public void listBooksFound() {
+  public void listFoundBooks() {
     final List<Book> booksFound = findBooks(provideAuthor(), provideTitle(), provideAudio());
     BooksPrinter.printListOfBooks(booksFound);
   }
