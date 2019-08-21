@@ -1,21 +1,22 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.Parser.getBooks;
+
 
 
 import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
-
+import com.infoshareacademy.repository.BookRepository;
 
 
 public class BookList {
 
+
   public void listBooks() {
-    List<Book> books = getBooks();
+    BooksPrinter.printListOfBooks(BookRepository.getBooks());
     Scanner scanner = new Scanner(System.in);
-    BooksPrinter.printListOfBooks(books);
+    BooksPrinter.printListOfBooks(BookRepository.getBooks());
     String nextPageCheck;
     System.out
         .println(
@@ -26,9 +27,10 @@ public class BookList {
       SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
       singleBookViewMenu.selectBook();
     }
-    if (nextPageCheck.equalsIgnoreCase("P")){
+    if (nextPageCheck.equalsIgnoreCase("P")) {
       Menu menu = new Menu();
       menu.menu();
     }
+
   }
 }

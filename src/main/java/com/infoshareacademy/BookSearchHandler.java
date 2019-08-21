@@ -1,10 +1,10 @@
 package com.infoshareacademy;
 
+import static com.infoshareacademy.repository.BookRepository.getBooks;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import static com.infoshareacademy.Parser.getBooks;
 
 public class BookSearchHandler {
 

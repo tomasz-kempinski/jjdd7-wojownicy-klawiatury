@@ -1,20 +1,17 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.Parser.getBooks;
-
+import static com.infoshareacademy.Parser.getBooksTemplate;
 
 import com.github.freva.asciitable.AsciiTable;
-import com.infoshareacademy.menu.Menu;
-import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
-import java.util.Scanner;
 
 public class SingleBookView {
+
   private BookList bookList = new BookList();
-  private List<Book> books = getBooks();
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void singleBookView(int bookNumber) {
+    List<Book> books = getBooksTemplate();
     String hasAudio;
     if (books.get(bookNumber).getHasAudio()) {
       hasAudio = "tak";

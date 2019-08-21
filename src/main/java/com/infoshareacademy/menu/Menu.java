@@ -1,7 +1,7 @@
 package com.infoshareacademy.menu;
 
 import com.infoshareacademy.BookList;
-import com.infoshareacademy.BookSearcher;
+import com.infoshareacademy.BookSearchHandler;
 import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
@@ -57,8 +57,8 @@ public class Menu {
         case 2:
           screenCleaner.cleanScreen();
           System.out.println("\n######################### Wyszukiwanie książek #########################\n");
-          BookSearcher bookSearcher = new BookSearcher();
-          bookSearcher.listBooksFound();
+          BookSearchHandler bookSearchHandler = new BookSearchHandler();
+          bookSearchHandler.listFoundBooks();
           screenCleaner.cleanScreen();
           decision();
           break;

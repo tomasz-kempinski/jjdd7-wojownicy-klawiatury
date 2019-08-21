@@ -1,6 +1,5 @@
 package com.infoshareacademy;
 
-import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
@@ -9,6 +8,8 @@ public class BooksPrinter {
 
   public static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in);
+    BookSorter bookSorter = new BookSorter();
+    bookSorter.sortByTitle(listOfBooks);
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
