@@ -21,8 +21,6 @@ public class BooksPrinter {
                 " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ || W -> Wyświetl szczegóły książki ");
         nextPageCheck = scanner.nextLine();
         if (nextPageCheck.equalsIgnoreCase("Z")) {
-          Menu menu = new Menu();
-          menu.menu();
           break;
         }
         if (nextPageCheck.equalsIgnoreCase("W")) {
