@@ -2,9 +2,9 @@ package com.infoshareacademy;
 
 import com.infoshareacademy.repository.BookRepository;
 
-class BookList {
+public class BookList {
 
-  void listBooks() {
+  public void listBooks() {
     BooksPrinter.printListOfBooks(BookRepository.getBooks());
   }
 }
