@@ -12,7 +12,7 @@ public class BookSorter {
     String property = config.getProperty();
     if (property.equals("ASC")) {
       listOfBooks.sort(Comparator.comparing(Book::getAuthor));
-    } else if (property.equals("DSC")) {
+    } else if (property.equals("DESC")) {
       listOfBooks.sort(Comparator.comparing(Book::getAuthor).reversed());
     }
   }
@@ -22,7 +22,7 @@ public class BookSorter {
     String property = config.getProperty();
     if (property.equals("ASC")) {
       listOfBooks.sort(Comparator.comparing(Book::getTitle));
-    } else if (property.equals("DSC")) {
+    } else if (property.equals("DESC")) {
       listOfBooks.sort(Comparator.comparing(Book::getTitle).reversed());
     }
   }
