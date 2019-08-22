@@ -20,6 +20,7 @@ public class Parser {
       System.out.println("Problem with IO occurred");
     }
     bookService.setIdForBooks();
+    bookService.setFavouriteForBooks();
   }
 
   public static List<Book> getBooksTemplate() {

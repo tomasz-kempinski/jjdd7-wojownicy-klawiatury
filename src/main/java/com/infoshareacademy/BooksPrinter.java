@@ -44,8 +44,7 @@ class BooksPrinter {
           System.out.println(
               bookCounter + 1 + ". \"" + listOfBooks.get(bookCounter).getTitle() + "\" - "
                   + listOfBooks
-                  .get(bookCounter).getAuthor()+listOfBooks
-                  .get(bookCounter).getId());
+                  .get(bookCounter).getAuthor());
           bookCounter++;
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
