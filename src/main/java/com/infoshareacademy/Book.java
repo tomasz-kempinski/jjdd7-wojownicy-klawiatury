@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Book {
+  @JsonProperty
   private Long id;
   @JsonProperty("kind")
   private String kind;
@@ -19,6 +20,7 @@ public class Book {
   private Boolean hasAudio;
   @JsonProperty("genre")
   private String genre;
+  @JsonProperty
   private Boolean isFavourite;
 
   private Map<String, Object> additionalProperties = new HashMap<>();
