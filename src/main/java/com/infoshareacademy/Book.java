@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Book {
-
+  private Long id;
   @JsonProperty("kind")
   private String kind;
   @JsonProperty("title")
@@ -21,6 +21,10 @@ public class Book {
   private String genre;
 
   private Map<String, Object> additionalProperties = new HashMap<>();
+
+  public Long getId() {
+    return id;
+  }
 
   public String getKind() {
     return kind;
@@ -71,7 +75,8 @@ public class Book {
       return false;
     }
     Book book = (Book) o;
-    return kind.equals(book.kind) &&
+    return id.equals(book.id) &&
+        kind.equals(book.kind) &&
         title.equals(book.title) &&
         author.equals(book.author) &&
         hasAudio.equals(book.hasAudio) &&
