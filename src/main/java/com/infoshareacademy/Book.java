@@ -25,6 +25,18 @@ public class Book {
 
   private Map<String, Object> additionalProperties = new HashMap<>();
 
+  public Book() {
+  }
+
+  public Book(Long id, String kind, String title, String author, Boolean hasAudio,
+      String genre) {
+    this.kind = kind;
+    this.title = title;
+    this.author = author;
+    this.hasAudio = hasAudio;
+    this.genre = genre;
+  }
+
   public Boolean getFavourite() {
     return isFavourite;
   }
