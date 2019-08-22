@@ -28,7 +28,7 @@ public class Book {
   public Book() {
   }
 
-  public Book(Long id, String kind, String title, String author, Boolean hasAudio,
+  public Book(String kind, String title, String author, Boolean hasAudio,
       String genre) {
     this.kind = kind;
     this.title = title;
