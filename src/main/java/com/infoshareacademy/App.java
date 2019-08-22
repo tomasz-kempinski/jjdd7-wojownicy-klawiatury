@@ -12,5 +12,6 @@ public class App {
     new ScreenCleaner().cleanScreen();
     Menu menu = new Menu();
     menu.menu();
+    parser.saveObjectsToFile();
   }
 }
