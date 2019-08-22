@@ -20,11 +20,7 @@ public class Parser {
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
     }
-    booksTemplate.forEach(b -> {
-      if (b.getId() > BookRepository.getCurrentId()){
-        BookRepository.setCurrentId(b.getId());
-      }
-    });
+    bookService.checkForMaxId();
     bookService.setIdForBooks();
     bookService.setFavouriteForBooks();
   }

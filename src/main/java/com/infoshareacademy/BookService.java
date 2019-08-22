@@ -22,6 +22,14 @@ public class BookService {
 
   }
 
+  public void checkForMaxId(){
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId() > BookRepository.getCurrentId()){
+        BookRepository.setCurrentId(b.getId());
+      }
+    });
+  }
+
   public void addBook(String kind, String title, String author, Boolean hasAudio,
       String genre) {
     Book book = new Book(kind, title, author, hasAudio, genre);
