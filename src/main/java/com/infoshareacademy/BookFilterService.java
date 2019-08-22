@@ -1,5 +1,7 @@
 package com.infoshareacademy;
 
+import com.infoshareacademy.menu.Menu;
+
 import static com.infoshareacademy.BookRepository.getBookRepository;
 
 import java.util.ArrayList;
@@ -10,239 +12,258 @@ import java.util.stream.Collectors;
 
 public class BookFilterService {
 
-    private Scanner scanner = new Scanner(System.in);
-    private BookSorter bookSorter = new BookSorter();
-    private Menu menu = new Menu();
+  private Scanner scanner = new Scanner(System.in);
+  private BookSorter bookSorter = new BookSorter();
+  private ScreenCleaner screenCleaner = new ScreenCleaner();
+  private Menu menu = new Menu();
 
-    private List<Book> books;
+  private List<Book> books;
 
 
-    public BookFilterService() {
-        this.books = getBookRepository();
+  public BookFilterService() {
+    this.books = getBookRepository();
+  }
+
+  public void filterByCategory() {
+    screenCleaner.cleanScreen();
+    System.out.println(" 1- Autor");
+    System.out.println(" 2- Tytuł");
+    System.out.println(" 3- Gatunek");
+    System.out.println(" 4- AudioBook");
+    System.out.println(" 9- Powrót");
+    String choice = scanner.nextLine();
+    switch (choice) {
+      case "1":
+        screenCleaner.cleanScreen();
+        listFoundBooksAuthor();
+        break;
+      case "2":
+        screenCleaner.cleanScreen();
+        listFoundBooksTitle();
+        break;
+      case "3":
+        screenCleaner.cleanScreen();
+        listFoundBooksGenre();
+        break;
+      case "4":
+        screenCleaner.cleanScreen();
+        listFoundBooksAudio();
+      case "9":
+        screenCleaner.cleanScreen();
+        menu.browsingCollections();
+        break;
+      default:
+        screenCleaner.cleanScreen();
+        System.out.println("Zły wybór");
     }
+  }
 
-    public void filterByCategory() {
-        System.out.println(" Filtrowanie według kategorii: ");
-        System.out.println(" 1- Autor");
-        System.out.println(" 2- Tytuł");
-        System.out.println(" 3- Gatunek");
-        System.out.println(" 4- AudioBook");
-        System.out.println(" 9- Powrót (Chwilowo funkcja w czasie implementacji, przejdziesz do głównego menu)");
-        String choice = scanner.nextLine();
-        switch (choice) {
-            case "1":
-                listFoundBooksAuthor();
-                break;
-            case "2":
-                listFoundBooksTitle();
-                break;
-            case "3":
-                listFoundBooksGenre();
-                break;
-            case "4":
-                listFoundBooksAudio();
-            case "9":
-                menu.menu();
-                break;
-            default:
-                System.out.println("Zły wybór");
+  private void printList(List<Book> printListBook) {
+    int lines = 20;
+    int bookCounter = 0;
+    int currentLine;
+    int currentPage = 0;
+    String nextPageCheck;
+    if (printListBook.isEmpty()) {
+      screenCleaner.cleanScreen();
+      System.out.println(" \nNie znaleziono żadnych książek.");
+    } else {
+      do {
+        if (currentPage > 0) {
+          screenCleaner.cleanScreen();
+          System.out.println(
+              " \nEnter -> Kontynuuj wyświetlanie || W -> Wróć");
+          nextPageCheck = scanner.nextLine();
+          if (nextPageCheck.equalsIgnoreCase("W")) {
+            filterByCategory();
+          }
         }
+        currentLine = 0;
+        do {
+          String hasAudio;
+          if (printListBook.get(bookCounter).getHasAudio()) {
+            hasAudio = "TAK";
+          } else {
+            hasAudio = "NIE";
+          }
+          currentPage++;
+          currentLine++;
+          screenCleaner.cleanScreen();
+          System.out.println(
+              bookCounter + 1 + ". \""
+                  + " Autor: " + printListBook.get(bookCounter).getAuthor() + "   "
+                  + " Tytuł: " + printListBook.get(bookCounter).getTitle() + "   "
+                  + " Gatunek: " + printListBook.get(bookCounter).getGenre() + "   "
+                  + " Wersja audio: " + hasAudio);
+          bookCounter++;
+        } while (currentLine < lines && currentPage < printListBook.size());
+      } while (currentPage < printListBook.size());
     }
+  }
 
-    private void printList(List<Book> printListBook) {
-        int lines = 20;
-        int bookCounter = 0;
-        int currentLine;
-        int currentPage = 0;
-        String nextPageCheck;
-        if (printListBook.isEmpty()) {
-            System.out.println(" \nNie znaleziono żadnych książek.");
-        } else {
-            do {
-                if (currentPage > 0) {
-                    System.out.println(
-                            " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ");
-                    nextPageCheck = scanner.nextLine();
-                    if (nextPageCheck.equalsIgnoreCase("Z")) {
-                        Menu menu = new Menu();
-                        menu.menu();
-                        break;
-                    }
-                }
-                currentLine = 0;
-                do {
-                    String hasAudio;
-                    if (printListBook.get(bookCounter).getHasAudio()) {
-                        hasAudio = "TAK";
-                    } else {
-                        hasAudio = "NIE";
-                    }
-                    currentPage++;
-                    currentLine++;
-                    System.out.println(
-                            bookCounter + 1 + ". \""
-                                    + " Autor: " + printListBook.get(bookCounter).getAuthor() + "   "
-                                    + " Tytuł: " + printListBook.get(bookCounter).getTitle() + "   "
-                                    + " Gatunek: " + printListBook.get(bookCounter).getGenre() + "   "
-                                    + " Wersja audio: " + hasAudio);
-                    bookCounter++;
-                } while (currentLine < lines && currentPage < printListBook.size());
-            } while (currentPage < printListBook.size());
-        }
+  private void printAuthor(List<Book> bookRepository) {
+    bookSorter.sortByAuthor(bookRepository);
+    List<String> authorList = new ArrayList<>();
+    for (Book book : bookRepository) {
+      if (!authorList.contains(book.getAuthor())) {
+        authorList.add(book.getAuthor());
+      }
     }
-
-    private void printAuthor(List<Book> bookRepository) {
-        bookSorter.sortByAuthor(bookRepository);
-        List<String> authorList = new ArrayList<>();
-        for (Book book : bookRepository) {
-            if (!authorList.contains(book.getAuthor())) {
-                authorList.add(book.getAuthor());
-            }
-        }
-        int counter = 1;
-        for (String book : authorList) {
-            System.out.println(counter + "." + " " + book);
-            counter++;
-        }
+    int counter = 1;
+    for (String book : authorList) {
+      screenCleaner.cleanScreen();
+      System.out.println(counter + "." + " " + book);
+      counter++;
     }
+  }
 
-    private void printTitle(List<Book> bookRepository) {
-        bookSorter.sortByTitle(bookRepository);
-        List<String> titleList = new ArrayList<>();
-        for (Book book : bookRepository) {
-            if (!titleList.contains(book.getTitle())) {
-                titleList.add(book.getTitle());
-            }
-        }
-        int counter = 1;
-        for (String title : titleList) {
-            System.out.println(counter + "." + " " + title);
-            counter++;
-        }
+  private void printTitle(List<Book> bookRepository) {
+    bookSorter.sortByTitle(bookRepository);
+    List<String> titleList = new ArrayList<>();
+    for (Book book : bookRepository) {
+      if (!titleList.contains(book.getTitle())) {
+        titleList.add(book.getTitle());
+      }
     }
-
-    private void printGenre(List<Book> bookRepository) {
-        bookSorter.sortByGenre(bookRepository);
-        List<String> genreList = new ArrayList<>();
-        for (Book book : bookRepository) {
-            if (!genreList.contains(book.getGenre())) {
-                genreList.add(book.getGenre());
-            }
-        }
-        int counter = 1;
-        for (String genre : genreList) {
-            System.out.println(counter + "." + " " + genre);
-            counter++;
-        }
+    int counter = 1;
+    for (String title : titleList) {
+      screenCleaner.cleanScreen();
+      System.out.println(counter + "." + " " + title);
+      counter++;
     }
+  }
 
-    private String provideAuthor() {
-        System.out.println(" Wybierz autora z powyższej listy: ");
-        String author = scanner.nextLine();
-        if (author.length() == 0) {
-            return "";
-        } else if (author.length() < 3) {
-            System.out.println(" Wpisz co najmniej 3 znaki!");
-            return provideAuthor();
-        } else {
-            return author;
-        }
+  private void printGenre(List<Book> bookRepository) {
+    bookSorter.sortByGenre(bookRepository);
+    List<String> genreList = new ArrayList<>();
+    for (Book book : bookRepository) {
+      if (!genreList.contains(book.getGenre())) {
+        genreList.add(book.getGenre());
+      }
     }
-
-    private String provideTitle() {
-        System.out.println(" Wybierz tytuł z powyższej listy: ");
-        String title = scanner.nextLine();
-
-        if (title.length() == 0) {
-            return "";
-        } else if (title.length() < 3) {
-            System.out.println(" Wpisz co najmniej 3 znaki!");
-            return provideTitle();
-        } else {
-            return title;
-        }
+    int counter = 1;
+    for (String genre : genreList) {
+      screenCleaner.cleanScreen();
+      System.out.println(counter + "." + " " + genre);
+      counter++;
     }
+  }
 
-    private String provideGenre() {
-        System.out.println(" Wybierz gatunek z powyższej listy: ");
-        String genre = scanner.nextLine();
-
-        if (genre.length() == 0) {
-            return "";
-        } else if (genre.length() < 3) {
-            System.out.println(" Wpisz co najmniej 3 znaki!");
-            return provideGenre();
-        } else {
-            return genre;
-        }
+  private String provideAuthor() {
+    screenCleaner.cleanScreen();
+    System.out.println(" Wybierz autora z powyższej listy: ");
+    String author = scanner.nextLine();
+    if (author.length() == 0) {
+      return "";
+    } else if (author.length() < 3) {
+      screenCleaner.cleanScreen();
+      System.out.println(" Wpisz co najmniej 3 znaki!");
+      return provideAuthor();
+    } else {
+      return author;
     }
+  }
 
-    private boolean provideAudio() {
-        System.out.println(" Wybierz czy chcesz wyświetlić książki z audio: (T/N) ");
-        String audio = scanner.nextLine();
-        boolean hasAudio = false;
+  private String provideTitle() {
+    screenCleaner.cleanScreen();
+    System.out.println(" Wybierz tytuł z powyższej listy: ");
+    String title = scanner.nextLine();
 
-        if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
-            System.out.println(" Podaj prawidłowe dane!");
-            provideAudio();
-        } else if (audio.equalsIgnoreCase("T")) {
-            hasAudio = true;
-        }
-        return hasAudio;
+    if (title.length() == 0) {
+      return "";
+    } else if (title.length() < 3) {
+      screenCleaner.cleanScreen();
+      System.out.println(" Wpisz co najmniej 3 znaki!");
+      return provideTitle();
+    } else {
+      return title;
     }
+  }
 
-    private List<Book> findBooksByAuthor(String author) {
-        return books.stream()
-                .filter(
-                        book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
-                .collect(Collectors.toList());
-    }
+  private String provideGenre() {
+    screenCleaner.cleanScreen();
+    System.out.println(" Wybierz gatunek z powyższej listy: ");
+    String genre = scanner.nextLine();
 
-    private List<Book> findBooksByTitle(String title) {
-        return books.stream()
-                .filter(
-                        book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
-                .collect(Collectors.toList());
+    if (genre.length() == 0) {
+      return "";
+    } else if (genre.length() < 3) {
+      screenCleaner.cleanScreen();
+      System.out.println(" Wpisz co najmniej 3 znaki!");
+      return provideGenre();
+    } else {
+      return genre;
     }
+  }
 
-    private List<Book> findBooksByGenre(String genre) {
-        return books.stream()
-                .filter(
-                        book -> book.getGenre().toLowerCase().contains(genre.toLowerCase()))
-                .collect(Collectors.toList());
-    }
+  private boolean provideAudio() {
+    screenCleaner.cleanScreen();
+    System.out.println(" Wybierz czy chcesz wyświetlić książki z audio: (T/N) ");
+    String audio = scanner.nextLine();
+    boolean hasAudio = false;
 
-    private List<Book> findBooksByAudio(Boolean hasAudio) {
-        return books.stream()
-                .filter(
-                        book -> book.getHasAudio() == hasAudio)
-                .collect(Collectors.toList());
+    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
+      screenCleaner.cleanScreen();
+      System.out.println(" Podaj prawidłowe dane!");
+      provideAudio();
+    } else if (audio.equalsIgnoreCase("T")) {
+      hasAudio = true;
     }
+    return hasAudio;
+  }
 
-    private void listFoundBooksAuthor() {
-        printAuthor(books);
-        final List<Book> booksFound = findBooksByAuthor(provideAuthor());
-        bookSorter.sortByAuthor(booksFound);
-        printList(booksFound);
-    }
+  private List<Book> findBooksByAuthor(String author) {
+    return books.stream()
+        .filter(
+            book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
+        .collect(Collectors.toList());
+  }
 
-    private void listFoundBooksTitle() {
-        printTitle(books);
-        final List<Book> booksFound = findBooksByTitle(provideTitle());
-        bookSorter.sortByTitle(booksFound);
-        printList(booksFound);
-    }
+  private List<Book> findBooksByTitle(String title) {
+    return books.stream()
+        .filter(
+            book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
+        .collect(Collectors.toList());
+  }
 
-    private void listFoundBooksGenre() {
-        printGenre(books);
-        final List<Book> booksFound = findBooksByGenre(provideGenre());
-        bookSorter.sortByGenre(booksFound);
-        printList(booksFound);
-    }
+  private List<Book> findBooksByGenre(String genre) {
+    return books.stream()
+        .filter(
+            book -> book.getGenre().toLowerCase().contains(genre.toLowerCase()))
+        .collect(Collectors.toList());
+  }
 
-    private void listFoundBooksAudio() {
-        final List<Book> booksFound = findBooksByAudio(provideAudio());
-        printList(booksFound);
-    }
+  private List<Book> findBooksByAudio(Boolean hasAudio) {
+    return books.stream()
+        .filter(
+            book -> book.getHasAudio() == hasAudio)
+        .collect(Collectors.toList());
+  }
+
+  private void listFoundBooksAuthor() {
+    printAuthor(books);
+    final List<Book> booksFound = findBooksByAuthor(provideAuthor());
+    bookSorter.sortByAuthor(booksFound);
+    printList(booksFound);
+  }
+
+  private void listFoundBooksTitle() {
+    printTitle(books);
+    final List<Book> booksFound = findBooksByTitle(provideTitle());
+    bookSorter.sortByTitle(booksFound);
+    printList(booksFound);
+  }
+
+  private void listFoundBooksGenre() {
+    printGenre(books);
+    final List<Book> booksFound = findBooksByGenre(provideGenre());
+    bookSorter.sortByGenre(booksFound);
+    printList(booksFound);
+  }
+
+  private void listFoundBooksAudio() {
+    final List<Book> booksFound = findBooksByAudio(provideAudio());
+    printList(booksFound);
+  }
 }
 

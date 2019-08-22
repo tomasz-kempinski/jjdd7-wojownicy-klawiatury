@@ -2,12 +2,11 @@ package com.infoshareacademy;
 
 import static com.infoshareacademy.BookRepository.getBookRepository;
 
-import java.util.List;
 
+public class BookList {
 
-class BookList {
-
-    void listBooks() {
-        BooksPrinter.printListOfBooks(getBookRepository());
-    }
+  public void listBooks() {
+    BooksPrinter.printListOfBooks(getBookRepository());
+  }
 }
+
