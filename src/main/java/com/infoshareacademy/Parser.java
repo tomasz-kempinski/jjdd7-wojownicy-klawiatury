@@ -12,12 +12,14 @@ public class Parser {
 
   public void parseFileToObjects() {
     ObjectMapper mapper = new ObjectMapper();
+    BookService bookService = new BookService();
     try {
       booksTemplate = mapper.readValue(new File("books.json"), new TypeReference<List<Book>>() {
       });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
     }
+    bookService.setIdForBooks();
   }
 
   public static List<Book> getBooksTemplate() {
