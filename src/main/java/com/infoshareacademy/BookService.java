@@ -12,4 +12,12 @@ public class BookService {
       }
     }
   }
+
+  public void setFavouriteForBooks(){
+    for (Book book : BookRepository.getBooks()){
+      if(book.getId() == null){
+        book.setFavourite(false);
+      }
+    }
+  }
 }
