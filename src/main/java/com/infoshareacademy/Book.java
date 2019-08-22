@@ -19,8 +19,17 @@ public class Book {
   private Boolean hasAudio;
   @JsonProperty("genre")
   private String genre;
+  private Boolean isFavourite;
 
   private Map<String, Object> additionalProperties = new HashMap<>();
+
+  public Boolean getFavourite() {
+    return isFavourite;
+  }
+
+  public void setFavourite(Boolean favourite) {
+    isFavourite = favourite;
+  }
 
   public Long getId() {
     return id;
@@ -79,12 +88,13 @@ public class Book {
       return false;
     }
     Book book = (Book) o;
-    return id.equals(book.id) &&
-        kind.equals(book.kind) &&
-        title.equals(book.title) &&
-        author.equals(book.author) &&
-        hasAudio.equals(book.hasAudio) &&
-        genre.equals(book.genre);
+    return Objects.equals(id, book.id) &&
+        Objects.equals(kind, book.kind) &&
+        Objects.equals(title, book.title) &&
+        Objects.equals(author, book.author) &&
+        Objects.equals(hasAudio, book.hasAudio) &&
+        Objects.equals(genre, book.genre) &&
+        Objects.equals(isFavourite, book.isFavourite);
   }
 
   @Override
