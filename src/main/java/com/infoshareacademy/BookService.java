@@ -4,21 +4,24 @@ import com.infoshareacademy.repository.BookRepository;
 
 public class BookService {
 
-  public void setIdForBooks(){
-    for (Book book : BookRepository.getBooks()){
-      if(book.getId() == null){
+  public void setIdForBooks() {
+    for (Book book : BookRepository.getBooks()) {
+      if (book.getId() == null) {
         book.setId(BookRepository.getCurrentId());
         BookRepository.increaseCurrentId();
       }
     }
   }
 
-  public void setFavouriteForBooks(){
-    for (Book book : BookRepository.getBooks()){
-      if(book.getFavourite() == null){
+  public void setFavouriteForBooks() {
+    for (Book book : BookRepository.getBooks()) {
+      if (book.getFavourite() == null) {
         book.setFavourite(false);
       }
     }
+
+  }
+
   public void modifyAuthor(String author, int id) {
     BookRepository.getBooks().get(id).setAuthor(author);
   }
