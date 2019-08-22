@@ -22,6 +22,14 @@ public class BookService {
 
   }
 
+  public void addBook(String kind, String title, String author, Boolean hasAudio,
+      String genre) {
+    Book book = new Book(kind, title, author, hasAudio, genre);
+    BookRepository.getBooks().add(book);
+    setIdForBooks();
+    setFavouriteForBooks();
+  }
+
   public void modifyAuthor(String author, int id) {
     BookRepository.getBooks().get(id).setAuthor(author);
   }
