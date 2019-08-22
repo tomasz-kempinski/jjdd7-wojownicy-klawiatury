@@ -30,6 +30,10 @@ public class BookService {
     setFavouriteForBooks();
   }
 
+  public void deleteBook(int id) {
+    BookRepository.getBooks().removeIf(b -> b.getId() == id);
+  }
+
   public void modifyAuthor(String author, int id) {
     BookRepository.getBooks().get(id).setAuthor(author);
   }
