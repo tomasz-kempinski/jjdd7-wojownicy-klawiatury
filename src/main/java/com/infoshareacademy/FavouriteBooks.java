@@ -11,6 +11,7 @@ public class FavouriteBooks {
   ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void favoriteBooksMenu() {
+    BookService bookService = new BookService();
     Scanner scanner = new Scanner(System.in);
     System.out.println("1- Wyświetlenie ulubionych książek");
     System.out.println("2- Dodanie ulubionej książki");
@@ -22,7 +23,7 @@ public class FavouriteBooks {
       switch (choice) {
         case 1:
           screenCleaner.cleanScreen();
-          favouriteBooksList();
+          bookService.modifyFavouriteBook();
           break;
         case 2:
           screenCleaner.cleanScreen();

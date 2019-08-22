@@ -2,6 +2,7 @@ package com.infoshareacademy.menu;
 
 import com.infoshareacademy.BookList;
 import com.infoshareacademy.BookSearchHandler;
+import com.infoshareacademy.FavouriteBooks;
 import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
@@ -26,24 +27,11 @@ public class Menu {
           screenCleaner.cleanScreen();
           System.out.println(
               "\n########################### Ulubione Książki ###########################\n");
-          System.out
-              .println(" funkcja w czasie implementacji 1- powrót do Menu 2- zakończ program");
-          String choiceInIplementsMethod = scanner.next();
-          if (choiceInIplementsMethod.equals("1")) {
-            screenCleaner.cleanScreen();
-            menu();
-          }
-          break;
-        case 9:
-          break;
-        default:
-          menu();
+          FavouriteBooks favouriteBooks = new FavouriteBooks();
+          favouriteBooks.favoriteBooksMenu();
+          screenCleaner.cleanScreen();
           break;
       }
-    } else {
-      screenCleaner.cleanScreen();
-      System.out.println(" Podaj właściwą wartość!");
-      menu();
     }
   }
 
