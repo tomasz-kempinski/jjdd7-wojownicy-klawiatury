@@ -22,9 +22,9 @@ public class BookService {
 
   }
 
-  public void checkForMaxId(){
+  public void checkForMaxId() {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId() > BookRepository.getCurrentId()){
+      if (b.getId() > BookRepository.getCurrentId()) {
         BookRepository.setCurrentId(b.getId());
       }
     });
@@ -44,7 +44,7 @@ public class BookService {
 
   public void modifyAuthor(String author, Long id) {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId().equals(id)){
+      if (b.getId().equals(id)) {
         b.setAuthor(author);
       }
     });
@@ -52,7 +52,7 @@ public class BookService {
 
   public void modifyHasAudio(boolean hasAudio, Long id) {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId().equals(id)){
+      if (b.getId().equals(id)) {
         b.setHasAudio(hasAudio);
       }
     });
@@ -60,7 +60,7 @@ public class BookService {
 
   public void modifyGenre(String genre, Long id) {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId().equals(id)){
+      if (b.getId().equals(id)) {
         b.setGenre(genre);
       }
     });
@@ -68,7 +68,7 @@ public class BookService {
 
   public void modifyKind(String kind, Long id) {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId().equals(id)){
+      if (b.getId().equals(id)) {
         b.setKind(kind);
       }
     });
@@ -76,7 +76,7 @@ public class BookService {
 
   public void modifyTitle(String title, Long id) {
     BookRepository.getBooks().forEach(b -> {
-      if (b.getId().equals(id)){
+      if (b.getId().equals(id)) {
         b.setTitle(title);
       }
     });

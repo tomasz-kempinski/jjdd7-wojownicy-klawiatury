@@ -23,7 +23,7 @@ public class BookRepository {
     BookRepository.maxId = currentId;
   }
 
-  public static void increaseCurrentId(){
+  public static void increaseCurrentId() {
     maxId++;
   }
 }

@@ -1,7 +1,6 @@
 package com.infoshareacademy;
 
 import com.infoshareacademy.menu.Menu;
-import com.infoshareacademy.repository.BookRepository;
 import java.io.FileNotFoundException;
 
 public class App {

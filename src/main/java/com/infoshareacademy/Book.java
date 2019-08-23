@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Book {
+
   @JsonProperty
   private Long id;
   @JsonProperty("kind")
