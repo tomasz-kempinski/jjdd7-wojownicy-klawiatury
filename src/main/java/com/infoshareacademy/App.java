@@ -6,10 +6,10 @@ import java.io.FileNotFoundException;
 
 public class App {
 
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(String[] args) {
     new ScreenCleaner().cleanScreen();
     Menu menu = new Menu();
     menu.menu();
-    parser.saveObjectsToFile();
+    new BookParseService().saveObjectsToFile();
   }
 }

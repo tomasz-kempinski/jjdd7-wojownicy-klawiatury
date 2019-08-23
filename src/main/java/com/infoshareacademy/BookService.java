@@ -4,7 +4,9 @@ package com.infoshareacademy;
 
 public class BookService {
 
-  public void setIdForBooks() {
+  private static Long maxId = 0L;
+
+  private void setIdForBooks() {
     for (Book book : BookRepository.getBookRepository()) {
       if (book.getId() == null) {
         book.setId(getCurrentId());
@@ -13,7 +15,7 @@ public class BookService {
     }
   }
 
-  public void setFavouriteForBooks() {
+  private void setFavouriteForBooks() {
     for (Book book : BookRepository.getBookRepository()) {
       if (book.getFavourite() == null) {
         book.setFavourite(false);
@@ -21,17 +23,15 @@ public class BookService {
     }
   }
 
-  private static Long maxId = 0L;
-
-  public static Long getCurrentId() {
+  private static Long getCurrentId() {
     return maxId;
   }
 
-  public static void setCurrentId(Long currentId) {
+  private static void setCurrentId(Long currentId) {
     maxId = currentId;
   }
 
-  public static void increaseCurrentId() {
+  private static void increaseCurrentId() {
     maxId++;
   }
 
