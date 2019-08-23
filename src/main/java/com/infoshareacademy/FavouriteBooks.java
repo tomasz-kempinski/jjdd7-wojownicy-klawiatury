@@ -1,6 +1,7 @@
 package com.infoshareacademy;
 
 import com.infoshareacademy.menu.Menu;
+
 import java.util.Scanner;
 
 public class FavouriteBooks {
