@@ -14,8 +14,8 @@ class BookParseService {
       BookRepository.bookRepository = mapper
           .readValue(new File("books.json"), new TypeReference<List<Book>>() {
           });
-      bookService.checkForMaxId();
       bookService.setIdForBooks();
+      bookService.checkForMaxId();
       bookService.setFavouriteForBooks();
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
