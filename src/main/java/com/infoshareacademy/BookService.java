@@ -39,7 +39,7 @@ public class BookService {
   }
 
   public void deleteBook(Long id) {
-    BookRepository.getBooks().removeIf(b -> b.getId() == id);
+    BookRepository.getBooks().removeIf(b -> b.getId().equals(id));
   }
 
   public void modifyAuthor(String author, int id) {
