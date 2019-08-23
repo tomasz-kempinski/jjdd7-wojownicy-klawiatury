@@ -77,6 +77,7 @@ public class Menu {
               "\n##################### Wyświetlanie książek według kategorii #####################\n");
           BookFilterService bookFilterService = new BookFilterService();
           bookFilterService.filterByCategory();
+          break;
         case 9:
           screenCleaner.cleanScreen();
           menu();

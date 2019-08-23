@@ -48,6 +48,7 @@ public class BookFilterService {
       case "4":
         screenCleaner.cleanScreen();
         listFoundBooksAudio();
+        break;
       case "9":
         screenCleaner.cleanScreen();
         menu.browsingCollections();
@@ -55,6 +56,8 @@ public class BookFilterService {
       default:
         screenCleaner.cleanScreen();
         System.out.println("Zły wybór");
+        filterByCategory();
+        break;
     }
   }
 
@@ -76,6 +79,7 @@ public class BookFilterService {
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("W")) {
             filterByCategory();
+            break;
           }
         }
         currentLine = 0;
