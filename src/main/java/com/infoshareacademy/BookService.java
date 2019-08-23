@@ -1,31 +1,44 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.BookRepository.getBookRepository;
+
 
 public class BookService {
 
   public void setIdForBooks() {
-    for (Book book : BookRepository.getBooks()) {
+    for (Book book : BookRepository.getBookRepository()) {
       if (book.getId() == null) {
-        book.setId(BookRepository.getCurrentId());
-        BookRepository.increaseCurrentId();
+        book.setId(getCurrentId());
+       increaseCurrentId();
       }
     }
   }
 
   public void setFavouriteForBooks() {
-    for (Book book : BookRepository.getBooks()) {
+    for (Book book : BookRepository.getBookRepository()) {
       if (book.getFavourite() == null) {
         book.setFavourite(false);
       }
     }
+  }
 
+  private static Long maxId = 0L;
+
+  public static Long getCurrentId() {
+    return maxId;
+  }
+
+  public static void setCurrentId(Long currentId) {
+    maxId = currentId;
+  }
+
+  public static void increaseCurrentId() {
+    maxId++;
   }
 
   public void checkForMaxId() {
-    BookRepository.getBooks().forEach(b -> {
-      if (b.getId() > BookRepository.getCurrentId()) {
-        BookRepository.setCurrentId(b.getId());
+    BookRepository.getBookRepository().forEach(b -> {
+      if (b.getId() > getCurrentId()) {
+        setCurrentId(b.getId());
       }
     });
   }
@@ -33,17 +46,17 @@ public class BookService {
   public void addBook(String kind, String title, String author, Boolean hasAudio,
       String genre) {
     Book book = new Book(kind, title, author, hasAudio, genre);
-    BookRepository.getBooks().add(book);
+    BookRepository.getBookRepository().add(book);
     setIdForBooks();
     setFavouriteForBooks();
   }
 
   public void deleteBook(Long id) {
-    BookRepository.getBooks().removeIf(b -> b.getId().equals(id));
+    BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
   }
 
   public void modifyAuthor(String author, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setAuthor(author);
       }
@@ -51,7 +64,7 @@ public class BookService {
   }
 
   public void modifyHasAudio(boolean hasAudio, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setHasAudio(hasAudio);
       }
@@ -59,7 +72,7 @@ public class BookService {
   }
 
   public void modifyGenre(String genre, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setGenre(genre);
       }
@@ -67,7 +80,7 @@ public class BookService {
   }
 
   public void modifyKind(String kind, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setKind(kind);
       }
@@ -75,7 +88,7 @@ public class BookService {
   }
 
   public void modifyTitle(String title, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setTitle(title);
       }
@@ -83,7 +96,7 @@ public class BookService {
   }
 
   public void modifyFavourite(boolean favourite, Long id) {
-    BookRepository.getBooks().forEach(b -> {
+    BookRepository.getBookRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setFavourite(favourite);
       }
