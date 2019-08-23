@@ -59,10 +59,10 @@ public class BookManagementMenu {
     String kind = scanner.nextLine();
     screenCleaner.cleanScreen();
     System.out.println("Czy książka ma wersję audio Y/N:");
-    String audioSting = scanner.nextLine();
-    if (audioSting.equals("Y") || audioSting.equals("y")) {
+    String audioString = scanner.nextLine();
+    if (audioString.equals("Y") || audioString.equals("y")) {
       audio = true;
-    } else if (audioSting.equals("N") || audioSting.equals("n")) {
+    } else if (audioString.equals("N") || audioString.equals("n")) {
       audio = false;
     } else {
 
@@ -99,15 +99,33 @@ public class BookManagementMenu {
           break;
         case 2:
           screenCleaner.cleanScreen();
+          System.out.println("Podaj nowego autora: ");
+          String author = scanner.nextLine();
+          bookService.modifyAuthor(author, id);
           break;
         case 3:
           screenCleaner.cleanScreen();
+          System.out.println("Podaj nowy gatunek: ");
+          String genre = scanner.nextLine();
+          bookService.modifyGenre(genre, id);
           break;
         case 4:
           screenCleaner.cleanScreen();
+          System.out.println("Podaj nowy rodzaj literacki:");
+          String kind = scanner.nextLine();
+          bookService.modifyKind(kind, id);
           break;
         case 5:
           screenCleaner.cleanScreen();
+          boolean audio = false;
+          System.out.println("Czy książka ma wersję audio Y/N:");
+          String audioString = scanner.nextLine();
+          if (audioString.equals("Y") || audioString.equals("y")) {
+            audio = true;
+          } else if (audioString.equals("N") || audioString.equals("n")) {
+            audio = false;
+          }
+          bookService.modifyHasAudio(audio, id);
           break;
         case 9:
           screenCleaner.cleanScreen();
