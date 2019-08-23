@@ -33,6 +33,8 @@ public class BookManagementMenu {
           break;
         case 9:
           screenCleaner.cleanScreen();
+          Menu menu = new Menu();
+          menu.menu();
           break;
         default:
           screenCleaner.cleanScreen();
@@ -64,6 +66,7 @@ public class BookManagementMenu {
     screenCleaner.cleanScreen();
     audio = doesBookHasAudio();
     bookService.addBook(kind, title, author, audio, genre);
+    choseManagementOption();
   }
 
   private boolean doesBookHasAudio() {
@@ -86,21 +89,7 @@ public class BookManagementMenu {
     System.out.println("Podaj id książki do usunięcia:");
     Long id = scanner.nextLong();
     bookService.deleteBook(id);
-  }
-
-  private boolean provideAudio() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println(" Czy książka ma mieć wersję audio? (T/N)");
-    String audio = scanner.nextLine();
-    boolean hasAudio = false;
-
-    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
-      System.out.println(" Podaj prawidłowe dane!");
-      provideAudio();
-    } else if (audio.equalsIgnoreCase("T")) {
-      hasAudio = true;
-    }
-    return hasAudio;
+    choseManagementOption();
   }
 
   private void modifyBookMenu() {
@@ -122,24 +111,28 @@ public class BookManagementMenu {
           System.out.println("Podaj nowy tytuł: ");
           String title = scanner.next();
           bookService.modifyTitle(title, id);
+          modifyBookMenu();
           break;
         case 2:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowego autora: ");
           String author = scanner.next();
           bookService.modifyAuthor(author, id);
+          modifyBookMenu();
           break;
         case 3:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy gatunek: ");
           String genre = scanner.next();
           bookService.modifyGenre(genre, id);
+          modifyBookMenu();
           break;
         case 4:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy rodzaj literacki:");
           String kind = scanner.next();
           bookService.modifyKind(kind, id);
+          modifyBookMenu();
           break;
         case 5:
           screenCleaner.cleanScreen();
@@ -152,9 +145,11 @@ public class BookManagementMenu {
             audio = false;
           }
           bookService.modifyHasAudio(audio, id);
+          modifyBookMenu();
           break;
         case 9:
           screenCleaner.cleanScreen();
+          modifyBookMenu();
           break;
         default:
           screenCleaner.cleanScreen();
