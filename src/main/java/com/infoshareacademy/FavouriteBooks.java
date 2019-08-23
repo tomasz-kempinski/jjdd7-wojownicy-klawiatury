@@ -59,8 +59,12 @@ public class FavouriteBooks {
   }
 
   private void favouriteBookRemove(long id) {
+    Scanner scanner = new Scanner(System.in);
     if (id == -1){
       System.out.println(" Podaj id książki, którą chcesz usunąć");
+      if (scanner.hasNextInt()){
+        scanner.nextInt();
+      }
     }
 
   }
