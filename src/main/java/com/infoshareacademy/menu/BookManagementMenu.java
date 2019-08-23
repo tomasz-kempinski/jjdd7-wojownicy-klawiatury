@@ -40,11 +40,15 @@ public class BookManagementMenu {
           choseManagementOption();
           break;
       }
+    } else {
+      screenCleaner.cleanScreen();
+      System.out.println(" Podaj własciwa wartość!");
+      choseManagementOption();
     }
   }
 
   private void addBookMenu() {
-    boolean audio = false;
+    boolean audio;
     Scanner scanner = new Scanner(System.in);
     System.out.println("Podaj tytuł książki:");
     String title = scanner.nextLine();
@@ -58,16 +62,23 @@ public class BookManagementMenu {
     System.out.println("Podaj rodzaj literacki książki");
     String kind = scanner.nextLine();
     screenCleaner.cleanScreen();
-    System.out.println("Czy książka ma wersję audio Y/N:");
-    String audioString = scanner.nextLine();
-    if (audioString.equals("Y") || audioString.equals("y")) {
-      audio = true;
-    } else if (audioString.equals("N") || audioString.equals("n")) {
-      audio = false;
-    } else {
-
-    }
+    audio = doesBookHasAudio();
     bookService.addBook(kind, title, author, audio, genre);
+  }
+
+  private boolean doesBookHasAudio() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(" Czy książka ma wersje audio?");
+    String audio = scanner.nextLine();
+    boolean hasAudio = false;
+
+    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
+      System.out.println(" Podaj prawidłowe dane!");
+      doesBookHasAudio();
+    } else if (audio.equalsIgnoreCase("T")) {
+      hasAudio = true;
+    }
+    return hasAudio;
   }
 
   private void deleteBookMenu() {
@@ -75,6 +86,21 @@ public class BookManagementMenu {
     System.out.println("Podaj id książki do usunięcia:");
     Long id = scanner.nextLong();
     bookService.deleteBook(id);
+  }
+
+  private boolean provideAudio() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(" Czy książka ma mieć wersję audio? (T/N)");
+    String audio = scanner.nextLine();
+    boolean hasAudio = false;
+
+    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
+      System.out.println(" Podaj prawidłowe dane!");
+      provideAudio();
+    } else if (audio.equalsIgnoreCase("T")) {
+      hasAudio = true;
+    }
+    return hasAudio;
   }
 
   private void modifyBookMenu() {
