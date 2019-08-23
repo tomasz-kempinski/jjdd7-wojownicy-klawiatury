@@ -94,32 +94,32 @@ public class BookManagementMenu {
         case 1:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy tytuł: ");
-          String title = scanner.nextLine();
+          String title = scanner.next();
           bookService.modifyTitle(title, id);
           break;
         case 2:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowego autora: ");
-          String author = scanner.nextLine();
+          String author = scanner.next();
           bookService.modifyAuthor(author, id);
           break;
         case 3:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy gatunek: ");
-          String genre = scanner.nextLine();
+          String genre = scanner.next();
           bookService.modifyGenre(genre, id);
           break;
         case 4:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy rodzaj literacki:");
-          String kind = scanner.nextLine();
+          String kind = scanner.next();
           bookService.modifyKind(kind, id);
           break;
         case 5:
           screenCleaner.cleanScreen();
           boolean audio = false;
           System.out.println("Czy książka ma wersję audio Y/N:");
-          String audioString = scanner.nextLine();
+          String audioString = scanner.next();
           if (audioString.equals("Y") || audioString.equals("y")) {
             audio = true;
           } else if (audioString.equals("N") || audioString.equals("n")) {
