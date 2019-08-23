@@ -42,23 +42,43 @@ public class BookService {
     BookRepository.getBooks().removeIf(b -> b.getId().equals(id));
   }
 
-  public void modifyAuthor(String author, int id) {
-    BookRepository.getBooks().get(id).setAuthor(author);
+  public void modifyAuthor(String author, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)){
+        b.setAuthor(author);
+      }
+    });
   }
 
-  public void modifyHasAudio(boolean hasAudio, int id) {
-    BookRepository.getBooks().get(id).setHasAudio(hasAudio);
+  public void modifyHasAudio(boolean hasAudio, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)){
+        b.setHasAudio(hasAudio);
+      }
+    });
   }
 
-  public void modifyGenre(String genre, int id) {
-    BookRepository.getBooks().get(id).setGenre(genre);
+  public void modifyGenre(String genre, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)){
+        b.setGenre(genre);
+      }
+    });
   }
 
-  public void modifyKind(String kind, int id) {
-    BookRepository.getBooks().get(id).setKind(kind);
+  public void modifyKind(String kind, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)){
+        b.setKind(kind);
+      }
+    });
   }
 
-  public void modifyTitle(String title, int id) {
-    BookRepository.getBooks().get(id).setTitle(title);
+  public void modifyTitle(String title, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)){
+        b.setTitle(title);
+      }
+    });
   }
 }
