@@ -8,7 +8,8 @@ public class Menu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
-  public void menu() {
+  public void menu(){
+    System.out.println("Twoja pozycja: Menu");
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Przeglądanie zbiorów");
@@ -34,6 +35,7 @@ public class Menu {
   }
 
   public void browsingCollections() {
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów");
     Scanner scanner = new Scanner(System.in);
     System.out.println(" 1- Lista ksiażek");
     System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
@@ -46,6 +48,7 @@ public class Menu {
         case 1:
           screenCleaner.cleanScreen();
           BookList bookList = new BookList();
+          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Lista książek");
           System.out
               .println("\n########################### Lista książek ###########################\n");
           bookList.listBooks();
@@ -53,6 +56,7 @@ public class Menu {
           break;
         case 2:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Wyszukiwanie Książek");
           System.out.println(
               "\n######################### Wyszukiwanie książek #########################\n");
           BookSearchHandler bookSearchHandler = new BookSearchHandler();
@@ -60,6 +64,7 @@ public class Menu {
           break;
         case 3:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Przeglądanie pojedynczej pozycji");
           SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
           System.out.println(
               "\n################### Przeglądanie pojedynczej pozycji ####################\n");
@@ -67,6 +72,7 @@ public class Menu {
           break;
         case 4:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Wyświetlanie według kategorii");
           System.out.println(
               "\n##################### Wyświetlanie książek według kategorii #####################\n");
           BookFilterService bookFilterService = new BookFilterService();

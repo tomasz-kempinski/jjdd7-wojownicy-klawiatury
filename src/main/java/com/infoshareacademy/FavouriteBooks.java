@@ -11,6 +11,7 @@ public class FavouriteBooks {
   public void favoriteBooksMenu() {
 
     Scanner scanner = new Scanner(System.in);
+    System.out.println("Twoja pozycja: Menu/Ulubione Książki");
     System.out.println("####FUNKCJA W CZASIE IMPLEMENTACJI###");
     System.out.println("9- Powrót do menu");
 
