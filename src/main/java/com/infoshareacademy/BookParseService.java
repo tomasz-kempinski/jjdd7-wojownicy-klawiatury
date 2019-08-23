@@ -9,10 +9,14 @@ import java.util.List;
 class BookParseService {
   private ObjectMapper mapper = new ObjectMapper();
   void parseFileToObjects() {
+    BookService bookService = new BookService();
     try {
       BookRepository.bookRepository = mapper
           .readValue(new File("books.json"), new TypeReference<List<Book>>() {
           });
+      bookService.checkForMaxId();
+      bookService.setIdForBooks();
+      bookService.setFavouriteForBooks();
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
     }
