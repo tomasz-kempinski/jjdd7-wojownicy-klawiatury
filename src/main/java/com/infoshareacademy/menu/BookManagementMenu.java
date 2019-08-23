@@ -71,7 +71,7 @@ class BookManagementMenu {
 
   private boolean doesBookHasAudio() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Czy książka ma wersje audio?");
+    System.out.println(" Czy książka ma wersje audio? (T/N)");
     String audio = scanner.nextLine();
     boolean hasAudio = false;
 
