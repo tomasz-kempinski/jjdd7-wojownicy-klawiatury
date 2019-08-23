@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FavouriteBooks {
 
-  ScreenCleaner screenCleaner = new ScreenCleaner();
+  private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void favoriteBooksMenu() {
     BookService bookService = new BookService();
@@ -55,17 +55,27 @@ public class FavouriteBooks {
     Scanner scanner = new Scanner(System.in);
     if (id == -1){
       System.out.println(" Podaj id książki, którą chcesz dodać");
+      if (scanner.hasNextInt()){
+        id = scanner.nextInt();
+      } else {
+        screenCleaner.cleanScreen();
+        System.out.println(" Podaj właściwą wartość ID!! ");
+        favouriteBookRemove(-1);
+      }
     }
   }
 
-  private void favouriteBookRemove(long id) {
+  public void favouriteBookRemove(long id) {
     Scanner scanner = new Scanner(System.in);
     if (id == -1){
       System.out.println(" Podaj id książki, którą chcesz usunąć");
       if (scanner.hasNextInt()){
-        scanner.nextInt();
+        id = scanner.nextInt();
+      } else {
+        screenCleaner.cleanScreen();
+        System.out.println(" Podaj właściwą wartość ID!! ");
+        favouriteBookRemove(-1);
       }
     }
-
   }
 }
