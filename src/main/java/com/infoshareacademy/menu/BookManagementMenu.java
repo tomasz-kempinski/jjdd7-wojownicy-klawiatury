@@ -54,15 +54,31 @@ class BookManagementMenu {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Podaj tytuł książki");
     String title = scanner.nextLine();
+    while (title.length() == 0) {
+      System.out.print("\n Podaj wartość");
+      title = scanner.nextLine();
+    }
     screenCleaner.cleanScreen();
     System.out.println(" Podaj autora książki");
     String author = scanner.nextLine();
+    while (author.length() == 0) {
+      System.out.print("\n Podaj wartość");
+      author = scanner.nextLine();
+    }
     screenCleaner.cleanScreen();
     System.out.println(" Podaj gatunek książki");
     String genre = scanner.nextLine();
+    while (genre.length() == 0) {
+      System.out.print("\n Podaj wartość");
+      genre = scanner.nextLine();
+    }
     screenCleaner.cleanScreen();
     System.out.println(" Podaj rodzaj literacki książki");
     String kind = scanner.nextLine();
+    while (kind.length() == 0) {
+      System.out.println("\n Podaj wartość");
+      kind = scanner.nextLine();
+    }
     screenCleaner.cleanScreen();
     audio = doesBookHasAudio();
     bookService.addBook(kind, title, author, audio, genre);
