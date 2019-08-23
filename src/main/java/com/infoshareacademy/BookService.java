@@ -6,7 +6,7 @@ public class BookService {
 
   private static Long maxId = 0L;
 
-  private void setIdForBooks() {
+  public void setIdForBooks() {
     for (Book book : BookRepository.getBookRepository()) {
       if (book.getId() == null) {
         book.setId(getCurrentId());
@@ -15,7 +15,7 @@ public class BookService {
     }
   }
 
-  private void setFavouriteForBooks() {
+  public void setFavouriteForBooks() {
     for (Book book : BookRepository.getBookRepository()) {
       if (book.getFavourite() == null) {
         book.setFavourite(false);
