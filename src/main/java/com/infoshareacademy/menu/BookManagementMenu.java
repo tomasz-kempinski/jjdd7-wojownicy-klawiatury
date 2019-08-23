@@ -52,16 +52,16 @@ class BookManagementMenu {
   private void addBookMenu() {
     boolean audio;
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Podaj tytuł książki:");
+    System.out.println(" Podaj tytuł książki");
     String title = scanner.nextLine();
     screenCleaner.cleanScreen();
-    System.out.println("Podaj autora książki:");
+    System.out.println(" Podaj autora książki");
     String author = scanner.nextLine();
     screenCleaner.cleanScreen();
-    System.out.println("Podaj gatunek książki:");
+    System.out.println(" Podaj gatunek książki");
     String genre = scanner.nextLine();
     screenCleaner.cleanScreen();
-    System.out.println("Podaj rodzaj literacki książki");
+    System.out.println(" Podaj rodzaj literacki książki");
     String kind = scanner.nextLine();
     screenCleaner.cleanScreen();
     audio = doesBookHasAudio();
@@ -86,7 +86,7 @@ class BookManagementMenu {
 
   private void deleteBookMenu() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Podaj id książki do usunięcia:");
+    System.out.println(" Podaj id książki do usunięcia");
     Long id = scanner.nextLong();
     bookService.deleteBook(id);
     choseManagementOption();
@@ -94,9 +94,9 @@ class BookManagementMenu {
 
   private void modifyBookMenu() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Podaj id książki do edycji");
+    System.out.println(" Podaj id książki do edycji");
     Long id = scanner.nextLong();
-    System.out.println("Co chcesz edytowac?");
+    System.out.println(" Co chcesz edytowac?");
     System.out.println(" 1- Tytuł");
     System.out.println(" 2- Autor");
     System.out.println(" 3- Gatunek");
@@ -108,47 +108,47 @@ class BookManagementMenu {
       switch (choice) {
         case 1:
           screenCleaner.cleanScreen();
-          System.out.println("Podaj nowy tytuł: ");
+          System.out.println(" Podaj nowy tytuł");
           String title = scanner.next();
           bookService.modifyTitle(title, id);
-          modifyBookMenu();
+          choseManagementOption();
           break;
         case 2:
           screenCleaner.cleanScreen();
-          System.out.println("Podaj nowego autora: ");
+          System.out.println(" Podaj nowego autora");
           String author = scanner.next();
           bookService.modifyAuthor(author, id);
-          modifyBookMenu();
+          choseManagementOption();
           break;
         case 3:
           screenCleaner.cleanScreen();
-          System.out.println("Podaj nowy gatunek: ");
+          System.out.println(" Podaj nowy gatunek");
           String genre = scanner.next();
           bookService.modifyGenre(genre, id);
-          modifyBookMenu();
+          choseManagementOption();
           break;
         case 4:
           screenCleaner.cleanScreen();
-          System.out.println("Podaj nowy rodzaj literacki:");
+          System.out.println(" Podaj nowy rodzaj literacki");
           String kind = scanner.next();
           bookService.modifyKind(kind, id);
-          modifyBookMenu();
+          choseManagementOption();
           break;
         case 5:
           screenCleaner.cleanScreen();
           boolean audio;
           audio = doesBookHasAudio();
           bookService.modifyHasAudio(audio, id);
-          modifyBookMenu();
+          choseManagementOption();
           break;
         case 9:
           screenCleaner.cleanScreen();
-          modifyBookMenu();
+          choseManagementOption();
           break;
         default:
           screenCleaner.cleanScreen();
           System.out.println(" Podaj własciwa wartość!");
-          modifyBookMenu();
+          choseManagementOption();
           break;
       }
     }
