@@ -4,12 +4,12 @@ import com.infoshareacademy.BookService;
 import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
-public class BookManagementMenu {
+class BookManagementMenu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private BookService bookService = new BookService();
 
-  public void choseManagementOption() {
+  void choseManagementOption() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Dodaj książke.");
@@ -136,14 +136,8 @@ public class BookManagementMenu {
           break;
         case 5:
           screenCleaner.cleanScreen();
-          boolean audio = false;
-          System.out.println("Czy książka ma wersję audio Y/N:");
-          String audioString = scanner.next();
-          if (audioString.equals("Y") || audioString.equals("y")) {
-            audio = true;
-          } else if (audioString.equals("N") || audioString.equals("n")) {
-            audio = false;
-          }
+          boolean audio;
+          audio = doesBookHasAudio();
           bookService.modifyHasAudio(audio, id);
           modifyBookMenu();
           break;
