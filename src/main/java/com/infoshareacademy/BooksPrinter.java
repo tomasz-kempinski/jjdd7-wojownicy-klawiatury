@@ -2,6 +2,7 @@ package com.infoshareacademy;
 
 import com.infoshareacademy.menu.Menu;
 import com.infoshareacademy.menu.SingleBookViewMenu;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,4 +53,3 @@ class BooksPrinter {
 
   }
 }
-

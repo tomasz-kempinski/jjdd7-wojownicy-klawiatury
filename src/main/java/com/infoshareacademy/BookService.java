@@ -1,6 +1,6 @@
 package com.infoshareacademy;
 
-import com.infoshareacademy.repository.BookRepository;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
 public class BookService {
 

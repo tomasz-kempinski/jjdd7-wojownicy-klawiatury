@@ -6,7 +6,9 @@ import com.infoshareacademy.BookList;
 import com.infoshareacademy.BookSearchHandler;
 import com.infoshareacademy.ScreenCleaner;
 import com.infoshareacademy.SingleBookView;
-import com.infoshareacademy.repository.BookRepository;
+
+import static com.infoshareacademy.BookRepository.getBookRepository;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class SingleBookViewMenu {
 
   public void selectBook() {
     Scanner scanner = new Scanner(System.in);
-    List<Book> books = BookRepository.getBooks();
+    List<Book> books = getBookRepository();
     int choice;
     int bookNumber;
     System.out.println(" Podaj numer książki, którą chcesz zobaczyć");

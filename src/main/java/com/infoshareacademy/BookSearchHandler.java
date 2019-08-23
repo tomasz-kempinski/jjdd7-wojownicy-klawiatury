@@ -1,6 +1,6 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.repository.BookRepository.getBooks;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class BookSearchHandler {
   private List<Book> books;
 
   public BookSearchHandler() {
-    this.books = getBooks();
+    this.books = getBookRepository();
   }
 
   public void listFoundBooks() {

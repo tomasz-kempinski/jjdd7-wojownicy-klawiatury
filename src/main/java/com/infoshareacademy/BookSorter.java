@@ -26,4 +26,14 @@ public class BookSorter {
       listOfBooks.sort(Comparator.comparing(Book::getTitle).reversed());
     }
   }
+
+  public void sortByGenre(List<Book> listOfBooks) {
+    config.loadConfig("sortByGenre");
+    String property = config.getProperty();
+    if (property.equals("ASC")) {
+      listOfBooks.sort(Comparator.comparing(Book::getGenre));
+    } else if (property.equals("DESC")) {
+      listOfBooks.sort(Comparator.comparing(Book::getGenre).reversed());
+    }
+  }
 }
