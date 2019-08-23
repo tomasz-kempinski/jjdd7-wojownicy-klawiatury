@@ -23,7 +23,7 @@ public class FavouriteBooks {
       switch (choice) {
         case 1:
           screenCleaner.cleanScreen();
-          bookService.modifyFavouriteBook();
+          favouriteBooksList();
           break;
         case 2:
           screenCleaner.cleanScreen();
@@ -31,7 +31,7 @@ public class FavouriteBooks {
           break;
         case 3:
           screenCleaner.cleanScreen();
-          favouriteBookRemove();
+          favouriteBookRemove(-1);
           break;
         case 9:
           screenCleaner.cleanScreen();
@@ -48,31 +48,20 @@ public class FavouriteBooks {
   }
 
   private void favouriteBooksList() {
-    try {
-      File file = new File("favouriteBooks.txt");
-      Scanner scanner = new Scanner(file);
-      String books = scanner.nextLine();
-      char[] favouriteBooksChar = books.toCharArray();
-      SingleBookView singleBookView = new SingleBookView();
-      singleBookView.singleBookView(favouriteBooksChar[0]);
-    } catch (FileNotFoundException e) {
-      System.out.println("Brak pliku z książkami");
-    }
 
   }
 
-  public void favouriteBooksAdd(int book) {
-    try {
-      PrintWriter writer = new PrintWriter("favouriteBooks.txt");
-      writer.println("zzz");
-      writer.close();
-    } catch (FileNotFoundException e) {
-      System.out.println(" Brak pliku z książkami");
+  public void favouriteBooksAdd(long id) {
+    Scanner scanner = new Scanner(System.in);
+    if (id == -1){
+      System.out.println(" Podaj id książki, którą chcesz dodać");
     }
-
   }
 
-  private void favouriteBookRemove() {
+  private void favouriteBookRemove(long id) {
+    if (id == -1){
+      System.out.println(" Podaj id książki, którą chcesz usunąć");
+    }
 
   }
 }
