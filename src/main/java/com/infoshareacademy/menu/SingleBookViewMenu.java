@@ -23,6 +23,7 @@ public class SingleBookViewMenu {
     List<Book> books = getBookRepository();
     int choice;
     int bookNumber;
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
     System.out.println(" Podaj numer książki, którą chcesz zobaczyć");
     if (scanner.hasNextInt()) {
       bookNumber = scanner.nextInt();
@@ -62,6 +63,7 @@ public class SingleBookViewMenu {
   }
 
   private void afterSingleBookView() {
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
     Scanner scanner = new Scanner(System.in);
     int choice;
     System.out.println(" 1- Wyświetlenie innej książki    2- Powrót do Menu");
