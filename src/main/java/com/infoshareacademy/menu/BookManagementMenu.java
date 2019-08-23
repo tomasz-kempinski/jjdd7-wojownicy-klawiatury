@@ -68,7 +68,6 @@ public class BookManagementMenu {
 
     }
     bookService.addBook(kind, title, author, audio, genre);
-    System.out.println("Dodano książkę " + title + " do biblioteki.");
   }
 
   private void deleteBookMenu() {
@@ -80,6 +79,8 @@ public class BookManagementMenu {
 
   private void modifyBookMenu() {
     Scanner scanner = new Scanner(System.in);
+    System.out.println("Podaj id książki do edycji");
+    Long id = scanner.nextLong();
     System.out.println("Co chcesz edytowac?");
     System.out.println(" 1- Tytuł");
     System.out.println(" 2- Autor");
@@ -92,6 +93,9 @@ public class BookManagementMenu {
       switch (choice){
         case 1:
           screenCleaner.cleanScreen();
+          System.out.println("Podaj nowy tytuł: ");
+          String title = scanner.nextLine();
+          bookService.modifyTitle(title, id);
           break;
         case 2:
           screenCleaner.cleanScreen();
@@ -110,5 +114,9 @@ public class BookManagementMenu {
           break;
       }
     }
+  }
+
+  private void modifyBookAuthorMenu(){
+
   }
 }
