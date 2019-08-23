@@ -1,12 +1,7 @@
 package com.infoshareacademy.menu;
 
-import com.infoshareacademy.Book;
-import com.infoshareacademy.BookList;
 import com.infoshareacademy.BookService;
 import com.infoshareacademy.ScreenCleaner;
-import com.infoshareacademy.SingleBookView;
-import com.infoshareacademy.repository.BookRepository;
-import java.util.List;
 import java.util.Scanner;
 
 public class BookManagementMenu {
@@ -38,6 +33,11 @@ public class BookManagementMenu {
           break;
         case 9:
           screenCleaner.cleanScreen();
+          break;
+        default:
+          screenCleaner.cleanScreen();
+          System.out.println(" Podaj własciwa wartość!");
+          choseManagementOption();
           break;
       }
     }
@@ -90,7 +90,7 @@ public class BookManagementMenu {
     System.out.println(" 9- Powrót");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
-      switch (choice){
+      switch (choice) {
         case 1:
           screenCleaner.cleanScreen();
           System.out.println("Podaj nowy tytuł: ");
@@ -129,6 +129,11 @@ public class BookManagementMenu {
           break;
         case 9:
           screenCleaner.cleanScreen();
+          break;
+        default:
+          screenCleaner.cleanScreen();
+          System.out.println(" Podaj własciwa wartość!");
+          modifyBookMenu();
           break;
       }
     }
