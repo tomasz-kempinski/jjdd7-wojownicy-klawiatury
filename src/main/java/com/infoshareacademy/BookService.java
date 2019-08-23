@@ -81,4 +81,12 @@ public class BookService {
       }
     });
   }
+
+  public void modifyFavourite(boolean favourite, Long id) {
+    BookRepository.getBooks().forEach(b -> {
+      if (b.getId().equals(id)) {
+        b.setFavourite(favourite);
+      }
+    });
+  }
 }
