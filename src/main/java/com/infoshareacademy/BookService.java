@@ -1,6 +1,7 @@
 package com.infoshareacademy;
 
 
+import java.util.Comparator;
 
 public class BookService {
 
@@ -35,12 +36,29 @@ public class BookService {
     maxId++;
   }
 
-  public void checkForMaxId() {
+  public void ccc() {
     BookRepository.getBookRepository().forEach(b -> {
       if (b.getId() > getCurrentId()) {
         setCurrentId(b.getId());
       }
     });
+  }
+
+  public void checkForMaxId() {
+    maxId = BookRepository.getBookRepository()
+        .stream()
+        .max(Comparator.comparing(Book::getId))
+        .get()
+        .getId();
+  }
+
+  public void checkForMaxId2(){
+    maxId = BookRepository.getBookRepository()
+        .stream()
+        .filter(book -> book.getId() > getCurrentId())
+        .findFirst()
+        .get()
+        .getId();
   }
 
   public void addBook(String kind, String title, String author, Boolean hasAudio,
@@ -52,7 +70,11 @@ public class BookService {
   }
 
   public void deleteBook(Long id) {
-    BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
+    if (BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))){
+      BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
+    } else {
+      System.out.println("Nie znaleziono takiej książki");
+    }
   }
 
   public void modifyAuthor(String author, Long id) {
