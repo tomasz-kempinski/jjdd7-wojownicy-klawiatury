@@ -1,28 +1,47 @@
 package com.infoshareacademy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 class BookTest {
 
-  /* @Test
-   void getFavourite() {
-   }
+  @Test
+  void getFavourite() {
+    Book book = new Book();
+    book.setFavourite(true);
 
-   @Test
-   void setFavourite() {
-   }
+    assertThat(book.getFavourite()).isTrue()
+        .isNotNull();
+  }
 
-   @Test
-   void getId() {
-   }
+  @Test
+  void setFavourite() {
+    Book book = new Book();
+    book.setFavourite(false);
 
-   @Test
-   void setId() {
-   }
- */
+    assertThat(book.getFavourite()).isFalse()
+        .isNotNull();
+  }
+
+  @Test
+  void getId() {
+    Book book = new Book();
+    book.setId((long) 1);
+
+    assertThat(book.getId()).isEqualTo(1)
+        .isNotNull();
+  }
+
+  @Test
+  void setId() {
+    Book book = new Book();
+    book.setId((long) 1);
+
+    assertThat(book.getId()).isEqualTo(1)
+        .isNotNull();
+  }
+
   @Test
   void getKind() {
     Book book = new Book("drama", "Romeo and Juliet", "William Shakespeare", true, "tragedy");

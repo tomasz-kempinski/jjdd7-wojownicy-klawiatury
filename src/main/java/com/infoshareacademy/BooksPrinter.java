@@ -50,6 +50,5 @@ class BooksPrinter {
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
     }
-
   }
 }

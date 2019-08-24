@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class BookRepositoryTest {
 
-  Book book1 = new Book("drama", "Romeo and Juliet", "William Shakespeare", true, "tragedy");
-  Book book2 = new Book("epic", "The Lord Of The Rings", "J. R. R. Tolkien", false, "fantasy");
+  private Book book1 = new Book("drama", "Romeo and Juliet", "William Shakespeare", true, "tragedy");
+  private Book book2 = new Book("epic", "The Lord Of The Rings", "J. R. R. Tolkien", false, "fantasy");
 
   @Test
   void getBookRepository_isNotEmpty() {
