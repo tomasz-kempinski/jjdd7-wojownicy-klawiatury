@@ -1,9 +1,7 @@
 package com.infoshareacademy.menu;
 
-import com.infoshareacademy.BookList;
-import com.infoshareacademy.BookSearchHandler;
-import com.infoshareacademy.FavouriteBooks;
-import com.infoshareacademy.ScreenCleaner;
+import com.infoshareacademy.*;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -15,6 +13,7 @@ public class Menu {
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Przeglądanie zbiorów");
     System.out.println(" 2- Ulubione książki");
+    System.out.println(" 3- Zarządzanie książkami");
     System.out.println(" 9- Zakończ program");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
@@ -31,15 +30,21 @@ public class Menu {
           favouriteBooks.favoriteBooksMenu();
           screenCleaner.cleanScreen();
           break;
+        case 3:
+          screenCleaner.cleanScreen();
+          BookManagementMenu bookManagementMenu = new BookManagementMenu();
+          bookManagementMenu.choseManagementOption();
+          break;
       }
     }
   }
 
-  private void browsingCollections() {
+  public void browsingCollections() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" 1- Lista ksiażek");
     System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
     System.out.println(" 3- Przeglądanie pojedynczej pozycji");
+    System.out.println(" 4- Wyświetlanie książek według kategorii");
     System.out.println(" 9- Powrót");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
@@ -66,6 +71,12 @@ public class Menu {
               "\n################### Przeglądanie pojedynczej pozycji ####################\n");
           singleBookViewMenu.selectBook();
           break;
+        case 4:
+          screenCleaner.cleanScreen();
+          System.out.println(
+              "\n##################### Wyświetlanie książek według kategorii #####################\n");
+          BookFilterService bookFilterService = new BookFilterService();
+          bookFilterService.filterByCategory();
         case 9:
           screenCleaner.cleanScreen();
           menu();

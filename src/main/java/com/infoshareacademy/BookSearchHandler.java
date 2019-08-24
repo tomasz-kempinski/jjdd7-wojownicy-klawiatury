@@ -1,6 +1,6 @@
 package com.infoshareacademy;
 
-import static com.infoshareacademy.repository.BookRepository.getBooks;
+import static com.infoshareacademy.BookRepository.getBookRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,12 +11,31 @@ public class BookSearchHandler {
   private List<Book> books;
 
   public BookSearchHandler() {
-    this.books = getBooks();
+    this.books = getBookRepository();
   }
 
   public void listFoundBooks() {
     final List<Book> booksFound = findBooks(provideAuthor(), provideTitle(), provideAudio());
     BooksPrinter.printListOfBooks(booksFound);
+  }
+
+  private List<Book> findBooks(String author, String title, String hasAudio) {
+    if (hasAudio.equals("")) {
+      return books.stream()
+          .filter(
+              book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()) && book
+                  .getTitle()
+                  .toLowerCase().contains(title.toLowerCase()))
+          .collect(Collectors.toList());
+    } else {
+      return books.stream()
+          .filter(
+              book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()) && book
+                  .getTitle()
+                  .toLowerCase().contains(title.toLowerCase())
+                  && book.getHasAudio() == Boolean.parseBoolean(hasAudio))
+          .collect(Collectors.toList());
+    }
   }
 
   private String provideAuthor() {
@@ -49,27 +68,20 @@ public class BookSearchHandler {
     }
   }
 
-  private boolean provideAudio() {
+  private String provideAudio() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Czy książka ma mieć wersję audio? (T/N)");
-    String audio = scanner.nextLine();
-    boolean hasAudio = false;
+    System.out.println(" Czy książka ma mieć wersję audio? (T/N lub pomiń wciskając ENTER)");
+    String input = scanner.nextLine();
+    String hasAudio = "false";
 
-    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
+    if (input.equals("")) {
+      hasAudio = "";
+    } else if (!input.equalsIgnoreCase("T") && !input.equalsIgnoreCase("N")) {
       System.out.println(" Podaj prawidłowe dane!");
-      provideAudio();
-    } else if (audio.equalsIgnoreCase("T")) {
-      hasAudio = true;
+      return provideAudio();
+    } else if (input.equalsIgnoreCase("T")) {
+      hasAudio = "true";
     }
     return hasAudio;
-  }
-
-  private List<Book> findBooks(String author, String title, Boolean hasAudio) {
-    return books.stream()
-        .filter(
-            book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()) && book.getTitle()
-                .toLowerCase().contains(title.toLowerCase())
-                && book.getHasAudio() == hasAudio)
-        .collect(Collectors.toList());
   }
 }

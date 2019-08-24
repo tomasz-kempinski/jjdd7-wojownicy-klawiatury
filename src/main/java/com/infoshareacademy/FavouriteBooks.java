@@ -1,21 +1,18 @@
 package com.infoshareacademy;
 
 import com.infoshareacademy.menu.Menu;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+
 import java.util.Scanner;
 
 public class FavouriteBooks {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
+  private Menu menu = new Menu();
 
   public void favoriteBooksMenu() {
-    BookService bookService = new BookService();
+
     Scanner scanner = new Scanner(System.in);
-    System.out.println("1- Wyświetlenie ulubionych książek");
-    System.out.println("2- Dodanie ulubionej książki");
-    System.out.println("3- Usunięcie ulubionej książki");
+    System.out.println("####FUNKCJA W CZASIE IMPLEMENTACJI###");
     System.out.println("9- Powrót do menu");
 
     if (scanner.hasNextInt()) {
@@ -35,18 +32,15 @@ public class FavouriteBooks {
           break;
         case 9:
           screenCleaner.cleanScreen();
-          Menu menu = new Menu();
           menu.menu();
           break;
         default:
           screenCleaner.cleanScreen();
           favoriteBooksMenu();
           break;
-
+        }
       }
     }
-  }
-
   private void favouriteBooksList() {
 
   }
