@@ -13,6 +13,7 @@ public class Menu {
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Przeglądanie zbiorów");
     System.out.println(" 2- Ulubione książki");
+    System.out.println(" 3- Zarządzanie książkami");
     System.out.println(" 9- Zakończ program");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
@@ -28,6 +29,11 @@ public class Menu {
           FavouriteBooks favouriteBooks = new FavouriteBooks();
           favouriteBooks.favoriteBooksMenu();
           screenCleaner.cleanScreen();
+          break;
+        case 3:
+          screenCleaner.cleanScreen();
+          BookManagementMenu bookManagementMenu = new BookManagementMenu();
+          bookManagementMenu.choseManagementOption();
           break;
       }
     }

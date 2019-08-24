@@ -21,6 +21,7 @@ public class SingleBookView {
     }
     screenCleaner.cleanScreen();
     String[][] data = {
+        {"       Id        ", books.get(bookNumber).getId().toString()},
         {"     Autor       ", books.get(bookNumber).getAuthor()},
         {"     Tytuł       ", books.get(bookNumber).getTitle()},
         {"Rodzaj Literacki ", books.get(bookNumber).getKind()},
