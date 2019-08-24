@@ -122,7 +122,7 @@ class BookManagementMenu {
     System.out.println(" Podaj id książki do edycji");
     if (scanner.hasNextLong()) {
       Long id = scanner.nextLong();
-      if(BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))) {
+      if(bookService.checkIfBookExists(id)) {
         System.out.println(" Co chcesz edytowac?");
         System.out.println(" 1- Tytuł");
         System.out.println(" 2- Autor");

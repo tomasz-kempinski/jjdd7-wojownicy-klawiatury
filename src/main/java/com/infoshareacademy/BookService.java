@@ -70,7 +70,7 @@ public class BookService {
   }
 
   public void deleteBook(Long id) {
-    if (BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))){
+    if (checkIfBookExists(id)){
       BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
     } else {
       System.out.println("Nie znaleziono takiej książki");
@@ -123,5 +123,12 @@ public class BookService {
         b.setFavourite(favourite);
       }
     });
+  }
+
+  public boolean checkIfBookExists(Long id){
+    if(BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))){
+      return true;
+    }
+    return false;
   }
 }
