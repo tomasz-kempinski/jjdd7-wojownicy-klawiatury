@@ -23,6 +23,10 @@ public class SingleBookViewMenu {
     Scanner scanner = new Scanner(System.in);
     Menu menu = new Menu();
     int choice;
+    System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
+    System.out.println(
+        "\n########################### Widok pojedynczej książki ###########################\n");
+    System.out.println(" Podaj numer książki, którą chcesz zobaczyć");
     long id = -1;
     System.out.println(" Podaj ID książki która chcesz wyświetlić");
     if (scanner.hasNextInt()) {
@@ -63,7 +67,6 @@ public class SingleBookViewMenu {
               screenCleaner.cleanScreen();
               FavouriteBooks favouriteBooks = new FavouriteBooks();
               favouriteBooks.favouriteBooksAdd(id);
-              System.out.println(" Książka dodana do ulubionych poprawnie ");
               menu.menu();
               break;
             default:
@@ -79,6 +82,9 @@ public class SingleBookViewMenu {
         }
       } else {
         screenCleaner.cleanScreen();
+        System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
+        System.out.println(
+            "\n########################### Widok pojedynczej książki ###########################\n");
         System.out.println(" Podaj liczbę odpowiadającą ID książki!");
         System.out.println(" 1- Wyświetl listę książek 2- Wyszukaj książkę");
         System.out.println(" 3- Wpisz numer książki ponownie ");
@@ -92,7 +98,9 @@ public class SingleBookViewMenu {
             case 2:
               screenCleaner.cleanScreen();
               BookSearchHandler bookSearchHandler = new BookSearchHandler();
-              System.out.println(" Wyszukiwanie książek");
+              System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Wyszukiwanie książek");
+              System.out.println(
+                  "\n########################### Wyszukiwanie książek ###########################\n");
               bookSearchHandler.listFoundBooks();
               break;
             default:
@@ -108,6 +116,7 @@ public class SingleBookViewMenu {
       selectBook();
     }
   }
+
 }
 
 

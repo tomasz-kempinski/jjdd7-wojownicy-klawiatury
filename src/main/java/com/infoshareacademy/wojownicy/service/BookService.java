@@ -1,8 +1,5 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
-import com.infoshareacademy.wojownicy.repository.BookRepository;
-
 public class BookService {
 
   private static Long maxId = 0L;
@@ -56,7 +53,7 @@ public class BookService {
     if (checkIfBookExists(id)) {
       BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
     } else {
-      System.out.println("Nie znaleziono takiej książki");
+      System.out.println(" Nie znaleziono takiej książki");
     }
   }
 
@@ -109,6 +106,9 @@ public class BookService {
   }
 
   public boolean checkIfBookExists(Long id) {
-    return BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id));
+    if (BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))) {
+      return true;
+    }
+    return false;
   }
 }

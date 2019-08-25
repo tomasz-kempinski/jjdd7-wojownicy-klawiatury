@@ -26,35 +26,32 @@ public class BookFilterService {
 
   public void filterByCategory() {
     screenCleaner.cleanScreen();
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów/Wyświetlanie według kategorii");
+    System.out.println(
+        "\n##################### Wyświetlanie książek według kategorii #####################\n");
     System.out.println(" 1- Autor");
     System.out.println(" 2- Gatunek");
     System.out.println(" 3- Rodzaj literacki");
-    System.out.println(" 4- AudioBook");
     System.out.println(" 9- Powrót");
     String choice = scanner.nextLine();
     switch (choice) {
       case "1":
-        screenCleaner.cleanScreen();
         listFoundBooksAuthor();
         break;
       case "2":
-        screenCleaner.cleanScreen();
         listFoundBooksGenre();
         break;
       case "3":
-        screenCleaner.cleanScreen();
         listFoundBooksKind();
         break;
-      case "4":
-        screenCleaner.cleanScreen();
-        listFoundBooksAudio();
       case "9":
         screenCleaner.cleanScreen();
         menu.browsingCollections();
         break;
       default:
-        screenCleaner.cleanScreen();
         System.out.println("Zły wybór");
+        filterByCategory();
+        break;
     }
   }
 
@@ -65,24 +62,22 @@ public class BookFilterService {
     int currentPage = 0;
     String nextPageCheck;
     if (printListBook.isEmpty()) {
-      screenCleaner.cleanScreen();
       System.out.println(" \nNie znaleziono żadnych książek.");
     } else {
       do {
         if (currentPage > 0) {
-          screenCleaner.cleanScreen();
           System.out.println(
               " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ wyświetlanie");
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("Z")) {
             filterByCategory();
+            break;
           }
         }
         currentLine = 0;
         do {
           currentPage++;
           currentLine++;
-          screenCleaner.cleanScreen();
           System.out.println(
               bookCounter + 1 + ". \""
                   + " Autor: " + printListBook.get(bookCounter).getAuthor() + "   "
@@ -104,7 +99,6 @@ public class BookFilterService {
     }
     int counter = 1;
     for (String book : authorList) {
-      screenCleaner.cleanScreen();
       System.out.println(counter + "." + " " + book);
       counter++;
     }
@@ -120,7 +114,6 @@ public class BookFilterService {
     }
     int counter = 1;
     for (String genre : genreList) {
-      screenCleaner.cleanScreen();
       System.out.println(counter + "." + " " + genre);
       counter++;
     }
@@ -136,20 +129,17 @@ public class BookFilterService {
     }
     int counter = 1;
     for (String kind : kindList) {
-      screenCleaner.cleanScreen();
       System.out.println(counter + "." + " " + kind);
       counter++;
     }
   }
 
   private String provideAuthor() {
-    screenCleaner.cleanScreen();
     System.out.println(" Wpisz imię i nazwisko autora z powyższej listy: ");
     String author = scanner.nextLine();
     if (author.length() == 0) {
       return "";
     } else if (author.length() < 3) {
-      screenCleaner.cleanScreen();
       System.out.println(" Wpisz co najmniej 3 znaki!");
       return provideAuthor();
     } else {
@@ -158,14 +148,12 @@ public class BookFilterService {
   }
 
   private String provideGenre() {
-    screenCleaner.cleanScreen();
     System.out.println(" Wpisz gatunek z powyższej listy: ");
     String genre = scanner.nextLine();
 
     if (genre.length() == 0) {
       return "";
     } else if (genre.length() < 3) {
-      screenCleaner.cleanScreen();
       System.out.println(" Wpisz co najmniej 3 znaki!");
       return provideGenre();
     } else {
@@ -174,35 +162,17 @@ public class BookFilterService {
   }
 
   private String provideKind() {
-    screenCleaner.cleanScreen();
     System.out.println(" Wpisz rodzaj literacki z powyższej listy: ");
     String kind = scanner.nextLine();
 
     if (kind.length() == 0) {
       return "";
     } else if (kind.length() < 3) {
-      screenCleaner.cleanScreen();
       System.out.println(" Wpisz co najmniej 3 znaki!");
       return provideKind();
     } else {
       return kind;
     }
-  }
-
-  private boolean provideAudio() {
-    screenCleaner.cleanScreen();
-    System.out.println(" Wybierz czy chcesz wyświetlić książki z audio: (T/N) ");
-    String audio = scanner.nextLine();
-    boolean hasAudio = false;
-
-    if (!audio.equalsIgnoreCase("T") && !audio.equalsIgnoreCase("N")) {
-      screenCleaner.cleanScreen();
-      System.out.println(" Podaj prawidłowe dane!");
-      provideAudio();
-    } else if (audio.equalsIgnoreCase("T")) {
-      hasAudio = true;
-    }
-    return hasAudio;
   }
 
   private List<Book> findBooksByAuthor(String author) {
@@ -223,13 +193,6 @@ public class BookFilterService {
     return books.stream()
         .filter(
             book -> book.getKind().toLowerCase().contains(kind.toLowerCase()))
-        .collect(Collectors.toList());
-  }
-
-  private List<Book> findBooksByAudio(Boolean hasAudio) {
-    return books.stream()
-        .filter(
-            book -> book.getHasAudio() == hasAudio)
         .collect(Collectors.toList());
   }
 
@@ -256,11 +219,4 @@ public class BookFilterService {
     printList(booksFound);
     filterByCategory();
   }
-
-  private void listFoundBooksAudio() {
-    final List<Book> booksFound = findBooksByAudio(provideAudio());
-    printList(booksFound);
-    filterByCategory();
-  }
 }
-

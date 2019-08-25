@@ -49,6 +49,21 @@ public class BooksPrinter {
           bookCounter++;
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
+      if (bookCounter == listOfBooks.size()) {
+        System.out.println(
+            "\n ############################## KONIEC LISTY ##############################");
+        System.out.println(
+            " \nEnter -> Zakończ program || P -> Powrót do menu || W -> Wyświetl szczegóły książki ");
+        nextPageCheck = scanner.nextLine();
+        if (nextPageCheck.equalsIgnoreCase("p")) {
+          Menu menu = new Menu();
+          screenCleaner.cleanScreen();
+          menu.menu();
+        } else if (nextPageCheck.equalsIgnoreCase("W")) {
+          screenCleaner.cleanScreen();
+          new SingleBookViewMenu().selectBook();
+        }
+      }
     }
 
   }

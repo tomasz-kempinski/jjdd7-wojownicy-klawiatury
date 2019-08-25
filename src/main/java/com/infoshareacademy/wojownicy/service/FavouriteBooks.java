@@ -1,8 +1,7 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
-import com.infoshareacademy.wojownicy.menu.Menu;
-import com.infoshareacademy.wojownicy.repository.BookRepository;
+import com.infoshareacademy.menu.Menu;
+import com.infoshareacademy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +14,9 @@ public class FavouriteBooks {
   public void favoriteBooksMenu() {
 
     Scanner scanner = new Scanner(System.in);
+    System.out.println("Twoja pozycja: Ulubione Książki");
+    System.out.println(
+        "\n########################### Ulubione Książki ###########################\n");
     System.out.println(" 1- Lista ulubionych książek");
     System.out.println(" 2- Dodaj ulubiona ksiązkę");
     System.out.println(" 3- Usuń ulubioną książkę");
@@ -54,6 +56,9 @@ public class FavouriteBooks {
   }
 
   private void favouriteBooksList() {
+    System.out.println("Twoja pozycja: Ulubione książki/lista ulubionych");
+    System.out.println(
+        "\n########################### Lista ulubionych książek ###########################\n");
     Scanner scanner = new Scanner(System.in);
     List<Book> books = BookRepository.getBookRepository();
     for (Book book : books) {
@@ -61,7 +66,8 @@ public class FavouriteBooks {
         System.out.println(book.getAuthor() + " " + book.getTitle() + "ID: " + book.getId());
       }
     }
-    System.out.println(" 1- Usuń książkę z ulubionych  2- powrót do Menu");
+    System.out
+        .println(" 1- Usuń książkę z ulubionych  2- Powrót do Menu 3- Widok pojedynczej książki");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
       if (choice == 1) {
@@ -70,7 +76,6 @@ public class FavouriteBooks {
           long id = scanner.nextLong();
           favouriteBookRemove(id);
           screenCleaner.cleanScreen();
-          System.out.println(" Książka usunięta prawidłowo ");
           System.out.println(" 1- Powrót do Menu  2- Lista ulubionych książek ");
           if (scanner.hasNextInt()) {
             choice = scanner.nextInt();
@@ -79,16 +84,25 @@ public class FavouriteBooks {
               favouriteBooksList();
             } else {
               screenCleaner.cleanScreen();
+              menu.menu();
             }
-            menu.menu();
+          } else {
+            screenCleaner.cleanScreen();
+            System.out.println(" Podaj prawidłową wartość");
+            favouriteBooksList();
           }
         } else {
           screenCleaner.cleanScreen();
           menu.menu();
         }
       } else {
-        screenCleaner.cleanScreen();
-        menu.menu();
+        if (choice == 3) {
+          SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
+          singleBookViewMenu.selectBook();
+        } else {
+          screenCleaner.cleanScreen();
+          menu.menu();
+        }
       }
     } else {
       screenCleaner.cleanScreen();
@@ -119,10 +133,11 @@ public class FavouriteBooks {
     if (numberOfFavouriteBooks >= 3) {
       screenCleaner.cleanScreen();
       System.out.println(" Możesz mieć maksymalnie 3 ulubione ksiązki");
-      System.out.println(" Usuń ulubioną książkę, a następnie spróbuj dodac ponownie");
+      System.out.println(" Usuń ulubioną książkę, a następnie spróbuj dodac ponownie\n");
       favouriteBooksList();
     } else {
       bookService.modifyFavourite(true, id);
+      System.out.println(" Książka dodana do ulubionych poprawnie ");
     }
   }
 
@@ -141,5 +156,6 @@ public class FavouriteBooks {
       }
     }
     bookService.modifyFavourite(false, id);
+    System.out.println(" Książka usunięta prawidłowo ");
   }
 }
