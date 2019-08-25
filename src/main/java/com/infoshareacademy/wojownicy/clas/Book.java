@@ -118,12 +118,12 @@ public class Book {
   }
 
   @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
+  private Map<String, Object> getAdditionalProperties() {
     return this.additionalProperties;
   }
 
   @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
+  private void setAdditionalProperty(String name, Object value) {
     this.additionalProperties.put(name, value);
   }
 

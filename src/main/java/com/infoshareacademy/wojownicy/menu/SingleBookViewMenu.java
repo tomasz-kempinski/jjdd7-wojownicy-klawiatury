@@ -23,10 +23,9 @@ public class SingleBookViewMenu {
     Scanner scanner = new Scanner(System.in);
     Menu menu = new Menu();
     int choice;
-    System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
+    System.out.println(" \nTwoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
     System.out.println(
         "\n########################### Widok pojedynczej książki ###########################\n");
-    System.out.println(" Podaj numer książki, którą chcesz zobaczyć");
     long id = -1;
     System.out.println(" Podaj ID książki która chcesz wyświetlić");
     if (scanner.hasNextInt()) {
@@ -56,15 +55,24 @@ public class SingleBookViewMenu {
               break;
             case 3:
               screenCleaner.cleanScreen();
+              System.out.println("\nTwoja pozycja: Przeglądanie zbiorów/Lista książek");
+              System.out
+                  .println("\n########################### Lista książek ###########################\n");
               bookList.listBooks();
               break;
             case 4:
               screenCleaner.cleanScreen();
+              System.out.println("\nTwoja pozycja: Przeglądanie zbiorów/Wyszukiwanie Książek");
+              System.out.println(
+                  "\n######################### Wyszukiwanie książek #########################\n");
               BookSearchHandler bookSearchHandler = new BookSearchHandler();
               bookSearchHandler.listFoundBooks();
               break;
             case 5:
               screenCleaner.cleanScreen();
+              System.out.println("\nTwoja pozycja: Ulubione Książki");
+              System.out.println(
+                  "\n########################### Ulubione Książki ###########################\n");
               FavouriteBooks favouriteBooks = new FavouriteBooks();
               favouriteBooks.favouriteBooksAdd(id);
               menu.menu();
@@ -82,7 +90,7 @@ public class SingleBookViewMenu {
         }
       } else {
         screenCleaner.cleanScreen();
-        System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
+        System.out.println(" \nTwoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
         System.out.println(
             "\n########################### Widok pojedynczej książki ###########################\n");
         System.out.println(" Podaj liczbę odpowiadającą ID książki!");
@@ -98,7 +106,7 @@ public class SingleBookViewMenu {
             case 2:
               screenCleaner.cleanScreen();
               BookSearchHandler bookSearchHandler = new BookSearchHandler();
-              System.out.println(" Twoja pozycja: Przeglądanie zbiorów/Wyszukiwanie książek");
+              System.out.println(" \nTwoja pozycja: Przeglądanie zbiorów/Wyszukiwanie książek");
               System.out.println(
                   "\n########################### Wyszukiwanie książek ###########################\n");
               bookSearchHandler.listFoundBooks();

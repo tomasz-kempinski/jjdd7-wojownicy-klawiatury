@@ -20,6 +20,8 @@ public class BooksPrinter {
     String nextPageCheck;
     if (listOfBooks.isEmpty()) {
       System.out.println(" \nNie znaleziono żadnych książek.");
+      BookSearchHandler bookSearchHandler = new BookSearchHandler();
+      bookSearchHandler.listFoundBooks();
     } else {
       do {
         if (currentPage > 0) {

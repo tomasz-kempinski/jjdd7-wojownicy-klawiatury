@@ -41,7 +41,7 @@ public class BookSearchHandler {
 
   private String provideAuthor() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Podaj autora lub pomiń wciskając ENTER:");
+    System.out.println(" \nPodaj autora lub pomiń wciskając ENTER:");
     String author = scanner.nextLine();
 
     if (author.length() == 0) {
@@ -56,7 +56,7 @@ public class BookSearchHandler {
 
   private String provideTitle() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Podaj tytuł lub pomiń wciskając ENTER");
+    System.out.println(" \nPodaj tytuł lub pomiń wciskając ENTER");
     String title = scanner.nextLine();
 
     if (title.length() == 0) {
@@ -71,7 +71,7 @@ public class BookSearchHandler {
 
   private String provideAudio() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Czy książka ma mieć wersję audio? (T/N lub pomiń wciskając ENTER)");
+    System.out.println(" \nCzy książka ma mieć wersję audio? (T/N lub pomiń wciskając ENTER)");
     String input = scanner.nextLine();
     String hasAudio = "false";
 
