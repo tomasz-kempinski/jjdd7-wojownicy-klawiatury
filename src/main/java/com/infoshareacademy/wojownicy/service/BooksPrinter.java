@@ -1,13 +1,14 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.menu.Menu;
-import com.infoshareacademy.menu.SingleBookViewMenu;
+import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.menu.Menu;
+import com.infoshareacademy.wojownicy.menu.SingleBookViewMenu;
 import java.util.List;
 import java.util.Scanner;
 
-class BooksPrinter {
+public class BooksPrinter {
 
-  static void printListOfBooks(List<Book> listOfBooks) {
+  public static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in);
     BookSorter bookSorter = new BookSorter();
     bookSorter.sortByTitle(listOfBooks);

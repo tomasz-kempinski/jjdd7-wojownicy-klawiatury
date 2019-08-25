@@ -1,4 +1,4 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.clas;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;

@@ -1,16 +1,18 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.repository.BookRepository;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-class BookParseService {
+public class BookParseService {
 
   private ObjectMapper mapper = new ObjectMapper();
 
-  void parseFileToObjects() {
+  public void parseFileToObjects() {
     BookService bookService = new BookService();
     try {
       BookRepository.bookRepository = mapper
@@ -24,7 +26,7 @@ class BookParseService {
     }
   }
 
-  void saveObjectsToFile() {
+  public void saveObjectsToFile() {
     try {
       mapper.writeValue(new File("books.json"), BookRepository.getBookRepository());
     } catch (IOException e) {

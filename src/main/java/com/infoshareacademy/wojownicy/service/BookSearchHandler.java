@@ -1,7 +1,8 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
 
-import static com.infoshareacademy.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
 
+import com.infoshareacademy.wojownicy.clas.Book;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;

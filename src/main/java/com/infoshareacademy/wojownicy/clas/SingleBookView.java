@@ -1,8 +1,9 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.clas;
 
-import static com.infoshareacademy.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
 
 import com.github.freva.asciitable.AsciiTable;
+import com.infoshareacademy.wojownicy.service.ScreenCleaner;
 import java.util.List;
 
 public class SingleBookView {

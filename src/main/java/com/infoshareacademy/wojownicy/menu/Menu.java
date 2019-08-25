@@ -1,10 +1,10 @@
-package com.infoshareacademy.menu;
+package com.infoshareacademy.wojownicy.menu;
 
-import com.infoshareacademy.BookFilterService;
-import com.infoshareacademy.BookList;
-import com.infoshareacademy.BookSearchHandler;
-import com.infoshareacademy.FavouriteBooks;
-import com.infoshareacademy.ScreenCleaner;
+import com.infoshareacademy.wojownicy.repository.BookList;
+import com.infoshareacademy.wojownicy.service.BookFilterService;
+import com.infoshareacademy.wojownicy.service.BookSearchHandler;
+import com.infoshareacademy.wojownicy.service.FavouriteBooks;
+import com.infoshareacademy.wojownicy.service.ScreenCleaner;
 import java.util.Scanner;
 
 public class Menu {

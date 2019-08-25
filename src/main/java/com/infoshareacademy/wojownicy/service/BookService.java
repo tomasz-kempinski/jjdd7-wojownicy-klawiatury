@@ -1,4 +1,7 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
+
+import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.repository.BookRepository;
 
 public class BookService {
 
@@ -8,7 +11,7 @@ public class BookService {
     for (Book book : BookRepository.getBookRepository()) {
       if (book.getId() == null) {
         book.setId(getCurrentId());
-       increaseCurrentId();
+        increaseCurrentId();
       }
     }
   }
@@ -50,7 +53,7 @@ public class BookService {
   }
 
   public void deleteBook(Long id) {
-    if (checkIfBookExists(id)){
+    if (checkIfBookExists(id)) {
       BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
     } else {
       System.out.println("Nie znaleziono takiej książki");
@@ -105,10 +108,7 @@ public class BookService {
     });
   }
 
-  public boolean checkIfBookExists(Long id){
-    if(BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))){
-      return true;
-    }
-    return false;
+  public boolean checkIfBookExists(Long id) {
+    return BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id));
   }
 }

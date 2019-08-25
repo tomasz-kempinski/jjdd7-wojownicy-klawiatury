@@ -84,7 +84,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.infoshareacademy.App</mainClass>
+              <mainClass>com.infoshareacademy.wojownicy.App</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
