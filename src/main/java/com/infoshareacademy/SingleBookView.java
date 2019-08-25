@@ -24,6 +24,9 @@ public class SingleBookView {
       hasAudio = "nie";
     }
     screenCleaner.cleanScreen();
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów/Widok pojedynczej książki");
+    System.out.println(
+        "\n########################### Widok pojedynczej książki ###########################\n");
     String[][] data = {
         {"       Id        ", books.get(bookNumber).getId().toString()},
         {"     Autor       ", books.get(bookNumber).getAuthor()},

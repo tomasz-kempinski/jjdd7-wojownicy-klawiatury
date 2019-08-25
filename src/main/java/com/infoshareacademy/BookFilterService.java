@@ -25,6 +25,9 @@ public class BookFilterService {
 
   public void filterByCategory() {
     screenCleaner.cleanScreen();
+    System.out.println("Twoja pozycja: Przeglądanie zbiorów/Wyświetlanie według kategorii");
+    System.out.println(
+        "\n##################### Wyświetlanie książek według kategorii #####################\n");
     System.out.println(" 1- Autor");
     System.out.println(" 2- Tytuł");
     System.out.println(" 3- Gatunek");
@@ -47,6 +50,7 @@ public class BookFilterService {
       case "4":
         screenCleaner.cleanScreen();
         listFoundBooksAudio();
+        break;
       case "9":
         screenCleaner.cleanScreen();
         menu.browsingCollections();
@@ -54,6 +58,8 @@ public class BookFilterService {
       default:
         screenCleaner.cleanScreen();
         System.out.println("Zły wybór");
+        filterByCategory();
+        break;
     }
   }
 
@@ -75,6 +81,7 @@ public class BookFilterService {
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("W")) {
             filterByCategory();
+            break;
           }
         }
         currentLine = 0;

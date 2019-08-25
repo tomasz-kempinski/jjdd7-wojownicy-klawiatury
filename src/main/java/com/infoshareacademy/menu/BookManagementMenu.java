@@ -21,13 +21,22 @@ class BookManagementMenu {
       switch (choice) {
         case 1:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Zarządzanie książkami/dodaj książkę");
+          System.out.println(
+              "\n######################### Dodaj książkę #########################\n");
           addBookMenu();
           break;
         case 2:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: zarządzanie książkami/edycja książek");
+          System.out.println(
+              "\n######################### Edytuj książkę #########################\n");
           modifyBookMenu();
           break;
         case 3:
+          System.out.println("Twoja pozycja: zarządzanie książkami/usuwanie książki");
+          System.out.println(
+              "\n######################### Usuń książkę #########################\n");
           screenCleaner.cleanScreen();
           deleteBookMenu();
           break;
@@ -38,12 +47,18 @@ class BookManagementMenu {
           break;
         default:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Zarządzanie książkami");
+          System.out.println(
+              "\n########################### Zarządzanie ksiażkami ###########################\n");
           System.out.println(" Podaj własciwa wartość!");
           choseManagementOption();
           break;
       }
     } else {
       screenCleaner.cleanScreen();
+      System.out.println("Twoja pozycja: Zarządzanie książkami");
+      System.out.println(
+          "\n########################### Zarządzanie ksiażkami ###########################\n");
       System.out.println(" Podaj własciwa wartość!");
       choseManagementOption();
     }
