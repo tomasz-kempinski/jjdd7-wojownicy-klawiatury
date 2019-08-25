@@ -1,6 +1,8 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy;
 
-import com.infoshareacademy.menu.Menu;
+import com.infoshareacademy.wojownicy.menu.Menu;
+import com.infoshareacademy.wojownicy.service.BookParseService;
+import com.infoshareacademy.wojownicy.service.ScreenCleaner;
 
 public class App {
 

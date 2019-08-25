@@ -1,4 +1,4 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
 
 
 import java.io.IOException;

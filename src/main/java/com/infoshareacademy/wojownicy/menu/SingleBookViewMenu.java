@@ -1,14 +1,14 @@
-package com.infoshareacademy.menu;
+package com.infoshareacademy.wojownicy.menu;
 
 
-import static com.infoshareacademy.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
 
-import com.infoshareacademy.Book;
-import com.infoshareacademy.BookList;
-import com.infoshareacademy.BookSearchHandler;
-import com.infoshareacademy.FavouriteBooks;
-import com.infoshareacademy.ScreenCleaner;
-import com.infoshareacademy.SingleBookView;
+import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.clas.SingleBookView;
+import com.infoshareacademy.wojownicy.repository.BookList;
+import com.infoshareacademy.wojownicy.service.BookSearchHandler;
+import com.infoshareacademy.wojownicy.service.FavouriteBooks;
+import com.infoshareacademy.wojownicy.service.ScreenCleaner;
 import java.util.List;
 import java.util.Scanner;
 

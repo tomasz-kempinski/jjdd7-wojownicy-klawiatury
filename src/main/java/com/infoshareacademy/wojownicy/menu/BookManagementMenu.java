@@ -1,15 +1,15 @@
-package com.infoshareacademy.menu;
+package com.infoshareacademy.wojownicy.menu;
 
-import com.infoshareacademy.BookService;
-import com.infoshareacademy.ScreenCleaner;
+import com.infoshareacademy.wojownicy.service.BookService;
+import com.infoshareacademy.wojownicy.service.ScreenCleaner;
 import java.util.Scanner;
 
-class BookManagementMenu {
+public class BookManagementMenu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private BookService bookService = new BookService();
 
-  void choseManagementOption() {
+  public void choseManagementOption() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Dodaj książke.");

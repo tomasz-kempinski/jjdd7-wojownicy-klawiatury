@@ -1,4 +1,7 @@
-package com.infoshareacademy;
+package com.infoshareacademy.wojownicy.service;
+
+import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.repository.BookRepository;
 
 public class BookService {
 
