@@ -49,7 +49,8 @@ class BooksPrinter {
         } while (currentLine < lines && currentPage < listOfBooks.size());
       } while (currentPage < listOfBooks.size());
       if (bookCounter == listOfBooks.size()) {
-        System.out.println("\n ############################## KONIEC LISTY ##############################");
+        System.out.println(
+            "\n ############################## KONIEC LISTY ##############################");
         System.out.println(
             " \nEnter -> Zakończ program || P -> Powrót do menu || W -> Wyświetl szczegóły książki ");
         nextPageCheck = scanner.nextLine();

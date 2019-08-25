@@ -11,7 +11,7 @@ public class Menu {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
-  public void menu(){
+  public void menu() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(
         "\n########################### Menu ###########################\n");

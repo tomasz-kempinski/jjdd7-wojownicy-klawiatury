@@ -22,7 +22,6 @@ public class FavouriteBooks {
     System.out.println(" 3- Usuń ulubioną książkę");
     System.out.println(" 9- Powrót do menu");
 
-
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
       switch (choice) {
@@ -67,7 +66,8 @@ public class FavouriteBooks {
         System.out.println(book.getAuthor() + " " + book.getTitle() + "ID: " + book.getId());
       }
     }
-    System.out.println(" 1- Usuń książkę z ulubionych  2- Powrót do Menu 3- Widok pojedynczej książki");
+    System.out
+        .println(" 1- Usuń książkę z ulubionych  2- Powrót do Menu 3- Widok pojedynczej książki");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
       if (choice == 1) {
@@ -96,7 +96,7 @@ public class FavouriteBooks {
           menu.menu();
         }
       } else {
-        if (choice==3){
+        if (choice == 3) {
           SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
           singleBookViewMenu.selectBook();
         } else {
