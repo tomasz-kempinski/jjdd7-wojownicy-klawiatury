@@ -1,16 +1,15 @@
 package com.infoshareacademy;
 
 import com.infoshareacademy.menu.Menu;
-
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class FavouriteBooks {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private Menu menu = new Menu();
   private List<Book> books = BookRepository.getBookRepository();
+
   public void favoriteBooksMenu() {
 
     Scanner scanner = new Scanner(System.in);
@@ -44,13 +43,14 @@ public class FavouriteBooks {
           screenCleaner.cleanScreen();
           favoriteBooksMenu();
           break;
-        }
-      } else {
+      }
+    } else {
       screenCleaner.cleanScreen();
       System.out.println(" Podaj prawidlową wartość!");
       favoriteBooksMenu();
     }
-    }
+  }
+
   private void favouriteBooksList() {
     Scanner scanner = new Scanner(System.in);
     List<Book> books = BookRepository.getBookRepository();
@@ -60,33 +60,34 @@ public class FavouriteBooks {
       }
     }
     System.out.println(" 1- Usuń książkę z ulubionych  2- powrót do Menu");
-    if(scanner.hasNextInt()){
-     int choice = scanner.nextInt();
-     if (choice==1){
-       System.out.println(" Podaj ID książki, którą chcesz usunąć ");
-       if(scanner.hasNextLong()) {
-         long id = scanner.nextLong();
-         favouriteBookRemove(id);
-         screenCleaner.cleanScreen();
-         System.out.println(" Książka usunięta prawidłowo ");
-         System.out.println(" 1- Powrót do Menu  2- Lista ulubionych książek ");
-         if(scanner.hasNextInt()){
-           choice = scanner.nextInt();
-           if(choice==2){
-             screenCleaner.cleanScreen();
-             favouriteBooksList();
-           } else
-             screenCleaner.cleanScreen();
-             menu.menu();
-         }
-     } else {
-       screenCleaner.cleanScreen();
-       menu.menu();
-       }
-     } else {
-       screenCleaner.cleanScreen();
-       menu.menu();
-     }
+    if (scanner.hasNextInt()) {
+      int choice = scanner.nextInt();
+      if (choice == 1) {
+        System.out.println(" Podaj ID książki, którą chcesz usunąć ");
+        if (scanner.hasNextLong()) {
+          long id = scanner.nextLong();
+          favouriteBookRemove(id);
+          screenCleaner.cleanScreen();
+          System.out.println(" Książka usunięta prawidłowo ");
+          System.out.println(" 1- Powrót do Menu  2- Lista ulubionych książek ");
+          if (scanner.hasNextInt()) {
+            choice = scanner.nextInt();
+            if (choice == 2) {
+              screenCleaner.cleanScreen();
+              favouriteBooksList();
+            } else {
+              screenCleaner.cleanScreen();
+            }
+            menu.menu();
+          }
+        } else {
+          screenCleaner.cleanScreen();
+          menu.menu();
+        }
+      } else {
+        screenCleaner.cleanScreen();
+        menu.menu();
+      }
     } else {
       screenCleaner.cleanScreen();
       System.out.println(" Podaj właściwą wartość!!");
@@ -97,10 +98,10 @@ public class FavouriteBooks {
   public void favouriteBooksAdd(long id) {
     Scanner scanner = new Scanner(System.in);
     BookService bookService = new BookService();
-    int numberOfFavouriteBooks=0;
-    if (id == -1){
+    int numberOfFavouriteBooks = 0;
+    if (id == -1) {
       System.out.println(" Podaj id książki, którą chcesz dodać");
-      if (scanner.hasNextInt()){
+      if (scanner.hasNextInt()) {
         id = scanner.nextInt();
       } else {
         screenCleaner.cleanScreen();
@@ -113,23 +114,23 @@ public class FavouriteBooks {
         numberOfFavouriteBooks++;
       }
     }
-    if(numberOfFavouriteBooks>=3){
+    if (numberOfFavouriteBooks >= 3) {
       screenCleaner.cleanScreen();
       System.out.println(" Możesz mieć maksymalnie 3 ulubione ksiązki");
       System.out.println(" Usuń ulubioną książkę, a następnie spróbuj dodac ponownie");
       favouriteBooksList();
-    }else {
+    } else {
       bookService.modifyFavourite(true, id);
     }
-    }
+  }
 
 
   private void favouriteBookRemove(long id) {
     Scanner scanner = new Scanner(System.in);
     BookService bookService = new BookService();
-    if (id == -1){
+    if (id == -1) {
       System.out.println(" Podaj id książki, którą chcesz usunąć");
-      if (scanner.hasNextInt()){
+      if (scanner.hasNextInt()) {
         id = scanner.nextInt();
       } else {
         screenCleaner.cleanScreen();
@@ -137,6 +138,6 @@ public class FavouriteBooks {
         favouriteBookRemove(-1);
       }
     }
-    bookService.modifyFavourite(false,id);
+    bookService.modifyFavourite(false, id);
   }
 }

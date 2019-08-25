@@ -1,7 +1,5 @@
 package com.infoshareacademy.menu;
 
-import com.infoshareacademy.Book;
-import com.infoshareacademy.BookRepository;
 import com.infoshareacademy.BookService;
 import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
@@ -122,7 +120,7 @@ class BookManagementMenu {
     System.out.println(" Podaj id książki do edycji");
     if (scanner.hasNextLong()) {
       Long id = scanner.nextLong();
-      if(bookService.checkIfBookExists(id)) {
+      if (bookService.checkIfBookExists(id)) {
         System.out.println(" Co chcesz edytowac?");
         System.out.println(" 1- Tytuł");
         System.out.println(" 2- Autor");
@@ -179,8 +177,7 @@ class BookManagementMenu {
               break;
           }
         }
-      }
-      else {
+      } else {
         System.out.println("Nie znaleziono takiej ksiazki");
         modifyBookMenu();
       }

@@ -3,7 +3,6 @@ package com.infoshareacademy;
 import static com.infoshareacademy.BookRepository.getBookRepository;
 
 import com.github.freva.asciitable.AsciiTable;
-
 import java.util.List;
 
 public class SingleBookView {
@@ -12,10 +11,10 @@ public class SingleBookView {
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void singleBookView(long id) {
-    int bookNumber=0;
-    for (int i=0; i<books.size(); i++){
-      if(books.get(i).getId()==id){
-        bookNumber=i;
+    int bookNumber = 0;
+    for (int i = 0; i < books.size(); i++) {
+      if (books.get(i).getId() == id) {
+        bookNumber = i;
       }
     }
     String hasAudio;

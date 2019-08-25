@@ -1,7 +1,10 @@
 package com.infoshareacademy.menu;
 
-import com.infoshareacademy.*;
-
+import com.infoshareacademy.BookFilterService;
+import com.infoshareacademy.BookList;
+import com.infoshareacademy.BookSearchHandler;
+import com.infoshareacademy.FavouriteBooks;
+import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
 public class Menu {
@@ -43,7 +46,7 @@ public class Menu {
           System.out.println(" Podaj prawidłowe dane !");
           menu();
       }
-    } else{
+    } else {
       screenCleaner.cleanScreen();
       System.out.println(" Podaj prawidłowe dane !");
       menu();

@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.util.List;
 
 class BookParseService {
+
   private ObjectMapper mapper = new ObjectMapper();
+
   void parseFileToObjects() {
     BookService bookService = new BookService();
     try {
@@ -21,12 +23,13 @@ class BookParseService {
       System.out.println("Problem with IO occurred");
     }
   }
-    void saveObjectsToFile() {
-      try {
-        mapper.writeValue(new File("books.json"), BookRepository.getBookRepository());
-      } catch (IOException e) {
-        System.out.println("Problem with IO occurred");
-      }
+
+  void saveObjectsToFile() {
+    try {
+      mapper.writeValue(new File("books.json"), BookRepository.getBookRepository());
+    } catch (IOException e) {
+      System.out.println("Problem with IO occurred");
     }
   }
+}
 
