@@ -1,9 +1,8 @@
 package com.infoshareacademy;
 
-import com.infoshareacademy.menu.Menu;
-
 import static com.infoshareacademy.BookRepository.getBookRepository;
 
+import com.infoshareacademy.menu.Menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

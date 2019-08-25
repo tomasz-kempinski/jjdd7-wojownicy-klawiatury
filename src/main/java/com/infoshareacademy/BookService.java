@@ -1,8 +1,5 @@
 package com.infoshareacademy;
 
-
-import java.util.Comparator;
-
 public class BookService {
 
   private static Long maxId = 0L;
@@ -36,29 +33,12 @@ public class BookService {
     maxId++;
   }
 
-  public void ccc() {
+  public void checkForMaxId() {
     BookRepository.getBookRepository().forEach(b -> {
       if (b.getId() > getCurrentId()) {
         setCurrentId(b.getId());
       }
     });
-  }
-
-  public void checkForMaxId() {
-    maxId = BookRepository.getBookRepository()
-        .stream()
-        .max(Comparator.comparing(Book::getId))
-        .get()
-        .getId();
-  }
-
-  public void checkForMaxId2(){
-    maxId = BookRepository.getBookRepository()
-        .stream()
-        .filter(book -> book.getId() > getCurrentId())
-        .findFirst()
-        .get()
-        .getId();
   }
 
   public void addBook(String kind, String title, String author, Boolean hasAudio,
