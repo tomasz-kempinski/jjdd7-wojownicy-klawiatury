@@ -1,7 +1,10 @@
 package com.infoshareacademy.menu;
 
-import com.infoshareacademy.*;
-
+import com.infoshareacademy.BookFilterService;
+import com.infoshareacademy.BookList;
+import com.infoshareacademy.BookSearchHandler;
+import com.infoshareacademy.FavouriteBooks;
+import com.infoshareacademy.ScreenCleaner;
 import java.util.Scanner;
 
 public class Menu {
@@ -14,6 +17,7 @@ public class Menu {
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Przeglądanie zbiorów");
     System.out.println(" 2- Ulubione książki");
+    System.out.println(" 3- Zarządzanie książkami");
     System.out.println(" 9- Zakończ program");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
@@ -30,7 +34,23 @@ public class Menu {
           favouriteBooks.favoriteBooksMenu();
           screenCleaner.cleanScreen();
           break;
+        case 3:
+          screenCleaner.cleanScreen();
+          BookManagementMenu bookManagementMenu = new BookManagementMenu();
+          bookManagementMenu.choseManagementOption();
+          break;
+        case 9:
+          screenCleaner.cleanScreen();
+          break;
+        default:
+          screenCleaner.cleanScreen();
+          System.out.println(" Podaj prawidłowe dane !");
+          menu();
       }
+    } else {
+      screenCleaner.cleanScreen();
+      System.out.println(" Podaj prawidłowe dane !");
+      menu();
     }
   }
 

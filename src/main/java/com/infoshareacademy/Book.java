@@ -3,13 +3,14 @@ package com.infoshareacademy;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Book {
 
+  @JsonProperty
+  private Long id;
   @JsonProperty("kind")
   private String kind;
   @JsonProperty("title")
@@ -20,8 +21,38 @@ public class Book {
   private Boolean hasAudio;
   @JsonProperty("genre")
   private String genre;
+  @JsonProperty
+  private Boolean isFavourite;
 
   private Map<String, Object> additionalProperties = new HashMap<>();
+
+  public Book() {
+  }
+
+  public Book(String kind, String title, String author, Boolean hasAudio,
+      String genre) {
+    this.kind = kind;
+    this.title = title;
+    this.author = author;
+    this.hasAudio = hasAudio;
+    this.genre = genre;
+  }
+
+  public Boolean getFavourite() {
+    return isFavourite;
+  }
+
+  public void setFavourite(Boolean favourite) {
+    isFavourite = favourite;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getKind() {
     return kind;
@@ -72,11 +103,13 @@ public class Book {
       return false;
     }
     Book book = (Book) o;
-    return kind.equals(book.kind) &&
-        title.equals(book.title) &&
-        author.equals(book.author) &&
-        hasAudio.equals(book.hasAudio) &&
-        genre.equals(book.genre);
+    return Objects.equals(id, book.id) &&
+        Objects.equals(kind, book.kind) &&
+        Objects.equals(title, book.title) &&
+        Objects.equals(author, book.author) &&
+        Objects.equals(hasAudio, book.hasAudio) &&
+        Objects.equals(genre, book.genre) &&
+        Objects.equals(isFavourite, book.isFavourite);
   }
 
   @Override
