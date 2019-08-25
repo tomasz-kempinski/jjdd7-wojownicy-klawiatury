@@ -35,7 +35,18 @@ public class Menu {
           BookManagementMenu bookManagementMenu = new BookManagementMenu();
           bookManagementMenu.choseManagementOption();
           break;
+        case 9:
+          screenCleaner.cleanScreen();
+          break;
+        default:
+          screenCleaner.cleanScreen();
+          System.out.println(" Podaj prawidłowe dane !");
+          menu();
       }
+    } else{
+      screenCleaner.cleanScreen();
+      System.out.println(" Podaj prawidłowe dane !");
+      menu();
     }
   }
 

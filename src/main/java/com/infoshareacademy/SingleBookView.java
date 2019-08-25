@@ -11,8 +11,13 @@ public class SingleBookView {
   private List<Book> books = getBookRepository();
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
-  public void singleBookView(int bookNumber) {
-
+  public void singleBookView(long id) {
+    int bookNumber=0;
+    for (int i=0; i<books.size(); i++){
+      if(books.get(i).getId()==id){
+        bookNumber=i;
+      }
+    }
     String hasAudio;
     if (books.get(bookNumber).getHasAudio()) {
       hasAudio = "tak";
