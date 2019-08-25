@@ -28,35 +28,13 @@ public class BookService {
     return maxId;
   }
 
-  private static void setCurrentId(Long currentId) {
-    maxId = currentId;
-  }
-
   private static void increaseCurrentId() {
     maxId++;
   }
-
-  public void ccc() {
-    BookRepository.getBookRepository().forEach(b -> {
-      if (b.getId() > getCurrentId()) {
-        setCurrentId(b.getId());
-      }
-    });
-  }
-
   public void checkForMaxId() {
     maxId = BookRepository.getBookRepository()
         .stream()
         .max(Comparator.comparing(Book::getId))
-        .get()
-        .getId();
-  }
-
-  public void checkForMaxId2(){
-    maxId = BookRepository.getBookRepository()
-        .stream()
-        .filter(book -> book.getId() > getCurrentId())
-        .findFirst()
         .get()
         .getId();
   }
