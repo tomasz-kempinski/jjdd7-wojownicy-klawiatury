@@ -53,7 +53,7 @@ public class BookService {
     if (checkIfBookExists(id)){
       BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
     } else {
-      System.out.println("Nie znaleziono takiej książki");
+      System.out.println(" Nie znaleziono takiej książki");
     }
   }
 

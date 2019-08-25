@@ -12,8 +12,9 @@ public class Menu {
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void menu(){
-    System.out.println("Twoja pozycja: Menu");
     Scanner scanner = new Scanner(System.in);
+    System.out.println(
+        "\n########################### Menu ###########################\n");
     System.out.println(" Co chcesz zrobić?");
     System.out.println(" 1- Przeglądanie zbiorów");
     System.out.println(" 2- Ulubione książki");
@@ -28,14 +29,15 @@ public class Menu {
           break;
         case 2:
           screenCleaner.cleanScreen();
-          System.out.println(
-              "\n########################### Ulubione Książki ###########################\n");
           FavouriteBooks favouriteBooks = new FavouriteBooks();
           favouriteBooks.favoriteBooksMenu();
           screenCleaner.cleanScreen();
           break;
         case 3:
           screenCleaner.cleanScreen();
+          System.out.println("Twoja pozycja: Zarządzanie książkami");
+          System.out.println(
+              "\n########################### Zarządzanie ksiażkami ###########################\n");
           BookManagementMenu bookManagementMenu = new BookManagementMenu();
           bookManagementMenu.choseManagementOption();
           break;
@@ -55,7 +57,9 @@ public class Menu {
   }
 
   public void browsingCollections() {
-    System.out.println("Twoja pozycja: Przeglądanie zbiorów");
+    System.out.println(" Twoja pozycja: Przeglądanie zbiorów");
+    System.out.println(
+        "\n########################### Przeglądanie zbiorów ###########################\n");
     Scanner scanner = new Scanner(System.in);
     System.out.println(" 1- Lista ksiażek");
     System.out.println(" 2- Wyszukiwanie ksiażek (wg autora, tytułu, wersji audio)");
@@ -84,10 +88,7 @@ public class Menu {
           break;
         case 3:
           screenCleaner.cleanScreen();
-          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Przeglądanie pojedynczej pozycji");
           SingleBookViewMenu singleBookViewMenu = new SingleBookViewMenu();
-          System.out.println(
-              "\n################### Przeglądanie pojedynczej pozycji ####################\n");
           singleBookViewMenu.selectBook();
           break;
         case 4:
