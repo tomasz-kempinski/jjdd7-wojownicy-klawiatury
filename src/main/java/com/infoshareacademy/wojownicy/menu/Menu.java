@@ -93,9 +93,6 @@ public class Menu {
           break;
         case 4:
           screenCleaner.cleanScreen();
-          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Wyświetlanie według kategorii");
-          System.out.println(
-              "\n##################### Wyświetlanie książek według kategorii #####################\n");
           BookFilterService bookFilterService = new BookFilterService();
           bookFilterService.filterByCategory();
           break;

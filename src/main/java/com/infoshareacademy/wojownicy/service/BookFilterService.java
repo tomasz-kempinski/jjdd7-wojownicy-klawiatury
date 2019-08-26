@@ -70,7 +70,6 @@ public class BookFilterService {
               " \nEnter -> Kontynuuj wyświetlanie || Z -> Zakończ wyświetlanie");
           nextPageCheck = scanner.nextLine();
           if (nextPageCheck.equalsIgnoreCase("Z")) {
-            filterByCategory();
             break;
           }
         }
