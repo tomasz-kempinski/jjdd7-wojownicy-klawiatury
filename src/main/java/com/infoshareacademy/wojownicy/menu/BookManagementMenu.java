@@ -12,10 +12,10 @@ public class BookManagementMenu {
   public void choseManagementOption() {
     Scanner scanner = new Scanner(System.in);
     System.out.println(" Co chcesz zrobić?");
-    System.out.println(" 1- Dodaj książke.");
-    System.out.println(" 2- Edytuj książke.");
-    System.out.println(" 3- Usuń książke.");
-    System.out.println(" 9- Powrót.");
+    System.out.println(" 1- Dodaj książke");
+    System.out.println(" 2- Edytuj książke");
+    System.out.println(" 3- Usuń książke");
+    System.out.println(" 9- Powrót");
     if (scanner.hasNextInt()) {
       int choice = scanner.nextInt();
       switch (choice) {
