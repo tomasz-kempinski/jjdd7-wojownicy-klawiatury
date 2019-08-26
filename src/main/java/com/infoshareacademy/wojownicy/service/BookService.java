@@ -50,11 +50,13 @@ public class BookService {
     BookRepository.getBookRepository().add(book);
     setIdForBooks();
     setFavouriteForBooks();
+    System.out.println("Książka została dodana");
   }
 
   public void deleteBook(Long id) {
     if (checkIfBookExists(id)) {
       BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
+      System.out.println("Książka została usunięta");
     } else {
       System.out.println(" Nie znaleziono takiej książki");
     }

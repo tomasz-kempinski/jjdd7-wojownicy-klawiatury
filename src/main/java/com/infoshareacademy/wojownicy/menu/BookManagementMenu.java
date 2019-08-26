@@ -67,6 +67,7 @@ public class BookManagementMenu {
   private void addBookMenu() {
     boolean audio;
     Scanner scanner = new Scanner(System.in);
+    System.out.println("\nTwoja pozycja: Zarządzanie książkami/dodaj książkę");
     System.out.println(" Podaj tytuł książki");
     String title = scanner.nextLine();
     while (title.length() == 0) {
@@ -74,6 +75,7 @@ public class BookManagementMenu {
       title = scanner.nextLine();
     }
     screenCleaner.cleanScreen();
+    System.out.println("\nTwoja pozycja: Zarządzanie książkami/dodaj książkę");
     System.out.println(" Podaj autora książki");
     String author = scanner.nextLine();
     while (author.length() == 0) {
@@ -117,12 +119,23 @@ public class BookManagementMenu {
 
   private void deleteBookMenu() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(" Podaj id książki do usunięcia");
+    System.out.println("\nTwoja pozycja: zarządzanie książkami/usuwanie książki");
+    System.out.println(" Podaj id książki do usunięcia || Z - Przerwij usuwanie");
     if (scanner.hasNextLong()) {
       Long id = scanner.nextLong();
       bookService.deleteBook(id);
       choseManagementOption();
-    } else {
+    } else if (scanner.hasNext()){
+      String stop = scanner.next();
+      if(stop.equalsIgnoreCase("z")) {
+        choseManagementOption();
+      } else {
+        screenCleaner.cleanScreen();
+        System.out.println(" Podaj własciwa wartość!");
+        deleteBookMenu();
+      }
+    }
+    else {
       screenCleaner.cleanScreen();
       System.out.println(" Podaj własciwa wartość!");
       deleteBookMenu();

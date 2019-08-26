@@ -85,6 +85,13 @@ public class BookFilterService {
           bookCounter++;
         } while (currentLine < lines && currentPage < printListBook.size());
       } while (currentPage < printListBook.size());
+      if (bookCounter == printListBook.size()) {
+        System.out.println(
+            "\n ############################## KONIEC LISTY ##############################");
+        System.out.println(
+            " \nEnter -> Powrót do wyboru kategorii");
+        nextPageCheck = scanner.nextLine();
+      }
     }
   }
 
