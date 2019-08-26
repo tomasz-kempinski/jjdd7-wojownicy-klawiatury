@@ -4,7 +4,6 @@ import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRe
 
 import com.infoshareacademy.wojownicy.clas.Book;
 import com.infoshareacademy.wojownicy.menu.Menu;
-import com.infoshareacademy.wojownicy.menu.SingleBookViewMenu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
