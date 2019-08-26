@@ -16,7 +16,7 @@ public class FavouriteBooks {
   public void favoriteBooksMenu() {
 
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Twoja pozycja: Ulubione Książki");
+    System.out.println("\nTwoja pozycja: Ulubione Książki");
     System.out.println(
         "\n########################### Ulubione Książki ###########################\n");
     System.out.println(" 1- Lista ulubionych książek");
@@ -58,7 +58,7 @@ public class FavouriteBooks {
   }
 
   private void favouriteBooksList() {
-    System.out.println("Twoja pozycja: Ulubione książki/lista ulubionych");
+    System.out.println("\nTwoja pozycja: Ulubione książki/lista ulubionych");
     System.out.println(
         "\n########################### Lista ulubionych książek ###########################\n");
     Scanner scanner = new Scanner(System.in);

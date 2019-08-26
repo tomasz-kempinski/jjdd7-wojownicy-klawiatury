@@ -72,7 +72,7 @@ public class Menu {
         case 1:
           screenCleaner.cleanScreen();
           BookList bookList = new BookList();
-          System.out.println("Twoja pozycja: Przeglądanie zbiorów/Lista książek");
+          System.out.println("\nTwoja pozycja: Przeglądanie zbiorów/Lista książek");
           System.out
               .println("\n########################### Lista książek ###########################\n");
           bookList.listBooks();
