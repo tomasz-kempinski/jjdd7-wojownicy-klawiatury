@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Cinzel:700|Merriweather:900&display=swap&subset=latin-ext');
+
+.jumbotron{
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    background-image: url("./images/blur-book-ori.jpg");
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:240px 0 200px 0;
+    margin-bottom:50px;
+    }
+
+    #formLogin{padding: 15px; min-width:300px;}
