@@ -3,7 +3,8 @@
 .jumbotron{
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    background-image: url("./images/blur-book-ori.jpg");
+    color: white;
+    background-image: url("./img/blur-book-ori.jpg");
     background-attachment: scroll;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,5 +12,3 @@
     padding:240px 0 200px 0;
     margin-bottom:50px;
     }
-
-    #formLogin{padding: 15px; min-width:300px;}
