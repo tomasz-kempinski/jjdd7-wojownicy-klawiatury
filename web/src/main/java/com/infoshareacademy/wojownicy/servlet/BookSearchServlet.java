@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
+import com.infoshareacademy.wojownicy.domain.Author;
 import com.infoshareacademy.wojownicy.domain.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookService;
@@ -31,7 +32,7 @@ public class BookSearchServlet extends HttpServlet {
       throws IOException {
 
     String titleParam = req.getParameter("title");
-    String authorParam = req.getParameter("author");
+    String authorParam = req.getParameter("authorName");
     PrintWriter writer = resp.getWriter();
 
     if (titleParam == null || titleParam.isEmpty()) {
@@ -53,18 +54,18 @@ public class BookSearchServlet extends HttpServlet {
     String title = titleParam;
     Book bookTitle = bookService.findBookByTitle(title);
     String author = authorParam;
-    Book bookAuthor = bookService.findBookByAuthor(author);
+    Author authorName = bookService.findBookByAuthor(author);
 
-    Template template = templateProvider.getTemplate(getServletContext(), "...");
+    Template template = templateProvider.getTemplate(getServletContext(), "book-search.ftlh");
 
     Map<String, Object> model = new HashMap<>();
     if (bookTitle != null) {
-      model.put("bookTitle", bookTitle);
+      model.put("title", bookTitle);
     } else {
       model.put("errorMessageTitle", "Nie znaleziono takiego tytułu.");
     }
-    if (bookAuthor != null) {
-      model.put("bookAuthor", bookAuthor);
+    if (authorName != null) {
+      model.put("authorName", authorName);
     } else {
       model.put("errorMessageAuthor", "Nie znaleziono takiego autora.");
     }

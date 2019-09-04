@@ -1,6 +1,8 @@
 package com.infoshareacademy.wojownicy.dao;
 
+import com.infoshareacademy.wojownicy.domain.Author;
 import com.infoshareacademy.wojownicy.domain.Book;
+import com.infoshareacademy.wojownicy.repository.AuthorRepository;
 import com.infoshareacademy.wojownicy.repository.BookRepository;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -11,14 +13,14 @@ public class BookRepositoryDaoBeen implements BookRepositoryDao {
   @Override
   public Book getBookByTitle(String title) {
     return BookRepository.getBookRepository().stream()
-        .filter(u -> u.getTitle().equals(title))
+        .filter(b -> b.getTitle().equals(title))
         .findFirst().get();
   }
 
   @Override
-  public Book getBookByAuthor(String author) {
-    return BookRepository.getBookRepository().stream()
-        .filter(u -> u.getAuthor().equals(author))
+  public Author getBookByAuthor(String authorName) {
+    return AuthorRepository.getAuthorRepository().stream()
+        .filter(a -> a.getAuthorName().equals(authorName))
         .findFirst().get();
   }
 
