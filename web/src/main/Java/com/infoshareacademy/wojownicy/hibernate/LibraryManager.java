@@ -22,7 +22,7 @@ public class LibraryManager {
   }
 
   protected void exit() {
-    // code to close Hibernate Session factory
+    sessionFactory.close();
   }
 
   protected void create() {
