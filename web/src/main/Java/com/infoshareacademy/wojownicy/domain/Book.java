@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "book")
@@ -18,6 +19,7 @@ public class Book {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotNull
   @Column(name = "book_title")
   private String title;
 
@@ -31,15 +33,19 @@ public class Book {
   @JoinColumn(name = "kind_id")
   Kind kind;
 
+  @NotNull
   @Column(name = "is_favourite")
   private boolean isFavourite = false;
 
+  @NotNull
   @Column(name = "cover_url")
   private String coverURL;
 
+  @NotNull
   @Column(name = "is_reserved")
   private boolean isReserved = false;
 
+  @NotNull
   @Column(name = "has_audio")
   private boolean hasAudio = false;
 

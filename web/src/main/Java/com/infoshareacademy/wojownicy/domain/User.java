@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user")
@@ -19,9 +20,11 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long authorId;
 
+  @NotNull
   @Column(name = "username")
   private String authorName;
 
+  @NotNull
   @Column(name = "is_admin")
   private boolean isAdmin = false;
 

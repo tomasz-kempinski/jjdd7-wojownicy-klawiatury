@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "author")
@@ -19,6 +20,7 @@ public class Author {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long authorId;
 
+  @NotNull
   @Column(name = "author_name")
   private String authorName;
 
