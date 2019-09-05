@@ -31,8 +31,6 @@ public class Book {
   @JoinColumn(name = "author_id")
   Author author;
 
-  //todo wstaw gatunek jak ogarniesz relacje wiele do wielu
-
   @ManyToMany
   @JoinTable(
       name = "book_genre",
