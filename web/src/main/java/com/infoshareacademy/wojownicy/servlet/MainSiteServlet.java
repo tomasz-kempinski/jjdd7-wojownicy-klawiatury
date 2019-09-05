@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -19,23 +18,24 @@ import java.util.Map;
 @WebServlet("/main-site")
 public class MainSiteServlet extends HttpServlet {
 
-    @Inject
-    private TemplateProvider templateProvider;
+  @Inject
+  private TemplateProvider templateProvider;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
 
-        //Template template = templateProvider.getTemplate(getServletContext(), "main-site.ftlh");
+    resp.setContentType("text/html; charset=UTF-8");
 
-        req.getRequestDispatcher("WEB-INF/sites-templates/main-site.ftlh").forward(req, resp);
+    Template template = templateProvider.getTemplate(getServletContext(), "main-site.ftlh");
 
-        /*Map<String, Object> dataModel = new HashMap<>();
+    Map<String, Object> dataModel = new HashMap<>();
 
-        PrintWriter printWriter = resp.getWriter();
-        try {
-            template.process(dataModel, printWriter);
-        } catch (TemplateException e) {
-            e.printStackTrace();
-        }*/
+    PrintWriter printWriter = resp.getWriter();
+    try {
+      template.process(dataModel, printWriter);
+    } catch (TemplateException e) {
+      e.printStackTrace();
     }
+  }
 }

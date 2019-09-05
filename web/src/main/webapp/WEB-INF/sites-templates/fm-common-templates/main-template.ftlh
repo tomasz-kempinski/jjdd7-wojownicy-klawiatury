@@ -18,13 +18,6 @@
 </head>
 
 <body>
-<#include "fm-common-templates/navbar.ftlh">
-
-<#include "fm-common-templates/jumbotron.ftlh">
-
-<#include "fm-common-templates/cards-container.ftlh">
-
-<#include "fm-common-templates/footer.ftlh">
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
