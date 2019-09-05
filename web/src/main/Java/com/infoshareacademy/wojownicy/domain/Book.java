@@ -1,11 +1,15 @@
 package com.infoshareacademy.wojownicy.domain;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,6 +32,13 @@ public class Book {
   Author author;
 
   //todo wstaw gatunek jak ogarniesz relacje wiele do wielu
+
+  @ManyToMany
+  @JoinTable(
+      name = "book_genre",
+      joinColumns = {@JoinColumn(name = "book_id")},
+      inverseJoinColumns = {@JoinColumn(name = "genre_id")})
+  Set<Genre> genres = new HashSet<>();
 
   @ManyToOne
   @JoinColumn(name = "kind_id")
