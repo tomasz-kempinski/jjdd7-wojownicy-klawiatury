@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -17,7 +19,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
   @Id
-  @Column(name = "user_id")
+  @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long authorId;
 
@@ -29,9 +31,10 @@ public class User {
   @Column(name = "is_admin")
   private boolean isAdmin = false;
 
-  @OneToMany(mappedBy = "user")
-  List<Book> books = new ArrayList<>();
-
-  @ManyToMany(mappedBy = "usresFavourites")
+  @ManyToMany(mappedBy = "usersFavourites")
   List<Book> booksFavourites = new ArrayList<>();
+
+  @ManyToOne
+  @JoinColumn(name = "reservation_id")
+  Reservation reservation;
 }

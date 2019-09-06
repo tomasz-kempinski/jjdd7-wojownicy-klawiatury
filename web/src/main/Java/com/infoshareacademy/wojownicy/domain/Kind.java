@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 public class Kind {
 
   @Id
-    @Column(name = "kind_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long kindId;
 

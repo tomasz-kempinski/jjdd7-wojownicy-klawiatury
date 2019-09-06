@@ -1,9 +1,8 @@
 package com.infoshareacademy.wojownicy.domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ import javax.validation.constraints.NotNull;
 public class Book {
 
   @Id
-  @Column(name = "book_id")
+  @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
@@ -29,31 +28,27 @@ public class Book {
   @Column(name = "book_title")
   private String title;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "author_id")
   Author author;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.PERSIST)
   @JoinTable(
       name = "book_genre",
-      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
-      inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "genre_id"))
+      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"))
   List<Genre> genres = new ArrayList<>();
 
   @ManyToMany
   @JoinTable(
       name = "favourite_book_to_user",
-      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
-      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
+      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
   List<User> usersFavourites = new ArrayList<>();
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "kind_id")
   Kind kind;
-
-  @NotNull
-  @Column(name = "is_favourite")
-  private boolean isFavourite = false;
 
   @NotNull
   @Column(name = "cover_url")
@@ -68,7 +63,7 @@ public class Book {
   private boolean hasAudio = false;
 
   @ManyToOne
-  @JoinColumn(name = "is_reserved_by")
-  User user;
+  @JoinColumn(name = "reservation_id")
+  Reservation reservation;
 
 }
