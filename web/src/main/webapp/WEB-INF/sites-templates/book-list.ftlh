@@ -19,10 +19,9 @@
 
 <body>
 <#include "fm-common-templates/navbar.ftlh">
-
-
-<#include "fm-common-templates/cards-container.ftlh">
-
+<ul>
+  <li>Book1 ${book1.book1}</li>
+</ul>
 <#include "fm-common-templates/footer.ftlh">
 
 <!-- Optional JavaScript -->
@@ -36,9 +35,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<ul>
-  <li>Book1 ${book1.book1}</li>
-</ul>
 </body>
 
 </html>
