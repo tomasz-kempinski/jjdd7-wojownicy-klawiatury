@@ -63,6 +63,6 @@ public class Book {
   @Column(name = "has_audio")
   private boolean hasAudio = false;
 
-  @OneToMany(mappedBy = "book")
+  @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
 }

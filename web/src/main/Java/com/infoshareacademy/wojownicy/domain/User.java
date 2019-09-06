@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,6 @@ public class User {
   @ManyToMany(mappedBy = "usersFavourites")
   List<Book> booksFavourites = new ArrayList<>();
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();
 }
