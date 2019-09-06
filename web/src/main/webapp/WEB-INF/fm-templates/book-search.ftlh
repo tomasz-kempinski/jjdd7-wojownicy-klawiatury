@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Welcome User</title>
-</head>
-<body>
-<#if errorMessage??>
-  <span style="color: #ff0000;">${errorMessage}</span>
-</#if>
-<#if book??>
-  <ul>
-    <li>title: ${book.title}</li>
-  </ul>
-</#if>
-<#if author??>
-  <ul>
-    <li>author: ${author.authorName}</li>
-  </ul>
-</#if>
-</body>
-</html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE>Przyklad POST</TITLE>
+</HEAD>
+
+<H1 ALIGN="CENTER">Przyklad HTTP POST</H1>
+
+<FORM ACTION="http://localhost:8080/book-search"
+      METHOD="POST">
+  Parametr 1:
+  <INPUT TYPE="TEXT" NAME="parametr1"><BR>
+  Parametr 2:
+  <INPUT TYPE="TEXT" NAME="parametr2"><BR>
+  Parametr 3:
+  <INPUT TYPE="TEXT" NAME="parametr3"><BR>
+  <INPUT TYPE="SUBMIT" VALUE="Wyslij">
+</FORM>
+
+</BODY>
+</HTML>
