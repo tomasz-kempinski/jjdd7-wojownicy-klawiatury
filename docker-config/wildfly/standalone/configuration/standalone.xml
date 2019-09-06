@@ -544,9 +544,4 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
-    <deployments>
-        <deployment name="wojownicy-klawiatury.war" runtime-name="wojownicy-klawiatury.war">
-            <content sha1="2704f3bbd51cf5f22f336667d5ff4f12ccad38ee"/>
-        </deployment>
-    </deployments>
 </server>
