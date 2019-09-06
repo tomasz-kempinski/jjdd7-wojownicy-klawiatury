@@ -16,13 +16,13 @@ import javax.validation.constraints.NotNull;
 public class Kind {
 
   @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long kindId;
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long kindId;
 
   @NotNull
   @Column(name = "kind")
-    private String kind;
+  private String kind;
 
   @OneToMany(mappedBy = "kind")
   List<Book> books = new ArrayList<>();

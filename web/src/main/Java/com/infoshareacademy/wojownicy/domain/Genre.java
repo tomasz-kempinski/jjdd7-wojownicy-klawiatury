@@ -26,5 +26,4 @@ public class Genre {
 
   @ManyToMany(mappedBy = "genres")
   private List<Book> books = new ArrayList<>();
-
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "reservation")
@@ -27,8 +28,7 @@ public class Reservation {
   @OneToMany(mappedBy = "reservation")
   List<User> users = new ArrayList<>();
 
+  @NotNull
   @Column(name = "reservation_date")
   private LocalDate reservationDate;
-
-
 }

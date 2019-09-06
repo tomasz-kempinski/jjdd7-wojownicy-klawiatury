@@ -24,7 +24,6 @@ public class Author {
   @Column(name = "author_name")
   private String authorName;
 
-
   @OneToMany(mappedBy = "author")
   List<Book> books = new ArrayList<>();
 
