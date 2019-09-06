@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -30,4 +31,7 @@ public class User {
 
   @OneToMany(mappedBy = "user")
   List<Book> books = new ArrayList<>();
+
+  @ManyToMany(mappedBy = "usresFavourites")
+  List<Book> booksFavourites = new ArrayList<>();
 }

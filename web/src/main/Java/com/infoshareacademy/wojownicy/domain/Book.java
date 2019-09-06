@@ -1,6 +1,8 @@
 package com.infoshareacademy.wojownicy.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,9 +36,16 @@ public class Book {
   @ManyToMany
   @JoinTable(
       name = "book_genre",
-      joinColumns = {@JoinColumn(name = "book_id")},
-      inverseJoinColumns = {@JoinColumn(name = "genre_id")})
-  Set<Genre> genres = new HashSet<>();
+      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+      inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "genre_id"))
+  List<Genre> genres = new ArrayList<>();
+
+  @ManyToMany
+  @JoinTable(
+      name = "favourite_book_to_user",
+      joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
+  List<User> usersFavourites = new ArrayList<>();
 
   @ManyToOne
   @JoinColumn(name = "kind_id")

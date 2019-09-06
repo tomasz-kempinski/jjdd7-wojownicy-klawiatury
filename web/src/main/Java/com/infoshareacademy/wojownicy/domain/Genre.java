@@ -1,7 +1,7 @@
 package com.infoshareacademy.wojownicy.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +25,6 @@ public class Genre {
   private String genreName;
 
   @ManyToMany(mappedBy = "genres")
-  private Set<Book> books = new HashSet<>();
+  private List<Book> books = new ArrayList<>();
 
 }
