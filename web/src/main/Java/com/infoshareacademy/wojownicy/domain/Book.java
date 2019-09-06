@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -62,8 +63,6 @@ public class Book {
   @Column(name = "has_audio")
   private boolean hasAudio = false;
 
-  @ManyToOne
-  @JoinColumn(name = "reservation_id")
-  Reservation reservation;
-
+  @OneToMany(mappedBy = "book")
+  private List<Reservation> bookReservation = new ArrayList<>();
 }
