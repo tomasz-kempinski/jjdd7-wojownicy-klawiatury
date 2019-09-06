@@ -3,6 +3,7 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.domain.Author;
 import com.infoshareacademy.wojownicy.domain.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
+import com.infoshareacademy.wojownicy.service.AuthorService;
 import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -21,59 +22,45 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/book-search")
 public class BookSearchServlet extends HttpServlet {
 
-  Logger logger = Logger.getLogger(getClass().getName());
-  @Inject
-  private BookService bookService;
-  @Inject
-  private TemplateProvider templateProvider;
+  private static final Logger logger = Logger.getLogger(BookSearchServlet.class.getName());
 
-  @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws IOException {
+    @Inject
+    private BookService bookService;
 
-    String titleParam = req.getParameter("title");
-    String authorParam = req.getParameter("authorName");
-    PrintWriter writer = resp.getWriter();
+    @Inject
+    private AuthorService authorService;
 
-    if (titleParam == null || titleParam.isEmpty()) {
-      resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      return;
-    } else if (titleParam.length() < 3) {
-      resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      return;
-    }
+    @Inject
+    private TemplateProvider templateProvider;
 
-    if (authorParam == null || authorParam.isEmpty()) {
-      resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      return;
-    } else if (authorParam.length() < 3) {
-      resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      return;
-    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+        throws IOException {
 
-    String title = titleParam;
-    Book bookTitle = bookService.findBookByTitle(title);
-    String author = authorParam;
-    Author authorName = bookService.findBookByAuthor(author);
+      String authorParam = req.getParameter("author");
+      PrintWriter writer = resp.getWriter();
+      if (authorParam == null || authorParam.isEmpty()) {
+        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        return;
+      }
+      String author = authorParam;
+      Author author = authorService.findBookByAuthor(author);
 
-    Template template = templateProvider.getTemplate(getServletContext(), "book-search.ftlh");
+      Template template = templateProvider.getTemplate(getServletContext(), "book-search.ftlh");
+      Map<String, Object> model = new HashMap<>();
 
-    Map<String, Object> model = new HashMap<>();
-    if (bookTitle != null) {
-      model.put("title", bookTitle);
-    } else {
-      model.put("errorMessageTitle", "Nie znaleziono takiego tytułu.");
-    }
-    if (authorName != null) {
-      model.put("authorName", authorName);
-    } else {
-      model.put("errorMessageAuthor", "Nie znaleziono takiego autora.");
-    }
+      if (author != null) {
 
-    try {
-      template.process(model, writer);
-    } catch (TemplateException e) {
-      logger.severe(e.getMessage());
+        model.put("author", author);
+
+      } else {
+        model.put("errorMessage", "Nie znaleziono takiego autora.");
+      }
+
+      try {
+        template.process(model, writer);
+      } catch (TemplateException e) {
+        logger.severe(e.getMessage());
+      }
     }
   }
-}

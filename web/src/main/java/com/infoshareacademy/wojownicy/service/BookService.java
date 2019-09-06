@@ -1,8 +1,6 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.dao.BookRepositoryDao;
-import com.infoshareacademy.wojownicy.domain.Author;
-import com.infoshareacademy.wojownicy.domain.Book;
+import com.infoshareacademy.wojownicy.dao.BookDaoBeen;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 
@@ -10,13 +8,9 @@ import javax.enterprise.context.RequestScoped;
 public class BookService {
 
   @EJB
-  private BookRepositoryDao bookRepositoryDao;
+  private BookDaoBeen bookDaoBeen;
 
   public Book findBookByTitle(String title) {
-    return bookRepositoryDao.getBookByTitle(title);
-  }
-
-  public Author findBookByAuthor(String authorName) {
-    return bookRepositoryDao.getBookByAuthor(authorName);
+    return bookDaoBeen.getBookByTitle(title);
   }
 }
