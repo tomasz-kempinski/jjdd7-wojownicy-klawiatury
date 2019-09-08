@@ -9,17 +9,18 @@
     </tr>
     </thead>
     <tbody>
+
     <tr>
       <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>Author</td>
+      <td>Title</td>
+      <td>Genre</td>
     </tr>
     <tr>
       <th scope="row">2</th>
+      <td>${book1.author}</td>
       <td></td>
-      <td></td>
-      <td></td>
+
     </tr>
     <tr>
       <th scope="row">3</th>

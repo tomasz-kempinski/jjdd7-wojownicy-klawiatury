@@ -1,9 +1,12 @@
 package com.infoshareacademy.wojownicy.servlet;
 
+import com.infoshareacademy.wojownicy.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +31,25 @@ public class BooksListServlet extends HttpServlet {
     resp.setContentType("text/html; charset=UTF-8");
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
+    Book book1 = new Book();
+    Book book2 = new Book();
+    Book book3 = new Book();
+
+    book1.setAuthor("book1 author");
+    book1.setName("book1 name");
+    book1.setGenre("book 1 genre");
+
+    book2.setAuthor("book2 author");
+    book2.setName("book2 name");
+    book2.setGenre("book2 genre");
+
+    book3.setAuthor("book3 author");
+    book3.setName("book3 name");
+    book3.setGenre("book3 genre");
+
 
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("book1", book1);
 
     PrintWriter printWriter = resp.getWriter();
     try {
