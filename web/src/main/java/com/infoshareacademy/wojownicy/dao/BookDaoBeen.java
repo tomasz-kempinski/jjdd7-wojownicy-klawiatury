@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
+import com.infoshareacademy.wojownicy.domain.Book;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,9 +12,12 @@ public class BookDaoBeen {
   @PersistenceContext
   EntityManager entityManager;
 
-  public Book getBookByTitle(String title) {
-    Query query = entityManager.createNamedQuery("Book.findBookByTitle");
-    query.setParameter("title", title);
-    return (Book) query.getSingleResult();
-  }
+//  public Book getBookByTitle(String title) {
+//    Query query = entityManager.createNamedQuery("Book.findBookByTitle");
+//    query.setParameter("title", title);
+//    return (Book) query.getSingleResult();
+//  }
+
+  public void addBook (Book book) {entityManager.persist(book);}
+
 }

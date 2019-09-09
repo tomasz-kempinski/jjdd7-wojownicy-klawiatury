@@ -35,4 +35,46 @@ public class User {
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();
+
+  public Long getAuthorId() {
+    return authorId;
+  }
+
+  public void setAuthorId(Long authorId) {
+    this.authorId = authorId;
+  }
+
+  public String getAuthorName() {
+    return authorName;
+  }
+
+  public void setAuthorName(String authorName) {
+    this.authorName = authorName;
+  }
+
+  public boolean isAdmin() {
+    return isAdmin;
+  }
+
+  public void setAdmin(boolean admin) {
+    isAdmin = admin;
+  }
+
+  public List<Book> getBooksFavourites() {
+    return booksFavourites;
+  }
+
+  public void setBooksFavourites(
+      List<Book> booksFavourites) {
+    this.booksFavourites = booksFavourites;
+  }
+
+  public List<Reservation> getUserReservations() {
+    return userReservations;
+  }
+
+  public void setUserReservations(
+      List<Reservation> userReservations) {
+    this.userReservations = userReservations;
+  }
 }

@@ -32,4 +32,36 @@ public class Reservation {
   @NotNull
   @Column(name = "reservation_date")
   private LocalDate reservationDate;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Book getBook() {
+    return book;
+  }
+
+  public void setBook(Book book) {
+    this.book = book;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public LocalDate getReservationDate() {
+    return reservationDate;
+  }
+
+  public void setReservationDate(LocalDate reservationDate) {
+    this.reservationDate = reservationDate;
+  }
 }
