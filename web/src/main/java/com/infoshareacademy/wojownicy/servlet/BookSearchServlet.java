@@ -1,12 +1,8 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.domain.Author;
-import com.infoshareacademy.wojownicy.domain.Book;
-import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.AuthorService;
 import com.infoshareacademy.wojownicy.service.BookService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;

@@ -1,7 +1,6 @@
 package com.infoshareacademy.wojownicy.service;
 
 import com.infoshareacademy.wojownicy.dao.AuthorDaoBeen;
-import com.infoshareacademy.wojownicy.domain.Author;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 

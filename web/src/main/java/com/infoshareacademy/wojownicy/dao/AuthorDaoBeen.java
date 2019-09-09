@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.Author;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
