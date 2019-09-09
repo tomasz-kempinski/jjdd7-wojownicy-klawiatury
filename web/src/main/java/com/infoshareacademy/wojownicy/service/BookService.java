@@ -11,9 +11,9 @@ public class BookService {
   @EJB
   private BookDaoBeen bookDaoBeen;
 
-//  public Book findBookByTitle(String title) {
-//    return bookDaoBeen.getBookByTitle(title);
-//  }
+  public Book findBookByTitle(String title, String order) {
+    return bookDaoBeen.searchBook(title, order);
+  }
 
   public void saveBook(Book book) {
     bookDaoBeen.addBook(book);

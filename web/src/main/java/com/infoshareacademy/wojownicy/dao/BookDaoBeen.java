@@ -12,12 +12,16 @@ public class BookDaoBeen {
   @PersistenceContext
   EntityManager entityManager;
 
-//  public Book getBookByTitle(String title) {
-//    Query query = entityManager.createNamedQuery("Book.findBookByTitle");
-//    query.setParameter("title", title);
-//    return (Book) query.getSingleResult();
-//  }
 
-  public void addBook (Book book) {entityManager.persist(book);}
+  public Book searchBook(String title, String order) {
+    Query query = entityManager.createNativeQuery(
+        "SELECT * FROM book WHERE book_title LIKE '%" + title + "%' ORDER BY " + order);
+    return (Book) query.getResultList();
+  }
+
+
+  public void addBook(Book book) {
+    entityManager.persist(book);
+  }
 
 }

@@ -26,7 +26,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Wpisz tytuł, autora lub frazę" aria-label="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
         <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
