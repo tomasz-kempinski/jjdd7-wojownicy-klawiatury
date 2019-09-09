@@ -48,6 +48,8 @@ public class BooksListServlet extends HttpServlet {
     book3.setGenre("book3 genre");
 
 
+
+
     Map<String, Object> dataModel = new HashMap<>();
     dataModel.put("book1", book1);
 
