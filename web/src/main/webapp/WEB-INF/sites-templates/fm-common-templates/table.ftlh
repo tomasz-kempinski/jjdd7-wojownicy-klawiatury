@@ -10,24 +10,16 @@
     </thead>
     <tbody>
 
+    <#list books>
+    <#items as book>
     <tr>
-      <th scope="row">1</th>
-      <td>Author</td>
-      <td>Title</td>
-      <td>Genre</td>
+      <th scope="row">id</th>
+          <td>${book.name}</td>
+          <td>${book.author}</td>
+          <td>${book.genre}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>${book1.author}</td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    </#items>
+    </#list>
     </tbody>
   </table>
   </div>

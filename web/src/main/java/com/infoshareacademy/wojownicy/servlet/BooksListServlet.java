@@ -46,15 +46,15 @@ public class BooksListServlet extends HttpServlet {
     book3.setAuthor("book3 author");
     book3.setName("book3 name");
     book3.setGenre("book3 genre");
-    List<Object> booksList = new ArrayList<>();
+    List<Book> booksList = new ArrayList<>();
     booksList.add(book1);
     booksList.add(book2);
     booksList.add(book3);
 
 
 
-    Map<String, Object> dataModel = new HashMap<>();
-    dataModel.put("book",booksList);
+    Map<String, List<Book>> dataModel = new HashMap<>();
+    dataModel.put("books",booksList);
 
     PrintWriter printWriter = resp.getWriter();
     try {
