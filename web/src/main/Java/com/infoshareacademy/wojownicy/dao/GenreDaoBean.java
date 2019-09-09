@@ -21,7 +21,7 @@ public class GenreDaoBean {
     return entityManager.find(Genre.class, id);
   }
 
-  public List<Genre> getGenreList() {
+  public List<Genre> getGenresList() {
     Query query = entityManager.createQuery("SELECT u FROM genre u");
     return query.getResultList();
   }
