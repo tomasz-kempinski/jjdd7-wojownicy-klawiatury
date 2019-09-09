@@ -11,15 +11,15 @@
     <tbody>
 
     <#list books>
-    <#items as book>
-    <tr>
-      <th scope="row">id</th>
-          <td>${book.name}</td>
-          <td>${book.author}</td>
-          <td>${book.genre}</td>
-    </tr>
-    </#items>
+        <#items as book>
+          <tr>
+            <th scope="row">id</th>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.genre}</td>
+          </tr>
+        </#items>
     </#list>
     </tbody>
   </table>
-  </div>
+</div>
