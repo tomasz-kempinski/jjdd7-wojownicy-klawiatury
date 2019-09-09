@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
+import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
