@@ -36,5 +36,4 @@ public class UserDaoBean {
       entityManager.remove(user);
     }
   }
-
 }

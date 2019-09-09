@@ -36,5 +36,4 @@ public class KindDaoBean {
       entityManager.remove(kind);
     }
   }
-
 }
