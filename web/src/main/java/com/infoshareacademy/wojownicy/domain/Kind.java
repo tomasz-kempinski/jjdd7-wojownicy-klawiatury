@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "author")
+@Table(name = "kind")
 public class Kind {
 
   @Id
