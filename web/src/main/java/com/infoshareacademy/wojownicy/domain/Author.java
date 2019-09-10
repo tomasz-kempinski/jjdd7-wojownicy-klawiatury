@@ -42,4 +42,12 @@ public class Author {
   public void setAuthorName(String authorName) {
     this.authorName = authorName;
   }
+
+  public List<Book> getBooks() {
+    return books;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
+  }
 }

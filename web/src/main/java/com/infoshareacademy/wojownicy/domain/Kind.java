@@ -42,4 +42,12 @@ public class Kind {
   public void setKind(String kind) {
     this.kind = kind;
   }
+
+  public List<Book> getBooks() {
+    return books;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
+  }
 }

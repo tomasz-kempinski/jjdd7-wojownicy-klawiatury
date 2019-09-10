@@ -65,4 +65,86 @@ public class Book {
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public Author getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(Author author) {
+    this.author = author;
+  }
+
+  public List<Genre> getGenres() {
+    return genres;
+  }
+
+  public void setGenres(List<Genre> genres) {
+    this.genres = genres;
+  }
+
+  public List<User> getUsersFavourites() {
+    return usersFavourites;
+  }
+
+  public void setUsersFavourites(
+      List<User> usersFavourites) {
+    this.usersFavourites = usersFavourites;
+  }
+
+  public Kind getKind() {
+    return kind;
+  }
+
+  public void setKind(Kind kind) {
+    this.kind = kind;
+  }
+
+  public String getCoverURL() {
+    return coverURL;
+  }
+
+  public void setCoverURL(String coverURL) {
+    this.coverURL = coverURL;
+  }
+
+  public boolean isReserved() {
+    return isReserved;
+  }
+
+  public void setReserved(boolean reserved) {
+    isReserved = reserved;
+  }
+
+  public boolean isHasAudio() {
+    return hasAudio;
+  }
+
+  public void setHasAudio(boolean hasAudio) {
+    this.hasAudio = hasAudio;
+  }
+
+  public List<Reservation> getBookReservation() {
+    return bookReservation;
+  }
+
+  public void setBookReservation(
+      List<Reservation> bookReservation) {
+    this.bookReservation = bookReservation;
+  }
 }
