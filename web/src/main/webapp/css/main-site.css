@@ -12,3 +12,8 @@
   padding: 240px 0 200px 0;
   margin-bottom: 50px;
 }
+
+table.space {
+  padding-top: 100px;
+  margin-top: 100px;
+}

@@ -12,10 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+@NamedQueries({
+    @NamedQuery(
+        name = "Book.findBookList",
+        query = "SELECT u FROM Book u"
+    )
+})
 @Entity
 @Table(name = "book")
 public class Book {
@@ -65,4 +72,82 @@ public class Book {
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public Author getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(Author author) {
+    this.author = author;
+  }
+
+  public List<Genre> getGenres() {
+    return genres;
+  }
+
+  public void setGenres(List<Genre> genres) {
+    this.genres = genres;
+  }
+
+  public List<User> getUsersFavourites() {
+    return usersFavourites;
+  }
+
+  public void setUsersFavourites(
+      List<User> usersFavourites) {
+    this.usersFavourites = usersFavourites;
+  }
+
+  public Kind getKind() {
+    return kind;
+  }
+
+  public void setKind(Kind kind) {
+    this.kind = kind;
+  }
+
+  public String getCoverURL() {
+    return coverURL;
+  }
+
+  public void setCoverURL(String coverURL) {
+    this.coverURL = coverURL;
+  }
+
+  public boolean isReserved() {
+    return isReserved;
+  }
+
+  public void setReserved(boolean reserved) {
+    isReserved = reserved;
+  }
+
+  public boolean isAudio() {
+    return hasAudio;
+  }
+
+  public void setHasAudio(boolean hasAudio) {
+    this.hasAudio = hasAudio;
+  }
+
+  public List<Reservation> getBookReservation() {
+    return bookReservation;
+  }
+
+  public void setBookReservation(
+      List<Reservation> bookReservation) {
+    this.bookReservation = bookReservation;
+  }
 }
