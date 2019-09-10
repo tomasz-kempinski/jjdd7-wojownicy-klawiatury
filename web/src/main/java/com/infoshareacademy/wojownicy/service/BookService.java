@@ -4,6 +4,7 @@ import com.infoshareacademy.wojownicy.dao.BookDaoBeen;
 import com.infoshareacademy.wojownicy.domain.Book;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.interceptor.Interceptors;
 
 @RequestScoped
 public class BookService {
@@ -11,8 +12,8 @@ public class BookService {
   @EJB
   private BookDaoBeen bookDaoBeen;
 
-  public Book findBookByTitle(String title, String order) {
-    return bookDaoBeen.searchBook(title, order);
+  public Book findBookByTitle(String title) {
+    return bookDaoBeen.getBookByTitle(title);
   }
 
   public void saveBook(Book book) {
