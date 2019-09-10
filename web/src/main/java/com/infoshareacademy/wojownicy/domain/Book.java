@@ -127,7 +127,7 @@ public class Book {
     isReserved = reserved;
   }
 
-  public boolean isHasAudio() {
+  public boolean isAudio() {
     return hasAudio;
   }
 
