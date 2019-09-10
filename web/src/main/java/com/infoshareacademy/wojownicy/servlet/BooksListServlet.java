@@ -1,9 +1,7 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
-import com.infoshareacademy.wojownicy.domain.Author;
 import com.infoshareacademy.wojownicy.domain.Book;
-import com.infoshareacademy.wojownicy.domain.Kind;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
