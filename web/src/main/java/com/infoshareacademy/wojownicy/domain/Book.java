@@ -12,10 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+@NamedQueries({
+    @NamedQuery(
+        name = "Book.findBookList",
+        query = "SELECT u FROM Book u"
+    )
+})
 @Entity
 @Table(name = "book")
 public class Book {
@@ -68,10 +75,6 @@ public class Book {
 
   public Long getId() {
     return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getTitle() {
@@ -131,7 +134,7 @@ public class Book {
     isReserved = reserved;
   }
 
-  public boolean isHasAudio() {
+  public boolean isAudio() {
     return hasAudio;
   }
 
