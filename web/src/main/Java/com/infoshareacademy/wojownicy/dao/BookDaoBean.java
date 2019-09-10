@@ -22,7 +22,7 @@ public class BookDaoBean {
   }
 
   public List<Book> getBooksList() {
-    Query query = entityManager.createQuery("SELECT u FROM book u");
+    Query query = entityManager.createNamedQuery("Book.findBookList");
     return query.getResultList();
   }
 

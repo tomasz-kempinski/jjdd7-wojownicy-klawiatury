@@ -22,7 +22,7 @@ public class UserDaoBean {
   }
 
   public List<User> getUsersList() {
-    Query query = entityManager.createQuery("SELECT u FROM user u");
+    Query query = entityManager.createNamedQuery("User.findUsersList");
     return query.getResultList();
   }
 

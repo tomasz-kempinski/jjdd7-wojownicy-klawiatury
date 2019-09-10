@@ -22,7 +22,7 @@ public class AuthorDaoBean {
   }
 
   public List<Author> getAuthorsList() {
-    Query query = entityManager.createQuery("SELECT u FROM author u");
+    Query query = entityManager.createNamedQuery("Author.findAuthorsList");
     return query.getResultList();
   }
 

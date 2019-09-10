@@ -22,7 +22,7 @@ public class KindDaoBean {
   }
 
   public List<Kind> getKindsList() {
-    Query query = entityManager.createQuery("SELECT u FROM kind u");
+    Query query = entityManager.createNamedQuery("Kind.findKindsList");
     return query.getResultList();
   }
 

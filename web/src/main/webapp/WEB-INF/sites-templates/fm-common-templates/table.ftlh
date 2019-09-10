@@ -13,10 +13,10 @@
     <#list books>
         <#items as book>
           <tr>
-            <th scope="row">id</th>
-            <td>${book.name}</td>
+            <th scope="row">${book.id}</th>
+            <td>${book.title}</td>
             <td>${book.author}</td>
-            <td>${book.genre}</td>
+            <td>${book.genres}</td>
           </tr>
         </#items>
     </#list>

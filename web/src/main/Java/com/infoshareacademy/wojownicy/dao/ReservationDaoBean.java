@@ -22,7 +22,7 @@ public class ReservationDaoBean {
   }
 
   public List<Reservation> getReservationsList() {
-    Query query = entityManager.createQuery("SELECT u FROM reservation u");
+    Query query = entityManager.createNamedQuery("Reservation.findReservationsList");
     return query.getResultList();
   }
 

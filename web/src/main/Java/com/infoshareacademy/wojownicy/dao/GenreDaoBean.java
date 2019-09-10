@@ -22,7 +22,7 @@ public class GenreDaoBean {
   }
 
   public List<Genre> getGenresList() {
-    Query query = entityManager.createQuery("SELECT u FROM genre u");
+    Query query = entityManager.createNamedQuery("Genre.findGenresList");
     return query.getResultList();
   }
 
