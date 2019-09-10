@@ -9,9 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+@NamedQueries({
+    @NamedQuery(
+        name = "Reservation.findReservationsList",
+        query = "SELECT u FROM Reservation u"
+    )
+})
 @Entity
 @Table(name = "reservation")
 public class Reservation {

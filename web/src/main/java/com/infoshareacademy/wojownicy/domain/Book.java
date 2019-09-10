@@ -17,14 +17,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-@NamedQueries({
-    @NamedQuery(
-        name = "Book.findBookByTitle",
-        query = "SELECT b FROM Book b WHERE b.title = :title"
-    )
-})
-
+//@NamedQueries({
+//    @NamedQuery(
+//        name = "Book.findBookList",
+//        query = "SELECT u FROM Book u"
+//    )
+//})
 @Entity
 @Table(name = "book")
 public class Book {
@@ -34,7 +32,7 @@ public class Book {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
+  @NotNull
   @Column(name = "book_title")
   private String title;
 
@@ -60,15 +58,15 @@ public class Book {
   @JoinColumn(name = "kind_id")
   Kind kind;
 
-
+  @NotNull
   @Column(name = "cover_url")
   private String coverURL;
 
-
+  @NotNull
   @Column(name = "is_reserved")
   private boolean isReserved = false;
 
-
+  @NotNull
   @Column(name = "has_audio")
   private boolean hasAudio = false;
 
@@ -77,10 +75,6 @@ public class Book {
 
   public Long getId() {
     return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getTitle() {
@@ -140,7 +134,7 @@ public class Book {
     isReserved = reserved;
   }
 
-  public boolean isHasAudio() {
+  public boolean isAudio() {
     return hasAudio;
   }
 

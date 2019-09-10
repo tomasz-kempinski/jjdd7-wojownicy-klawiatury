@@ -4,26 +4,28 @@ import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.Author;
 import com.infoshareacademy.wojownicy.domain.Book;
 import com.infoshareacademy.wojownicy.domain.Kind;
-import com.infoshareacademy.wojownicy.service.BookService;
+import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/search")
-public class SearchServlet extends HttpServlet {
-
-  private static final Logger logger = Logger.getLogger(SearchServlet.class.getName());
+@WebServlet("/book-list")
+public class BooksListServlet extends HttpServlet {
 
   @Inject
-  private BookService bookService;
+  private TemplateProvider templateProvider;
 
   @Inject
   private BookDaoBean bookDaoBean;
@@ -93,23 +95,21 @@ public class SearchServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws IOException {
+      throws ServletException, IOException {
 
-    String titleParam = req.getParameter("title");
-    List<Book> books = bookService.findBooks(titleParam);
-    PrintWriter writer = resp.getWriter();
+    resp.setContentType("text/html; charset=UTF-8");
 
-    Book book = new Book();
+    Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
 
+    List<Book> booksList = new ArrayList<>();
+    Map<String, List<Book>> dataModel = new HashMap<>();
+    dataModel.put("books", booksList);
 
-    if (books != null) {
-      writer.println("ID" + (book.getId()));
-      writer.println("Title " + (book.getTitle()));
-      writer.println("Author " + book.getAuthor());
-    } else {
-      writer.println("Book with Title provided in request has not been found.");
+    PrintWriter printWriter = resp.getWriter();
+    try {
+      template.process(dataModel, printWriter);
+    } catch (TemplateException e) {
+      e.printStackTrace();
     }
-
-
   }
 }

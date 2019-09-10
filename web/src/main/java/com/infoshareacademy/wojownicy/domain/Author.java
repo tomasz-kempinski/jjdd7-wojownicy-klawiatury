@@ -12,14 +12,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-//@NamedQueries({
-//    @NamedQuery(
-//        name = "Author.findBookByAuthor",
-//        query = "SELECT b FROM Book b WHERE b.author = :login"
-//    )
-//})
-
+@NamedQueries({
+    @NamedQuery(
+        name = "Author.findAuthorsList",
+        query = "SELECT u FROM Author u"
+    )
+})
 @Entity
 @Table(name = "author")
 public class Author {
@@ -29,7 +27,7 @@ public class Author {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long authorId;
 
-
+  @NotNull
   @Column(name = "author_name")
   private String authorName;
 

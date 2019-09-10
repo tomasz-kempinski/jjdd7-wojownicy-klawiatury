@@ -1,22 +1,23 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.dao.BookDaoBeen;
+import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.Book;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.interceptor.Interceptors;
 
 @RequestScoped
 public class BookService {
 
   @EJB
-  private BookDaoBeen bookDaoBeen;
+  private BookDaoBean bookDaoBean;
 
-  public Book findBookByTitle(String title) {
-    return bookDaoBeen.getBookByTitle(title);
-  }
 
   public void saveBook(Book book) {
-    bookDaoBeen.addBook(book);
+    bookDaoBean.addBook(book);
+  }
+
+  public List<Book> findBooks(String title) {
+    return bookDaoBean.getBookList(title);
   }
 }
