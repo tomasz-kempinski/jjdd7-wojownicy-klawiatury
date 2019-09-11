@@ -24,7 +24,7 @@ public class FileUploadProcessor {
             throw new UserFileNotFound("No user file has been uploaded");
         }
 
-        File file = new File(getUploadImageFilesPath() + fileName);
+        File file = new File(getUploadFilesPath() + fileName);
 
         Files.deleteIfExists(file.toPath());
 
@@ -35,7 +35,7 @@ public class FileUploadProcessor {
         return file;
     }
 
-    public String getUploadImageFilesPath() throws IOException {
+    public String getUploadFilesPath() throws IOException {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()
                 .getContextClassLoader().getResource(SETTINGS_FILE)

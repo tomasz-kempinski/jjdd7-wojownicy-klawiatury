@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.clas.BookJsonClass;
 import com.infoshareacademy.wojownicy.repository.BookRepository;
 
 public class BookService {
@@ -8,18 +8,18 @@ public class BookService {
   private static Long maxId = 0L;
 
   public void setIdForBooks() {
-    for (Book book : BookRepository.getBookRepository()) {
-      if (book.getId() == null) {
-        book.setId(getCurrentId());
+    for (BookJsonClass bookJsonClass : BookRepository.getBookJsonClassRepository()) {
+      if (bookJsonClass.getId() == null) {
+        bookJsonClass.setId(getCurrentId());
         increaseCurrentId();
       }
     }
   }
 
   public void setFavouriteForBooks() {
-    for (Book book : BookRepository.getBookRepository()) {
-      if (book.getFavourite() == null) {
-        book.setFavourite(false);
+    for (BookJsonClass bookJsonClass : BookRepository.getBookJsonClassRepository()) {
+      if (bookJsonClass.getFavourite() == null) {
+        bookJsonClass.setFavourite(false);
       }
     }
   }
@@ -37,7 +37,7 @@ public class BookService {
   }
 
   public void checkForMaxId() {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId() > getCurrentId()) {
         setCurrentId(b.getId());
       }
@@ -46,8 +46,8 @@ public class BookService {
 
   public void addBook(String kind, String title, String author, Boolean hasAudio,
       String genre) {
-    Book book = new Book(kind, title, author, hasAudio, genre);
-    BookRepository.getBookRepository().add(book);
+    BookJsonClass bookJsonClass = new BookJsonClass(kind, title, author, hasAudio, genre);
+    BookRepository.getBookJsonClassRepository().add(bookJsonClass);
     setIdForBooks();
     setFavouriteForBooks();
     System.out.println("Książka została dodana");
@@ -55,7 +55,7 @@ public class BookService {
 
   public void deleteBook(Long id) {
     if (checkIfBookExists(id)) {
-      BookRepository.getBookRepository().removeIf(b -> b.getId().equals(id));
+      BookRepository.getBookJsonClassRepository().removeIf(b -> b.getId().equals(id));
       System.out.println("Książka została usunięta");
     } else {
       System.out.println(" Nie znaleziono takiej książki");
@@ -63,7 +63,7 @@ public class BookService {
   }
 
   public void modifyAuthor(String author, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setAuthor(author);
       }
@@ -71,7 +71,7 @@ public class BookService {
   }
 
   public void modifyHasAudio(boolean hasAudio, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setHasAudio(hasAudio);
       }
@@ -79,7 +79,7 @@ public class BookService {
   }
 
   public void modifyGenre(String genre, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setGenre(genre);
       }
@@ -87,7 +87,7 @@ public class BookService {
   }
 
   public void modifyKind(String kind, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setKind(kind);
       }
@@ -95,7 +95,7 @@ public class BookService {
   }
 
   public void modifyTitle(String title, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setTitle(title);
       }
@@ -103,7 +103,7 @@ public class BookService {
   }
 
   public void modifyFavourite(boolean favourite, Long id) {
-    BookRepository.getBookRepository().forEach(b -> {
+    BookRepository.getBookJsonClassRepository().forEach(b -> {
       if (b.getId().equals(id)) {
         b.setFavourite(favourite);
       }
@@ -111,7 +111,7 @@ public class BookService {
   }
 
   public boolean checkIfBookExists(Long id) {
-    if (BookRepository.getBookRepository().stream().anyMatch(book -> book.getId().equals(id))) {
+    if (BookRepository.getBookJsonClassRepository().stream().anyMatch(book -> book.getId().equals(id))) {
       return true;
     }
     return false;

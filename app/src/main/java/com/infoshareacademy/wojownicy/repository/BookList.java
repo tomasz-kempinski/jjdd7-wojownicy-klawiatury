@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.repository;
 
-import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookJsonClassRepository;
 
 import com.infoshareacademy.wojownicy.service.BooksPrinter;
 
@@ -8,7 +8,7 @@ import com.infoshareacademy.wojownicy.service.BooksPrinter;
 public class BookList {
 
   public void listBooks() {
-    BooksPrinter.printListOfBooks(getBookRepository());
+    BooksPrinter.printListOfBooks(getBookJsonClassRepository());
   }
 }
 

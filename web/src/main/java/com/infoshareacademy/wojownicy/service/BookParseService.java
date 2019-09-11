@@ -18,17 +18,6 @@ public class BookParseService {
       BookRepository.bookJsonClassRepository = mapper
           .readValue(new File("books.json"), new TypeReference<List<BookJsonClass>>() {
           });
-      bookService.setIdForBooks();
-      bookService.checkForMaxId();
-      bookService.setFavouriteForBooks();
-    } catch (IOException e) {
-      System.out.println("Problem with IO occurred");
-    }
-  }
-
-  public void saveObjectsToFile() {
-    try {
-      mapper.writeValue(new File("books.json"), BookRepository.getBookJsonClassRepository());
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
     }

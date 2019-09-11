@@ -10,13 +10,13 @@
     </thead>
     <tbody>
 
-    <#list books>
-        <#items as book>
+    <#list bookJsonClasses>
+        <#items as bookJsonClass>
           <tr>
-            <th scope="row">${book.id}</th>
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.genres}</td>
+            <th scope="row">${bookJsonClass.id}</th>
+            <td>${bookJsonClass.title}</td>
+            <td>${bookJsonClass.author}</td>
+            <td>${bookJsonClass.genres}</td>
           </tr>
         </#items>
     </#list>

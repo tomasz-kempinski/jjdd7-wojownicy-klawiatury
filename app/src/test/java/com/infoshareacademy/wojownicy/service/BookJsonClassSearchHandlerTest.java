@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class BookSearchHandlerTest {
+class BookJsonClassSearchHandlerTest {
 
   @Test
   void listFoundBooks_testIfNotNull() {

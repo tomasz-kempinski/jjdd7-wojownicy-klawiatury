@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Book {
+public class BookJsonClass {
 
   @JsonProperty
   private Long id;
@@ -26,10 +26,10 @@ public class Book {
 
   private Map<String, Object> additionalProperties = new HashMap<>();
 
-  public Book() {
+  public BookJsonClass() {
   }
 
-  public Book(String kind, String title, String author, Boolean hasAudio,
+  public BookJsonClass(String kind, String title, String author, Boolean hasAudio,
       String genre) {
     this.kind = kind;
     this.title = title;
@@ -102,14 +102,14 @@ public class Book {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Book book = (Book) o;
-    return Objects.equals(id, book.id) &&
-        Objects.equals(kind, book.kind) &&
-        Objects.equals(title, book.title) &&
-        Objects.equals(author, book.author) &&
-        Objects.equals(hasAudio, book.hasAudio) &&
-        Objects.equals(genre, book.genre) &&
-        Objects.equals(isFavourite, book.isFavourite);
+    BookJsonClass bookJsonClass = (BookJsonClass) o;
+    return Objects.equals(id, bookJsonClass.id) &&
+        Objects.equals(kind, bookJsonClass.kind) &&
+        Objects.equals(title, bookJsonClass.title) &&
+        Objects.equals(author, bookJsonClass.author) &&
+        Objects.equals(hasAudio, bookJsonClass.hasAudio) &&
+        Objects.equals(genre, bookJsonClass.genre) &&
+        Objects.equals(isFavourite, bookJsonClass.isFavourite);
   }
 
   @Override
@@ -129,7 +129,7 @@ public class Book {
 
   @Override
   public String toString() {
-    return "Book{" +
+    return "BookJsonClass{" +
         "\nkind='" + kind + '\'' +
         "\ntitle='" + title + '\'' +
         "\nauthor='" + author + '\'' +

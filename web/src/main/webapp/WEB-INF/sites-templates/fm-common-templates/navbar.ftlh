@@ -17,11 +17,13 @@
              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Menu</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/book-list">Przeglądanie książek</a>
+            <a class="dropdown-item" href="/bookJsonClass-list">Przeglądanie książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Twoje ulubione książki</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Rezerwacja książek</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Panel admina</a>
           </div>
         </li>
       </ul>

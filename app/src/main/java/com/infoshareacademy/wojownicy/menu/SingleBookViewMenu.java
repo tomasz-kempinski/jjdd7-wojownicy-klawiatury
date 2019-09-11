@@ -1,9 +1,9 @@
 package com.infoshareacademy.wojownicy.menu;
 
 
-import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookJsonClassRepository;
 
-import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.clas.BookJsonClass;
 import com.infoshareacademy.wojownicy.clas.SingleBookView;
 import com.infoshareacademy.wojownicy.repository.BookList;
 import com.infoshareacademy.wojownicy.service.BookSearchHandler;
@@ -17,7 +17,7 @@ public class SingleBookViewMenu {
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private BookList bookList = new BookList();
   private SingleBookView singleBookView = new SingleBookView();
-  private List<Book> books = getBookRepository();
+  private List<BookJsonClass> bookJsonClasses = getBookJsonClassRepository();
 
   public void selectBook() {
     Scanner scanner = new Scanner(System.in);
@@ -30,8 +30,8 @@ public class SingleBookViewMenu {
     System.out.println(" Podaj ID książki która chcesz wyświetlić");
     if (scanner.hasNextInt()) {
       long userId = scanner.nextInt();
-      for (Book book : books) {
-        if (userId == book.getId()) {
+      for (BookJsonClass bookJsonClass : bookJsonClasses) {
+        if (userId == bookJsonClass.getId()) {
           id = userId;
           break;
         }

@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.clas.BookJsonClass;
 import com.infoshareacademy.wojownicy.menu.Menu;
 import com.infoshareacademy.wojownicy.menu.SingleBookViewMenu;
 import com.infoshareacademy.wojownicy.repository.BookRepository;
@@ -11,7 +11,7 @@ public class FavouriteBooks {
 
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private Menu menu = new Menu();
-  private List<Book> books = BookRepository.getBookRepository();
+  private List<BookJsonClass> bookJsonClasses = BookRepository.getBookJsonClassRepository();
 
   public void favoriteBooksMenu() {
 
@@ -62,10 +62,11 @@ public class FavouriteBooks {
     System.out.println(
         "\n########################### Lista ulubionych książek ###########################\n");
     Scanner scanner = new Scanner(System.in);
-    List<Book> books = BookRepository.getBookRepository();
-    for (Book book : books) {
-      if (book.getFavourite()) {
-        System.out.println(book.getAuthor() + " " + book.getTitle() + "ID: " + book.getId());
+    List<BookJsonClass> bookJsonClasses = BookRepository.getBookJsonClassRepository();
+    for (BookJsonClass bookJsonClass : bookJsonClasses) {
+      if (bookJsonClass.getFavourite()) {
+        System.out.println(
+            bookJsonClass.getAuthor() + " " + bookJsonClass.getTitle() + "ID: " + bookJsonClass.getId());
       }
     }
     System.out
@@ -127,8 +128,8 @@ public class FavouriteBooks {
         favouriteBooksAdd(-1);
       }
     }
-    for (Book book : books) {
-      if (book.getFavourite()) {
+    for (BookJsonClass bookJsonClass : bookJsonClasses) {
+      if (bookJsonClass.getFavourite()) {
         numberOfFavouriteBooks++;
       }
     }

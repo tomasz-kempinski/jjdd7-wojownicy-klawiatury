@@ -1,8 +1,8 @@
 package com.infoshareacademy.wojownicy.service;
 
-import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookJsonClassRepository;
 
-import com.infoshareacademy.wojownicy.clas.Book;
+import com.infoshareacademy.wojownicy.clas.BookJsonClass;
 import com.infoshareacademy.wojownicy.menu.Menu;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ public class BookFilterService {
   private ScreenCleaner screenCleaner = new ScreenCleaner();
   private Menu menu = new Menu();
 
-  private List<Book> books;
+  private List<BookJsonClass> bookJsonClasses;
 
 
   public BookFilterService() {
-    this.books = getBookRepository();
+    this.bookJsonClasses = getBookJsonClassRepository();
   }
 
   public void filterByCategory() {
@@ -55,13 +55,13 @@ public class BookFilterService {
     }
   }
 
-  private void printList(List<Book> printListBook) {
+  private void printList(List<BookJsonClass> printListBookJsonClass) {
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
     int currentPage = 0;
     String nextPageCheck;
-    if (printListBook.isEmpty()) {
+    if (printListBookJsonClass.isEmpty()) {
       System.out.println(" \nNie znaleziono żadnych książek.");
     } else {
       do {
@@ -79,13 +79,13 @@ public class BookFilterService {
           currentLine++;
           System.out.println(
               bookCounter + 1 + ". \""
-                  + " Autor: " + printListBook.get(bookCounter).getAuthor() + "   "
-                  + " Tytuł: " + printListBook.get(bookCounter).getTitle() + "   "
-                  + "  Id:   " + printListBook.get(bookCounter).getId());
+                  + " Autor: " + printListBookJsonClass.get(bookCounter).getAuthor() + "   "
+                  + " Tytuł: " + printListBookJsonClass.get(bookCounter).getTitle() + "   "
+                  + "  Id:   " + printListBookJsonClass.get(bookCounter).getId());
           bookCounter++;
-        } while (currentLine < lines && currentPage < printListBook.size());
-      } while (currentPage < printListBook.size());
-      if (bookCounter == printListBook.size()) {
+        } while (currentLine < lines && currentPage < printListBookJsonClass.size());
+      } while (currentPage < printListBookJsonClass.size());
+      if (bookCounter == printListBookJsonClass.size()) {
         System.out.println(
             "\n ############################## KONIEC LISTY ##############################");
         System.out.println(
@@ -95,12 +95,12 @@ public class BookFilterService {
     }
   }
 
-  private void printAuthor(List<Book> bookRepository) {
-    bookSorter.sortByAuthor(bookRepository);
+  private void printAuthor(List<BookJsonClass> bookJsonClassRepository) {
+    bookSorter.sortByAuthor(bookJsonClassRepository);
     List<String> authorList = new ArrayList<>();
-    for (Book book : bookRepository) {
-      if (!authorList.contains(book.getAuthor())) {
-        authorList.add(book.getAuthor());
+    for (BookJsonClass bookJsonClass : bookJsonClassRepository) {
+      if (!authorList.contains(bookJsonClass.getAuthor())) {
+        authorList.add(bookJsonClass.getAuthor());
       }
     }
     int counter = 1;
@@ -110,12 +110,12 @@ public class BookFilterService {
     }
   }
 
-  private void printGenre(List<Book> bookRepository) {
-    bookSorter.sortByGenre(bookRepository);
+  private void printGenre(List<BookJsonClass> bookJsonClassRepository) {
+    bookSorter.sortByGenre(bookJsonClassRepository);
     List<String> genreList = new ArrayList<>();
-    for (Book book : bookRepository) {
-      if (!genreList.contains(book.getGenre())) {
-        genreList.add(book.getGenre());
+    for (BookJsonClass bookJsonClass : bookJsonClassRepository) {
+      if (!genreList.contains(bookJsonClass.getGenre())) {
+        genreList.add(bookJsonClass.getGenre());
       }
     }
     int counter = 1;
@@ -125,12 +125,12 @@ public class BookFilterService {
     }
   }
 
-  private void printKind(List<Book> bookRepository) {
-    bookSorter.sortByKind(bookRepository);
+  private void printKind(List<BookJsonClass> bookJsonClassRepository) {
+    bookSorter.sortByKind(bookJsonClassRepository);
     List<String> kindList = new ArrayList<>();
-    for (Book book : bookRepository) {
-      if (!kindList.contains(book.getKind())) {
-        kindList.add(book.getKind());
+    for (BookJsonClass bookJsonClass : bookJsonClassRepository) {
+      if (!kindList.contains(bookJsonClass.getKind())) {
+        kindList.add(bookJsonClass.getKind());
       }
     }
     int counter = 1;
@@ -181,46 +181,46 @@ public class BookFilterService {
     }
   }
 
-  private List<Book> findBooksByAuthor(String author) {
-    return books.stream()
+  private List<BookJsonClass> findBooksByAuthor(String author) {
+    return bookJsonClasses.stream()
         .filter(
             book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
         .collect(Collectors.toList());
   }
 
-  private List<Book> findBooksByGenre(String genre) {
-    return books.stream()
+  private List<BookJsonClass> findBooksByGenre(String genre) {
+    return bookJsonClasses.stream()
         .filter(
             book -> book.getGenre().toLowerCase().contains(genre.toLowerCase()))
         .collect(Collectors.toList());
   }
 
-  private List<Book> findBooksByKind(String kind) {
-    return books.stream()
+  private List<BookJsonClass> findBooksByKind(String kind) {
+    return bookJsonClasses.stream()
         .filter(
             book -> book.getKind().toLowerCase().contains(kind.toLowerCase()))
         .collect(Collectors.toList());
   }
 
   private void listFoundBooksAuthor() {
-    printAuthor(books);
-    final List<Book> booksFound = findBooksByAuthor(provideAuthor());
+    printAuthor(bookJsonClasses);
+    final List<BookJsonClass> booksFound = findBooksByAuthor(provideAuthor());
     bookSorter.sortByAuthor(booksFound);
     printList(booksFound);
     filterByCategory();
   }
 
   private void listFoundBooksGenre() {
-    printGenre(books);
-    final List<Book> booksFound = findBooksByGenre(provideGenre());
+    printGenre(bookJsonClasses);
+    final List<BookJsonClass> booksFound = findBooksByGenre(provideGenre());
     bookSorter.sortByGenre(booksFound);
     printList(booksFound);
     filterByCategory();
   }
 
   private void listFoundBooksKind() {
-    printKind(books);
-    final List<Book> booksFound = findBooksByKind(provideKind());
+    printKind(bookJsonClasses);
+    final List<BookJsonClass> booksFound = findBooksByKind(provideKind());
     bookSorter.sortByKind(booksFound);
     printList(booksFound);
     filterByCategory();
