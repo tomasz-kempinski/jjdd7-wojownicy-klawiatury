@@ -16,7 +16,7 @@ public class BookParseService {
     BookService bookService = new BookService();
     try {
       BookRepository.bookJsonClassRepository = mapper
-          .readValue(new File("books.json"), new TypeReference<List<BookJsonClass>>() {
+          .readValue(new File("/tmp/library.json"), new TypeReference<List<BookJsonClass>>() {
           });
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");

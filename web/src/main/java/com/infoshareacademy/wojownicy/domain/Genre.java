@@ -33,4 +33,28 @@ public class Genre {
 
   @ManyToMany(mappedBy = "genres")
   private List<Book> books = new ArrayList<>();
+
+  public Long getGenreId() {
+    return genreId;
+  }
+
+  public void setGenreId(Long genreId) {
+    this.genreId = genreId;
+  }
+
+  public String getGenreName() {
+    return genreName;
+  }
+
+  public void setGenreName(String genreName) {
+    this.genreName = genreName;
+  }
+
+  public List<Book> getBooks() {
+    return books;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
+  }
 }
