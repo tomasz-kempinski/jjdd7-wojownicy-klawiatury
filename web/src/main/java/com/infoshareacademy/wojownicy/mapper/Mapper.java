@@ -24,6 +24,8 @@ public class Mapper {
 
     book.getKind().setKind(booksApi.getKind());
 
+    book.setCoverURL(booksApi.getCover());
+
     book.setHasAudio(booksApi.getHasAudio());
 
     return book;

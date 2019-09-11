@@ -21,6 +21,8 @@ public class BookJsonClass {
   private Boolean hasAudio;
   @JsonProperty("genre")
   private String genre;
+  @JsonProperty("cover")
+  private String cover;
   @JsonProperty
   private Boolean isFavourite;
 
@@ -92,6 +94,14 @@ public class BookJsonClass {
 
   public void setGenre(String genre) {
     this.genre = genre;
+  }
+
+  public String getCover() {
+    return cover;
+  }
+
+  public void setCover(String cover) {
+    this.cover = cover;
   }
 
   @Override
