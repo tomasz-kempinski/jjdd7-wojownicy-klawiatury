@@ -1,0 +1,12 @@
+<div class="container">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">${page.first}</a></li>
+    <li class="page-item"><a class="page-link" href="#">${page.second}</a></li>
+    <li class="page-item"><a class="page-link" href="#">${page.third}</a></li>
+    <li class="page-item"><a class="page-link" href="#">${page.last}</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+</div>

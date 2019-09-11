@@ -25,5 +25,4 @@
             role="button">Przejdź dalej »</a></p>
     </div>
   </div>
-  <hr>
 </div>
