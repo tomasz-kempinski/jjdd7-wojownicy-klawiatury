@@ -13,7 +13,7 @@ public class ParseService {
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
-  public List<Book> parseFromApi(String books) throws IOException {
+  public List<Book> parseBooksFromApi(String books) throws IOException {
     JsonNode jsonNode = objectMapper.readTree(books);
 
     return objectMapper.readValue(jsonNode.toString(),

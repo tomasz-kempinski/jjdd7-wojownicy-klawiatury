@@ -1,15 +1,12 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
-import java.io.IOException;
-import java.util.List;
 import javax.inject.Inject;
 
 public class SaveToDataBase {
 
   @Inject
-  private ApiConsumer apiConsumer;
+  private ApiConsumerBooks apiConsumerBooks;
 
   @Inject
   private BookDaoBean bookDaoBean;

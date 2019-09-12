@@ -11,23 +11,23 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 @Stateless
-public class ApiConsumer {
+public class ApiConsumerBooks {
   private WebTarget webTarget;
-  private static final String URI = "";
+  private static final String BooksURI = "http://isa-proxy.blueazurit.com/books/books/";
 
   @Inject
   private ParseService parseService;
 
-  public List<Book> consumeBooks () throws IOException {
-    initAddress();
+  public List<Book> consumeBooks() throws IOException {
+    initBooks();
     Response response = webTarget.request().get();
     String resp = response.readEntity(String.class);
 
-    return parseService.parseFromApi(resp);
+    return parseService.parseBooksFromApi(resp);
   }
 
-  private void initAddress() {
+  private void initBooks() {
     Client client = ClientBuilder.newClient();
-    webTarget = client.target(URI);
+    webTarget = client.target(BooksURI);
   }
 }
