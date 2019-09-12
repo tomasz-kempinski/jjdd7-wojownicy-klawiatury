@@ -43,7 +43,10 @@ public class FileUploadServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "file-upload.ftlh");
 
+    String upload = req.getParameter("upload");
+
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("upload", upload);
 
     PrintWriter printWriter = resp.getWriter();
     try {
@@ -64,11 +67,11 @@ public class FileUploadServlet extends HttpServlet {
     try {
       fileURL = "/admin-panel/" + fileUploadProcessor
           .uploadFile(file).getName();
+      resp.sendRedirect("/admin-panel?upload=successful");
     } catch (UserFileNotFound userFileNotFound) {
       logger.warning(userFileNotFound.getMessage());
+      resp.sendRedirect("/admin-panel");
     }
     apiDataHandler.setFileURL(fileURL);
-
-    resp.sendRedirect("/admin-panel");
   }
 }

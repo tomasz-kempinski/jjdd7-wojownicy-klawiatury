@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-6">
         <p class="float-right">
-          <a href="http://localhost:8080/main-site">Wróć do góry</a>
+          <a href="http://localhost:8080/main-site#">Wróć do góry</a>
         </p>
       </div>
     </div>
