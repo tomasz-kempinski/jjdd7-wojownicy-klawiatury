@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.domain;
+package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,39 +14,40 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
-        name = "Author.findAuthorsList",
-        query = "SELECT u FROM Author u"
+        name = "Kind.findKindsList",
+        query = "SELECT u FROM Kind u"
     )
-})
+}
+)
 @Entity
-@Table(name = "author")
-public class Author {
+@Table(name = "kind")
+public class Kind {
 
   @Id
-  @Column(name = "author_id")
+  @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long authorId;
+  private Long kindId;
 
   @NotNull
-  @Column(name = "author_name")
-  private String authorName;
+  @Column(name = "kind")
+  private String kind;
 
-  @OneToMany(mappedBy = "author")
+  @OneToMany(mappedBy = "kind")
   List<Book> books = new ArrayList<>();
 
-  public Long getAuthorId() {
-    return authorId;
+  public Long getKindId() {
+    return kindId;
   }
 
-  public void setAuthorId(Long authorId) {
-    this.authorId = authorId;
+  public void setKindId(Long kindId) {
+    this.kindId = kindId;
   }
 
-  public String getAuthorName() {
-    return authorName;
+  public String getKind() {
+    return kind;
   }
 
-  public void setAuthorName(String authorName) {
-    this.authorName = authorName;
+  public void setKind(String kind) {
+    this.kind = kind;
   }
 }

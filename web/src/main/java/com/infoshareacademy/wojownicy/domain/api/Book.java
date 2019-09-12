@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.JsonClass;
+package com.infoshareacademy.wojownicy.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

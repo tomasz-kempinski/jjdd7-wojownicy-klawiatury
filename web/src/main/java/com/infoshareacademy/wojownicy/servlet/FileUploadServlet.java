@@ -46,6 +46,7 @@ public class FileUploadServlet extends HttpServlet {
     String upload = req.getParameter("upload");
 
     Map<String, Object> dataModel = new HashMap<>();
+
     dataModel.put("upload", upload);
 
     PrintWriter printWriter = resp.getWriter();

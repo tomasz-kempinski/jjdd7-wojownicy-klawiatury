@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.User;
+import com.infoshareacademy.wojownicy.domain.entity.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

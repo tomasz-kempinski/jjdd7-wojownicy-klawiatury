@@ -1,13 +1,13 @@
 package com.infoshareacademy.wojownicy.mapper;
 
-import com.infoshareacademy.wojownicy.domain.Book;
-import com.infoshareacademy.wojownicy.domain.Genre;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.domain.entity.Genre;
 import javax.ejb.Stateless;
 
 @Stateless
 public class Mapper {
 
-  public Book mapBooksApiToEntity(com.infoshareacademy.wojownicy.JsonClass.Book booksApi) {
+  public Book mapBooksApiToEntity(com.infoshareacademy.wojownicy.domain.api.Book booksApi) {
 
     Genre genre = new Genre();
 
