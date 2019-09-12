@@ -15,7 +15,7 @@ public class SearchBookService {
     private BookDaoBean bookDaoBean;
 
 
-    public List<Book> getBooksList() {
-        return bookDaoBean.getBooksList();
+    public List<Book> getBooksByParam(String searchParam) {
+        return bookDaoBean.getBooksByParam(searchParam);
     }
 }

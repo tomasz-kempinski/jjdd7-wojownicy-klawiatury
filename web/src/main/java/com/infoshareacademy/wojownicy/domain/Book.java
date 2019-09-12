@@ -18,11 +18,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 @NamedQueries({
-    @NamedQuery(
-        name = "Book.findBookList",
-        query = "SELECT u FROM Book u"
-    )
+        @NamedQuery(
+                name = "Book.findBookList",
+                query = "SELECT u FROM Book u"
+        ),
+
+
+        @NamedQuery(
+                name = "Book.findBooksByParam",
+                query = "SELECT b FROM Book b WHERE b.title LIKE :searchParam"
+        )
 })
+
+
 @Entity
 @Table(name = "book")
 public class Book {

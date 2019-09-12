@@ -26,6 +26,12 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
+  public List<Book> getBooksByParam(String searchParam) {
+    Query query = entityManager.createNamedQuery("Book.findBooksByParam")
+            .setParameter("searchParam", '%' + searchParam + '%');
+    return query.getResultList();
+  }
+
   public Book editBook(Book book) {
     return entityManager.merge(book);
   }

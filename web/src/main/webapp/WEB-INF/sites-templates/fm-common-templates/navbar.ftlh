@@ -25,7 +25,7 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="get" action="search-book">
+            <form class="form-inline my-2 my-lg-0" method="post" action="search-book" id="search">
                 <input class="form-control mr-sm-2" type="text" id="searchParam" name="searchParam" placeholder="Wpisz tytuł lub autora książki" aria-label="Search">
             </form>
             <ul class="nav navbar-nav navbar-right">
