@@ -6,7 +6,7 @@
       <p>Przeglądaj nasze bogate zbiory. Filtruj i wyszukuj pozycje po interesującej Cię kategori.
         Wyświetl
         szczegółowy widok konkretnej książki.</p>
-      <p><a class="btn btn-secondary" href="#"
+      <p><a class="btn btn-secondary" href="/book-list"
             role="button">Przejdź dalej »</a></p>
     </div>
     <div class="col-md-4">

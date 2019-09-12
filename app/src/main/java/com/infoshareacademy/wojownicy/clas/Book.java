@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class BookJsonClass {
+public class Book {
 
   @JsonProperty
   private Long id;
@@ -21,17 +21,15 @@ public class BookJsonClass {
   private Boolean hasAudio;
   @JsonProperty("genre")
   private String genre;
-  @JsonProperty("cover")
-  private String cover;
   @JsonProperty
   private Boolean isFavourite;
 
   private Map<String, Object> additionalProperties = new HashMap<>();
 
-  public BookJsonClass() {
+  public Book() {
   }
 
-  public BookJsonClass(String kind, String title, String author, Boolean hasAudio,
+  public Book(String kind, String title, String author, Boolean hasAudio,
       String genre) {
     this.kind = kind;
     this.title = title;
@@ -96,14 +94,6 @@ public class BookJsonClass {
     this.genre = genre;
   }
 
-  public String getCover() {
-    return cover;
-  }
-
-  public void setCover(String cover) {
-    this.cover = cover;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -112,14 +102,14 @@ public class BookJsonClass {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BookJsonClass bookJsonClass = (BookJsonClass) o;
-    return Objects.equals(id, bookJsonClass.id) &&
-        Objects.equals(kind, bookJsonClass.kind) &&
-        Objects.equals(title, bookJsonClass.title) &&
-        Objects.equals(author, bookJsonClass.author) &&
-        Objects.equals(hasAudio, bookJsonClass.hasAudio) &&
-        Objects.equals(genre, bookJsonClass.genre) &&
-        Objects.equals(isFavourite, bookJsonClass.isFavourite);
+    Book book = (Book) o;
+    return Objects.equals(id, book.id) &&
+        Objects.equals(kind, book.kind) &&
+        Objects.equals(title, book.title) &&
+        Objects.equals(author, book.author) &&
+        Objects.equals(hasAudio, book.hasAudio) &&
+        Objects.equals(genre, book.genre) &&
+        Objects.equals(isFavourite, book.isFavourite);
   }
 
   @Override
@@ -139,7 +129,7 @@ public class BookJsonClass {
 
   @Override
   public String toString() {
-    return "BookJsonClass{" +
+    return "Book{" +
         "\nkind='" + kind + '\'' +
         "\ntitle='" + title + '\'' +
         "\nauthor='" + author + '\'' +

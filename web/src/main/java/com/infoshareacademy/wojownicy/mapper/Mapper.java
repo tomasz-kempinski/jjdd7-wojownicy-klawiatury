@@ -1,7 +1,5 @@
 package com.infoshareacademy.wojownicy.mapper;
 
-
-import com.infoshareacademy.wojownicy.clas.BookJsonClass;
 import com.infoshareacademy.wojownicy.domain.Book;
 import com.infoshareacademy.wojownicy.domain.Genre;
 import javax.ejb.Stateless;
@@ -9,7 +7,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class Mapper {
 
-  public Book mapBooksApiToEntity(BookJsonClass booksApi) {
+  public Book mapBooksApiToEntity(com.infoshareacademy.wojownicy.JsonClass.Book booksApi) {
 
     Genre genre = new Genre();
 

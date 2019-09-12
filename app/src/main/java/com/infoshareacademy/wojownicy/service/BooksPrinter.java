@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.BookJsonClass;
+import com.infoshareacademy.wojownicy.clas.Book;
 import com.infoshareacademy.wojownicy.menu.Menu;
 import com.infoshareacademy.wojownicy.menu.SingleBookViewMenu;
 import java.util.List;
@@ -8,17 +8,17 @@ import java.util.Scanner;
 
 public class BooksPrinter {
 
-  public static void printListOfBooks(List<BookJsonClass> listOfBookJsonClasses) {
+  public static void printListOfBooks(List<Book> listOfBooks) {
     Scanner scanner = new Scanner(System.in);
     BookSorter bookSorter = new BookSorter();
-    bookSorter.sortByTitle(listOfBookJsonClasses);
+    bookSorter.sortByTitle(listOfBooks);
     ScreenCleaner screenCleaner = new ScreenCleaner();
     int lines = 20;
     int bookCounter = 0;
     int currentLine;
     int currentPage = 0;
     String nextPageCheck;
-    if (listOfBookJsonClasses.isEmpty()) {
+    if (listOfBooks.isEmpty()) {
       System.out.println(" \nNie znaleziono żadnych książek.");
       BookSearchHandler bookSearchHandler = new BookSearchHandler();
       bookSearchHandler.listFoundBooks();
@@ -45,13 +45,13 @@ public class BooksPrinter {
           currentPage++;
           currentLine++;
           System.out.println(
-              bookCounter + 1 + ". \"" + listOfBookJsonClasses.get(bookCounter).getTitle() + "\" - "
-                  + listOfBookJsonClasses
-                  .get(bookCounter).getAuthor() + " ID: " + listOfBookJsonClasses.get(bookCounter).getId());
+              bookCounter + 1 + ". \"" + listOfBooks.get(bookCounter).getTitle() + "\" - "
+                  + listOfBooks
+                  .get(bookCounter).getAuthor() + " ID: " + listOfBooks.get(bookCounter).getId());
           bookCounter++;
-        } while (currentLine < lines && currentPage < listOfBookJsonClasses.size());
-      } while (currentPage < listOfBookJsonClasses.size());
-      if (bookCounter == listOfBookJsonClasses.size()) {
+        } while (currentLine < lines && currentPage < listOfBooks.size());
+      } while (currentPage < listOfBooks.size());
+      if (bookCounter == listOfBooks.size()) {
         System.out.println(
             "\n ############################## KONIEC LISTY ##############################");
         System.out.println(

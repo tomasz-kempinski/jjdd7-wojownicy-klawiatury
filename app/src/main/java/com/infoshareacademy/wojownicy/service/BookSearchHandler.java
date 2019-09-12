@@ -1,35 +1,35 @@
 package com.infoshareacademy.wojownicy.service;
 
-import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookJsonClassRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
 
-import com.infoshareacademy.wojownicy.clas.BookJsonClass;
+import com.infoshareacademy.wojownicy.clas.Book;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class BookSearchHandler {
 
-  private List<BookJsonClass> bookJsonClasses;
+  private List<Book> books;
 
   public BookSearchHandler() {
-    this.bookJsonClasses = getBookJsonClassRepository();
+    this.books = getBookRepository();
   }
 
   public void listFoundBooks() {
-    final List<BookJsonClass> booksFound = findBooks(provideAuthor(), provideTitle(), provideAudio());
+    final List<Book> booksFound = findBooks(provideAuthor(), provideTitle(), provideAudio());
     BooksPrinter.printListOfBooks(booksFound);
   }
 
-  private List<BookJsonClass> findBooks(String author, String title, String hasAudio) {
+  private List<Book> findBooks(String author, String title, String hasAudio) {
     if (hasAudio.equals("")) {
-      return bookJsonClasses.stream()
+      return books.stream()
           .filter(
               book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()) && book
                   .getTitle()
                   .toLowerCase().contains(title.toLowerCase()))
           .collect(Collectors.toList());
     } else {
-      return bookJsonClasses.stream()
+      return books.stream()
           .filter(
               book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()) && book
                   .getTitle()

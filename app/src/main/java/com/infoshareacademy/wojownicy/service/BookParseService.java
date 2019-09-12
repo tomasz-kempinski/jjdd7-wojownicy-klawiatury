@@ -2,7 +2,7 @@ package com.infoshareacademy.wojownicy.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.infoshareacademy.wojownicy.clas.BookJsonClass;
+import com.infoshareacademy.wojownicy.clas.Book;
 import com.infoshareacademy.wojownicy.repository.BookRepository;
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +15,8 @@ public class BookParseService {
   public void parseFileToObjects() {
     BookService bookService = new BookService();
     try {
-      BookRepository.bookJsonClassRepository = mapper
-          .readValue(new File("books.json"), new TypeReference<List<BookJsonClass>>() {
+      BookRepository.bookRepository = mapper
+          .readValue(new File("books.json"), new TypeReference<List<Book>>() {
           });
       bookService.setIdForBooks();
       bookService.checkForMaxId();
@@ -28,7 +28,7 @@ public class BookParseService {
 
   public void saveObjectsToFile() {
     try {
-      mapper.writeValue(new File("books.json"), BookRepository.getBookJsonClassRepository());
+      mapper.writeValue(new File("books.json"), BookRepository.getBookRepository());
     } catch (IOException e) {
       System.out.println("Problem with IO occurred");
     }

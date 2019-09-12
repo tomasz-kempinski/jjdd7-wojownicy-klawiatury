@@ -1,4 +1,4 @@
-<div id="table1" class="container">
+<div class="container">
   <table class="table table-hover table-bordered space">
     <thead class="thead-dark">
     <tr>
@@ -10,13 +10,13 @@
     </thead>
     <tbody>
 
-    <#list bookJsonClasses>
-        <#items as bookJsonClass>
+    <#list books>
+        <#items as book>
           <tr>
-            <th scope="row">${bookJsonClass.id}</th>
-            <td>${bookJsonClass.title}</td>
-            <td>${bookJsonClass.author}</td>
-            <td>${bookJsonClass.genres}</td>
+            <th scope="row">${book.id}</th>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.genres}</td>
           </tr>
         </#items>
     </#list>

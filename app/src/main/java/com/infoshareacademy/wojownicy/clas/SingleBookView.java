@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.clas;
 
-import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookJsonClassRepository;
+import static com.infoshareacademy.wojownicy.repository.BookRepository.getBookRepository;
 
 import com.github.freva.asciitable.AsciiTable;
 import com.infoshareacademy.wojownicy.service.ScreenCleaner;
@@ -8,18 +8,18 @@ import java.util.List;
 
 public class SingleBookView {
 
-  private List<BookJsonClass> bookJsonClasses = getBookJsonClassRepository();
+  private List<Book> books = getBookRepository();
   private ScreenCleaner screenCleaner = new ScreenCleaner();
 
   public void singleBookView(long id) {
     int bookNumber = 0;
-    for (int i = 0; i < bookJsonClasses.size(); i++) {
-      if (bookJsonClasses.get(i).getId() == id) {
+    for (int i = 0; i < books.size(); i++) {
+      if (books.get(i).getId() == id) {
         bookNumber = i;
       }
     }
     String hasAudio;
-    if (bookJsonClasses.get(bookNumber).getHasAudio()) {
+    if (books.get(bookNumber).getHasAudio()) {
       hasAudio = "tak";
     } else {
       hasAudio = "nie";
@@ -29,11 +29,11 @@ public class SingleBookView {
     System.out.println(
         "\n########################### Widok pojedynczej książki ###########################\n");
     String[][] data = {
-        {"       Id        ", bookJsonClasses.get(bookNumber).getId().toString()},
-        {"     Autor       ", bookJsonClasses.get(bookNumber).getAuthor()},
-        {"     Tytuł       ", bookJsonClasses.get(bookNumber).getTitle()},
-        {"Rodzaj Literacki ", bookJsonClasses.get(bookNumber).getKind()},
-        {"Gatunek Literacki", bookJsonClasses.get(bookNumber).getGenre()},
+        {"       Id        ", books.get(bookNumber).getId().toString()},
+        {"     Autor       ", books.get(bookNumber).getAuthor()},
+        {"     Tytuł       ", books.get(bookNumber).getTitle()},
+        {"Rodzaj Literacki ", books.get(bookNumber).getKind()},
+        {"Gatunek Literacki", books.get(bookNumber).getGenre()},
         {"  Wersja audio   ", hasAudio}};
     System.out.println(AsciiTable.getTable(data));
   }
