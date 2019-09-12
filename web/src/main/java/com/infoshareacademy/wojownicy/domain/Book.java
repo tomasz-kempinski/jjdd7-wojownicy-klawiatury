@@ -17,12 +17,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-//@NamedQueries({
-//    @NamedQuery(
-//        name = "Book.findBookList",
-//        query = "SELECT u FROM Book u"
-//    )
-//})
+@NamedQueries({
+    @NamedQuery(
+        name = "Book.findBookList",
+        query = "SELECT u FROM Book u"
+    )
+})
 @Entity
 @Table(name = "book")
 public class Book {

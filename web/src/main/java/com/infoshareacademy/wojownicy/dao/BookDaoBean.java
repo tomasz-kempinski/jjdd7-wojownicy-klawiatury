@@ -21,13 +21,8 @@ public class BookDaoBean {
     return entityManager.find(Book.class, id);
   }
 
-//  public List<Book> getBooksList() {
-//    Query query = entityManager.createNamedQuery("Book.findBookList");
-//    return query.getResultList();
-//  }
-
-  public List<Book> getBookList(String title) {
-    Query query = entityManager.createQuery("SELECT b FROM Book b WHERE b.title LIKE '%" + title + "'");
+  public List<Book> getBooksList() {
+    Query query = entityManager.createNamedQuery("Book.findBookList");
     return query.getResultList();
   }
 
