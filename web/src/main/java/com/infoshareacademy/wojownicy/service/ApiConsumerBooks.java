@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.clas.Book;
+
+import com.infoshareacademy.wojownicy.domain.api.Book;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;

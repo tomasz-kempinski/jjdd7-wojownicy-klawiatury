@@ -3,7 +3,8 @@ package com.infoshareacademy.wojownicy.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.infoshareacademy.wojownicy.clas.Book;
+
+import com.infoshareacademy.wojownicy.domain.api.Book;
 import java.io.IOException;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
