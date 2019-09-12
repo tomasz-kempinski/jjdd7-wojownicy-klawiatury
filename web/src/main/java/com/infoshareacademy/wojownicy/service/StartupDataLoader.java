@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 @Singleton
 @Startup
-public class DataLoader {
+public class StartupDataLoader {
 
   @Inject
   private SaveToDataBase saveToDataBase;
