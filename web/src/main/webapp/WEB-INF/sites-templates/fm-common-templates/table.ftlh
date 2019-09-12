@@ -1,4 +1,4 @@
-<div id="table1" class="container">
+<div class="container">
   <table class="table table-hover table-bordered space">
     <thead class="thead-dark">
     <tr>

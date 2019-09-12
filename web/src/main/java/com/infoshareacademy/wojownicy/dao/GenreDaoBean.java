@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.Genre;
+import com.infoshareacademy.wojownicy.domain.entity.Genre;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
