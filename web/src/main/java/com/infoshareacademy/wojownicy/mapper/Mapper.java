@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.mapper;
 
 import com.infoshareacademy.wojownicy.dao.AuthorDaoBean;
+import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
 import com.infoshareacademy.wojownicy.dao.KindDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
@@ -13,10 +14,13 @@ import javax.inject.Inject;
 public class Mapper {
 
   @Inject
-  AuthorDaoBean authorDaoBean;
+  private AuthorDaoBean authorDaoBean;
 
   @Inject
-  KindDaoBean kindDaoBean;
+  private KindDaoBean kindDaoBean;
+
+  @Inject
+  private GenreDaoBean genreDaoBean;
 
   public Book mapBooksApiToEntity(com.infoshareacademy.wojownicy.domain.api.Book booksApi) {
 
@@ -33,19 +37,25 @@ public class Mapper {
     author.setAuthorName(booksApi.getAuthor());
     authorDaoBean.getOrAddAuthor(author.getAuthorName());
 
-    if(authorDaoBean.getAuthorByName(author.getAuthorName()) == null) {
+    if (authorDaoBean.getAuthorByName(author.getAuthorName()) == null) {
       book.setAuthor(author);
     } else {
       book.setAuthor(authorDaoBean.getAuthorByName(author.getAuthorName()).get(0));
     }
 
     genre.setGenreName(booksApi.getGenre());
-    book.getGenres().add(genre);
+    genreDaoBean.getOrAddGenre(genre.getGenreName());
+
+    if (genreDaoBean.getGenreByName(genre.getGenreName()) == null) {
+      book.getGenres().add(genre);
+    } else {
+      book.getGenres().add(genreDaoBean.getGenreByName(genre.getGenreName()).get(0));
+    }
 
     kind.setKind(booksApi.getKind());
     kindDaoBean.getOrAddKind(kind.getKind());
 
-    if (kindDaoBean.getKindByName(kind.getKind()) == null){
+    if (kindDaoBean.getKindByName(kind.getKind()) == null) {
       book.setKind(kind);
     } else {
       book.setKind(kindDaoBean.getKindByName(kind.getKind()).get(0));

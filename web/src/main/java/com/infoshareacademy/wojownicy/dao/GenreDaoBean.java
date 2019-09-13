@@ -17,12 +17,31 @@ public class GenreDaoBean {
     entityManager.persist(genre);
   }
 
+  public List<Genre> getOrAddGenre(String name) {
+    List<Genre> result = getGenreByName(name);
+    if (result.isEmpty()) {
+      Genre genre = new Genre();
+      genre.setGenreName(name);
+      result.add(genre);
+      addGenre(genre);
+      return result;
+    }
+    return result;
+  }
+
   public Genre getGenreById(Long id) {
     return entityManager.find(Genre.class, id);
   }
 
   public List<Genre> getGenresList() {
     Query query = entityManager.createNamedQuery("Genre.findGenresList");
+    return query.getResultList();
+  }
+
+  public List<Genre> getGenreByName(String name) {
+
+    Query query = entityManager.createNamedQuery("Genre.findGenreByName");
+    query.setParameter("genreName", name);
     return query.getResultList();
   }
 
