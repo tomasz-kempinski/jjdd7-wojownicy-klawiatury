@@ -26,6 +26,16 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
+  public int booksDateBaseSize(){
+    Query query = entityManager.createNamedQuery("Book.listCount");
+    return query.getMaxResults();
+  }
+
+  public List<Book> getPartOfBooks(long from, long to){
+    Query query = entityManager.createNamedQuery("Book.getPartOfBookList").setParameter(1,from).setParameter(2,to);
+    return query.getResultList();
+  }
+
   public Book editBook(Book book) {
     return entityManager.merge(book);
   }
