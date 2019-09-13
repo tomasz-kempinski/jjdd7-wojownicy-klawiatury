@@ -26,14 +26,15 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public int booksDateBaseSize(){
+  public int numberOfBooks() {
     Query query = entityManager.createNamedQuery("Book.listCount");
-    Long fromQuery = (Long)query.getSingleResult();
+    Long fromQuery = (Long) query.getSingleResult();
     return fromQuery.intValue();
   }
 
-  public List<Book> getPartOfBooks(long from, long to){
-    Query query = entityManager.createNamedQuery("Book.getPartOfBookList").setParameter(1,from).setParameter(2,to);
+  public List<Book> getPartOfBooks(long from, long to) {
+    Query query = entityManager.createNamedQuery("Book.getPartOfBookList").setParameter(1, from)
+        .setParameter(2, to);
     return query.getResultList();
   }
 

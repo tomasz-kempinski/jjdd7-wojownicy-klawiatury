@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/add-data")
 public class AddDataServlet extends HttpServlet {
+
   @Inject
   private BookDaoBean bookDaoBean;
 

@@ -2,7 +2,6 @@ package com.infoshareacademy.wojownicy.service;
 
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.Book;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,17 +21,16 @@ public class BookListService  {
       pagesMap.put("current",currentPage);
       pagesMap.put("next",currentPage+1);
       pagesMap.put("third",currentPage+2);
-      pagesMap.put("last",bookDaoBean.booksDateBaseSize()/10);
+      int bookSize = bookDaoBean.numberOfBooks();
+      if (bookSize%10==0) {
+        pagesMap.put("last",bookSize/ 10);
+      } else{
+        pagesMap.put("last", bookSize/10+1);
+      }
     return pagesMap;
   }
 
   public List<Book> partOfBooks(long from, long to){
     return bookDaoBean.getPartOfBooks(from,to);
   }
-
-  public int getBooksetSize() {
-    return bookDaoBean.booksDateBaseSize();
-
-  }
-
 }
