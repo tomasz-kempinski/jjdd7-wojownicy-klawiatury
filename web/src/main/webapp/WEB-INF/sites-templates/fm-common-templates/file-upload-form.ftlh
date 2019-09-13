@@ -1,7 +1,9 @@
 <div id="form-container" class="container">
   <div class="col-md-8 col-md-offset-2">
     <h3>Panel administratora</h3>
-      <#if upload??><h5 class="display">Plik został przesłany</h5></#if>
+    <hr>
+      <#if upload??>
+        <div class="alert alert-success" role="alert"><h5>Plik został przesłany!</h5></div></#if>
     <form method="POST" action="#" enctype="multipart/form-data">
       <!-- COMPONENT START -->
       <div class="form-group">

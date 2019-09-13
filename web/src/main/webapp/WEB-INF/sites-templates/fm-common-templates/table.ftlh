@@ -9,7 +9,6 @@
     </tr>
     </thead>
     <tbody>
-
     <#list books>
         <#items as book>
           <tr>
