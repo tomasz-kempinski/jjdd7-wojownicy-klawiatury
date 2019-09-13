@@ -33,7 +33,8 @@ public class BookDaoBean {
   }
 
   public List<Book> getPartOfBooks(long from, long to) {
-    Query query = entityManager.createNamedQuery("Book.getPartOfBookList").setParameter(1, from)
+    Query query = entityManager.createNamedQuery("Book.getPartOfBookList")
+        .setParameter(1, from)
         .setParameter(2, to);
     return query.getResultList();
   }

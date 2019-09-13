@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Book.findBookList",
-        query = "SELECT u FROM Book u"
+        query = "SELECT b FROM Book b"
     ),
     @NamedQuery(
         name = "Book.listCount",
@@ -29,7 +29,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.getPartOfBookList",
-        query = "SELECT u from Book u where id between ?1 and ?2"
+        query = "SELECT b from Book b where id between ?1 and ?2"
     )
 })
 @Entity

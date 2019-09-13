@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Author.findAuthorsList",
-        query = "SELECT u FROM Author u"
+        query = "SELECT a FROM Author a"
     )
 })
 @Entity

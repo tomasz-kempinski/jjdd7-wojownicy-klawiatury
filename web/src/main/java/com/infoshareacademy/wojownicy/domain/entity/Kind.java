@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Kind.findKindsList",
-        query = "SELECT u FROM Kind u"
+        query = "SELECT k FROM Kind k"
     )
 }
 )
