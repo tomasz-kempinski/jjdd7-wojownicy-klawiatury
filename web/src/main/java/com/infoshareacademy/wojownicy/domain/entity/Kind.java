@@ -16,6 +16,10 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Kind.findKindsList",
         query = "SELECT u FROM Kind u"
+    ),
+    @NamedQuery(
+        name = "Kind.findKindByName",
+        query = "SELECT u FROM Kind u WHERE u.kind = :kind"
     )
 }
 )

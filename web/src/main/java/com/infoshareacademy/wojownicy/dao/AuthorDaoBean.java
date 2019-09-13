@@ -18,17 +18,6 @@ public class AuthorDaoBean {
     entityManager.persist(author);
   }
 
-//  public List<Customer> findOrCreate(final String name) {
-//    checkNotNull(name);
-//    List<Customer> result = this.customerRepository.findByName(name);
-//    if (result.isEmpty()) {
-//      LOGGER.info("Cannot find customer. Creating a new customer. [name={}]", name);
-//      Customer customer = new Customer(name);
-//      return Arrays.asList(this.customerRepository.save(customer));
-//    }
-//    return result;
-//  }
-
   public List<Author> getOrAddAuthor(String name) {
     List<Author> result = getAuthorByName(name);
     if (result.isEmpty()) {
