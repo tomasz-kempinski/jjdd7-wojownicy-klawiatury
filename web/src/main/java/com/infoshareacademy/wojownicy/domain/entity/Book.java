@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.listCount",
-        query = "SELECT count (book_title) FROM Book u"
+        query = "SELECT count (book_title) FROM Book b"
     ),
     @NamedQuery(
         name = "Book.getPartOfBookList",
