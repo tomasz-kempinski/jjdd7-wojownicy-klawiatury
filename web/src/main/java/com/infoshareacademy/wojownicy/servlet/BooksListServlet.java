@@ -1,7 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-
-
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
