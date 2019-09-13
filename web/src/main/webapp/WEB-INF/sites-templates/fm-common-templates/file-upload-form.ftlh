@@ -3,7 +3,12 @@
     <h3>Panel administratora</h3>
     <hr>
       <#if upload??>
-        <div class="alert alert-success" role="alert"><h5>Plik został przesłany!</h5></div></#if>
+          <#if upload == "successful">
+            <div class="alert alert-success" role="alert"><h5>Plik został przesłany</h5></div>
+          <#else>
+            <div class="alert alert-danger" role="alert"><h5>Nie wybrano żadnego pliku!</h5></div>
+          </#if>
+      </#if>
     <form method="POST" action="#" enctype="multipart/form-data">
       <!-- COMPONENT START -->
       <div class="form-group">

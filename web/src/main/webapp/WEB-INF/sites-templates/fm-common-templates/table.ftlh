@@ -1,11 +1,15 @@
-<div class="container">
+<div id="table-container" class="container">
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1">Filtruj pozycje z Audiobookiem</label>
+  </div>
   <table class="table table-hover table-bordered space">
     <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Tytuł</th>
-      <th scope="col">Autor</th>
-      <th scope="col">Gatunek</th>
+      <th scope="col" class="text-center">#</th>
+      <th scope="col" class="text-center">Tytuł</th>
+      <th scope="col" class="text-center">Autor</th>
+      <th scope="col" class="text-center">Gatunek</th>
     </tr>
     </thead>
     <tbody>

@@ -20,7 +20,7 @@
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/book-view.ftlh">
+<#include "fm-common-templates/book-view-card.ftlh">
 
 <#include "fm-common-templates/footer.ftlh">
 <!-- Optional JavaScript -->

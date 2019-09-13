@@ -71,7 +71,7 @@ public class FileUploadServlet extends HttpServlet {
       resp.sendRedirect("/admin-panel?upload=successful");
     } catch (UserFileNotFound userFileNotFound) {
       logger.warning(userFileNotFound.getMessage());
-      resp.sendRedirect("/admin-panel");
+      resp.sendRedirect("/admin-panel?upload=failed");
     }
     apiDataHandler.setFileURL(fileURL);
   }
