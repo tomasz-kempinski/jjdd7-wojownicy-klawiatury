@@ -2,6 +2,8 @@ package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,8 +33,8 @@ public class Author {
   @Column(name = "author_name")
   private String authorName;
 
-  @OneToMany(mappedBy = "author")
-  List<Book> books = new ArrayList<>();
+  @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+  private List<Book> books = new ArrayList<>();
 
   public Long getAuthorId() {
     return authorId;
@@ -56,5 +58,22 @@ public class Author {
 
   public void setBooks(List<Book> books) {
     this.books = books;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Author author = (Author) o;
+    return authorName.equals(author.authorName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(authorName);
   }
 }

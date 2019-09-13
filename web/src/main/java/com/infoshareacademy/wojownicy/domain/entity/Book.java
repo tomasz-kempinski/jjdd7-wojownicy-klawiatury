@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.findBookList",
         query = "SELECT u FROM Book u"
-    )
+    ),
 })
 @Entity
 @Table(name = "book")
@@ -37,11 +38,11 @@ public class Book {
   @Column(name = "book_title")
   private String title;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id")
   Author author;
 
-  @ManyToMany(cascade = CascadeType.PERSIST)
+  @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
       name = "book_genre",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
@@ -55,15 +56,14 @@ public class Book {
       inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
   List<User> usersFavourites = new ArrayList<>();
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "kind_id")
   Kind kind;
 
-  @NotNull
+//  @NotNull
   @Column(name = "cover_url")
   private String coverURL;
 
-  @NotNull
   @Column(name = "is_reserved")
   private boolean isReserved = false;
 
@@ -150,5 +150,28 @@ public class Book {
   public void setBookReservation(
       List<Reservation> bookReservation) {
     this.bookReservation = bookReservation;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Book book = (Book) o;
+    return hasAudio == book.hasAudio &&
+        title.equals(book.title) &&
+        author.equals(book.author) &&
+        genres.equals(book.genres) &&
+        Objects.equals(usersFavourites, book.usersFavourites) &&
+        kind.equals(book.kind) &&
+        Objects.equals(coverURL, book.coverURL);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(title, author, genres, usersFavourites, kind, coverURL, hasAudio);
   }
 }

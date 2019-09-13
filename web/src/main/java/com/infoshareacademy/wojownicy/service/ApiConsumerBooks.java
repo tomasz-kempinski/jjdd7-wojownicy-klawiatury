@@ -23,7 +23,7 @@ public class ApiConsumerBooks {
     initBooks();
     Response response = webTarget.request().get();
     String resp = response.readEntity(String.class);
-
+    response.close();
     return parseService.parseBooksFromApi(resp);
   }
 

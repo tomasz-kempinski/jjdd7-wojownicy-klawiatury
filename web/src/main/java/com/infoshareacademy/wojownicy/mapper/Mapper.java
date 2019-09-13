@@ -1,7 +1,9 @@
 package com.infoshareacademy.wojownicy.mapper;
 
+import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
+import com.infoshareacademy.wojownicy.domain.entity.Kind;
 import javax.ejb.Stateless;
 
 @Stateless
@@ -13,14 +15,20 @@ public class Mapper {
 
     Book book = new Book();
 
+    Author author = new Author();
+
+    Kind kind = new Kind();
+
     book.setTitle(booksApi.getTitle());
 
-    book.getAuthor().setAuthorName(booksApi.getAuthor());
+    author.setAuthorName(booksApi.getAuthor());
+    book.setAuthor(author);
 
     genre.setGenreName(booksApi.getGenre());
     book.getGenres().add(genre);
 
-    book.getKind().setKind(booksApi.getKind());
+    kind.setKind(booksApi.getKind());
+    book.setKind(kind);
 
     book.setCoverURL(booksApi.getCover());
 

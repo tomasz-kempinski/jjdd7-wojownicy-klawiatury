@@ -18,17 +18,23 @@ public class SaveToDataBase {
   private BookDaoBean bookDaoBean;
 
   @Inject
+  private ParseService parseService;
+
+  @Inject
   Mapper mapper;
 
   public void saveBooksFromApi() {
     try {
-      List<Book> booksList = apiConsumerBooks.consumeBooks();
-      booksList.forEach(books -> {
-            com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(books);
-            bookDaoBean.addBook(book);
+      List<Book> booksList = parseService.parseBooksFromJson();
+
+
+      booksList.forEach(b -> {
+            com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(b);
+            bookDaoBean.editBook(book);
           }
       );
     } catch (IOException e) {
+
     }
   }
 }

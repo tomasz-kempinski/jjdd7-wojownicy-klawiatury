@@ -13,8 +13,7 @@ public class StartupDataLoader {
   private SaveToDataBase saveToDataBase;
 
   @PostConstruct
-  public void loadData(){
+  protected void loadData(){
     saveToDataBase.saveBooksFromApi();
   }
-
 }
