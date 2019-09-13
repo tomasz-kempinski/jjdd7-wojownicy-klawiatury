@@ -9,7 +9,7 @@ import org.junit.Test;
 public class MapperTest {
 
   @Test
-  public void mapJsonBookToBook() {
+  public void mapApiObjectToEntity() {
     Mapper mapper = new Mapper();
 
     Book book = new Book();
