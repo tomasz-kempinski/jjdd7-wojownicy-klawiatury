@@ -12,10 +12,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
         name = "Kind.findKindsList",
-        query = "SELECT u FROM Kind u"
+        query = "SELECT k FROM Kind k"
     )
 }
 )

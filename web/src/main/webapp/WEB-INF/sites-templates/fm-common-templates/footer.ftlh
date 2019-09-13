@@ -1,5 +1,6 @@
 <footer>
   <div id="footer" class="container sticky-bottom">
+    <hr>
     <div class="row">
       <div class="col-md-6">
         <p>© Wojownicy Klawiatury, Inc. 2019</p>

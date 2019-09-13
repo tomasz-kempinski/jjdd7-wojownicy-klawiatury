@@ -13,10 +13,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
         name = "Reservation.findReservationsList",
-        query = "SELECT u FROM Reservation u"
+        query = "SELECT r FROM Reservation r"
     )
 })
 @Entity
