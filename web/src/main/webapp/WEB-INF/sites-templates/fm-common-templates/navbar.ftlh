@@ -22,6 +22,8 @@
             <a class="dropdown-item" href="#">Twoje ulubione książki</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Rezerwacja książek</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin-panel">Panel administratora</a>
           </div>
         </li>
       </ul>

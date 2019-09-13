@@ -1,7 +1,7 @@
 package com.infoshareacademy.wojownicy.service;
 
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
-import com.infoshareacademy.wojownicy.domain.Book;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
