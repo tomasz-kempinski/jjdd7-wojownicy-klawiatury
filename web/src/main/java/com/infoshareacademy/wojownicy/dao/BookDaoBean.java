@@ -28,7 +28,8 @@ public class BookDaoBean {
 
   public int booksDateBaseSize(){
     Query query = entityManager.createNamedQuery("Book.listCount");
-    return query.getMaxResults();
+    Long fromQuery = (Long)query.getSingleResult();
+    return fromQuery.intValue();
   }
 
   public List<Book> getPartOfBooks(long from, long to){
