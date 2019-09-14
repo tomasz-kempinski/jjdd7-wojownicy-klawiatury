@@ -71,6 +71,9 @@ public class Book {
   @Column(name = "cover_url")
   private String coverURL;
 
+  @Column(name = "thumbnail")
+  private String thumbnail;
+
   @NotNull
   @Column(name = "is_reserved")
   private boolean isReserved = false;
@@ -134,6 +137,10 @@ public class Book {
   public void setCoverURL(String coverURL) {
     this.coverURL = coverURL;
   }
+
+  public String getThumbnail() { return thumbnail; }
+
+  public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
 
   public boolean isReserved() {
     return isReserved;

@@ -1,6 +1,6 @@
 <div class="container">
   <nav aria-label="Page navigation example">
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
         <#if page.previous gt 0>
           <li class="page-item"><a class="page-link"
                                    href="/book-list?part=${page.first}">Pierwsza</a></li></#if>

@@ -27,3 +27,17 @@ function bs_input_file() {
 $(function() {
   bs_input_file();
 });
+
+$(document).ready(function($) {
+  $(".clickable-row").click(function() {
+    window.document.location = $(this).data("href");
+  });
+});
+
+// popovers initialization - on hover
+$('[data-toggle="popover-hover"]').popover({
+  html: true,
+  trigger: 'hover',
+  placement: 'bottom',
+  content: function () { return '<img src="' + $(this).data('img') + '" />'; }
+});
