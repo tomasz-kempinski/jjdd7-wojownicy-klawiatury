@@ -5,7 +5,6 @@ import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.utility.NumberUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -33,7 +32,6 @@ public class BooksListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    resp.setContentType("text/html; charset=UTF-8");
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
     long from = 0;

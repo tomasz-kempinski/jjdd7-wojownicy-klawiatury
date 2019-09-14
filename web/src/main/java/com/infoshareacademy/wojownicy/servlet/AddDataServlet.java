@@ -1,7 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
-
 import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Kind;

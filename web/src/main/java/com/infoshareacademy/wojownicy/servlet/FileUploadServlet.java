@@ -39,8 +39,6 @@ public class FileUploadServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    resp.setContentType("text/html; charset=UTF-8");
-
     Template template = templateProvider.getTemplate(getServletContext(), "file-upload.ftlh");
 
     String upload = req.getParameter("upload");

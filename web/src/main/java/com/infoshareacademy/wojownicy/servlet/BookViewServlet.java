@@ -7,7 +7,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +23,9 @@ public class BookViewServlet extends HttpServlet {
   @Inject
   private TemplateProvider templateProvider;
 
-  @Inject
-  private BookDaoBean bookDaoBean;
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-
-    resp.setContentType("text/html; charset=UTF-8");
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
 
