@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Stateless
 public class SaveToDataBase {
+
+  private final Logger logger = LoggerFactory.getLogger(getClass().getName());
 
   @Inject
   private ApiConsumerBooks apiConsumerBooks;
@@ -33,7 +37,7 @@ public class SaveToDataBase {
           }
       );
     } catch (IOException e) {
-
+      logger.error("Couldn't connect to remote api");
     }
   }
 }

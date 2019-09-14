@@ -31,10 +31,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.getPartOfBookList",
         query = "SELECT b from Book b where id between ?1 and ?2"
-        @NamedQuery(
-        name = "Book.findBookList",
-        query = "SELECT u FROM Book u"
-    ),
+    )
 })
 @Entity
 @Table(name = "book")

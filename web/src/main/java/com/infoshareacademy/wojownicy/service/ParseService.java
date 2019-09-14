@@ -24,7 +24,7 @@ public class ParseService {
 
   public List<Book> parseBooksFromJson() throws IOException {
     return objectMapper
-        .readValue(new File("/home/robert/jjdd7-wojownicy-klawiatury/books.json"),
+        .readValue(new File("/tmp/library.json"),
             new TypeReference<List<Book>>() {
             });
   }

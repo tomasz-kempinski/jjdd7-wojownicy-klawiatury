@@ -2,7 +2,6 @@ package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +21,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Author.findAuthorByName",
-        query = "SELECT a FROM Author a WHERE u.authorName = :authorName"
+        query = "SELECT a FROM Author a WHERE a.authorName = :authorName"
     )
 })
 @Entity

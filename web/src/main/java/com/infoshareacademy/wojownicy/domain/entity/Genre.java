@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Genre.findGenreByName",
-        query = "SELECT g FROM Genre g WHERE u.genreName = :genreName"
+        query = "SELECT g FROM Genre g WHERE g.genreName = :genreName"
     )
 })
 @Entity

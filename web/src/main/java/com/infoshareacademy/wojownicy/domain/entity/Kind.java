@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Kind.findKindByName",
-        query = "SELECT k FROM Kind k WHERE u.kind = :kind"
+        query = "SELECT k FROM Kind k WHERE k.kind = :kind"
     )
 }
 )

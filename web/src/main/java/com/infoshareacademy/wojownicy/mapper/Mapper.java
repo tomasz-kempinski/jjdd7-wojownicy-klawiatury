@@ -35,31 +35,16 @@ public class Mapper {
     book.setTitle(booksApi.getTitle());
 
     author.setAuthorName(booksApi.getAuthor());
-    authorDaoBean.getOrAddAuthor(author.getAuthorName());
-
-    if (authorDaoBean.getAuthorByName(author.getAuthorName()) == null) {
-      book.setAuthor(author);
-    } else {
-      book.setAuthor(authorDaoBean.getAuthorByName(author.getAuthorName()).get(0));
-    }
+    author = authorDaoBean.getOrAddAuthor(author.getAuthorName()).get(0);
+    book.setAuthor(author);
 
     genre.setGenreName(booksApi.getGenre());
-    genreDaoBean.getOrAddGenre(genre.getGenreName());
-
-    if (genreDaoBean.getGenreByName(genre.getGenreName()) == null) {
-      book.getGenres().add(genre);
-    } else {
-      book.getGenres().add(genreDaoBean.getGenreByName(genre.getGenreName()).get(0));
-    }
+    genre = genreDaoBean.getOrAddGenre(genre.getGenreName()).get(0);
+    book.getGenres().add(genre);
 
     kind.setKind(booksApi.getKind());
-    kindDaoBean.getOrAddKind(kind.getKind());
-
-    if (kindDaoBean.getKindByName(kind.getKind()) == null) {
-      book.setKind(kind);
-    } else {
-      book.setKind(kindDaoBean.getKindByName(kind.getKind()).get(0));
-    }
+    kind = kindDaoBean.getOrAddKind(kind.getKind()).get(0);
+    book.setKind(kind);
 
     book.setCoverURL(booksApi.getCover());
 
