@@ -18,11 +18,11 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Author.findAuthorsList",
-        query = "SELECT u FROM Author u"
+        query = "SELECT a FROM Author a"
     ),
     @NamedQuery(
         name = "Author.findAuthorByName",
-        query = "SELECT u FROM Author u WHERE u.authorName = :authorName"
+        query = "SELECT a FROM Author a WHERE u.authorName = :authorName"
     )
 })
 @Entity
@@ -63,22 +63,5 @@ public class Author {
 
   public void setBooks(List<Book> books) {
     this.books = books;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Author author = (Author) o;
-    return authorName.equals(author.authorName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(authorName);
   }
 }

@@ -16,11 +16,11 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Genre.findGenresList",
-        query = "SELECT u FROM Genre u"
+        query = "SELECT g FROM Genre g"
     ),
     @NamedQuery(
         name = "Genre.findGenreByName",
-        query = "SELECT u FROM Genre u WHERE u.genreName = :genreName"
+        query = "SELECT g FROM Genre g WHERE u.genreName = :genreName"
     )
 })
 @Entity

@@ -16,11 +16,11 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(
         name = "Kind.findKindsList",
-        query = "SELECT u FROM Kind u"
+        query = "SELECT k FROM Kind k"
     ),
     @NamedQuery(
         name = "Kind.findKindByName",
-        query = "SELECT u FROM Kind u WHERE u.kind = :kind"
+        query = "SELECT k FROM Kind k WHERE u.kind = :kind"
     )
 }
 )
@@ -54,13 +54,5 @@ public class Kind {
 
   public void setKind(String kind) {
     this.kind = kind;
-  }
-
-  public List<Book> getBooks() {
-    return books;
-  }
-
-  public void setBooks(List<Book> books) {
-    this.books = books;
   }
 }
