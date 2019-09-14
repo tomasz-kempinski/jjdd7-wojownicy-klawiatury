@@ -38,7 +38,7 @@ public class Kind {
   private String kind;
 
   @OneToMany(mappedBy = "kind")
-  List<Book> books = new ArrayList<>();
+  private List<Book> books = new ArrayList<>();
 
   public Long getKindId() {
     return kindId;

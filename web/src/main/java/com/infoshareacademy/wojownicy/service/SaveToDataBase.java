@@ -22,14 +22,11 @@ public class SaveToDataBase {
   private BookDaoBean bookDaoBean;
 
   @Inject
-  private ParseService parseService;
-
-  @Inject
   Mapper mapper;
 
   public void saveBooksFromApi() {
     try {
-      List<Book> booksList = parseService.parseBooksFromJson();
+      List<Book> booksList = apiConsumerBooks.consumeBooks();
 
       booksList.forEach(b -> {
             com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(b);

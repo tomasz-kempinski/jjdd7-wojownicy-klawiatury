@@ -48,25 +48,25 @@ public class Book {
 
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id")
-  Author author;
+  private Author author;
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
       name = "book_genre",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"))
-  List<Genre> genres = new ArrayList<>();
+  private List<Genre> genres = new ArrayList<>();
 
   @ManyToMany
   @JoinTable(
       name = "favourite_book_to_user",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-  List<User> usersFavourites = new ArrayList<>();
+  private List<User> usersFavourites = new ArrayList<>();
 
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "kind_id")
-  Kind kind;
+  private Kind kind;
 
   @Column(name = "cover_url")
   private String coverURL;
