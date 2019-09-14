@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -19,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @MultipartConfig
 @WebServlet("/admin-panel")
@@ -33,7 +34,7 @@ public class FileUploadServlet extends HttpServlet {
   @Inject
   ApiDataHandler apiDataHandler;
 
-  private static final Logger logger = Logger.getLogger(FileUploadServlet.class.getName());
+  private static final Logger logger = LoggerFactory.getLogger(FileUploadServlet.class.getName());
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -52,6 +53,7 @@ public class FileUploadServlet extends HttpServlet {
       template.process(dataModel, printWriter);
     } catch (TemplateException e) {
       e.printStackTrace();
+      logger.error(e.getMessage());
     }
   }
 
@@ -68,7 +70,7 @@ public class FileUploadServlet extends HttpServlet {
           .uploadFile(file).getName();
       resp.sendRedirect("/admin-panel?upload=successful");
     } catch (UserFileNotFound userFileNotFound) {
-      logger.warning(userFileNotFound.getMessage());
+      logger.warn(userFileNotFound.getMessage());
       resp.sendRedirect("/admin-panel?upload=failed");
     }
     apiDataHandler.setFileURL(fileURL);

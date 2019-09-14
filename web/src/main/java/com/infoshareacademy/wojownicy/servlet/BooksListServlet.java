@@ -17,9 +17,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet("/book-list")
 public class BooksListServlet extends HttpServlet {
+
+  private static final Logger logger = LoggerFactory.getLogger(BooksListServlet.class.getName());
 
   @Inject
   private TemplateProvider templateProvider;
@@ -54,6 +58,7 @@ public class BooksListServlet extends HttpServlet {
       template.process(dataModel, printWriter);
     } catch (TemplateException e) {
       e.printStackTrace();
+      logger.error(e.getMessage());
     }
   }
 }

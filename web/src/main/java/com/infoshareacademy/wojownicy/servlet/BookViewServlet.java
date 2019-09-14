@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -16,9 +15,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet("/book-view")
 public class BookViewServlet extends HttpServlet {
+
+  private static final Logger logger = LoggerFactory.getLogger(BookViewServlet.class.getName());
 
   @Inject
   private TemplateProvider templateProvider;
@@ -36,6 +39,7 @@ public class BookViewServlet extends HttpServlet {
       template.process(dataModel, printWriter);
     } catch (TemplateException e) {
       e.printStackTrace();
+      logger.error(e.getMessage());
     }
   }
 }
