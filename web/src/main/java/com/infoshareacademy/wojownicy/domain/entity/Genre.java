@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,7 +25,9 @@ import javax.validation.constraints.NotNull;
     )
 })
 @Entity
-@Table(name = "genre")
+@Table(name = "genre", indexes = {
+    @Index(columnList = "genre_name", name = "genre_name_index")
+})
 public class Genre {
 
   @Id
