@@ -7,6 +7,7 @@ import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
 import com.infoshareacademy.wojownicy.domain.entity.Kind;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -35,16 +36,31 @@ public class Mapper {
     book.setTitle(booksApi.getTitle());
 
     author.setAuthorName(booksApi.getAuthor());
-    author = authorDaoBean.getOrAddAuthor(author.getAuthorName()).get(0);
-    book.setAuthor(author);
+    List<Author> authorList = authorDaoBean.getAuthorByName(author.getAuthorName());
+
+    if (authorList.isEmpty()) {
+      book.setAuthor(author);
+    } else {
+      book.setAuthor(authorList.get(0));
+    }
 
     genre.setGenreName(booksApi.getGenre());
-    genre = genreDaoBean.getOrAddGenre(genre.getGenreName()).get(0);
-    book.getGenres().add(genre);
+    List<Genre> genreList = genreDaoBean.getGenreByName(genre.getGenreName());
+
+    if (genreList.isEmpty()) {
+      book.getGenres().add(genre);
+    } else {
+      book.setGenres(genreList);
+    }
 
     kind.setKind(booksApi.getKind());
-    kind = kindDaoBean.getOrAddKind(kind.getKind()).get(0);
-    book.setKind(kind);
+    List<Kind> kindList = kindDaoBean.getKindByName(kind.getKind());
+
+    if (kindList.isEmpty()) {
+      book.setKind(kind);
+    } else {
+      book.setKind(kindList.get(0));
+    }
 
     book.setCoverURL(booksApi.getCover());
 

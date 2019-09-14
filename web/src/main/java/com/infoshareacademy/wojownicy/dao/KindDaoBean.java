@@ -17,18 +17,6 @@ public class KindDaoBean {
     entityManager.persist(kind);
   }
 
-  public List<Kind> getOrAddKind(String name) {
-    List<Kind> result = getKindByName(name);
-    if (result.isEmpty()) {
-      Kind kind = new Kind();
-      kind.setKind(name);
-      result.add(kind);
-      addKind(kind);
-      return result;
-    }
-    return result;
-  }
-
   public Kind getKindById(Long id) {
     return entityManager.find(Kind.class, id);
   }

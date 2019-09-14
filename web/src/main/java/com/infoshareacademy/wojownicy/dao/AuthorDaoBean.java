@@ -17,18 +17,6 @@ public class AuthorDaoBean {
     entityManager.persist(author);
   }
 
-  public List<Author> getOrAddAuthor(String name) {
-    List<Author> result = getAuthorByName(name);
-    if (result.isEmpty()) {
-      Author author = new Author();
-      author.setAuthorName(name);
-      result.add(author);
-      addAuthor(author);
-      return result;
-    }
-    return result;
-  }
-
   public Author getAuthorById(Long id) {
     return entityManager.find(Author.class, id);
   }
