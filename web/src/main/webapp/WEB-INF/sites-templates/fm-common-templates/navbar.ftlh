@@ -19,9 +19,11 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="/book-list?part=1">Przeglądanie książek</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Twoje ulubione książki</a>
+            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
+              ulubione książki</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Rezerwacja książek</a>
+            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Rezerwacja
+              książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/admin-panel">Panel administratora</a>
           </div>
