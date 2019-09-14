@@ -27,7 +27,6 @@ public class SaveToDataBase {
     try {
       List<Book> booksList = parseService.parseBooksFromJson();
 
-
       booksList.forEach(b -> {
             com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(b);
             bookDaoBean.editBook(book);

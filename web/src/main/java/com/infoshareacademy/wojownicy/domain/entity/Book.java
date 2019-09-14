@@ -60,7 +60,7 @@ public class Book {
   @JoinColumn(name = "kind_id")
   Kind kind;
 
-//  @NotNull
+  //  @NotNull
   @Column(name = "cover_url")
   private String coverURL;
 

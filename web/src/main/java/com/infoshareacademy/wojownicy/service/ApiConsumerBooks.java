@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 @Stateless
 public class ApiConsumerBooks {
+
   private WebTarget webTarget;
   private static final String BooksURI = "http://isa-proxy.blueazurit.com/books/books/";
 

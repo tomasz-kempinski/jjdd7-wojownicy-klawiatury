@@ -1,7 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
 import com.infoshareacademy.wojownicy.domain.entity.Author;
-import java.util.Arrays;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -42,7 +41,7 @@ public class AuthorDaoBean {
   public List<Author> getAuthorByName(String name) {
 
     Query query = entityManager.createNamedQuery("Author.findAuthorByName");
-      query.setParameter("authorName", name);
+    query.setParameter("authorName", name);
     return query.getResultList();
   }
 

@@ -24,7 +24,7 @@ public class BooksListServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
-  
+
   @Inject
   private BookDaoBean bookDaoBean;
 

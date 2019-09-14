@@ -26,25 +26,6 @@ public class ParseService {
     return objectMapper
         .readValue(new File("/home/robert/jjdd7-wojownicy-klawiatury/books.json"),
             new TypeReference<List<Book>>() {
-        });
+            });
   }
 }
-
-//  public List<Event> parseEvents(String placePathName) throws IOException {
-//    return objectMapper.readValue(new File(placePathName), new TypeReference<List<Event>>() {
-//    });
-//  }
-
-//  public void parseFileToObjects() {
-//    BookService bookService = new BookService();
-//    try {
-//      BookRepository.bookRepository = mapper
-//          .readValue(new File("books.json"), new TypeReference<List<Book>>() {
-//          });
-//      bookService.setIdForBooks();
-//      bookService.checkForMaxId();
-//      bookService.setFavouriteForBooks();
-//    } catch (IOException e) {
-//      System.out.println("Problem with IO occurred");
-//    }
-//  }
