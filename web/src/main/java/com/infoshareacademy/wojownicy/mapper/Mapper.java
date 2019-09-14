@@ -64,6 +64,8 @@ public class Mapper {
 
     book.setCoverURL(booksApi.getCover());
 
+    book.setThumbnail(booksApi.getThumbnail());
+
     book.setHasAudio(booksApi.getHasAudio());
 
     return book;

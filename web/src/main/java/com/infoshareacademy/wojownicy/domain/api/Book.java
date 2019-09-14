@@ -24,6 +24,9 @@ public class Book {
   @JsonProperty("cover")
   private String cover;
 
+  @JsonProperty("cover_thumb")
+  private String thumbnail;
+
   public String getKind() {
     return kind;
   }
@@ -70,5 +73,13 @@ public class Book {
 
   public void setCover(String cover) {
     this.cover = cover;
+  }
+
+  public String getThumbnail() {
+    return thumbnail;
+  }
+
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
   }
 }

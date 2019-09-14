@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark py-1 fixed-top"
-     style="background-color: rgb(36, 34, 34)">
+     style="background-color: rgb(52,50,50)">
   <div class="container">
     <a class="navbar-brand"
-       href="http://localhost:8080/main-site"><img
-          src="img/Bookhub30.png" alt="Bookhub"></a>
+       href="http://localhost:8080/main-site">
+      <img src="img/Bookhub30.png" alt="Bookhub"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false"

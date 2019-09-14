@@ -24,7 +24,9 @@
 
 <#include "fm-common-templates/cards-container.ftlh">
 
-<#include "fm-common-templates/footer.ftlh">
+<div id="footer" class="container">
+    <#include "fm-common-templates/footer.ftlh">
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -37,6 +39,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="js/upload-form.js"></script>
 </body>
 
 </html>
