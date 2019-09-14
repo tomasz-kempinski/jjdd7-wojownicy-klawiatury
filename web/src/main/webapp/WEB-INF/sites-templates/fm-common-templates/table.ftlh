@@ -3,7 +3,7 @@
     <input type="checkbox" class="custom-control-input" id="customSwitch1">
     <label class="custom-control-label" for="customSwitch1">Filtruj pozycje z Audiobookiem</label>
   </div>
-  <table class="table table-hover table-bordered space">
+  <table class="table table-hover table-bordered table-striped space">
     <thead class="thead-dark">
     <tr>
       <th scope="col" class="text-center">#</th>
@@ -18,8 +18,8 @@
           <tr>
             <th scope="row">${book.id}</th>
             <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.genres}</td>
+            <td>${book.author.authorName}</td>
+            <td></td>
           </tr>
         </#items>
     </#list>

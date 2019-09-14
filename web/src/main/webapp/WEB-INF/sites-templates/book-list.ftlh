@@ -22,6 +22,8 @@
 
 <#include "fm-common-templates/table.ftlh">
 
+<#include "fm-common-templates/pagination.ftlh">
+
 <#include "fm-common-templates/footer.ftlh">
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
