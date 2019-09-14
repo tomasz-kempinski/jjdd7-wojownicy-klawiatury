@@ -14,6 +14,7 @@
   <!-- Our CSS -->
   <link rel="stylesheet" href="css/main.css">
 
+
   <title>BookHub</title>
 </head>
 
@@ -24,7 +25,10 @@
 
 <#include "fm-common-templates/pagination.ftlh">
 
-<#include "fm-common-templates/footer.ftlh">
+<div id="footer" class="container">
+    <#include "fm-common-templates/footer.ftlh">
+</div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -36,6 +40,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="js/upload-form.js"></script>
+
 </body>
 
 </html>
