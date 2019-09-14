@@ -13,9 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @WebServlet("/main-site")
 public class MainSiteServlet extends HttpServlet {
+
+  private static final Logger logger = LoggerFactory.getLogger(MainSiteServlet.class.getName());
 
   @Inject
   private TemplateProvider templateProvider;
@@ -23,8 +28,6 @@ public class MainSiteServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-
-    resp.setContentType("text/html; charset=UTF-8");
 
     Template template = templateProvider.getTemplate(getServletContext(), "main-site.ftlh");
 
@@ -35,6 +38,7 @@ public class MainSiteServlet extends HttpServlet {
       template.process(dataModel, printWriter);
     } catch (TemplateException e) {
       e.printStackTrace();
+      logger.error(e.getMessage());
     }
   }
 }
