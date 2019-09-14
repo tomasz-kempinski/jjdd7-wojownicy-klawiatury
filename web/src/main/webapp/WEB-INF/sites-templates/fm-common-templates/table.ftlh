@@ -16,7 +16,7 @@
     <#list books>
         <#items as book>
           <tr>
-            <th scope="row">${book.id}</th>
+            <th scope="row" class="text-center">${book.id}</th>
             <td>${book.title}</td>
             <td>${book.author.authorName}</td>
             <td></td>

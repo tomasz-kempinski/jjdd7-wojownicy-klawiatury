@@ -23,14 +23,13 @@ public class BookViewServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
-  
+
   @Inject
   private BookDaoBean bookDaoBean;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-
 
     resp.setContentType("text/html; charset=UTF-8");
 
