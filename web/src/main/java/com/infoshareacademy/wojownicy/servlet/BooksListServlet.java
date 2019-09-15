@@ -2,8 +2,6 @@ package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
-import com.infoshareacademy.wojownicy.domain.entity.Genre;
-import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
@@ -44,13 +42,15 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
+    String audio = req.getParameter("hasAudio");
+    boolean hasAudio = Boolean.parseBoolean(audio);
     long from = 0;
-    long to = 10;
+    long to = 20;
     long part = 1;
-    if (NumberUtils.isCreatable(partString)) {
+    if (NumberUtils.isDigits(partString)) {
       part = Long.parseLong(partString);
-      from = (part - 1) * 10;
-      to = (from - 1) + 10;
+      from = (part - 1) * 20;
+      to = (from - 1) + 20;
     }
     List<Book> partOfBooks = bookListService.partOfBooks(from, to);
     Map<String, Object> pagesMap = bookListService.pages(part);
