@@ -184,13 +184,14 @@ public class Book {
         title.equals(book.title) &&
         author.equals(book.author) &&
         genres.equals(book.genres) &&
-        Objects.equals(usersFavourites, book.usersFavourites) &&
         kind.equals(book.kind) &&
-        Objects.equals(coverURL, book.coverURL);
+        Objects.equals(coverURL, book.coverURL) &&
+        Objects.equals(thumbnail, book.thumbnail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, author, genres, usersFavourites, kind, coverURL, hasAudio);
+    return Objects.hash(title, author, genres, kind, coverURL, thumbnail, hasAudio);
   }
+
 }
