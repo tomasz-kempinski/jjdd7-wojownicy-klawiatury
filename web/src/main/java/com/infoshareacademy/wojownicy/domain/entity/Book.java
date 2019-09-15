@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,29 +46,28 @@ public class Book {
   @Column(name = "book_title")
   private String title;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id")
-  Author author;
+  private Author author;
 
-  @ManyToMany(cascade = CascadeType.PERSIST)
+  @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
       name = "book_genre",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"))
-  List<Genre> genres = new ArrayList<>();
+  private List<Genre> genres = new ArrayList<>();
 
   @ManyToMany
   @JoinTable(
       name = "favourite_book_to_user",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-  List<User> usersFavourites = new ArrayList<>();
+  private List<User> usersFavourites = new ArrayList<>();
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "kind_id")
-  Kind kind;
+  private Kind kind;
 
-  @NotNull
   @Column(name = "cover_url")
   private String coverURL;
 
@@ -166,4 +166,28 @@ public class Book {
       List<Reservation> bookReservation) {
     this.bookReservation = bookReservation;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Book book = (Book) o;
+    return hasAudio == book.hasAudio &&
+        title.equals(book.title) &&
+        author.equals(book.author) &&
+        genres.equals(book.genres) &&
+        kind.equals(book.kind) &&
+        Objects.equals(coverURL, book.coverURL) &&
+        Objects.equals(thumbnail, book.thumbnail);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(title, author, genres, kind, coverURL, thumbnail, hasAudio);
+  }
+
 }

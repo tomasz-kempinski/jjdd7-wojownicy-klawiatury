@@ -26,6 +26,13 @@ public class KindDaoBean {
     return query.getResultList();
   }
 
+  public List<Kind> getKindByName(String name) {
+
+    Query query = entityManager.createNamedQuery("Kind.findKindByName");
+    query.setParameter("kind", name);
+    return query.getResultList();
+  }
+
   public Kind editKind(Kind kind) {
     return entityManager.merge(kind);
   }
