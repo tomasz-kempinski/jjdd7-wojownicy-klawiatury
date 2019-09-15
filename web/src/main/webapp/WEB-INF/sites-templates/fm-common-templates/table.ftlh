@@ -22,7 +22,7 @@
               <th scope="row" class="text-center">${book.id}</th>
               <td>${book.title}</td>
               <td>${book.author.authorName}</td>
-              <td><#list book.genres><#items as genre>${book.genre}</#items></#list></td>
+              <td><#list book.genres><#items as genre>${genre}</#items></#list></td>
             </tr>
           </#items>
       </#list>
