@@ -31,7 +31,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.getPartOfBookList",
         query = "SELECT b from Book b where id between ?1 and ?2"
-    )
+    ),
 })
 @Entity
 @Table(name = "book")
@@ -138,9 +138,13 @@ public class Book {
     this.coverURL = coverURL;
   }
 
-  public String getThumbnail() { return thumbnail; }
+  public String getThumbnail() {
+    return thumbnail;
+  }
 
-  public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
+  }
 
   public boolean isReserved() {
     return isReserved;
