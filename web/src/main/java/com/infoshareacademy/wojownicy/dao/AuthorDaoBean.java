@@ -26,6 +26,13 @@ public class AuthorDaoBean {
     return query.getResultList();
   }
 
+  public List<Author> getAuthorByName(String name) {
+
+    Query query = entityManager.createNamedQuery("Author.findAuthorByName");
+    query.setParameter("authorName", name);
+    return query.getResultList();
+  }
+
   public Author editAuthor(Author author) {
     return entityManager.merge(author);
   }

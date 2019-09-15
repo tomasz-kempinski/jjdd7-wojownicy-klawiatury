@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,10 +18,16 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Genre.findGenresList",
         query = "SELECT g FROM Genre g"
+    ),
+    @NamedQuery(
+        name = "Genre.findGenreByName",
+        query = "SELECT g FROM Genre g WHERE g.genreName = :genreName"
     )
 })
 @Entity
-@Table(name = "genre")
+@Table(name = "genre", indexes = {
+    @Index(columnList = "genre_name", name = "genre_name_index")
+})
 public class Genre {
 
   @Id

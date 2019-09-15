@@ -13,14 +13,16 @@
       <p>W dowolnej chwili zarezerwuj wybraną przez siebię książkę, lub anuluj swoją obecną
         rezerwację. Sprawdź, czy
         książka która Cię interesuje, jest aktualnie dostępna.</p>
-      <p><a class="btn btn-secondary" href="#"
+      <p><a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button"
+            aria-disabled="true"
             role="button">Przejdź dalej »</a></p>
     </div>
     <div class="col-md-4">
       <h2>Ulubione</h2>
       <p>Zarządzaj listą swoich ulubionych książek. Dodawaj lub usuwaj wybrane przez siebie
         pozycje.</p>
-      <p><a class="btn btn-secondary" href="#"
+      <p><a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button"
+            aria-disabled="true"
             role="button">Przejdź dalej »</a></p>
     </div>
   </div>

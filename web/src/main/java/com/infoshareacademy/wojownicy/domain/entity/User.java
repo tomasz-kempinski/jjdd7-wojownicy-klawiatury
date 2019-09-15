@@ -39,7 +39,7 @@ public class User {
   private boolean isAdmin = false;
 
   @ManyToMany(mappedBy = "usersFavourites")
-  List<Book> booksFavourites = new ArrayList<>();
+  private List<Book> booksFavourites = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();

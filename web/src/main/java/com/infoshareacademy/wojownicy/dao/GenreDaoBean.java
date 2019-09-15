@@ -26,6 +26,12 @@ public class GenreDaoBean {
     return query.getResultList();
   }
 
+  public List<Genre> getGenreByName(String name) {
+    Query query = entityManager.createNamedQuery("Genre.findGenreByName");
+    query.setParameter("genreName", name);
+    return query.getResultList();
+  }
+
   public Genre editGenre(Genre genre) {
     return entityManager.merge(genre);
   }

@@ -13,12 +13,7 @@
   margin-bottom: 50px;
 }
 
-/*table.space {
-  padding-top: 100px;
-  margin-top: 100px;
-}*/
-
-#form-container{
+#form-container {
   padding-top: 100px;
   margin-top: 100px;
   display: flex;
@@ -26,7 +21,7 @@
   justify-content: center;
 }
 
-#book-view{
+#book-view {
   padding-top: 20px;
   padding-left: auto;
   padding-right: auto;
@@ -36,11 +31,11 @@
   flex-direction: column;
 }
 
-.card-text{
+.card-text {
   line-height: 3em;
 }
 
-#return-button{
+#return-button {
   margin: 20px;
 }
 
@@ -49,7 +44,12 @@
   margin-top: 65px;
 }
 
-.custom-switch{
+.custom-switch {
   margin: 15px;
   float: right;
+}
+
+.clickable-row {
+  cursor: pointer;
+  background-color: #c5dbff;
 }

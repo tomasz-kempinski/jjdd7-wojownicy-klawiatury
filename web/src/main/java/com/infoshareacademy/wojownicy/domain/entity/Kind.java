@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -17,11 +18,17 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Kind.findKindsList",
         query = "SELECT k FROM Kind k"
+    ),
+    @NamedQuery(
+        name = "Kind.findKindByName",
+        query = "SELECT k FROM Kind k WHERE k.kind = :kind"
     )
 }
 )
 @Entity
-@Table(name = "kind")
+@Table(name = "kind", indexes = {
+    @Index(columnList = "kind", name = "kind_index")
+})
 public class Kind {
 
   @Id
@@ -34,7 +41,7 @@ public class Kind {
   private String kind;
 
   @OneToMany(mappedBy = "kind")
-  List<Book> books = new ArrayList<>();
+  private List<Book> books = new ArrayList<>();
 
   public Long getKindId() {
     return kindId;
