@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
+import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -25,14 +26,33 @@ public class BookViewServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
+  @Inject
+  private BookListService bookListService;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
+    String idString = req.getParameter("id");
+    String partString = req.getParameter("part");
+    Map<String, Object> dataModel = new HashMap<>();
+    long id = Long.parseLong(idString);
+    long part = Long.parseLong(partString)+1;
+    boolean hasAudio = bookListService.hasAudio(id);
+    String audio;
+    if (hasAudio){
+      audio="dostępna";
+    } else {
+      audio = "niedostępna";
+    }
+    Book book = bookListService.getSingleBook(id);
+    dataModel.put("book",book);
+    dataModel.put("hasAudio",audio);
+    dataModel.put("part",part);
 
-    Map<String, List<Book>> dataModel = new HashMap<>();
+
+
 
     PrintWriter printWriter = resp.getWriter();
     try {

@@ -3,6 +3,7 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
+import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
@@ -53,12 +54,9 @@ public class BooksListServlet extends HttpServlet {
     }
     List<Book> partOfBooks = bookListService.partOfBooks(from, to);
     Map<String, Object> pagesMap = bookListService.pages(part);
-    List<Genre> genres = genreDaoBean.getGenresList();
-
     Map<String, Object> dataModel = new HashMap<>();
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
-    dataModel.put("genres",genres);
 
     PrintWriter printWriter = resp.getWriter();
     try {

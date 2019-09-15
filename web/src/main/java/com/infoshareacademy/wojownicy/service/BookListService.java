@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.service;
 
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.dto.BookDto;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,12 @@ public class BookListService {
     return pagesMap;
   }
 
-  public List<Book> partOfBooks(long from, long to) {
-    return bookDaoBean.getPartOfBooks(from, to);
+  public List<Book> partOfBooks(long from, long to) { return bookDaoBean.getPartOfBooks(from, to); }
+
+  public Book getSingleBook(long id){return bookDaoBean.getBookById(id);}
+
+  public boolean hasAudio (long id){
+    Book book = bookDaoBean.getBookById(id);
+    return book.isAudio();
   }
 }

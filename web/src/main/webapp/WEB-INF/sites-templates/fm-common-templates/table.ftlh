@@ -11,18 +11,18 @@
         <th scope="col" class="text-center">#</th>
         <th scope="col" class="text-center">Tytuł</th>
         <th scope="col" class="text-center">Autor</th>
-        <th scope="col" class="text-center">Gatunek</th>
+        <th scope="col" class="text-center">Rodzaj</th>
       </tr>
       </thead>
       <tbody>
       <#list books>
           <#items as book>
-            <tr class="clickable-row" data-href="/book-view" data-toggle="popover-hover"
-                data-img="img/fake-cover-thumbnail.jpg">
+            <tr class="clickable-row" data-href="/book-view?id=${book.id}&part=${page.previous}" data-toggle="popover-hover"
+                data-img="https://wolnelektury.pl/media/${book.thumbnail}">
               <th scope="row" class="text-center">${book.id}</th>
               <td>${book.title}</td>
               <td>${book.author.authorName}</td>
-              <td><#list book.genres><#items as genre>${genre}</#items></#list></td>
+              <td>${book.kind.kind}</td>
             </tr>
           </#items>
       </#list>

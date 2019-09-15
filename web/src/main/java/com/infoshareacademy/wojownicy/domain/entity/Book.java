@@ -31,10 +31,6 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.getPartOfBookList",
         query = "SELECT b from Book b where id between ?1 and ?2"
-    ),
-    @NamedQuery(
-        name = "Book.findBookGenres",
-        query = "select b.title, g.id, g.genreName from Book b join fetch book_genre bg on b.id = bg.id join fetch Genre g on g.id = bg.id"
     )
 })
 @Entity
