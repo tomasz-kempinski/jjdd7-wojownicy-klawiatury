@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.Reservation;
+import com.infoshareacademy.wojownicy.domain.entity.Reservation;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

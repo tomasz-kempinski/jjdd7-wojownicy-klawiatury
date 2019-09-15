@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.Book;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,9 +26,26 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List<Book> getBooksByParam(String searchParam) {
-    Query query = entityManager.createNamedQuery("Book.findBooksByParam")
-            .setParameter("searchParam", '%' + searchParam + '%');
+  public int numberOfBooks() {
+    Query query = entityManager.createNamedQuery("Book.listCount");
+    Long fromQuery = (Long) query.getSingleResult();
+    return fromQuery.intValue();
+  }
+
+  public List<Book> getPartOfBooks(long from, long to) {
+    Query query = entityManager.createNamedQuery("Book.getPartOfBookList")
+        .setParameter(1, from)
+        .setParameter(2, to);
+    return query.getResultList();
+  }
+
+  public List<Book> findBookByTitleAndAuthor(String bookTitle) {
+
+    Query query = entityManager.createNamedQuery("Book.findBooksByTitleAndAuthor")
+
+    //.setParameter("authorName", '%' + authorName + '%')
+    .setParameter("bookTitle", '%' + bookTitle + '%');
+
     return query.getResultList();
   }
 

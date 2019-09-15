@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.domain;
+package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,47 +7,49 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
-        name = "Genre.findGenresList",
-        query = "SELECT u FROM Genre u"
+        name = "Kind.findKindsList",
+        query = "SELECT k FROM Kind k"
     )
-})
+}
+)
 @Entity
-@Table(name = "genre")
-public class Genre {
+@Table(name = "kind")
+public class Kind {
 
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long genreId;
+  private Long kindId;
 
   @NotNull
-  @Column(name = "genre_name")
-  private String genreName;
+  @Column(name = "kind")
+  private String kind;
 
-  @ManyToMany(mappedBy = "genres")
-  private List<Book> books = new ArrayList<>();
+  @OneToMany(mappedBy = "kind")
+  List<Book> books = new ArrayList<>();
 
-  public Long getGenreId() {
-    return genreId;
+  public Long getKindId() {
+    return kindId;
   }
 
-  public void setGenreId(Long genreId) {
-    this.genreId = genreId;
+  public void setKindId(Long kindId) {
+    this.kindId = kindId;
   }
 
-  public String getGenreName() {
-    return genreName;
+  public String getKind() {
+    return kind;
   }
 
-  public void setGenreName(String genreName) {
-    this.genreName = genreName;
+  public void setKind(String kind) {
+    this.kind = kind;
   }
 
   public List<Book> getBooks() {

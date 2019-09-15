@@ -17,17 +17,22 @@
                        id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">Menu</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="/book-list">Przeglądanie książek</a>
+                        <a class="dropdown-item" href="/book-list?part=1">Przeglądanie książek</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Twoje ulubione książki</a>
+                        <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
+                            ulubione książki</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Rezerwacja książek</a>
+                        <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Rezerwacja
+                            książek</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admin-panel">Panel administratora</a>
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="post" action="search-book" id="search">
-                <input class="form-control mr-sm-2" type="text" id="searchParam" name="searchParam" placeholder="Wpisz tytuł lub autora książki" aria-label="Search">
-            </form>
+                <form class="form-inline my-2 my-lg-0" id="form-title" action="search-book">
+                    <input class="form-control mr-sm-2" id="bookTitle" type="text" placeholder="Wpisz tytuł"
+                           aria-label="Search">
+                </form>
             <ul class="nav navbar-nav navbar-right">
                 <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
                    role="button" aria-disabled="true">Zaloguj</a>

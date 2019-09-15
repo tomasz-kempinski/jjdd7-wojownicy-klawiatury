@@ -1,8 +1,8 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.domain.Book;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
-import com.infoshareacademy.wojownicy.service.SearchBookService;
+import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -13,46 +13,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.logging.Logger;
 
 @WebServlet("/search-book")
 public class SearchBookServlet extends HttpServlet {
-
+    private static final Logger logger = Logger.getLogger(SearchBookServlet.class.getName());
     @Inject
-    private SearchBookService searchBookService;
-
+    private BookService bookService;
     @Inject
-    private TemplateProvider templateProvider;
-
+    TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        resp.setContentType("text/html; charset=UTF-8");
+
+        String bookTitle = req.getParameter("bookTitle");
+        //String authorName = req.getParameter("authorName");
+
+        List<Book> checkedAuthorsAndTitles = bookService.findBookByTitleAndAuthor(bookTitle);
+
+        Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
+        Map<String, Object> model = new HashMap<>();
+        if (checkedAuthorsAndTitles != null) {
+            model.put("checkedAuthorsAndTitles", checkedAuthorsAndTitles);
+        }
+        try {
+            template.process(model, resp.getWriter());
+        } catch (TemplateException e) {
+            logger.severe(e.getMessage());
+        }
+
+
     }
 
-    @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-            resp.setContentType("text/html; charset=UTF-8");
-            String searchParam = req.getParameter("searchParam");
-            Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
-
-            List<Book> booksList = searchBookService.getBooksByParam(searchParam);
-            Map<String, List<Book>> dataModel = new HashMap<>();
-            dataModel.put("books", booksList);
-
-
-            PrintWriter printWriter = resp.getWriter();
-            try {
-                template.process(dataModel, printWriter);
-            } catch (TemplateException e) {
-                e.printStackTrace();
-            }
-        }
 }

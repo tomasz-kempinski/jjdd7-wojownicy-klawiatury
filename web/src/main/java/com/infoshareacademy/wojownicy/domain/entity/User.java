@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.domain;
+package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
         name = "User.findUsersList",

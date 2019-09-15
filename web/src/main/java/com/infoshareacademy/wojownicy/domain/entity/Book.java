@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.domain;
+package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +17,29 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
+    @NamedQuery(
+        name = "Book.findBookList",
+        query = "SELECT b FROM Book b"
+    ),
+    @NamedQuery(
+        name = "Book.listCount",
+        query = "SELECT count (book_title) FROM Book b"
+    ),
+    @NamedQuery(
+        name = "Book.getPartOfBookList",
+        query = "SELECT b from Book b where id between ?1 and ?2"
+    ),
         @NamedQuery(
-                name = "Book.findBookList",
-                query = "SELECT u FROM Book u"
+                name = "Book.findBooksByTitle",
+                query = "SELECT b FROM Book b WHERE b.title LIKE :bookTitle"
         ),
-
-
         @NamedQuery(
-                name = "Book.findBooksByParam",
-                query = "SELECT b FROM Book b WHERE b.title LIKE :searchParam"
+                name = "Book.findBooksByTitleAndAuthor",
+                query = "SELECT b FROM Book b WHERE b.title LIKE :bookTitle"
         )
 })
-
-
 @Entity
 @Table(name = "book")
 public class Book {
@@ -44,7 +53,7 @@ public class Book {
   @Column(name = "book_title")
   private String title;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id")
   Author author;
 

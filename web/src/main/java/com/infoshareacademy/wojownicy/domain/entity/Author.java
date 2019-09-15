@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.domain;
+package com.infoshareacademy.wojownicy.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,20 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
         name = "Author.findAuthorsList",
-        query = "SELECT u FROM Author u"
-    )
+        query = "SELECT a FROM Author a"
+    ),
+        @NamedQuery(
+                name = "Author.findAuthorByName",
+                query = "SELECT a FROM Author a WHERE a.authorName LIKE :authorName"
+        ),
+        @NamedQuery(
+                name = "Author.findAuthorById",
+                query = "SELECT a FROM Author a WHERE a.authorId IN :authorId"
+        )
 })
 @Entity
 @Table(name = "author")
