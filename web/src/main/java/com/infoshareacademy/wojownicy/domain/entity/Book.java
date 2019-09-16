@@ -37,8 +37,8 @@ import javax.validation.constraints.NotNull;
                 query = "SELECT b FROM Book b WHERE b.title LIKE :bookTitle"
         ),
         @NamedQuery(
-                name = "Book.findBooksByTitleAndAuthor",
-                query = "SELECT b FROM Book b WHERE b.title LIKE :bookTitle"
+                name = "Book.findBooksBySearchParam",
+                query = "SELECT b FROM Book as b WHERE b.title LIKE :searchParam"
         )
 })
 @Entity
@@ -105,8 +105,8 @@ public class Book {
     this.title = title;
   }
 
-  public Author getAuthor() {
-    return author;
+  public Author getAuthor(Author author) {
+    return this.author;
   }
 
   public void setAuthor(Author author) {
