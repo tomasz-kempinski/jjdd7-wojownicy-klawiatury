@@ -17,9 +17,14 @@
       <tbody>
       <#list books>
           <#items as book>
+              <#if (book.thumbnail)??>
             <tr class="clickable-row" data-href="/book-view?id=${book.id}&part=${page.previous}"
                 data-toggle="popover-hover"
                 data-img="https://wolnelektury.pl/media/${book.thumbnail}">
+                  <#else><tr class="clickable-row" data-href="/book-view?id=${book.id}&part=${page.previous}"
+                    data-toggle="popover-hover"
+                    data-img="img/fake-cover-thumbnail.jpg">
+              </#if>
               <th scope="row" class="text-center">${book.id}</th>
               <td>${book.title}</td>
               <td>${book.author.authorName}</td>
