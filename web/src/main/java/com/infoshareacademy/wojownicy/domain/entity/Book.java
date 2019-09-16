@@ -32,14 +32,10 @@ import javax.validation.constraints.NotNull;
         name = "Book.getPartOfBookList",
         query = "SELECT b from Book b where id between ?1 and ?2"
     ),
-        @NamedQuery(
-                name = "Book.findBooksByTitle",
-                query = "SELECT b FROM Book b WHERE b.title LIKE :bookTitle"
-        ),
-        @NamedQuery(
-                name = "Book.findBooksBySearchParam",
-                query = "SELECT b FROM Book as b WHERE b.title LIKE :searchParam"
-        )
+    @NamedQuery(
+        name = "Book.findBooksBySearchParam",
+        query = "SELECT b from Book as b where b.title LIKE :searchParam"
+    )
 })
 @Entity
 @Table(name = "book")
@@ -105,8 +101,8 @@ public class Book {
     this.title = title;
   }
 
-  public Author getAuthor(Author author) {
-    return this.author;
+  public Author getAuthor() {
+    return author;
   }
 
   public void setAuthor(Author author) {
@@ -146,9 +142,13 @@ public class Book {
     this.coverURL = coverURL;
   }
 
-  public String getThumbnail() { return thumbnail; }
+  public String getThumbnail() {
+    return thumbnail;
+  }
 
-  public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
+  }
 
   public boolean isReserved() {
     return isReserved;

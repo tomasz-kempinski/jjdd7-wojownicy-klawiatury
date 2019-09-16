@@ -39,10 +39,10 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List findBookBySearchParam (String bookTitle) {
+  public List findBookBySearchParam (String searchParam) {
 
     Query query = entityManager.createNamedQuery("Book.findBooksBySearchParam");
-    query.setParameter("searchParam", '%' + bookTitle + '%');
+    query.setParameter("searchParam", '%' + searchParam + '%');
 
     return query.getResultList();
   }

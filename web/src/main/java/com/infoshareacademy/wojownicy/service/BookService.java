@@ -13,7 +13,7 @@ public class BookService {
     @EJB
     private BookDaoBean bookDaoBean;
 
-    public List<Book> findBookBySearchParam (String bookTitle) {
-        return bookDaoBean.findBookBySearchParam(bookTitle);
+    public List<Book> findBookBySearchParam (String searchParam) {
+        return bookDaoBean.findBookBySearchParam(searchParam);
     }
 }
