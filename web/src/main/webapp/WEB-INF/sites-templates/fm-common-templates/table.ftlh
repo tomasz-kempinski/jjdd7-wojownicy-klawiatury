@@ -11,7 +11,6 @@
         <th scope="col" class="text-center">#</th>
         <th scope="col" class="text-center">Tytuł</th>
         <th scope="col" class="text-center">Autor</th>
-        <th scope="col" class="text-center">Rodzaj</th>
       </tr>
       </thead>
       <tbody>
@@ -28,7 +27,6 @@
               <th scope="row" class="text-center">${book.id}</th>
               <td>${book.title}</td>
               <td>${book.author.authorName}</td>
-              <td>${book.kind.kind}</td>
             </tr>
           </#items>
       </#list>
