@@ -12,6 +12,8 @@ public class BookDto {
   private String title;
   private Author author;
   private List<GenreDto> genresList = new ArrayList<>();
+  private String cover;
+  private String kind;
 
   public Long getId() {
     return id;
@@ -35,5 +37,29 @@ public class BookDto {
 
   public void setGenresList(List<GenreDto> genresList) {
     this.genresList = genresList;
+  }
+
+  public Author getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(Author author) {
+    this.author = author;
+  }
+
+  public String getCover() {
+    return cover;
+  }
+
+  public void setCover(String cover) {
+    this.cover = cover;
+  }
+
+  public String getKind() {
+    return kind;
+  }
+
+  public void setKind(String kind) {
+    this.kind = kind;
   }
 }

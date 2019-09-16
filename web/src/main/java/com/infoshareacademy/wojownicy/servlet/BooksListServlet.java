@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
@@ -52,7 +53,7 @@ public class BooksListServlet extends HttpServlet {
       from = (part - 1) * 20;
       to = (from - 1) + 20;
     }
-    List<Book> partOfBooks = bookListService.partOfBooks(from, to);
+    List<BookDto> partOfBooks = bookListService.partOfBooks(from, to);
     Map<String, Object> pagesMap = bookListService.pages(part);
     Map<String, Object> dataModel = new HashMap<>();
     dataModel.put("books", partOfBooks);
