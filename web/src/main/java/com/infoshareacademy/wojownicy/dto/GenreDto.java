@@ -1,5 +1,8 @@
 package com.infoshareacademy.wojownicy.dto;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public class GenreDto {
 
   private Long id;
