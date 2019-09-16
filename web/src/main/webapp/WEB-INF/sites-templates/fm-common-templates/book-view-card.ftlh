@@ -15,7 +15,8 @@
         <div class="card-body">
           <h2 class="card-title font-weight-bold">${book.title}</h2>
           <h3 class="card-text font-italic">${book.author.authorName}</h3>
-          <h4 class="card-text">Rodzaj:${book.kind.kind}</h4>
+          <h4 class="card-text">Gatunek:${book.kind.kind}</h4>
+          <h4 class="card-text">Rodzaj:<#list book.genres><#items as genre> ${genre} </#items></#list></h4>
           <h4 class="card-text">Wersja audio: ${hasAudio} </h4>
         </div>
       </div>
