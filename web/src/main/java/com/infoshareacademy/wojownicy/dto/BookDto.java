@@ -13,6 +13,7 @@ public class BookDto {
   private String title;
   private Author author;
   private List<GenreDto> genresList = new ArrayList<>();
+  private String genreName;
   private String cover;
   private String coverThumbnail;
   private Kind kind;
@@ -71,5 +72,13 @@ public class BookDto {
 
   public void setCoverThumbnail(String coverThumbnail) {
     this.coverThumbnail = coverThumbnail;
+  }
+
+  public String getGenreName() {
+    return genreName;
+  }
+
+  public void setGenreName(String genreName) {
+    this.genreName = genreName;
   }
 }

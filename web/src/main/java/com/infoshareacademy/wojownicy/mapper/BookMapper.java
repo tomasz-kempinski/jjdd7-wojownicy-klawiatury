@@ -24,6 +24,8 @@ public class BookMapper {
     book.getGenres().forEach(g -> {
       bookDto.getGenresList().add(genreMapper.mapEntityToDto(g));
     });
+
+    bookDto.setGenreName(bookDto.getGenresList().get(0).getName());
     return bookDto;
   }
 
