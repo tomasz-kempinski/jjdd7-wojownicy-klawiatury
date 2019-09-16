@@ -22,7 +22,10 @@ public class SaveToDataBase {
   private BookDaoBean bookDaoBean;
 
   @Inject
-  Mapper mapper;
+  private ParseService parseService;
+
+  @Inject
+  private Mapper mapper;
 
   public void saveBooksFromApi() {
     try {
@@ -35,6 +38,20 @@ public class SaveToDataBase {
       );
     } catch (IOException e) {
       logger.error("Couldn't connect to remote api");
+    }
+  }
+
+  public void saveBooksFromFile() {
+    try {
+      List<Book> booksList = parseService.parseBooksFromJson();
+
+      booksList.forEach(b -> {
+            com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(b);
+            bookDaoBean.editBook(book);
+          }
+      );
+    } catch (IOException e) {
+      logger.error("File with books not found");
     }
   }
 }
