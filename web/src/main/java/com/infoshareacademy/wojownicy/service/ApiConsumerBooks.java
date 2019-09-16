@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 public class ApiConsumerBooks {
 
   private WebTarget webTarget;
-  private static final String BooksURI = "http://isa-proxy.blueazurit.com/books/daisy/";
+  private static final String BooksURI = "http://isa-proxy.blueazurit.com/books/books/";
 
   @Inject
   private ParseService parseService;
