@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.dto;
 
 import com.infoshareacademy.wojownicy.domain.entity.Author;
+import com.infoshareacademy.wojownicy.domain.entity.Kind;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -13,7 +14,8 @@ public class BookDto {
   private Author author;
   private List<GenreDto> genresList = new ArrayList<>();
   private String cover;
-  private String kind;
+  private String coverThumbnail;
+  private Kind kind;
 
   public Long getId() {
     return id;
@@ -55,11 +57,19 @@ public class BookDto {
     this.cover = cover;
   }
 
-  public String getKind() {
+  public Kind getKind() {
     return kind;
   }
 
-  public void setKind(String kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
+  }
+
+  public String getCoverThumbnail() {
+    return coverThumbnail;
+  }
+
+  public void setCoverThumbnail(String coverThumbnail) {
+    this.coverThumbnail = coverThumbnail;
   }
 }
