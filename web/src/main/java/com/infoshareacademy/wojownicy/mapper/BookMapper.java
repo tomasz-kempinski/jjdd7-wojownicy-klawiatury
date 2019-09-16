@@ -19,7 +19,7 @@ public class BookMapper {
     bookDto.setAuthor(book.getAuthor());
     bookDto.setCover(book.getCoverURL());
     bookDto.setKind(book.getKind());
-    bookDto.setCoverThumbnail(book.getThumbnail());
+    bookDto.setThumbnail(book.getThumbnail());
 
     book.getGenres().forEach(g -> {
       bookDto.getGenresList().add(genreMapper.mapEntityToDto(g));

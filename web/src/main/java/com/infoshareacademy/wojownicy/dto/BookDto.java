@@ -15,7 +15,7 @@ public class BookDto {
   private List<GenreDto> genresList = new ArrayList<>();
   private String genreName;
   private String cover;
-  private String coverThumbnail;
+  private String thumbnail;
   private Kind kind;
 
   public Long getId() {
@@ -66,12 +66,12 @@ public class BookDto {
     this.kind = kind;
   }
 
-  public String getCoverThumbnail() {
-    return coverThumbnail;
+  public String getThumbnail() {
+    return thumbnail;
   }
 
-  public void setCoverThumbnail(String coverThumbnail) {
-    this.coverThumbnail = coverThumbnail;
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
   }
 
   public String getGenreName() {
