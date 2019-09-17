@@ -20,10 +20,16 @@ public class BookMapper {
     BookDto bookDto = new BookDto();
     bookDto.setId(book.getId());
     bookDto.setTitle(book.getTitle());
+    bookDto.setAuthor(book.getAuthor());
+    bookDto.setCover(book.getCoverURL());
+    bookDto.setKind(book.getKind());
+    bookDto.setThumbnail(book.getThumbnail());
 
     book.getGenres().forEach(g -> {
       bookDto.getGenresList().add(genreMapper.mapEntityToDto(g));
     });
+
+    bookDto.setGenreName(bookDto.getGenresList().get(0).getName());
     return bookDto;
   }
   public BookLiveSearchView mapBookForLiveSearch(Book book) {

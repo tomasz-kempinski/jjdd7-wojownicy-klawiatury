@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
 import freemarker.template.Template;
@@ -34,7 +35,7 @@ public class BookViewServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
-    String idString = req.getParameter("id");
+    String idString = req.getParameter("id").replaceAll(",", "");
     String partString = req.getParameter("part");
     Map<String, Object> dataModel = new HashMap<>();
     long id;
@@ -57,7 +58,7 @@ public class BookViewServlet extends HttpServlet {
     } else {
       audio = "niedostępna";
     }
-    Book book = bookListService.getSingleBook(id);
+    BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);

@@ -17,7 +17,7 @@ public class BookDaoBean {
     entityManager.persist(book);
   }
 
-  public Book getBookById(Long id) {
+  public Book getBookById(long id) {
     return entityManager.find(Book.class, id);
   }
 
