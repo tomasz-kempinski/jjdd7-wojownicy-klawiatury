@@ -43,6 +43,7 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
+    String searchTitle = req.getParameter("searchTitle");
     String audio = req.getParameter("hasAudio");
     boolean hasAudio = Boolean.parseBoolean(audio);
     long from = 0;
@@ -53,11 +54,13 @@ public class BooksListServlet extends HttpServlet {
       from = (part - 1) * 20;
       to = (from - 1) + 20;
     }
+
     List<BookDto> partOfBooks = bookListService.partOfBooks(from, to);
     Map<String, Object> pagesMap = bookListService.pages(part);
     Map<String, Object> dataModel = new HashMap<>();
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
+
 
     PrintWriter printWriter = resp.getWriter();
     try {

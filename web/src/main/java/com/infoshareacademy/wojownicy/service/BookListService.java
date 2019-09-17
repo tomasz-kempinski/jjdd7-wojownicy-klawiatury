@@ -8,19 +8,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Transactional
-@RequestScoped
+@Stateless
 public class BookListService {
 
-  @Inject
+  @EJB
   BookDaoBean bookDaoBean;
 
-  @Inject
+  @EJB
   BookMapper bookMapper;
+
+  private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
   public Map<String, Object> pages(long currentPage) {
     Map<String, Object> pagesMap = new HashMap<>();
@@ -48,6 +55,11 @@ public class BookListService {
   return  bookDtoList;
   }
 
+  public List<Book> findBookForLiveSearch (String searchTitle) {
+    logger.info("Book with title {} found in database", searchTitle);
+    return bookDaoBean.findBookByLiveSearch(searchTitle);
+  }
+
   public BookDto getSingleBook(long id) {
 
    return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
@@ -63,3 +75,9 @@ public class BookListService {
     return bookDaoBean.numberOfBooks();
   }
 }
+
+//  List<Book> bookList = bookDaoBean.findBookByLiveSearch(searchTitle);
+//  List<BookDto> bookDtoList = new ArrayList<>();
+//    for (Book book : bookList) {
+//        bookDtoList.add(bookMapper.mapEntityToDto(book));
+//        }

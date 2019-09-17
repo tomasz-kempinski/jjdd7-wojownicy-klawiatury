@@ -33,8 +33,8 @@ import javax.validation.constraints.NotNull;
         query = "SELECT b from Book b where id between ?1 and ?2"
     ),
     @NamedQuery(
-        name = "Book.findBooksBySearchParam",
-        query = "SELECT b from Book as b where b.title LIKE :searchParam"
+        name = "Book.findBookByTitle",
+        query = "SELECT b from Book as b WHERE b.title LIKE :searchTitle"
     )
 })
 @Entity
