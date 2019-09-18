@@ -18,13 +18,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Transactional
-@Stateless
+@RequestScoped
 public class BookListService {
 
-  @EJB
+  @Inject
   BookDaoBean bookDaoBean;
 
-  @EJB
+  @Inject
   BookMapper bookMapper;
 
   private Logger logger = LoggerFactory.getLogger(getClass().getName());
@@ -55,11 +55,6 @@ public class BookListService {
   return  bookDtoList;
   }
 
-  public List<Book> findBookForLiveSearch (String searchTitle) {
-    logger.info("Book with title {} found in database", searchTitle);
-    return bookDaoBean.findBookByLiveSearch(searchTitle);
-  }
-
   public BookDto getSingleBook(long id) {
 
    return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
@@ -75,9 +70,3 @@ public class BookListService {
     return bookDaoBean.numberOfBooks();
   }
 }
-
-//  List<Book> bookList = bookDaoBean.findBookByLiveSearch(searchTitle);
-//  List<BookDto> bookDtoList = new ArrayList<>();
-//    for (Book book : bookList) {
-//        bookDtoList.add(bookMapper.mapEntityToDto(book));
-//        }

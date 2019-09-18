@@ -29,7 +29,7 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" id="form-search" >
+      <form class="form-inline my-2 my-lg-0" id="form-search">
         <input class="form-control mr-sm-2" type="text" id="input-param" placeholder="Szukaj" aria-label="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
@@ -38,5 +38,4 @@
       </ul>
     </div>
   </div>
-  <script src="js/book.js"></script>
 </nav>

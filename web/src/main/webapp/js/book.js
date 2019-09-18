@@ -1,9 +1,10 @@
-const $formName = $('#form-search');
-let listOfBooks =[];
+
+var listOfBooks =['Akslop'];
 console.log("test")
+console.log(listOfBooks)
 
 
-$formName.on('submit', () => {
+$('#form-search').on('submit', () => {
   const $input = $("#input-param");
   message = $input.val();
   if (message.length === 0) {
@@ -17,23 +18,40 @@ $formName.on('submit', () => {
   return false;
 });
 
-
-$('#input-param').keyup(function () {
-  console.log("TEst")
-  if( this.value.length < 3 ) return;
-  var substring = $(this).val();
-  $.ajax({
-    url: '/api/books/searchTitle/' + substring,
-    type: 'GET',
-    success: function(data) {
-      console.log(data);
-      listOfBooks = data;
-      let result = data.map(b => b.title);
-      $("#input-param").autocomplete( {
-        source: result,
-        minLength: 3
-      });
-    }
-
-  });
+//
+// $('#input-param').keyup(function () {
+//   console.log("TEst")
+//   if( this.value.length < 3 ) return;
+//   var substring = $(this).val();
+//   $.ajax({
+//     url: '/api/books/searchTitle/' + substring,
+//     type: 'GET',
+//     success: function(data) {
+//       console.log(data);
+//       listOfBooks = data.map(b => b.title);
+//       console.log(listOfBooks);
+//     }
+//
+//   });
+// });
+//
+// $("#input-param").autocomplete( {
+//   source: listOfBooks
+// });
+$( "#input-param" ).autocomplete({
+  source: function (request, response) {
+    $.ajax({
+      url: '/api/books/searchTitle/' + $(this).val(),
+      type: 'GET',
+      success: function (data) {
+        console.log(data);
+        listOfBooks = data.map(b = > b.title
+      )
+        ;
+        response(listOfBooks)
+      }
+    });
+  },
+  minLength: 2
 });
+

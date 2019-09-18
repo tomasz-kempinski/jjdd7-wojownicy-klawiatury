@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.service.rest;
 
-import com.infoshareacademy.wojownicy.dto.BookDto;
+import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -27,13 +27,11 @@ public class BookRestService {
   @Path("/searchTitle/{searchTitle}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getNotification(@PathParam("searchTitle") String searchTitle) {
-    logger.info("books with title contains " + searchTitle + "were parsed to json successfully");
-    List<BookDto> bookLiveSearchList = apiBookService.getLiveSearchBook(searchTitle);
-    if (bookLiveSearchList.isEmpty()) {
-      logger.warn("Cannot find books {} contains" + searchTitle);
+    List<BookLiveSearchView> bookLiveSearchViews = apiBookService.getLiveSearchBook(searchTitle);
+    if (bookLiveSearchViews.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
-    logger.info("Found books {} contains" + searchTitle);
-    return Response.ok().entity(bookLiveSearchList).build();
+    return Response.ok().entity(bookLiveSearchViews).build();
+//    return Response.ok().entity(apiBookService.getLiveSearchBook(searchTitle)).build();
   }
 }
