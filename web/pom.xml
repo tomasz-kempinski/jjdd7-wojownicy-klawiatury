@@ -29,67 +29,76 @@
       <artifactId>javaee-api</artifactId>
       <version>8.0</version>
     </dependency>
-
     <dependency>
-      <groupId>org.freemarker</groupId>
-      <artifactId>freemarker</artifactId>
-      <version>2.3.29</version>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.2.Final</version>
+      <exclusions>
+        <exclusion>
+          <groupId>dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
-
+    <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.1-api</artifactId>
+      <version>1.0.2.Final</version>
+      <exclusions>
+        <exclusion>
+          <groupId>dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.4.2.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>com.infoshareacademy</groupId>
+      <artifactId>wojownicy-klawiatury-app</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.15</version>
+    </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.28</version>
     </dependency>
-
-  <dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.4.2.Final</version>
-    <exclusions>
-      <exclusion>
-        <groupId>dom4j</groupId>
-        <artifactId>dom4j</artifactId>
-      </exclusion>
-    </exclusions>
-  </dependency>
-
-  <dependency>
-    <groupId>org.hibernate.javax.persistence</groupId>
-    <artifactId>hibernate-jpa-2.1-api</artifactId>
-    <version>1.0.2.Final</version>
-    <exclusions>
-      <exclusion>
-        <groupId>dom4j</groupId>
-        <artifactId>dom4j</artifactId>
-      </exclusion>
-    </exclusions>
-  </dependency>
-
-  <!-- MySQL Driver -->
-  <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.15</version>
-  </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.9.9</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.9.9.3</version>
-      <scope>compile</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>com.infoshareacademy</groupId>-->
-<!--      <artifactId>wojownicy-klawiatury-app</artifactId>-->
-<!--      <version>1.0-SNAPSHOT</version>-->
-<!--    </dependency>-->
-
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.29</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.12.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator-annotation-processor</artifactId>
+      <version>6.0.12.Final</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>

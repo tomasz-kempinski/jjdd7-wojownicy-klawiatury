@@ -12,8 +12,7 @@ public class BookService {
   @EJB
   private BookDaoBean bookDaoBean;
 
-  public List<Book> findBookForLiveSearch (String searchTitle) {
-    return bookDaoBean.findBookByLiveSearch(searchTitle);
+  public List<Book> findBookForLiveSearchTitle(String searchTitle) {
+    return bookDaoBean.findBookByLiveSearchTitle(searchTitle);
   }
-
 }

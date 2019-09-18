@@ -24,7 +24,7 @@ public class ApiBookService {
   public List<BookLiveSearchView> getLiveSearchBook(String searchTitle) {
     logger.info("books with " + searchTitle + " in it were mapped");
     List<BookLiveSearchView> bookLiveSearchViews = new ArrayList<>();
-    bookService.findBookForLiveSearch(searchTitle).forEach(
+    bookService.findBookForLiveSearchTitle(searchTitle).forEach(
         i -> bookLiveSearchViews.add(bookMapper.mapBookEntityForLiveSearch(i)));
     return bookLiveSearchViews;
   }

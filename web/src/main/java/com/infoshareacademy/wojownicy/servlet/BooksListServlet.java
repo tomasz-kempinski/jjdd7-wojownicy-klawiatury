@@ -43,7 +43,6 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    String searchTitle = req.getParameter("searchTitle");
     String audio = req.getParameter("hasAudio");
     boolean hasAudio = Boolean.parseBoolean(audio);
     long from = 0;
