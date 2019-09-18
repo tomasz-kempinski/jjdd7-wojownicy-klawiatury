@@ -34,7 +34,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.getPreviousPartOfBookList",
-        query = "SELECT b FROM Book b WHERE id < ?1"
+        query = "SELECT b FROM Book b WHERE id < ?1 ORDER BY id DESC"
     ),
 })
 @Entity

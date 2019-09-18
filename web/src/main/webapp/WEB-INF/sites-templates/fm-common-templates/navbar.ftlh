@@ -17,7 +17,7 @@
              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Menu</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/book-list?part=1&id=1">Przeglądanie książek</a>
+            <a class="dropdown-item" href="/book-list?part=1&lastId=1&firstId=1&nextPage=0">Przeglądanie książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
               ulubione książki</a>

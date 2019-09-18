@@ -1,7 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -9,6 +8,8 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,26 +44,44 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    String fromIdString = req.getParameter("id");
+    String fromIdString = req.getParameter("lastId");
     String audio = req.getParameter("hasAudio");
+    String firstIdString = req.getParameter("firstId");
+    String nextString = req.getParameter("nextPage");
     boolean hasAudio = Boolean.parseBoolean(audio);
     hasAudio=true;
-    long from = 0;
     long part = 1;
     long fromId =1;
-    if (NumberUtils.isDigits(partString) || NumberUtils.isDigits(fromIdString)) {
+    long firstId=1;
+    long nextPage=1;
+    long lastId=0;
+    if (NumberUtils.isDigits(partString)
+        || NumberUtils.isDigits(fromIdString)
+        || NumberUtils.isDigits(firstIdString)
+        || NumberUtils.isDigits((nextString))) {
       part = Long.parseLong(partString);
       fromId= Long.parseLong(fromIdString)-1;
-      from = (part - 1) * 20;
+      firstId = Long.parseLong(firstIdString);
+      nextPage = Long.parseLong((nextString));
     }
-    List<BookDto> partOfBooks = bookListService.partOfBooks(fromId, hasAudio);
-    long lastId = partOfBooks.get(partOfBooks.size()-1).getId()+1;
-    Map<String, Object> pagesMap = bookListService.pages(part);
     Map<String, Object> dataModel = new HashMap<>();
+    List<BookDto> partOfBooks = new ArrayList<>();
+    Map<String, Object> pagesMap = bookListService.pages(part);
+
+    if(nextPage == 1) {
+      partOfBooks = bookListService.nextPartOfBooks(fromId, hasAudio);
+      lastId = partOfBooks.get(partOfBooks.size() - 1).getId() + 1;
+      firstId = partOfBooks.get(0).getId();
+    }else if(nextPage == -1){
+      partOfBooks = bookListService.previousPartOfBooks(firstId, hasAudio);
+      Collections.reverse(partOfBooks);
+      lastId = partOfBooks.get(partOfBooks.size()-1).getId() + 1;
+      firstId = partOfBooks.get(0).getId();
+    }
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
     dataModel.put("lastId", lastId);
-
+    dataModel.put("firstId", firstId);
     PrintWriter printWriter = resp.getWriter();
     try {
       template.process(dataModel, printWriter);

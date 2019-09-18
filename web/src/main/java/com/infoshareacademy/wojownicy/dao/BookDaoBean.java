@@ -32,9 +32,16 @@ public class BookDaoBean {
     return fromQuery.intValue();
   }
 
-  public List<Book> getPartOfBooks(long from, boolean isAudio) {
+  public List<Book> getNextPartOfBooks(long from, boolean isAudio) {
     Query query = entityManager.createNamedQuery("Book.getNextPartOfBookList")
         .setParameter(1, from)
+        .setMaxResults(20);
+    return query.getResultList();
+  }
+
+  public List<Book> getPreviousPartOfBooks(long from, boolean isAudio){
+    Query query = entityManager.createNamedQuery("Book.getPreviousPartOfBookList")
+        .setParameter(1,from)
         .setMaxResults(20);
     return query.getResultList();
   }
