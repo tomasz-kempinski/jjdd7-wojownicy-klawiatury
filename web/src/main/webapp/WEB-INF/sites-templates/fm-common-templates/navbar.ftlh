@@ -2,7 +2,7 @@
      style="background-color: rgb(52,50,50)">
   <div class="container">
     <a class="navbar-brand"
-       href="http://localhost:8080/main-site">
+       href="http://wojownicy-klawiatury.is-academy.pl:4380/">
       <img src="img/Bookhub30.png" alt="Bookhub"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault"
