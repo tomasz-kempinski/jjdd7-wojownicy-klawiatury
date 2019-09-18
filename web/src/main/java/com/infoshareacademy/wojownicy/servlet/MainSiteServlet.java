@@ -17,7 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@WebServlet("/main-site")
+@WebServlet(urlPatterns = {
+    "",
+    "/home"})
 public class MainSiteServlet extends HttpServlet {
 
   private static final Logger logger = LoggerFactory.getLogger(MainSiteServlet.class.getName());
