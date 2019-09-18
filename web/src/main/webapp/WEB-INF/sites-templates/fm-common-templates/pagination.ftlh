@@ -19,13 +19,13 @@
               class="sr-only">(current)</span></span></li>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.next}">${page.next}</a></li></#if>
+                                   href="/book-list?part=${page.next}&id=${lastId}">${page.next}</a></li></#if>
         <#if page.last gte page.third>
           <li class="page-item"><a class="page-link"
                                    href="/book-list?part=${page.third}">${page.third}</a></li></#if>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.next}">Następna</a></li></#if>
+                                   href="/book-list?part=${page.next}&id=${lastId}">Następna</a></li></#if>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
                                    href="/book-list?part=${page.last}">Ostatnia</a></li></#if>

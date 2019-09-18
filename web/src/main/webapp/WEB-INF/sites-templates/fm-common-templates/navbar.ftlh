@@ -17,7 +17,7 @@
              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Menu</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/book-list?part=1">Przeglądanie książek</a>
+            <a class="dropdown-item" href="/book-list?part=1&id=1">Przeglądanie książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
               ulubione książki</a>
@@ -34,7 +34,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
-           role="button" aria-disabled="true">Zaloguj</a>
+           role="button" aria-disabled="true">Zal3oguj</a>
       </ul>
     </div>
   </div>

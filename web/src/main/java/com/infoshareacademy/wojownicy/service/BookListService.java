@@ -39,8 +39,8 @@ public class BookListService {
     return pagesMap;
   }
 
-  public List<BookDto> partOfBooks(long from, long to) {
-   List<Book> books = bookDaoBean.getPartOfBooks(from, to);
+  public List<BookDto> partOfBooks(long from, boolean hasAudio) {
+   List<Book> books = bookDaoBean.getPartOfBooks(from, hasAudio);
    List<BookDto> bookDtoList = new ArrayList<>();
    for (Book book : books){
      bookDtoList.add(bookMapper.mapEntityToDto(book));
