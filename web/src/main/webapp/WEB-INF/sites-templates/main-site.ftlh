@@ -5,6 +5,9 @@
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="868751336544-1jdvc65i0l7vmcldgct4bnqrc5roll6q.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"
