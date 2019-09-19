@@ -24,7 +24,6 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
 
   @Override
   protected String getUserId(HttpServletRequest req) throws ServletException, IOException {
-    String randomUserId = UUID.randomUUID().toString();
-    return randomUserId;
+    return UUID.randomUUID().toString();
   }
 }

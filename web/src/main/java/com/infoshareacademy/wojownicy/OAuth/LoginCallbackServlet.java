@@ -10,8 +10,9 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Userinfoplus;
 
-import com.infoshareacademy.wojownicy.dao.UserDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.User;
+import com.infoshareacademy.wojownicy.dto.UserDto;
+import com.infoshareacademy.wojownicy.service.UserService;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ import java.util.UUID;
 public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServlet {
 
   @Inject
-  UserDaoBean userDaoBean;
+  UserService userService;
 
   @Override
   protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
@@ -41,13 +42,15 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     String email = info.getEmail();
     req.getSession().setAttribute("google_name", name);
     req.getSession().setAttribute("email", email);
-    resp.sendRedirect("/main-site");
+    resp.sendRedirect("/");
 
-    User user = new User();
+    UserDto user = new UserDto();
     user.setUsername(name);
     user.setEmail(email);
 
-    userDaoBean.addUser(user);
+    userService.saveUser(user);
+
+
   }
 
   @Override

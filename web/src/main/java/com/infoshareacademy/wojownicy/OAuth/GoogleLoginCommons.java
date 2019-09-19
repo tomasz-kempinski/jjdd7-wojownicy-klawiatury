@@ -26,11 +26,7 @@ public class GoogleLoginCommons {
     return new GoogleAuthorizationCodeFlow.Builder(
         new NetHttpTransport(),
         JacksonFactory.getDefaultInstance(),
-        clientId,
-        secret,
-        scopes
-    )
-//        .setDataStoreFactory(MemoryDataStoreFactory.getDefaultInstance())
+        clientId, secret, scopes)
         .setAccessType("online")
         .build();
   }
