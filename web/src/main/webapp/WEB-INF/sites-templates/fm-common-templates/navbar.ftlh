@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark py-1 sticky-top"
+<nav class="navbar navbar-expand-md navbar-dark py-1 fixed-top"
      style="background-color: rgb(52,50,50)">
   <div class="container">
     <a class="navbar-brand"
