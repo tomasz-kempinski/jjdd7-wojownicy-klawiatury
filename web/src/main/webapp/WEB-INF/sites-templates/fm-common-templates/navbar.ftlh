@@ -33,7 +33,7 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         <script>
           function onSignIn(googleUser) {
             // Useful data for your client-side scripts:

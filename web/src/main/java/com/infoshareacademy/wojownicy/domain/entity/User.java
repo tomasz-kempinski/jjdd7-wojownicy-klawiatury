@@ -28,13 +28,16 @@ public class User {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long authorId;
+  private Long userId;
 
   @NotNull
   @Column(name = "username")
-  private String authorName;
+  private String username;
 
   @NotNull
+  @Column(name = "email")
+  private String email;
+
   @Column(name = "is_admin")
   private boolean isAdmin = false;
 
@@ -44,20 +47,20 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();
 
-  public Long getAuthorId() {
-    return authorId;
+  public Long getUserId() {
+    return userId;
   }
 
-  public void setAuthorId(Long authorId) {
-    this.authorId = authorId;
+  public void setUserId(Long userId) {
+    this.userId = userId;
   }
 
-  public String getAuthorName() {
-    return authorName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setAuthorName(String authorName) {
-    this.authorName = authorName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public boolean isAdmin() {
@@ -84,5 +87,13 @@ public class User {
   public void setUserReservations(
       List<Reservation> userReservations) {
     this.userReservations = userReservations;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
