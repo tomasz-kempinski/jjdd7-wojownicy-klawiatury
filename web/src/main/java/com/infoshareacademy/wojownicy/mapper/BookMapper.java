@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.mapper;
 
 import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ public class BookMapper {
   @Inject
   private GenreMapper genreMapper;
 
-  public BookDto mapEntityToDto(Book book){
+  public BookDto mapEntityToDto(Book book) {
 
     BookDto bookDto = new BookDto();
     bookDto.setId(book.getId());
@@ -29,4 +30,10 @@ public class BookMapper {
     return bookDto;
   }
 
+  public BookLiveSearchView mapBookEntityForLiveSearch(Book book) {
+    BookLiveSearchView bookLiveSearchView = new BookLiveSearchView();
+    bookLiveSearchView.setId(book.getId());
+    bookLiveSearchView.setTitle(book.getTitle());
+    return bookLiveSearchView;
+  }
 }

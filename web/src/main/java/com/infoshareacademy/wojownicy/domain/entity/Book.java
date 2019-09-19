@@ -32,6 +32,10 @@ import javax.validation.constraints.NotNull;
         name = "Book.getPartOfBookList",
         query = "SELECT b from Book b where id between ?1 and ?2"
     ),
+    @NamedQuery(
+        name = "Book.findBookByTitle",
+        query = "SELECT b from Book as b WHERE b.title LIKE :searchTitle"
+    ),
 })
 @Entity
 @Table(name = "book")
