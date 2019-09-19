@@ -25,7 +25,7 @@
                     data-img="img/fake-cover-thumbnail.jpg">
               </#if>
               <th scope="row" class="text-center">${book.id}</th>
-              <td id="tmpl-data">${book.title}</td>
+              <td>${book.title}</td>
               <td>${book.author.authorName}</td>
             </tr>
           </#items>

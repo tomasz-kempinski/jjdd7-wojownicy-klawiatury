@@ -12,7 +12,7 @@ public class BookMapper {
   @Inject
   private GenreMapper genreMapper;
 
-  public BookDto mapEntityToDto(Book book) {
+  public BookDto mapEntityToDto(Book book){
 
     BookDto bookDto = new BookDto();
     bookDto.setId(book.getId());
