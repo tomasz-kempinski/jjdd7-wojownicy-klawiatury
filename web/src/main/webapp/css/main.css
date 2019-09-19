@@ -16,7 +16,7 @@
 #form-container {
   padding-top: 100px;
   margin-top: 100px;
-  display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
 }
@@ -29,6 +29,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+#input-param {
+  /*position: absolute;*/
+  z-index: 2000;
 }
 
 .card-text {
@@ -52,4 +57,7 @@
 .clickable-row {
   cursor: pointer;
   background-color: #c5dbff;
+}
+#ui-id-1{
+  z-index: 999999;
 }
