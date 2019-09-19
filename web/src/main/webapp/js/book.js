@@ -8,7 +8,7 @@ $('#form-search').on('submit', () => {
   }
   if(listOfBooks.some(book=>book.title===$input.val())){
     let bookIDs = listOfBooks.filter(book=>book.title===$input.val());
-    window.location = '/book-view?id=' + bookIDs[0].id + '&part=-1';
+    window.location = '/book-view?id=' + bookIDs[0].id + '&part=0';
   }
   $input.val('');
   return false;

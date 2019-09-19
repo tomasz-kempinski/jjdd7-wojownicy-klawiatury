@@ -21,8 +21,6 @@ public class BookRestService {
   @EJB
   private ApiBookService apiBookService;
 
-  private Logger logger = LoggerFactory.getLogger(getClass().getName());
-
   @GET
   @Path("/searchTitle/{searchTitle}")
   @Produces(MediaType.APPLICATION_JSON)
@@ -32,6 +30,5 @@ public class BookRestService {
       return Response.status(Status.NOT_FOUND).build();
     }
     return Response.ok().entity(bookLiveSearchViews).build();
-//    return Response.ok().entity(apiBookService.getLiveSearchBook(searchTitle)).build();
   }
 }

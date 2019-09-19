@@ -32,7 +32,6 @@
       <form class="form-inline my-2 my-lg-0" id="form-search">
         <input class="form-control mr-sm-2" type="text" id="input-param" placeholder="Szukaj" aria-label="Search">
       </form>
-
       <ul class="nav navbar-nav navbar-right">
         <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
            role="button" aria-disabled="true">Zaloguj</a>
