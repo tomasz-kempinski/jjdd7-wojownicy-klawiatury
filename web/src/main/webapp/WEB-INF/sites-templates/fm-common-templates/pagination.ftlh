@@ -1,31 +1,31 @@
 <div class="container">
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-        <#if page.previous gt 0>
+        <#if page.previous gt -1>
           <li class="page-item"><a class="page-link"
                                    href="/book-list?part=${page.first}">Pierwsza</a></li></#if>
-        <#if page.previous gt 0>
-          <li class="page-item"><a class="page-link" href="/book-list?part=${page.previous}&lastId=${lastId}&firstId=${firstId}&nextPage=-1">Poprzednia</a>
+        <#if page.previous gt -1>
+          <li class="page-item"><a class="page-link" href="/book-list?part=${page.previous}">Poprzednia</a>
           </li></#if>
-        <#if page.previous-1 gt 0>
+        <#if page.previous-1 gt -1>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.previous-1}">${page.previous-1}</a>
+                                   href="/book-list?part=${page.previous-1}">${page.previous}</a>
           </li></#if>
-        <#if page.previous gt 0>
+        <#if page.previous gt -1>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.previous}&lastId=${lastId}&firstId=${firstId}&nextPage=-1">$${page.previous}</a>
+                                   href="/book-list?part=${page.previous}">${page.previous+1}</a>
           </li></#if>
-      <li class="page-item active" aria-current="page"><span class="page-link">${page.current}<span
+      <li class="page-item active" aria-current="page"><span class="page-link">${page.current+1}<span
               class="sr-only">(current)</span></span></li>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.next}&lastId=${lastId}&firstId=${firstId}&nextPage=1">${page.next}</a></li></#if>
+                                   href="/book-list?part=${page.next}">${page.next+1}</a></li></#if>
         <#if page.last gte page.third>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.third}">${page.third}</a></li></#if>
+                                   href="/book-list?part=${page.third}">${page.third+1}</a></li></#if>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
-                                   href="/book-list?part=${page.next}&lastId=${lastId}&firstId=${firstId}&nextPage=1">Następna</a></li></#if>
+                                   href="/book-list?part=${page.next}">Następna</a></li></#if>
         <#if page.last gte page.next>
           <li class="page-item"><a class="page-link"
                                    href="/book-list?part=${page.last}">Ostatnia</a></li></#if>

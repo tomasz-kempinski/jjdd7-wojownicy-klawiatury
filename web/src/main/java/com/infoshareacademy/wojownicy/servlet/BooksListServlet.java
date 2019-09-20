@@ -44,44 +44,26 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    String fromIdString = req.getParameter("lastId");
-    String audio = req.getParameter("hasAudio");
-    String firstIdString = req.getParameter("firstId");
-    String nextString = req.getParameter("nextPage");
-    boolean hasAudio = Boolean.parseBoolean(audio);
-    hasAudio=true;
-    long part = 1;
-    long fromId =1;
-    long firstId=1;
-    long nextPage=1;
-    long lastId=0;
-    if (NumberUtils.isDigits(partString)
-        || NumberUtils.isDigits(fromIdString)
-        || NumberUtils.isDigits(firstIdString)
-        || NumberUtils.isDigits((nextString))) {
-      part = Long.parseLong(partString);
-      fromId= Long.parseLong(fromIdString)-1;
-      firstId = Long.parseLong(firstIdString);
-      nextPage = Long.parseLong((nextString));
-    }
-    Map<String, Object> dataModel = new HashMap<>();
-    List<BookDto> partOfBooks = new ArrayList<>();
-    Map<String, Object> pagesMap = bookListService.pages(part);
+    String hasAudioString = req.getParameter("hasAudio");
+    int part = 0;
+    boolean hasAudio = true;
 
-    if(nextPage == 1) {
-      partOfBooks = bookListService.nextPartOfBooks(fromId, hasAudio);
-      lastId = partOfBooks.get(partOfBooks.size() - 1).getId() + 1;
-      firstId = partOfBooks.get(0).getId();
-    }else if(nextPage == -1){
-      partOfBooks = bookListService.previousPartOfBooks(firstId, hasAudio);
-      Collections.reverse(partOfBooks);
-      lastId = partOfBooks.get(partOfBooks.size()-1).getId() + 1;
-      firstId = partOfBooks.get(0).getId();
+    if(hasAudioString.equals("true")||hasAudioString.equals("false")){
+      hasAudio = Boolean.parseBoolean(hasAudioString);
     }
-    dataModel.put("books", partOfBooks);
-    dataModel.put("page", pagesMap);
-    dataModel.put("lastId", lastId);
-    dataModel.put("firstId", firstId);
+
+    if(NumberUtils.isDigits(partString) && Integer.parseInt(partString)>=0){
+    part = Integer.parseInt(partString);
+    }
+
+
+    Map<String, Object> dataModel = new HashMap<>();
+    List<BookDto> partOfBooks = bookListService.partOfBooks(part*20,hasAudio);
+    Map<String, Object> pagesMap = bookListService.pages(part);
+    dataModel.put("books",partOfBooks);
+    dataModel.put("page",pagesMap);
+
+
     PrintWriter printWriter = resp.getWriter();
     try {
       template.process(dataModel, printWriter);

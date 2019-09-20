@@ -24,7 +24,7 @@ public class BookListService {
 
   public Map<String, Object> pages(long currentPage) {
     Map<String, Object> pagesMap = new HashMap<>();
-    pagesMap.put("first", 1);
+    pagesMap.put("first", 0);
     pagesMap.put("previous-1", currentPage - 2);
     pagesMap.put("previous", currentPage - 1);
     pagesMap.put("current", currentPage);
@@ -32,29 +32,20 @@ public class BookListService {
     pagesMap.put("third", currentPage + 2);
     int bookSize = bookDaoBean.numberOfBooks();
     if (bookSize % 20 == 0) {
-      pagesMap.put("last", bookSize / 20);
+      pagesMap.put("last", bookSize / 20 -1);
     } else {
-      pagesMap.put("last", bookSize / 20 + 1);
+      pagesMap.put("last", bookSize / 20 );
     }
     return pagesMap;
   }
 
-  public List<BookDto> nextPartOfBooks(long from, boolean hasAudio) {
-   List<Book> books = bookDaoBean.getNextPartOfBooks(from, hasAudio);
+  public List<BookDto> partOfBooks(int from, boolean hasAudio) {
+   List<Book> books = bookDaoBean.getPartOfBooks(from, hasAudio);
    List<BookDto> bookDtoList = new ArrayList<>();
    for (Book book : books){
      bookDtoList.add(bookMapper.mapEntityToDto(book));
    }
   return  bookDtoList;
-  }
-
-  public List<BookDto> previousPartOfBooks(long from, boolean hasAudio){
-    List<Book> books = bookDaoBean.getPreviousPartOfBooks(from,hasAudio);
-    List<BookDto> bookDtoList = new ArrayList<>();
-    for (Book book : books){
-      bookDtoList.add(bookMapper.mapEntityToDto(book));
-    }
-    return  bookDtoList;
   }
 
   public BookDto getSingleBook(long id) {

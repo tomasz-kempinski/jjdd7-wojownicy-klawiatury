@@ -29,12 +29,8 @@ import javax.validation.constraints.NotNull;
         query = "SELECT COUNT (book_title) FROM Book b"
     ),
     @NamedQuery(
-        name = "Book.getNextPartOfBookList",
-        query = "SELECT b FROM Book b WHERE id > ?1"
-    ),
-    @NamedQuery(
-        name = "Book.getPreviousPartOfBookList",
-        query = "SELECT b FROM Book b WHERE id < ?1 ORDER BY id DESC"
+        name = "Book.getPartOfBookList",
+        query = "SELECT b FROM Book b WHERE b.hasAudio = TRUE "
     ),
 })
 @Entity
