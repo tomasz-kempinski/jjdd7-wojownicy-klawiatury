@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.Type;
 
 @NamedQueries({
     @NamedQuery(
@@ -30,7 +31,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.getPartOfBookList",
-        query = "SELECT b FROM Book b WHERE b.hasAudio = TRUE "
+        query = "SELECT b FROM Book b"
     ),
 })
 @Entity
@@ -80,7 +81,7 @@ public class Book {
 
   @NotNull
   @Column(name = "has_audio")
-  private boolean hasAudio = false;
+  private boolean hasAudio=true;
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();

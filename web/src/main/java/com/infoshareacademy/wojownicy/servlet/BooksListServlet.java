@@ -44,13 +44,10 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    String hasAudioString = req.getParameter("hasAudio");
+    //String hasAudioString = req.getParameter("hasAudio");
     int part = 0;
     boolean hasAudio = true;
 
-    if(hasAudioString.equals("true")||hasAudioString.equals("false")){
-      hasAudio = Boolean.parseBoolean(hasAudioString);
-    }
 
     if(NumberUtils.isDigits(partString) && Integer.parseInt(partString)>=0){
     part = Integer.parseInt(partString);
