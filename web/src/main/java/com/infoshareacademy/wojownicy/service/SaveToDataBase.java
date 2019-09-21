@@ -16,16 +16,16 @@ public class SaveToDataBase {
 
   private final Logger logger = LoggerFactory.getLogger(getClass().getName());
 
-  @EJB
+  @Inject
   private ApiConsumerBooks apiConsumerBooks;
 
-  @EJB
+  @Inject
   private BookDaoBean bookDaoBean;
 
-  @EJB
+  @Inject
   private ParseService parseService;
 
-  @EJB
+  @Inject
   private Mapper mapper;
 
   public void saveBooksFromApi() {

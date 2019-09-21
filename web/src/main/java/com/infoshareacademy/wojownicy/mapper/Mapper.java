@@ -15,13 +15,13 @@ import javax.inject.Inject;
 @Stateless
 public class Mapper {
 
-  @EJB
+  @Inject
   private AuthorDaoBean authorDaoBean;
 
-  @EJB
+  @Inject
   private KindDaoBean kindDaoBean;
 
-  @EJB
+  @Inject
   private GenreDaoBean genreDaoBean;
 
   public Book mapBooksApiToEntity(com.infoshareacademy.wojownicy.domain.api.Book booksApi) {

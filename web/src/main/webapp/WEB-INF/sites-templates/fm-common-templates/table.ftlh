@@ -1,7 +1,11 @@
 <div id="table-container" class="container">
   <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="customSwitch1" disabled>
-    <label class="custom-control-label" for="customSwitch1">Filtruj pozycje z Audiobookiem</label>
+    <#if hasAudio=1>
+      <input type="checkbox" class="custom-control-input" id="withAudio" checked>
+      <label class="custom-control-label" for="withAudio" onclick=allBooks()>Filtruj pozycje z Audiobookiem</label>
+        <#else>
+    <input type="checkbox" class="custom-control-input" id="withAudio" >
+    <label class="custom-control-label" for="withAudio" onclick=onlyAudioBooks()>Filtruj pozycje z Audiobookiem</label></#if>
   </div>
   <div class="table-responsive-md">
     <table
@@ -34,3 +38,4 @@
     </table>
   </div>
 </div>
+<script src="/js/hasAudio.js"></script>

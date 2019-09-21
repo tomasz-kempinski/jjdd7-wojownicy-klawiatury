@@ -32,9 +32,15 @@ public class BookDaoBean {
     return fromQuery.intValue();
   }
 
-  public List<Book> getPartOfBooks(int  from, boolean isAudio) {
+  public List<Book> getPartOfBooks(int  from){
     Query query = entityManager.createNamedQuery("Book.getPartOfBookList")
-        .setParameter("hasAudio",isAudio)
+        .setFirstResult(from)
+        .setMaxResults(20);
+    return query.getResultList();
+  }
+
+  public List<Book> getPartOfAudioBooks (int from){
+    Query query = entityManager.createNamedQuery("Book.getPartOfAudioBooks")
         .setFirstResult(from)
         .setMaxResults(20);
     return query.getResultList();

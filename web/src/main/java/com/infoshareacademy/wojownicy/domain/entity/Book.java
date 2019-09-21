@@ -33,6 +33,10 @@ import org.hibernate.annotations.Type;
         name = "Book.getPartOfBookList",
         query = "SELECT b FROM Book b"
     ),
+    @NamedQuery(
+        name = "Book.getPartOfAudioBooks",
+        query = "SELECT b FROM Book b WHERE b.hasAudio = 1"
+    )
 })
 @Entity
 @Table(name = "book")
@@ -80,7 +84,7 @@ public class Book {
   private boolean isReserved = false;
 
   @NotNull
-  @Column(name = "has_audio")
+  @Column(name = "has_audio", columnDefinition = "Boolean")
   private boolean hasAudio=true;
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)

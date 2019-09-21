@@ -45,7 +45,7 @@ public class BookViewServlet extends HttpServlet {
 
     if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString)
         && Long.parseLong(idString) < bookListService.numberOfBooks()
-        && Long.parseLong(idString) > 0) {
+        && Long.parseLong(idString) > -2) {
       id = Long.parseLong(idString);
       part = Long.parseLong(partString) + 1;
     } else {

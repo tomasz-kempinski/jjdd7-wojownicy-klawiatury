@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.service.SaveToDataBase;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/database-init")
 public class DatabaseInitServlet extends HttpServlet {
 
-    @Inject
+    @EJB
     private SaveToDataBase saveToDataBase;
 
     @Override

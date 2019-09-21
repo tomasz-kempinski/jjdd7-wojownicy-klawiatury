@@ -44,21 +44,28 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    //String hasAudioString = req.getParameter("hasAudio");
+    String hasAudioString = req.getParameter("hasAudio");
     int part = 0;
-    boolean hasAudio = true;
+    int hasAudio = 0;
 
-
-    if(NumberUtils.isDigits(partString) && Integer.parseInt(partString)>=0){
+    if(NumberUtils.isDigits(partString) && Integer.parseInt(partString)>=0 && NumberUtils.isDigits(hasAudioString)){
     part = Integer.parseInt(partString);
+    hasAudio = Integer.parseInt(hasAudioString);
+    }
+    List<BookDto> partOfBooks;
+    if(hasAudio==1){
+      partOfBooks=bookListService.partOfAudioBooks(part*20);
+    } else {
+      partOfBooks = bookListService.partOfBooks(part*20);
     }
 
 
     Map<String, Object> dataModel = new HashMap<>();
-    List<BookDto> partOfBooks = bookListService.partOfBooks(part*20,hasAudio);
+
     Map<String, Object> pagesMap = bookListService.pages(part);
     dataModel.put("books",partOfBooks);
     dataModel.put("page",pagesMap);
+    dataModel.put("hasAudio", hasAudio);
 
 
     PrintWriter printWriter = resp.getWriter();
