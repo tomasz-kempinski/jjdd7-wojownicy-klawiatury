@@ -22,7 +22,7 @@ public class BookListService {
   @Inject
   BookMapper bookMapper;
 
-  public Map<String, Object> pages(long currentPage) {
+  public Map<String, Object> pages(long currentPage, int hasAudio) {
     Map<String, Object> pagesMap = new HashMap<>();
     pagesMap.put("first", 0);
     pagesMap.put("previous-1", currentPage - 2);
@@ -30,7 +30,7 @@ public class BookListService {
     pagesMap.put("current", currentPage);
     pagesMap.put("next", currentPage + 1);
     pagesMap.put("third", currentPage + 2);
-    int bookSize = bookDaoBean.numberOfBooks();
+    long bookSize = numberOfBooks(hasAudio);
     if (bookSize % 20 == 0) {
       pagesMap.put("last", bookSize / 20 -1);
     } else {
@@ -66,7 +66,19 @@ public class BookListService {
     return book.isAudio();
   }
 
-  public long numberOfBooks() {
+  public long numberOfBooks(int hasAudio) {
+    if (hasAudio==1){
+     return bookDaoBean.numberOfAudioBooks();
+    }
     return bookDaoBean.numberOfBooks();
+  }
+
+  public List listForBookList(int hasAudio){
+    long size = numberOfBooks(hasAudio);
+    List<Integer> numberOfBook = new ArrayList<>();
+    for(int i =0; i<size; i++){
+      numberOfBook.add(i);
+    }
+    return numberOfBook;
   }
 }

@@ -62,8 +62,9 @@ public class BooksListServlet extends HttpServlet {
 
     Map<String, Object> dataModel = new HashMap<>();
 
-    Map<String, Object> pagesMap = bookListService.pages(part);
+    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio);
     dataModel.put("books",partOfBooks);
+    dataModel.put("numberOfBooks",bookListService.listForBookList(hasAudio));
     dataModel.put("page",pagesMap);
     dataModel.put("hasAudio", hasAudio);
 

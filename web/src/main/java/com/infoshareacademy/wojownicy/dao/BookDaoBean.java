@@ -32,6 +32,12 @@ public class BookDaoBean {
     return fromQuery.intValue();
   }
 
+  public int numberOfAudioBooks(){
+    Query query = entityManager.createNamedQuery("Book.AudioBookListCount");
+    Long fromQuery = (Long) query.getSingleResult();
+    return fromQuery.intValue();
+  }
+
   public List<Book> getPartOfBooks(int  from){
     Query query = entityManager.createNamedQuery("Book.getPartOfBookList")
         .setFirstResult(from)
@@ -56,4 +62,5 @@ public class BookDaoBean {
       entityManager.remove(book);
     }
   }
+
 }

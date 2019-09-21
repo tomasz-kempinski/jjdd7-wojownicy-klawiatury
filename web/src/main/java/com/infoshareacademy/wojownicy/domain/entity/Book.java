@@ -30,6 +30,10 @@ import org.hibernate.annotations.Type;
         query = "SELECT COUNT (book_title) FROM Book b"
     ),
     @NamedQuery(
+        name = "Book.AudioBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.hasAudio = 1"
+    ),
+    @NamedQuery(
         name = "Book.getPartOfBookList",
         query = "SELECT b FROM Book b"
     ),
