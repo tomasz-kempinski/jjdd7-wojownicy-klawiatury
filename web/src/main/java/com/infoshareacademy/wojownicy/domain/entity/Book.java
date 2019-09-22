@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.Type;
 
 @NamedQueries({
     @NamedQuery(
@@ -89,7 +88,7 @@ public class Book {
 
   @NotNull
   @Column(name = "has_audio", columnDefinition = "Boolean")
-  private boolean hasAudio=true;
+  private boolean hasAudio = false;
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
