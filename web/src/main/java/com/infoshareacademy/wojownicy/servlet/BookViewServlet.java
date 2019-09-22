@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -42,13 +41,13 @@ public class BookViewServlet extends HttpServlet {
     long id;
     long part;
     String audio;
-    int isAudioFilter=0;
+    int isAudioFilter = 0;
     boolean hasAudio;
 
-    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils.isDigits(isAudioString)
+    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils
+        .isDigits(isAudioString)
         && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter)
-        && Long.parseLong(idString) > 0)
-    {
+        && Long.parseLong(idString) > 0) {
       isAudioFilter = Integer.parseInt(isAudioString);
       id = Long.parseLong(idString);
       part = Long.parseLong(partString);

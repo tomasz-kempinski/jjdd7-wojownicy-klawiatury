@@ -8,8 +8,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,25 +46,24 @@ public class BooksListServlet extends HttpServlet {
     int part = 0;
     int hasAudio = 0;
 
-    if(NumberUtils.isDigits(partString) && Integer.parseInt(partString)>=0 && NumberUtils.isDigits(hasAudioString)){
-    part = Integer.parseInt(partString);
-    hasAudio = Integer.parseInt(hasAudioString);
+    if (NumberUtils.isDigits(partString) && Integer.parseInt(partString) >= 0 && NumberUtils
+        .isDigits(hasAudioString)) {
+      part = Integer.parseInt(partString);
+      hasAudio = Integer.parseInt(hasAudioString);
     }
     List<BookDto> partOfBooks;
-    if(hasAudio==1){
-      partOfBooks=bookListService.partOfAudioBooks(part*20);
+    if (hasAudio == 1) {
+      partOfBooks = bookListService.partOfAudioBooks(part * 20);
     } else {
-      partOfBooks = bookListService.partOfBooks(part*20);
+      partOfBooks = bookListService.partOfBooks(part * 20);
     }
-
 
     Map<String, Object> dataModel = new HashMap<>();
 
     Map<String, Object> pagesMap = bookListService.pages(part, hasAudio);
-    dataModel.put("books",partOfBooks);
-    dataModel.put("page",pagesMap);
+    dataModel.put("books", partOfBooks);
+    dataModel.put("page", pagesMap);
     dataModel.put("hasAudio", hasAudio);
-
 
     PrintWriter printWriter = resp.getWriter();
     try {
