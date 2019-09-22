@@ -72,13 +72,4 @@ public class BookListService {
     }
     return bookDaoBean.numberOfBooks();
   }
-
-  public List listForBookList(int hasAudio){
-    long size = numberOfBooks(hasAudio);
-    List<Integer> numberOfBook = new ArrayList<>();
-    for(int i =0; i<size; i++){
-      numberOfBook.add(i);
-    }
-    return numberOfBook;
-  }
 }

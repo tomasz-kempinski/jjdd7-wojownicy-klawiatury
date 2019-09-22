@@ -34,7 +34,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
-           role="button" aria-disabled="true">Zal3oguj</a>
+           role="button" aria-disabled="true">Zaloguj</a>
       </ul>
     </div>
   </div>

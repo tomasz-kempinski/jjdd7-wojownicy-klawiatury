@@ -46,7 +46,7 @@ public class BookViewServlet extends HttpServlet {
     boolean hasAudio;
 
     if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils.isDigits(isAudioString)
-        && Long.parseLong(idString) < bookListService.numberOfBooks(isAudioFilter)
+        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter)
         && Long.parseLong(idString) > 0)
     {
       isAudioFilter = Integer.parseInt(isAudioString);

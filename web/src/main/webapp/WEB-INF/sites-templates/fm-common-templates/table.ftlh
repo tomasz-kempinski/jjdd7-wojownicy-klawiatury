@@ -9,7 +9,7 @@
   </div>
   <div class="table-responsive-md">
     <table
-        class="table table-hover table-bordered table-striped shadow-lg p-3 mb-5 bg-white rounded">
+        class="table table-bordered table-striped shadow-lg p-3 mb-5 bg-white rounded">
       <thead class="thead-dark">
       <tr>
         <th scope="col" class="text-center">#</th>
