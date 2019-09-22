@@ -15,4 +15,7 @@ public class BookService {
   public List<Book> findBookForLiveSearchTitle(String searchTitle) {
     return bookDaoBean.findBookByLiveSearchTitle(searchTitle);
   }
+  public List<Book> findBookForLiveSearchAuthor(String searchAuthor) {
+    return bookDaoBean.findBookByLiveSearchAuthor(searchAuthor);
+  }
 }

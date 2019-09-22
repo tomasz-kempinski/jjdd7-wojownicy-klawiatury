@@ -36,6 +36,10 @@ import javax.validation.constraints.NotNull;
         name = "Book.findBookByTitle",
         query = "SELECT b from Book as b WHERE b.title LIKE :searchTitle"
     ),
+    @NamedQuery(
+        name = "Book.findBookByAuthor",
+        query = "SELECT b from Book as b INNER JOIN b.author as a WHERE a.authorName LIKE :searchAuthor"
+    ),
 })
 @Entity
 @Table(name = "book")

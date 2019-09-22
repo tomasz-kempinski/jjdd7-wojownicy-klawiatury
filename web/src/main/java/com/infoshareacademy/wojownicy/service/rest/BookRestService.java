@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.service.rest;
 
+import com.infoshareacademy.wojownicy.domain.view.AuthorLiveSearchView;
 import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import java.util.List;
 import javax.ejb.EJB;
@@ -11,8 +12,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Path("/books")
 @Stateless
@@ -25,10 +24,21 @@ public class BookRestService {
   @Path("/searchTitle/{searchTitle}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getNotification(@PathParam("searchTitle") String searchTitle) {
-    List<BookLiveSearchView> bookLiveSearchViews = apiBookService.getLiveSearchBook(searchTitle);
+    List<BookLiveSearchView> bookLiveSearchViews = apiBookService.getLiveSearchBookTitle(searchTitle);
     if (bookLiveSearchViews.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
     return Response.ok().entity(bookLiveSearchViews).build();
+  }
+
+  @GET
+  @Path("/searchAuthor/{searchAuthor}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getAuthor(@PathParam("searchAuthor") String searchAuthor) {
+    List<AuthorLiveSearchView> authorLiveSearchViews = apiBookService.getLiveSearchBookAuthor(searchAuthor);
+    if (authorLiveSearchViews.isEmpty()) {
+      return Response.status(Status.NOT_FOUND).build();
+    }
+    return Response.ok().entity(authorLiveSearchViews).build();
   }
 }
