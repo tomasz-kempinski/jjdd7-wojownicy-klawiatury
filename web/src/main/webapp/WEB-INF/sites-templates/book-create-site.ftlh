@@ -18,11 +18,12 @@
 </head>
 
 <body>
+
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/file-upload-form.ftlh">
+<#include "fm-common-templates/book-add-form.ftlh">
 
-<div id="footer" class="container fixed-bottom">
+<div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
 </div>
 

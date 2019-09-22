@@ -1,15 +1,20 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.cdi.FileUploadProcessor;
+import com.infoshareacademy.wojownicy.dao.BookDaoBean;
+import com.infoshareacademy.wojownicy.domain.entity.Author;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
+import com.infoshareacademy.wojownicy.domain.entity.Genre;
+import com.infoshareacademy.wojownicy.domain.entity.Kind;
 import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
-import com.infoshareacademy.wojownicy.service.ApiDataHandler;
-import com.infoshareacademy.wojownicy.service.SaveToDataBase;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -23,8 +28,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @MultipartConfig
-@WebServlet("/books-upload")
-public class FileUploadServlet extends HttpServlet {
+@WebServlet("/book-create")
+public class BookCreateServlet extends HttpServlet {
 
   @Inject
   TemplateProvider templateProvider;
@@ -33,24 +38,21 @@ public class FileUploadServlet extends HttpServlet {
   FileUploadProcessor fileUploadProcessor;
 
   @Inject
-  ApiDataHandler apiDataHandler;
+  BookDaoBean bookDaoBean;
 
-  @Inject
-  SaveToDataBase saveToDataBase;
-
-  private static final Logger logger = LoggerFactory.getLogger(FileUploadServlet.class.getName());
+  private static final Logger logger = LoggerFactory.getLogger(BookCreateServlet.class.getName());
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    Template template = templateProvider.getTemplate(getServletContext(), "file-upload-site.ftlh");
+    Template template = templateProvider.getTemplate(getServletContext(), "book-create-site.ftlh");
 
     String upload = req.getParameter("upload");
 
     Map<String, Object> dataModel = new HashMap<>();
 
-    dataModel.put("upload", upload);
+//    dataModel.put("upload", upload);
 
     PrintWriter printWriter = resp.getWriter();
     try {
@@ -65,7 +67,31 @@ public class FileUploadServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
 
+    String title = req.getParameter("title");
+    String authorName = req.getParameter("author");
+    String kindName = req.getParameter("kind");
+    String genreName = req.getParameter("genre");
+
     Part file = req.getPart("file");
+
+    Author author = new Author();
+    author.setAuthorName(authorName);
+
+    Genre genre = new Genre();
+    genre.setGenreName(genreName);
+    List<Genre> genres = new ArrayList<>();
+    genres.add(genre);
+
+    Kind kind = new Kind();
+    kind.setKind(kindName);
+
+    Book book = new Book();
+    book.setTitle(title);
+    book.setAuthor(author);
+    book.setKind(kind);
+    book.setGenres(genres);
+
+    bookDaoBean.addBook(book);
 
     String fileURL = "";
 
@@ -73,12 +99,9 @@ public class FileUploadServlet extends HttpServlet {
       fileURL = "/admin-panel/" + fileUploadProcessor
           .uploadFile(file).getName();
       resp.sendRedirect("/admin-panel?upload=successful");
-      logger.info("Json API file has been uploaded");
     } catch (UserFileNotFound userFileNotFound) {
       logger.warn(userFileNotFound.getMessage());
       resp.sendRedirect("/admin-panel?upload=failed");
     }
-    apiDataHandler.setFileURL(fileURL);
-    saveToDataBase.saveBooksFromFile();
   }
 }

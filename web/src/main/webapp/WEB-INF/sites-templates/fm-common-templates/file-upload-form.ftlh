@@ -1,6 +1,6 @@
 <div id="form-container" class="container">
-  <div class="col-md-8 col-md-offset-2">
-    <h3>Panel administratora</h3>
+  <div class="col-md-6 col-md-offset-3">
+    <h3>Ładowanie książek z pliku</h3>
     <hr>
       <#if upload??>
           <#if upload == "successful">
@@ -25,3 +25,4 @@
       </div>
     </form>
   </div>
+</div>

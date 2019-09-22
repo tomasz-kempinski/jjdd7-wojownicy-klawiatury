@@ -21,6 +21,14 @@
   justify-content: center;
 }
 
+#book-form-container {
+  padding-top: 40px;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #book-view {
   padding-top: 20px;
   padding-left: auto;
@@ -53,3 +61,5 @@
   cursor: pointer;
   background-color: #c5dbff;
 }
+
+
