@@ -62,5 +62,4 @@ public class BookDaoBean {
       entityManager.remove(book);
     }
   }
-
 }
