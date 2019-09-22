@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -37,17 +36,21 @@ public class BookViewServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
     String idString = req.getParameter("id").replaceAll(",", "");
     String partString = req.getParameter("part");
+    String isAudioString = req.getParameter("hasAudio");
     Map<String, Object> dataModel = new HashMap<>();
     long id;
     long part;
     String audio;
-    boolean hasAudio = false;
+    int isAudioFilter = 0;
+    boolean hasAudio;
 
-    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString)
-        && Long.parseLong(idString) < bookListService.numberOfBooks()
+    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils
+        .isDigits(isAudioString)
+        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter)
         && Long.parseLong(idString) > 0) {
+      isAudioFilter = Integer.parseInt(isAudioString);
       id = Long.parseLong(idString);
-      part = Long.parseLong(partString) + 1;
+      part = Long.parseLong(partString);
     } else {
       id = 1;
       part = 1;
@@ -58,10 +61,12 @@ public class BookViewServlet extends HttpServlet {
     } else {
       audio = "niedostępna";
     }
+
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
+    dataModel.put("isAudioFilter", isAudioFilter);
 
     PrintWriter printWriter = resp.getWriter();
     try {

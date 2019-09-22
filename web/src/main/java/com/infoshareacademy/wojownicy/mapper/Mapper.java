@@ -8,6 +8,7 @@ import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
 import com.infoshareacademy.wojownicy.domain.entity.Kind;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
