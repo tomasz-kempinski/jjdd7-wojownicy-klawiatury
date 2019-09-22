@@ -19,7 +19,7 @@ public class BookDto {
   private Kind kind;
   private boolean hasAudio;
 
-  public boolean isHasAudio() {
+  public boolean audioAvailable() {
     return hasAudio;
   }
 
