@@ -13,6 +13,7 @@ import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.service.UserService;
 import java.io.IOException;
 import java.util.UUID;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/oauth2callback")
 public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServlet {
 
-  @Inject
-  UserService userService;
+  @EJB
+  private UserService userService;
 
   @Override
   protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
@@ -39,14 +40,28 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     Userinfoplus info = oauth2.userinfo().get().execute();
     String name = info.getName();
     String email = info.getEmail();
-    req.getSession().setAttribute("google_name", name);
-    req.getSession().setAttribute("email", email);
-    req.getSession().setAttribute("token", gCredential.getAccessToken());
-    UserDto user = new UserDto();
-    user.setUsername(name);
-    user.setEmail(email);
 
-    userService.saveUser(user);
+    if(userService.getUserByEmail(email) == null) {
+      UserDto user = new UserDto();
+      user.setUsername(name);
+      user.setEmail(email);
+      user.setUserType("user");
+      userService.saveUser(user);
+    }
+
+    UserDto verifiedUser = userService.getUserByEmail(email);
+    req.getSession().setAttribute("userId", verifiedUser.getId());
+    req.getSession().setAttribute("email", verifiedUser.getEmail());
+    req.getSession().setAttribute("userType", verifiedUser.getUserType());
+
+    if (req.getSession().getAttribute("userType") == null){
+      req.getSession().setAttribute("userType", "guest");
+    }
+
+    if (email.isEmpty()){
+      resp.sendRedirect("/");
+    }
+
     resp.sendRedirect("/");
   }
 

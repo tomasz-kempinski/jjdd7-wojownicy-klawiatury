@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,10 +20,14 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "User.findUsersList",
         query = "SELECT u FROM User u"
+    ),
+    @NamedQuery(
+        name = "User.findUserByEmail",
+        query = "SELECT u FROM User u WHERE u.email like :email"
     )
 })
 @Entity
-@Table(name = "user")
+@Table(name = "user", indexes = {@Index(columnList = "email", name = "email_index")})
 public class User {
 
   @Id
@@ -38,8 +43,9 @@ public class User {
   @Column(name = "email")
   private String email;
 
-  @Column(name = "is_admin")
-  private boolean isAdmin = false;
+  @NotNull
+  @Column(name = "user_type")
+  private String userType;
 
   @ManyToMany(mappedBy = "usersFavourites")
   private List<Book> booksFavourites = new ArrayList<>();
@@ -63,12 +69,12 @@ public class User {
     this.username = username;
   }
 
-  public boolean isAdmin() {
-    return isAdmin;
+  public String getUserType() {
+    return userType;
   }
 
-  public void setAdmin(boolean admin) {
-    isAdmin = admin;
+  public void setUserType(String userType) {
+    this.userType = userType;
   }
 
   public List<Book> getBooksFavourites() {

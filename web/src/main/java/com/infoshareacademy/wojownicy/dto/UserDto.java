@@ -1,13 +1,11 @@
 package com.infoshareacademy.wojownicy.dto;
 
-import java.util.List;
-
 public class UserDto {
 
   private Long id;
   private String username;
   private String email;
-  private boolean isAdmin;
+  private String userType;
 
   public Long getId() {
     return id;
@@ -33,11 +31,11 @@ public class UserDto {
     this.email = email;
   }
 
-  public boolean isAdmin() {
-    return isAdmin;
+  public String getUserType() {
+    return userType;
   }
 
-  public void setAdmin(boolean admin) {
-    isAdmin = admin;
+  public void setUserType(String userType) {
+    this.userType = userType;
   }
 }

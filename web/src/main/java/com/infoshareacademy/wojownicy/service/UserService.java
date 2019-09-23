@@ -20,4 +20,9 @@ public class UserService {
   public void saveUser(UserDto userDto){
   userDaoBean.addUser(userMapper.mapDtoToEntity(userDto));
   }
+
+  public UserDto getUserByEmail(String email){
+   User user = userDaoBean.findUserByEmail(email);
+   return userMapper.mapEntityToDto(user);
+  }
 }
