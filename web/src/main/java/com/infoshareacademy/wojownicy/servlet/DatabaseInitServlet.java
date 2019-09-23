@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.service.SaveToDataBase;
+import com.infoshareacademy.wojownicy.service.ApiDataLoader;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 public class DatabaseInitServlet extends HttpServlet {
 
   @EJB
-  private SaveToDataBase saveToDataBase;
+  private ApiDataLoader apiDataLoader;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    saveToDataBase.saveBooksFromApi();
+    apiDataLoader.saveBooksFromApi();
   }
 }

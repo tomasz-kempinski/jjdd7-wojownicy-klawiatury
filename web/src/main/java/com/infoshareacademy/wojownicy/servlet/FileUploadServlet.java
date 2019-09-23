@@ -4,7 +4,7 @@ import com.infoshareacademy.wojownicy.cdi.FileUploadProcessor;
 import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.ApiDataHandler;
-import com.infoshareacademy.wojownicy.service.SaveToDataBase;
+import com.infoshareacademy.wojownicy.service.ApiDataLoader;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class FileUploadServlet extends HttpServlet {
   ApiDataHandler apiDataHandler;
 
   @Inject
-  SaveToDataBase saveToDataBase;
+  ApiDataLoader apiDataLoader;
 
   private static final Logger logger = LoggerFactory.getLogger(FileUploadServlet.class.getName());
 
@@ -78,6 +78,6 @@ public class FileUploadServlet extends HttpServlet {
       resp.sendRedirect("/admin-panel?upload=failed");
     }
     apiDataHandler.setFileURL(fileURL);
-    saveToDataBase.saveBooksFromFile();
+    apiDataLoader.saveBooksFromFile();
   }
 }

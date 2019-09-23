@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 @Transactional
 @RequestScoped
 public class BookListService {
 
-  @Inject
-  BookDaoBean bookDaoBean;
+  @EJB
+  private BookDaoBean bookDaoBean;
 
-  @Inject
-  BookMapper bookMapper;
+  @EJB
+  private BookMapper bookMapper;
 
   public Map<String, Object> pages(long currentPage, int hasAudio) {
     Map<String, Object> pagesMap = new HashMap<>();

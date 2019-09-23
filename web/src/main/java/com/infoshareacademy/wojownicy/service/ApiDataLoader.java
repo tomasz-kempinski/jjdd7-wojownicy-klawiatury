@@ -5,26 +5,26 @@ import com.infoshareacademy.wojownicy.domain.api.Book;
 import com.infoshareacademy.wojownicy.mapper.Mapper;
 import java.io.IOException;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Stateless
-public class SaveToDataBase {
+public class ApiDataLoader {
 
   private final Logger logger = LoggerFactory.getLogger(getClass().getName());
 
-  @Inject
+  @EJB
   private ApiConsumerBooks apiConsumerBooks;
 
-  @Inject
+  @EJB
   private BookDaoBean bookDaoBean;
 
-  @Inject
+  @EJB
   private ParseService parseService;
 
-  @Inject
+  @EJB
   private Mapper mapper;
 
   public void saveBooksFromApi() {

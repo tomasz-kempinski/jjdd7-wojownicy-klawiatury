@@ -4,8 +4,8 @@ package com.infoshareacademy.wojownicy.service;
 import com.infoshareacademy.wojownicy.domain.api.Book;
 import java.io.IOException;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -17,7 +17,7 @@ public class ApiConsumerBooks {
   private WebTarget webTarget;
   private static final String BooksURI = "http://isa-proxy.blueazurit.com/books/books/";
 
-  @Inject
+  @EJB
   private ParseService parseService;
 
   public List<Book> consumeBooks() throws IOException {
