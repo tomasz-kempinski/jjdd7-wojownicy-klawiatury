@@ -1,5 +1,14 @@
 <div id="table-container" class="container">
   <div class="custom-control custom-switch">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <input value="1" name="subject" class="subject-list" type="checkbox"> Dramat
+    <input value="2" name="subject" class="subject-list" type="checkbox"> Epika
+    <input value="3" name="subject" class="subject-list" type="checkbox"> Liryka
+    <script type="text/javascript">
+      $('.subject-list').on('change', function() {
+        $('.subject-list').not(this).prop('checked', false);
+      });
+    </script>
       <#if hasAudio=1>
         <input type="checkbox" class="custom-control-input" id="withAudio" checked>
         <label class="custom-control-label" for="withAudio" onclick=allBooks()>Filtruj pozycje z
