@@ -1,5 +1,6 @@
 <div id="book-view" class="container">
-  <a id="return-button" class="btn btn-primary" href="/book-list?part=${part}" role="button">Powrót
+  <a id="return-button" class="btn btn-primary"
+     href="/book-list?part=${part}&hasAudio=${isAudioFilter}" role="button">Powrót
     do listy</a>
   <div id="book-card" class="card mb-5 shadow-lg p-3 mb-5 bg-white rounded"
        style="max-width: 1000px;">

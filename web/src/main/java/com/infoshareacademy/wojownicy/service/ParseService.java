@@ -7,9 +7,10 @@ import com.infoshareacademy.wojownicy.domain.api.Book;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 
-@RequestScoped
+@Stateless
 public class ParseService {
 
   private ObjectMapper objectMapper = new ObjectMapper();
