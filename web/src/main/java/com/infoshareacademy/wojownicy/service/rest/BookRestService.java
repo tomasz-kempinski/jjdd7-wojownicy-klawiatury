@@ -24,7 +24,8 @@ public class BookRestService {
   @Path("/searchTitle/{searchTitle}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getNotification(@PathParam("searchTitle") String searchTitle) {
-    List<BookLiveSearchView> bookLiveSearchViews = apiBookService.getLiveSearchBookTitle(searchTitle);
+    List<BookLiveSearchView> bookLiveSearchViews = apiBookService
+        .getLiveSearchBookTitle(searchTitle);
     if (bookLiveSearchViews.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
@@ -35,7 +36,8 @@ public class BookRestService {
   @Path("/searchAuthor/{searchAuthor}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getAuthor(@PathParam("searchAuthor") String searchAuthor) {
-    List<AuthorLiveSearchView> authorLiveSearchViews = apiBookService.getLiveSearchBookAuthor(searchAuthor);
+    List<AuthorLiveSearchView> authorLiveSearchViews = apiBookService
+        .getLiveSearchBookAuthor(searchAuthor);
     if (authorLiveSearchViews.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }

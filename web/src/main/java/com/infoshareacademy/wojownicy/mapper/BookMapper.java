@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.mapper;
 
+import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.view.AuthorLiveSearchView;
 import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
@@ -13,7 +14,7 @@ public class BookMapper {
   @Inject
   private GenreMapper genreMapper;
 
-  public BookDto mapEntityToDto(Book book){
+  public BookDto mapEntityToDto(Book book) {
 
     BookDto bookDto = new BookDto();
     bookDto.setId(book.getId());
@@ -39,12 +40,10 @@ public class BookMapper {
     return bookLiveSearchView;
   }
 
-  public AuthorLiveSearchView mapBookEntityForLiveSearchAuthor(Book book) {
+  public AuthorLiveSearchView mapBookEntityForLiveSearchAuthor(Author author) {
     AuthorLiveSearchView authorLiveSearchView = new AuthorLiveSearchView();
-    authorLiveSearchView.setId(book.getId());
-    authorLiveSearchView.setTitle(book.getTitle());
-    authorLiveSearchView.setAuthorId(book.getAuthor().getAuthorId());
-    authorLiveSearchView.setAuthorName(book.getAuthor().getAuthorName());
+    authorLiveSearchView.setAuthorId(author.getAuthorId());
+    authorLiveSearchView.setAuthorName(author.getAuthorName());
     return authorLiveSearchView;
   }
 }

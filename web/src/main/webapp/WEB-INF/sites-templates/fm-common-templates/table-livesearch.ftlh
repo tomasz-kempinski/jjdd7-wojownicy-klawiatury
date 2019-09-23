@@ -1,0 +1,35 @@
+<div id="table-test-container" class="container">
+  <div class="table-responsive-md">
+    <table
+        class="table table-bordered table-striped shadow-lg p-3 mb-5 bg-white rounded">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Tytuł</th>
+        <th scope="col" class="text-center">Autor</th>
+      </tr>
+      </thead>
+      <tbody>
+      <#assign i=1>
+      <#list books>
+          <#items as book>
+              <#if (book.thumbnail)??>
+              <tr class="clickable-row"
+                  data-href="/book-view?id=${book.id}&part=0&hasAudio=0"
+                  data-toggle="popover-hover"
+                  data-img="https://wolnelektury.pl/media/${book.thumbnail}">
+              <#else><tr class="clickable-row" data-href="/book-view?id=${book.id}&part=0&hasAudio=0"
+                data-toggle="popover-hover"
+                data-img="img/fake-cover-thumbnail.jpg">
+              </#if>
+            <th scope="row" class="text-center">${i}</th>
+            <td>${book.title}</td>
+            <td>${book.author.authorName}</td>
+            </tr>
+              <#assign i=i+1>
+          </#items>
+      </#list>
+      </tbody>
+    </table>
+  </div>
+</div>

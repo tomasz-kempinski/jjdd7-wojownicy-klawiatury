@@ -41,8 +41,8 @@ import javax.validation.constraints.NotNull;
         query = "SELECT b from Book as b WHERE b.title LIKE :searchTitle"
     ),
     @NamedQuery(
-        name = "Book.findBookByAuthor",
-        query = "SELECT b from Book as b INNER JOIN b.author as a WHERE a.authorName LIKE :searchAuthor"
+        name = "Book.findBookByAuthorID",
+        query = "SELECT b FROM Book AS b INNER JOIN b.author AS a WHERE a.authorId IN :id"
     ),
     @NamedQuery(
         name = "Book.getPartOfAudioBooks",

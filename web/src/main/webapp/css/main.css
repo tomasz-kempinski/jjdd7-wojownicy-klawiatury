@@ -44,6 +44,11 @@
   margin-top: 65px;
 }
 
+#table-test-container {
+  padding-top: 20px;
+  margin-top: 65px;
+}
+
 .custom-switch {
   margin: 15px;
   float: right;

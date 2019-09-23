@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class GenreMapper {
 
-  public GenreDto mapEntityToDto (Genre genre){
+  public GenreDto mapEntityToDto(Genre genre) {
 
     GenreDto genreDto = new GenreDto();
     genreDto.setId(genre.getGenreId());

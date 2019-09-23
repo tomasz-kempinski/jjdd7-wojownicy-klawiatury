@@ -59,10 +59,11 @@ public class BookDaoBean {
 
     return query.getResultList();
   }
-  public List findBookByLiveSearchAuthor(String searchAuthor) {
 
-    Query query = entityManager.createNamedQuery("Book.findBookByAuthor");
-    query.setParameter("searchAuthor", "%" + searchAuthor + "%");
+  public List findBookByLiveSearchAuthorId(Long id) {
+
+    Query query = entityManager.createNamedQuery("Book.findBookByAuthorID");
+    query.setParameter("id", id);
 
     return query.getResultList();
   }

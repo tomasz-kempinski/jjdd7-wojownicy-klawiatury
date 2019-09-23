@@ -19,11 +19,11 @@ $("#input-author").autocomplete({
           response(result);
         } else {
           let result = data.map(
-              b => {
+              a => {
             return {
-              id: b.id,
-              label: b.title,
-              value: b.title
+              id: a.authorId,
+              label: a.authorName,
+              value: a.authorName
             };
         }
         );
@@ -37,7 +37,7 @@ $("#input-author").autocomplete({
     if (ui.item.id === undefined) {
       return;
     } else {
-      window.location.href = "/book-view?id=" + ui.item.id + "&part=0";
+      window.location.href = "/search-author?id=" + ui.item.id;
     }
   }
 });

@@ -37,7 +37,7 @@ $("#input-title").autocomplete({
     if (ui.item.id === undefined) {
       return;
     } else {
-      window.location.href = "/book-view?id=" + ui.item.id + "&part=0";
+      window.location.href = "/book-view?id=" + ui.item.id + "&part=0&hasAudio=0";
     }
   }
 });
