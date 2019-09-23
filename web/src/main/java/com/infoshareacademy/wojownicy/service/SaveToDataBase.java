@@ -5,7 +5,6 @@ import com.infoshareacademy.wojownicy.domain.api.Book;
 import com.infoshareacademy.wojownicy.mapper.Mapper;
 import java.io.IOException;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.slf4j.Logger;

@@ -32,33 +32,34 @@ public class BookListService {
     pagesMap.put("third", currentPage + 2);
     long bookSize = numberOfBooks(hasAudio);
     if (bookSize % 20 == 0) {
-      pagesMap.put("last", bookSize / 20 -1);
+      pagesMap.put("last", bookSize / 20 - 1);
     } else {
-      pagesMap.put("last", bookSize / 20 );
+      pagesMap.put("last", bookSize / 20);
     }
     return pagesMap;
   }
 
   public List<BookDto> partOfBooks(int from) {
-   List<Book> books = bookDaoBean.getPartOfBooks(from);
-   List<BookDto> bookDtoList = new ArrayList<>();
-   for (Book book : books){
-     bookDtoList.add(bookMapper.mapEntityToDto(book));
-   }
-  return  bookDtoList;
-  }
-
-  public List<BookDto> partOfAudioBooks(int from){
-    List<Book> books = bookDaoBean.getPartOfAudioBooks(from);
+    List<Book> books = bookDaoBean.getPartOfBooks(from);
     List<BookDto> bookDtoList = new ArrayList<>();
-    for (Book book : books){
+    for (Book book : books) {
       bookDtoList.add(bookMapper.mapEntityToDto(book));
     }
     return bookDtoList;
   }
+
+  public List<BookDto> partOfAudioBooks(int from) {
+    List<Book> books = bookDaoBean.getPartOfAudioBooks(from);
+    List<BookDto> bookDtoList = new ArrayList<>();
+    for (Book book : books) {
+      bookDtoList.add(bookMapper.mapEntityToDto(book));
+    }
+    return bookDtoList;
+  }
+
   public BookDto getSingleBook(long id) {
 
-   return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
+    return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
   }
 
   public boolean hasAudio(long id) {
@@ -67,8 +68,8 @@ public class BookListService {
   }
 
   public long numberOfBooks(int hasAudio) {
-    if (hasAudio==1){
-     return bookDaoBean.numberOfAudioBooks();
+    if (hasAudio == 1) {
+      return bookDaoBean.numberOfAudioBooks();
     }
     return bookDaoBean.numberOfBooks();
   }

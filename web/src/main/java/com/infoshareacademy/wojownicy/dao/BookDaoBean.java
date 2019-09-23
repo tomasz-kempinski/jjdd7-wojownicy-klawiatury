@@ -52,6 +52,14 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
+  public List findBookByLiveSearch(String searchParam) {
+
+    Query query = entityManager.createNamedQuery("Book.LiveSearch");
+    query.setParameter("searchParam", "%" + searchParam + "%");
+
+    return query.getResultList();
+  }
+
   public Book editBook(Book book) {
     return entityManager.merge(book);
   }
