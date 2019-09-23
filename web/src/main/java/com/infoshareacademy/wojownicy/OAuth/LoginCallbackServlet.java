@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/oauth2callback")
 public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServlet {
 
-  @EJB
+  @Inject
   private UserService userService;
 
   @Override
@@ -41,26 +41,26 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     String name = info.getName();
     String email = info.getEmail();
 
-    if(userService.getUserByEmail(email) == null) {
+//    if(userService.getUserByEmail(email) == null) {
       UserDto user = new UserDto();
       user.setUsername(name);
       user.setEmail(email);
       user.setUserType("user");
       userService.saveUser(user);
-    }
-
-    UserDto verifiedUser = userService.getUserByEmail(email);
-    req.getSession().setAttribute("userId", verifiedUser.getId());
-    req.getSession().setAttribute("email", verifiedUser.getEmail());
-    req.getSession().setAttribute("userType", verifiedUser.getUserType());
-
-    if (req.getSession().getAttribute("userType") == null){
-      req.getSession().setAttribute("userType", "guest");
-    }
-
-    if (email.isEmpty()){
-      resp.sendRedirect("/");
-    }
+//    }
+//
+////    UserDto verifiedUser = userService.getUserByEmail(email);
+//    req.getSession().setAttribute("userId", verifiedUser.getId());
+//    req.getSession().setAttribute("email", verifiedUser.getEmail());
+//    req.getSession().setAttribute("userType", verifiedUser.getUserType());
+//
+//    if (req.getSession().getAttribute("userType") == null){
+//      req.getSession().setAttribute("userType", "guest");
+//    }
+//
+//    if (email.isEmpty()){
+//      resp.sendRedirect("/");
+//    }
 
     resp.sendRedirect("/");
   }

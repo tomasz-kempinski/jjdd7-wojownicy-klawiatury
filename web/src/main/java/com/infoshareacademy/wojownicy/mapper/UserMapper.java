@@ -12,16 +12,16 @@ public class UserMapper {
     User user = new User();
     user.setUsername(userDto.getUsername());
     user.setEmail(userDto.getEmail());
-   user.setUserType(userDto.getUserType());
+    user.setUserType(userDto.getUserType());
     return user;
   }
 
   public UserDto mapEntityToDto(User user) {
 
     UserDto userDto = new UserDto();
-    userDto.setId(userDto.getId());
-    userDto.setEmail(user.getEmail());
+    userDto.setId(user.getUserId());
     userDto.setUsername(user.getUsername());
+    userDto.setEmail(user.getEmail());
     userDto.setUserType(user.getUserType());
     return userDto;
   }

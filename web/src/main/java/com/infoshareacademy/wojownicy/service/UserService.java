@@ -5,13 +5,14 @@ import com.infoshareacademy.wojownicy.domain.entity.User;
 
 import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.mapper.UserMapper;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
 public class UserService {
 
-  @Inject
+  @EJB
   UserDaoBean userDaoBean;
 
   @Inject

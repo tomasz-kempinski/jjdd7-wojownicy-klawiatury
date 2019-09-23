@@ -29,7 +29,6 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
   @Override
   protected String getRedirectUri(HttpServletRequest req) throws ServletException, IOException {
     return GoogleLoginCommons.buildRedirectUri(req);
-
   }
 
   @Override

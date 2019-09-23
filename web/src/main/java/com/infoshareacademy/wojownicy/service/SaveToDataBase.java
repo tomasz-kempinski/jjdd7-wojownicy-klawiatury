@@ -5,6 +5,7 @@ import com.infoshareacademy.wojownicy.domain.api.Book;
 import com.infoshareacademy.wojownicy.mapper.Mapper;
 import java.io.IOException;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ public class SaveToDataBase {
   @Inject
   private ApiConsumerBooks apiConsumerBooks;
 
-  @Inject
+  @EJB
   private BookDaoBean bookDaoBean;
 
   @Inject
@@ -33,7 +34,7 @@ public class SaveToDataBase {
 
       booksList.forEach(b -> {
             com.infoshareacademy.wojownicy.domain.entity.Book book = mapper.mapBooksApiToEntity(b);
-            bookDaoBean.editBook(book);
+            bookDaoBean.addBook(book);
           }
       );
     } catch (IOException e) {
