@@ -16,10 +16,10 @@ public class LogoutServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
 
-    resp.sendRedirect("https://accounts.google.com/o/oauth2/revoke?token="+req.getSession().getAttribute("token"));
-//    HttpSession session = req.getSession();
-//    session.invalidate();
-//    resp.sendRedirect("/");
-//  }
+//    resp.sendRedirect("https://accounts.google.com/o/oauth2/revoke?token="+req.getSession().getAttribute("token"));
+    HttpSession session = req.getSession();
+    session.invalidate();
+    resp.sendRedirect("/");
+
   }
 }

@@ -9,12 +9,13 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Userinfoplus;
+import com.infoshareacademy.wojownicy.domain.entity.User;
 import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.service.UserService;
 import java.io.IOException;
 import java.util.UUID;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/oauth2callback")
 public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServlet {
 
-  @Inject
+  private static final Logger logger = Logger.getLogger(LoginCallbackServlet.class.getName());
+
+
+  @EJB
   private UserService userService;
 
   @Override
@@ -41,26 +45,31 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     String name = info.getName();
     String email = info.getEmail();
 
-//    if(userService.getUserByEmail(email) == null) {
+    if(userService.getUserByEmail(email) == null) {
       UserDto user = new UserDto();
       user.setUsername(name);
       user.setEmail(email);
       user.setUserType("user");
       userService.saveUser(user);
-//    }
-//
-////    UserDto verifiedUser = userService.getUserByEmail(email);
-//    req.getSession().setAttribute("userId", verifiedUser.getId());
-//    req.getSession().setAttribute("email", verifiedUser.getEmail());
-//    req.getSession().setAttribute("userType", verifiedUser.getUserType());
-//
-//    if (req.getSession().getAttribute("userType") == null){
-//      req.getSession().setAttribute("userType", "guest");
-//    }
-//
-//    if (email.isEmpty()){
-//      resp.sendRedirect("/");
-//    }
+    }
+
+    logger.info("Authentication success of user: " + name);
+
+
+    User verifiedUser = userService.getUserByEmail(email);
+    req.getSession().setAttribute("userId", verifiedUser.getUserId());
+    req.getSession().setAttribute("email", verifiedUser.getEmail());
+    req.getSession().setAttribute("userType", verifiedUser.getUserType());
+
+    logger.info("User" + name + " is " + req.getSession().getAttribute("userType"));
+
+    if (req.getSession().getAttribute("userType") == null){
+      req.getSession().setAttribute("userType", "guest");
+    }
+
+    if (email.isEmpty()){
+      resp.sendRedirect("/");
+    }
 
     resp.sendRedirect("/");
   }
@@ -86,60 +95,3 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     return UUID.randomUUID().toString();
   }
 }
-//@WebServlet("/oauth2callback")
-//public class LoginCallbackServlet extends HttpServlet {
-//
-//  private static final Collection<String> SCOPES = Arrays.asList("email", "profile");
-//  private static final String USERINFO_ENDPOINT
-//      = "https://www.googleapis.com/plus/v1/people/me/openIdConnect";
-//  private static final JsonFactory JSON_FACTORY = new JacksonFactory();
-//  private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-//
-//  private GoogleAuthorizationCodeFlow flow;
-//
-//  @Override
-//  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,
-//      ServletException {
-//
-//    // Ensure that this is no request forgery going on, and that the user
-//    // sending us this connect request is the user that was supposed to.
-//    if (req.getSession().getAttribute("state") == null
-//        || !req.getParameter("state").equals((String) req.getSession().getAttribute("state"))) {
-//      resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//      resp.sendRedirect("/books");
-//      return;
-//    }
-//
-//    req.getSession().removeAttribute("state");     // Remove one-time use state.
-//
-//    flow = new GoogleAuthorizationCodeFlow.Builder(
-//        HTTP_TRANSPORT,
-//        JSON_FACTORY,
-//        getServletContext().getInitParameter("bookshelf.clientID"),
-//        getServletContext().getInitParameter("bookshelf.clientSecret"),
-//        SCOPES).build();
-//
-//    final TokenResponse tokenResponse =
-//        flow.newTokenRequest(req.getParameter("code"))
-//            .setRedirectUri(getServletContext().getInitParameter("bookshelf.callback"))
-//            .execute();
-//
-//    req.getSession().setAttribute("token", tokenResponse.toString()); // Keep track of the token.
-//    final Credential credential = flow.createAndStoreCredential(tokenResponse, null);
-//    final HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(credential);
-//
-//    final GenericUrl url = new GenericUrl(USERINFO_ENDPOINT);      // Make an authenticated request.
-//    final HttpRequest request = requestFactory.buildGetRequest(url);
-//    request.getHeaders().setContentType("application/json");
-//
-//    final String jsonIdentity = request.execute().parseAsString();
-//    @SuppressWarnings("unchecked")
-//    HashMap<String, String> userIdResult =
-//        new ObjectMapper().readValue(jsonIdentity, HashMap.class);
-//    // From this map, extract the relevant profile info and store it in the session.
-//    req.getSession().setAttribute("userEmail", userIdResult.get("email"));
-//    req.getSession().setAttribute("userId", userIdResult.get("sub"));
-//    req.getSession().setAttribute("userImageUrl", userIdResult.get("picture"));
-//    resp.sendRedirect((String) req.getSession().getAttribute("loginDestination"));
-//  }
-//}

@@ -7,7 +7,6 @@ import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.mapper.UserMapper;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 @Stateless
 public class UserService {
@@ -15,15 +14,14 @@ public class UserService {
   @EJB
   UserDaoBean userDaoBean;
 
-  @Inject
+  @EJB
   UserMapper userMapper;
 
   public void saveUser(UserDto userDto){
   userDaoBean.addUser(userMapper.mapDtoToEntity(userDto));
   }
 
-  public UserDto getUserByEmail(String email){
-   User user = userDaoBean.findUserByEmail(email);
-   return userMapper.mapEntityToDto(user);
+  public User getUserByEmail(String email){
+   return userDaoBean.findUserByEmail(email);
   }
 }
