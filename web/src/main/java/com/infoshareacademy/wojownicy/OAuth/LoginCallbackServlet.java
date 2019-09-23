@@ -41,7 +41,7 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     String email = info.getEmail();
     req.getSession().setAttribute("google_name", name);
     req.getSession().setAttribute("email", email);
-    req.getSession().setAttribute("token", req.getSession().getAttribute(oauth2.tokeninfo().getAccessToken()));
+    req.getSession().setAttribute("token", gCredential.getAccessToken());
     UserDto user = new UserDto();
     user.setUsername(name);
     user.setEmail(email);
