@@ -17,26 +17,7 @@ public class BookService {
   @EJB
   private BookDaoBean bookDaoBean;
 
-  @EJB
-  private AuthorDaoBean authorDaoBean;
-
-  @EJB
-  private BookMapper bookMapper;
-
-  public List<Book> findBookForLiveSearchTitle(String searchTitle) {
-    return bookDaoBean.findBookByLiveSearchTitle(searchTitle);
-  }
-
-  public List<Author> findBookForLiveSearchAuthor(String searchAuthor) {
-    return authorDaoBean.findAuthorByLiveSearchAuthor(searchAuthor);
-  }
-
-  public List<BookDto> findBookForLiveSearchAuthorId(Long id) {
-    List<Book> booksByAuthorId = bookDaoBean.findBookByLiveSearchAuthorId(id);
-    List<BookDto> bookDtoList = new ArrayList<>();
-    for (Book book : booksByAuthorId) {
-      bookDtoList.add(bookMapper.mapEntityToDto(book));
-    }
-    return bookDtoList;
+  public List<Book> findBookForLiveSearch(String searchParam) {
+    return bookDaoBean.findBookByLiveSearch(searchParam);
   }
 }

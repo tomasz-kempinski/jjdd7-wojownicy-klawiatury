@@ -30,8 +30,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" id="form-search">
-        <input class="form-control mr-sm-2" type="search" id="input-title" placeholder="Szukaj po tytule" aria-label="Search">
-        <input class="form-control mr-sm-2" type="search" id="input-author" placeholder="Szukaj po autorze" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" id="input-param" placeholder="Szukaj" aria-label="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
         <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"

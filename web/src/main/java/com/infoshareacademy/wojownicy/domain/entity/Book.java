@@ -37,12 +37,8 @@ import javax.validation.constraints.NotNull;
         query = "SELECT b FROM Book b"
     ),
     @NamedQuery(
-        name = "Book.findBookByTitle",
-        query = "SELECT b from Book as b WHERE b.title LIKE :searchTitle"
-    ),
-    @NamedQuery(
-        name = "Book.findBookByAuthorID",
-        query = "SELECT b FROM Book AS b INNER JOIN b.author AS a WHERE a.authorId IN :id"
+        name = "Book.LiveSearch",
+        query = "SELECT b from Book as b INNER JOIN b.author AS a WHERE b.title LIKE :searchParam OR a.authorName LIKE :searchParam"
     ),
     @NamedQuery(
         name = "Book.getPartOfAudioBooks",

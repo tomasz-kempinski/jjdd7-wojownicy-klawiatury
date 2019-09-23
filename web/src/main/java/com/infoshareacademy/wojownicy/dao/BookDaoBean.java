@@ -52,18 +52,10 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List findBookByLiveSearchTitle(String searchTitle) {
+  public List findBookByLiveSearch(String searchParam) {
 
-    Query query = entityManager.createNamedQuery("Book.findBookByTitle");
-    query.setParameter("searchTitle", "%" + searchTitle + "%");
-
-    return query.getResultList();
-  }
-
-  public List findBookByLiveSearchAuthorId(Long id) {
-
-    Query query = entityManager.createNamedQuery("Book.findBookByAuthorID");
-    query.setParameter("id", id);
+    Query query = entityManager.createNamedQuery("Book.LiveSearch");
+    query.setParameter("searchParam", "%" + searchParam + "%");
 
     return query.getResultList();
   }

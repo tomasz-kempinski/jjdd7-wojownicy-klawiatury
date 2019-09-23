@@ -61,9 +61,6 @@
 #ui-id-1{
   z-index: 999999;
 }
-#ui-id-2{
-  z-index: 999999;
-}
 .ui-menu-item-wrapper {
   overflow-wrap: break-word;
   overflow: hidden;

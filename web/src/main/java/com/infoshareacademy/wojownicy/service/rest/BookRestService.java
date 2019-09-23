@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.service.rest;
 
-import com.infoshareacademy.wojownicy.domain.view.AuthorLiveSearchView;
 import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,26 +20,14 @@ public class BookRestService {
   private ApiBookService apiBookService;
 
   @GET
-  @Path("/searchTitle/{searchTitle}")
+  @Path("/searchParam/{searchParam}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Response getNotification(@PathParam("searchTitle") String searchTitle) {
+  public Response getNotification(@PathParam("searchParam") String searchParam) {
     List<BookLiveSearchView> bookLiveSearchViews = apiBookService
-        .getLiveSearchBookTitle(searchTitle);
+        .getLiveSearchBookTitle(searchParam);
     if (bookLiveSearchViews.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
     return Response.ok().entity(bookLiveSearchViews).build();
-  }
-
-  @GET
-  @Path("/searchAuthor/{searchAuthor}")
-  @Produces(MediaType.APPLICATION_JSON)
-  public Response getAuthor(@PathParam("searchAuthor") String searchAuthor) {
-    List<AuthorLiveSearchView> authorLiveSearchViews = apiBookService
-        .getLiveSearchBookAuthor(searchAuthor);
-    if (authorLiveSearchViews.isEmpty()) {
-      return Response.status(Status.NOT_FOUND).build();
-    }
-    return Response.ok().entity(authorLiveSearchViews).build();
   }
 }

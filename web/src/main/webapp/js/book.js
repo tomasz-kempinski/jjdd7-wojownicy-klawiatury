@@ -3,10 +3,10 @@ $.ui.autocomplete.prototype._resizeMenu = function () {
   ul.outerWidth(this.element.outerWidth()*2
   );
 }
-$("#input-title").autocomplete({
+$("#input-param").autocomplete({
   source: function (request, response) {
     $.ajax({
-      url: '/api/books/searchTitle/' + request.term,
+      url: '/api/books/searchParam/' + request.term,
       type: 'GET',
       success: function (data) {
         if (!data.length) {
