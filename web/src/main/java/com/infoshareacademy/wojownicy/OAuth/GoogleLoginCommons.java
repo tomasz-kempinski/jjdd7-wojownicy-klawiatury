@@ -4,31 +4,54 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 
 
 public class GoogleLoginCommons {
+
+  private static final String SETTINGS_FILE = "settings.properties";
+
   private static final List<String> scopes = List.of("openid", "email", "profile");
 
-  private static final String clientId = "868751336544-1jdvc65i0l7vmcldgct4bnqrc5roll6q.apps.googleusercontent.com";
-
-  private static final String secret = "qLtCTeAxrHG9ZkVhBuSjcvx0";
-
-  private static final String redirectUrl = "/oauth2callback";
-
-  public static String buildRedirectUri(HttpServletRequest req) {
+  public static String buildRedirectUri(HttpServletRequest req) throws IOException {
     GenericUrl url = new GenericUrl(req.getRequestURL().toString());
-    url.setRawPath(redirectUrl);
+    url.setRawPath(getRedirectUrl());
     return url.build();
   }
 
-  public static GoogleAuthorizationCodeFlow buildFlow() {
+  public static GoogleAuthorizationCodeFlow buildFlow() throws IOException {
     return new GoogleAuthorizationCodeFlow.Builder(
         new NetHttpTransport(),
         JacksonFactory.getDefaultInstance(),
-        clientId, secret, scopes)
+        getClientId(), getSecret(), scopes)
         .setAccessType("online")
         .build();
+  }
+
+  private static String getClientId() throws IOException {
+    Properties settings = new Properties();
+    settings.load(Thread.currentThread()
+        .getContextClassLoader().getResource(SETTINGS_FILE)
+        .openStream());
+    return settings.getProperty("Google.Login.ClientID");
+  }
+
+  private static String getSecret() throws IOException {
+    Properties settings = new Properties();
+    settings.load(Thread.currentThread()
+        .getContextClassLoader().getResource(SETTINGS_FILE)
+        .openStream());
+    return settings.getProperty("Google.Login.Secret");
+  }
+
+  private static String getRedirectUrl() throws IOException {
+    Properties settings = new Properties();
+    settings.load(Thread.currentThread()
+        .getContextClassLoader().getResource(SETTINGS_FILE)
+        .openStream());
+    return settings.getProperty("Google.Login.redirect");
   }
 }
