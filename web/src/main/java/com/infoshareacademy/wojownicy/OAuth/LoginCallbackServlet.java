@@ -14,18 +14,18 @@ import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.service.UserService;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet("/oauth2callback")
 public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServlet {
 
-  private static final Logger logger = Logger.getLogger(LoginCallbackServlet.class.getName());
-
+  private final Logger logger = LoggerFactory.getLogger(getClass().getName());
 
   @EJB
   private UserService userService;
@@ -55,20 +55,16 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
 
     logger.info("Authentication success of user: " + name);
 
-
     User verifiedUser = userService.getUserByEmail(email);
     req.getSession().setAttribute("userId", verifiedUser.getUserId());
     req.getSession().setAttribute("email", verifiedUser.getEmail());
     req.getSession().setAttribute("userType", verifiedUser.getUserType());
+    req.getSession().setAttribute("username", verifiedUser.getUsername());
 
-    logger.info("User" + name + " is " + req.getSession().getAttribute("userType"));
+    logger.info("{} is {}", name, req.getSession().getAttribute("userType"));
 
     if (req.getSession().getAttribute("userType") == null){
       req.getSession().setAttribute("userType", "guest");
-    }
-
-    if (email.isEmpty()){
-      resp.sendRedirect("/");
     }
 
     resp.sendRedirect("/");
