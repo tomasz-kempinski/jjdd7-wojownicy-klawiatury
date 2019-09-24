@@ -3,12 +3,14 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
+import com.infoshareacademy.wojownicy.service.ReservationService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +30,8 @@ public class BookViewServlet extends HttpServlet {
   private TemplateProvider templateProvider;
   @Inject
   private BookListService bookListService;
+  @Inject
+  private ReservationService reservationService;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -37,12 +41,15 @@ public class BookViewServlet extends HttpServlet {
     String idString = req.getParameter("id").replaceAll(",", "");
     String partString = req.getParameter("part");
     String isAudioString = req.getParameter("hasAudio");
+
     Map<String, Object> dataModel = new HashMap<>();
     long id;
     long part;
     String audio;
     int isAudioFilter = 0;
     boolean hasAudio;
+    boolean isReserved;
+    String reservation;
 
     if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils
         .isDigits(isAudioString)
@@ -62,11 +69,20 @@ public class BookViewServlet extends HttpServlet {
       audio = "niedostępna";
     }
 
+    isReserved = bookListService.isReserved(id);
+    if (isReserved) {
+      reservation = "Zarezerwowana !";
+    } else {
+      reservation = "Zarezerwuj książkę!";
+    }
+
+
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
+    dataModel.put("isReserved", reservation);
 
     PrintWriter printWriter = resp.getWriter();
     try {
