@@ -7,6 +7,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
+
 public class GoogleLoginCommons {
   private static final List<String> scopes = List.of("openid", "email", "profile");
 

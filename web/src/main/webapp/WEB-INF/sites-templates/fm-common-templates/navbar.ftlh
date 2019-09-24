@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark py-1 fixed-top"
-     style="background-color: rgb(52,50,50); z-index: 100">
+     style="background-color: rgb(52,50,50); z-index: 100" xmlns="http://java.sun.com/jsf/html">
   <div class="container">
     <a class="navbar-brand"
        href="/">
@@ -39,23 +39,10 @@
                aria-label="Search" autocomplete="off">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        <script>
-          function onSignIn(googleUser) {
-            // Useful data for your client-side scripts:
-            var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            console.log('Full Name: ' + profile.getName());
-            console.log('Given Name: ' + profile.getGivenName());
-            console.log('Family Name: ' + profile.getFamilyName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
-
-            // The ID token you need to pass to your backend:
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-          }
-        </script>
+          <a class="btn btn-warning" role="button" href="/googlelogin" id="login">Zaloguj</a>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <a class="btn btn-warning" role="button" href="/logout" id="logout">Wyloguj</a>
       </ul>
     </div>
   </div>

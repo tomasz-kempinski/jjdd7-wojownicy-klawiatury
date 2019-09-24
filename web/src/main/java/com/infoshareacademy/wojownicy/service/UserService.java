@@ -24,4 +24,13 @@ public class UserService {
   public User getUserByEmail(String email){
    return userDaoBean.findUserByEmail(email);
   }
+
+  public boolean checkIfExistByEmail(String email){
+    User user = getUserByEmail(email);
+
+    if (user == null){
+      return false;
+    }
+    return true;
+  }
 }
