@@ -1,7 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
 import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -43,21 +42,28 @@ public class BooksListServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
-    String audio = req.getParameter("hasAudio");
-    boolean hasAudio = Boolean.parseBoolean(audio);
-    long from = 0;
-    long to = 20;
-    long part = 1;
-    if (NumberUtils.isDigits(partString)) {
-      part = Long.parseLong(partString);
-      from = (part - 1) * 20;
-      to = (from - 1) + 20;
+    String hasAudioString = req.getParameter("hasAudio");
+    int part = 0;
+    int hasAudio = 0;
+
+    if (NumberUtils.isDigits(partString) && Integer.parseInt(partString) >= 0 && NumberUtils
+        .isDigits(hasAudioString)) {
+      part = Integer.parseInt(partString);
+      hasAudio = Integer.parseInt(hasAudioString);
     }
-    List<BookDto> partOfBooks = bookListService.partOfBooks(from, to);
-    Map<String, Object> pagesMap = bookListService.pages(part);
+    List<BookDto> partOfBooks;
+    if (hasAudio == 1) {
+      partOfBooks = bookListService.partOfAudioBooks(part * 20);
+    } else {
+      partOfBooks = bookListService.partOfBooks(part * 20);
+    }
+
     Map<String, Object> dataModel = new HashMap<>();
+
+    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio);
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
+    dataModel.put("hasAudio", hasAudio);
 
     PrintWriter printWriter = resp.getWriter();
     try {
