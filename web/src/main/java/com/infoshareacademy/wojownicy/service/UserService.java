@@ -5,6 +5,7 @@ import com.infoshareacademy.wojownicy.domain.entity.User;
 
 import com.infoshareacademy.wojownicy.dto.UserDto;
 import com.infoshareacademy.wojownicy.mapper.UserMapper;
+import java.util.Optional;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

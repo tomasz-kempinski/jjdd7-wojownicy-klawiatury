@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.service.rest;
 
 import com.infoshareacademy.wojownicy.service.UserService;
 import java.util.Optional;
+import java.util.function.Predicate;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,9 @@ public class LoginController {
   @Path("/is-logged")
   public Response isLogged(@Context HttpServletRequest req) {
 
-    String email =
-        Optional.ofNullable(req.getSession().getAttribute("email").toString()).toString();
+    String email = (String) req.getSession().getAttribute("email");
 
-
+//    Optional<String> email = Optional.ofNullable(req.getSession().getAttribute("email"));
 
     if (!userService.checkIfExistByEmail(email)){
       return Response.status(Status.UNAUTHORIZED).build();
