@@ -43,7 +43,7 @@ public class BooksListServlet extends HttpServlet {
     String kindString = req.getParameter("kind");
     int part = 0;
     int hasAudio = 0;
-    int kind = 0;
+    long kind = 0;
 
     if (NumberUtils.isDigits(partString)
         && Integer.parseInt(partString) >= 0
@@ -51,7 +51,7 @@ public class BooksListServlet extends HttpServlet {
         &&NumberUtils.isDigits(kindString)) {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
-      kind = Integer.parseInt(kindString);
+      kind = Long.parseLong(kindString);
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {

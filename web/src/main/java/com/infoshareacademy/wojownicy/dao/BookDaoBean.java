@@ -45,7 +45,7 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List<Book> getPartOfAudioBooks(int from, int kind) {
+  public List<Book> getPartOfAudioBooks(int from, long kind) {
     Query query;
     if (kind==1 || kind==2 || kind==3) {
       query = entityManager.createNamedQuery("Book.FilterAudioBookList")

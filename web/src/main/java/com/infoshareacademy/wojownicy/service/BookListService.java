@@ -39,7 +39,7 @@ public class BookListService {
     return pagesMap;
   }
 
-  public List<BookDto> partOfBooks(int from, int kind) {
+  public List<BookDto> partOfBooks(int from, long kind) {
    List<Book> books = bookDaoBean.getPartOfBooks(from);
    List<BookDto> bookDtoList = new ArrayList<>();
    for (Book book : books){
@@ -48,7 +48,7 @@ public class BookListService {
   return  bookDtoList;
   }
 
-  public List<BookDto> partOfAudioBooks(int from, int kind){
+  public List<BookDto> partOfAudioBooks(int from, long kind){
     List<BookDto> bookDtoList = new ArrayList<>();
 
     List<Book> books = bookDaoBean.getPartOfAudioBooks(from, kind);
