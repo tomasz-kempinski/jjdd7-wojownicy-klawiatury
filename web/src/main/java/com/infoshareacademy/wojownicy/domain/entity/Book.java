@@ -39,6 +39,10 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.getPartOfAudioBooks",
         query = "SELECT b FROM Book b WHERE b.hasAudio = 1"
+    ),
+    @NamedQuery(
+        name = "Book.FilterAudioBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = ?1"
     )
 })
 @Entity

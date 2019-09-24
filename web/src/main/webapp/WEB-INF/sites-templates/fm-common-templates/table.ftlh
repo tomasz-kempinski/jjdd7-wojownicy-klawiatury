@@ -1,22 +1,28 @@
 <div id="table-container" class="container">
-  <div class="custom-control custom-switch">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <input value="1" name="subject" class="subject-list" type="checkbox"> Dramat
-    <input value="2" name="subject" class="subject-list" type="checkbox"> Epika
-    <input value="3" name="subject" class="subject-list" type="checkbox"> Liryka
-    <script type="text/javascript">
-      $('.subject-list').on('change', function() {
-        $('.subject-list').not(this).prop('checked', false);
-      });
-    </script>
+    <div class="custom-control custom-switch">
       <#if hasAudio=1>
         <input type="checkbox" class="custom-control-input" id="withAudio" checked>
-        <label class="custom-control-label" for="withAudio" onclick=allBooks()>Filtruj pozycje z
+        <label class="custom-control-label" for="withAudio" onclick=allBooks(${kind})>Filtruj pozycje z
           Audiobookiem</label>
       <#else>
         <input type="checkbox" class="custom-control-input" id="withAudio">
-        <label class="custom-control-label" for="withAudio" onclick=onlyAudioBooks()>Filtruj pozycje
+        <label class="custom-control-label" for="withAudio" onclick=onlyAudioBooks(${kind})>Filtruj pozycje
           z Audiobookiem</label></#if>
+  </div>
+  <div class="custom-control custom-switch">
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <input value="1" name="kind" class="kind-list" onchange=kind(1,${hasAudio}) type="checkbox" <#if kind=1>checked</#if>>
+    <label class="kind-list" for="kind" > Liryka </label>
+    <input value="2" name="kind" class="kind-list" onchange=kind(2,${hasAudio}) type="checkbox" <#if kind=2>checked</#if>>
+    <label class="kind-list" for="kind"> Epika </label>
+    <input value="3" name="kind" class="kind-list" onchange=kind(3,${hasAudio}) type="checkbox" <#if kind=3>checked</#if>>
+    <label class="kind-list" for="kind"> Dramat </label>
+    <script type="text/javascript">
+      $('.kind-list').on('change', function() {
+        $('.kind-list').not(this).prop('checked', false);
+      });
+    </script>
   </div>
   <div class="table-responsive-md">
     <table
@@ -52,4 +58,3 @@
     </table>
   </div>
 </div>
-<script src="/js/hasAudio.js"></script>

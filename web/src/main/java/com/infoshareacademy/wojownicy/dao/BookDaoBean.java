@@ -45,10 +45,18 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List<Book> getPartOfAudioBooks(int from) {
-    Query query = entityManager.createNamedQuery("Book.getPartOfAudioBooks")
-        .setFirstResult(from)
-        .setMaxResults(20);
+  public List<Book> getPartOfAudioBooks(int from, int kind) {
+    Query query;
+    if (kind==1 || kind==2 || kind==3) {
+      query = entityManager.createNamedQuery("Book.FilterAudioBookList")
+          .setFirstResult(from)
+          .setMaxResults(20)
+          .setParameter(1,kind);
+    } else {
+       query = entityManager.createNamedQuery("Book.getPartOfAudioBooks")
+          .setFirstResult(from)
+          .setMaxResults(20);
+    }
     return query.getResultList();
   }
 
