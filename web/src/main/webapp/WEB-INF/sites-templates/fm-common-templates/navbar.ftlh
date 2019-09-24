@@ -26,11 +26,6 @@
               książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/admin-panel">Panel administratora</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/logout">wyloguj</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/googlelogin">zaloguj</a>
-
           </div>
         </li>
       </ul>
