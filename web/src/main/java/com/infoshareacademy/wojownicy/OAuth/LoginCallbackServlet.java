@@ -51,9 +51,10 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
       user.setEmail(email);
       user.setUserType("user");
       userService.saveUser(user);
+      logger.info("Created user with username {} and email {}", name, email);
     }
 
-    logger.info("Authentication success of user: " + name);
+    logger.info("Authentication success of user: {}", name );
 
     User verifiedUser = userService.getUserByEmail(email);
     req.getSession().setAttribute("userId", verifiedUser.getUserId());
