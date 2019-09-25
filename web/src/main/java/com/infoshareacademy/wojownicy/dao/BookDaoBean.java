@@ -50,8 +50,7 @@ public class BookDaoBean {
     if (kind==1 || kind==2 || kind==3) {
       query = entityManager.createNamedQuery("Book.FilterAudioBookList")
           .setFirstResult(from)
-          .setMaxResults(20)
-          .setParameter(1,kind);
+          .setMaxResults(20);
     } else {
        query = entityManager.createNamedQuery("Book.getPartOfAudioBooks")
           .setFirstResult(from)

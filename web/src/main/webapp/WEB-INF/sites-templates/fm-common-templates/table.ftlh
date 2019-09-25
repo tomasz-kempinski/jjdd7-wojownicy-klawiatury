@@ -10,19 +10,12 @@
           z Audiobookiem</label></#if>
   </div>
   <div class="custom-control custom-switch">
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <input value="1" name="kind" class="kind-list" onchange=kind(1,${hasAudio}) type="checkbox" <#if kind=1>checked</#if>>
     <label class="kind-list" for="kind" > Liryka </label>
     <input value="2" name="kind" class="kind-list" onchange=kind(2,${hasAudio}) type="checkbox" <#if kind=2>checked</#if>>
     <label class="kind-list" for="kind"> Epika </label>
     <input value="3" name="kind" class="kind-list" onchange=kind(3,${hasAudio}) type="checkbox" <#if kind=3>checked</#if>>
     <label class="kind-list" for="kind"> Dramat </label>
-    <script type="text/javascript">
-      $('.kind-list').on('change', function() {
-        $('.kind-list').not(this).prop('checked', false);
-      });
-    </script>
   </div>
   <div class="table-responsive-md">
     <table
