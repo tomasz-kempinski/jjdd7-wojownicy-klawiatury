@@ -34,10 +34,10 @@
                aria-label="Search" autocomplete="off">
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <a class="btn btn-warning" role="button" href="/googlelogin" id="login">Zaloguj</a>
+          <a class="btn btn-warning" role="button" href="/googlelogin" id="login" style="display: none;">Zaloguj</a>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="btn btn-warning" role="button" href="/logout" id="logout">Wyloguj</a>
+        <a class="btn btn-warning" role="button" href="/logout" id="logout" style="display: none;">Wyloguj</a>
       </ul>
     </div>
   </div>

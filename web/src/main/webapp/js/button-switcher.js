@@ -4,8 +4,9 @@ $(function () {
       url: '/api/user/is-logged',
       type: 'GET',
       success: function (result) {
-        $("#login").hide();
+
         $("#logout").show();
+        $("#login").hide();
       },
       error: function (event) {
         $("#login").show();
