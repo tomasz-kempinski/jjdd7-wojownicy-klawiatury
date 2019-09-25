@@ -45,7 +45,7 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
     String name = info.getName();
     String email = info.getEmail();
 
-    if(userService.getUserByEmail(email) == null) {
+    if (userService.getUserByEmail(email) == null) {
       UserDto user = new UserDto();
       user.setUsername(name);
       user.setEmail(email);
@@ -63,7 +63,7 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
 
     logger.info("{} is {}", name, req.getSession().getAttribute("userType"));
 
-    if (req.getSession().getAttribute("userType") == null){
+    if (req.getSession().getAttribute("userType") == null) {
       req.getSession().setAttribute("userType", "guest");
     }
 

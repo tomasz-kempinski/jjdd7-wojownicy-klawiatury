@@ -10,19 +10,19 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 
 
-public class GoogleLoginCommons {
+ class GoogleLoginCommons {
 
   private static final String SETTINGS_FILE = "settings.properties";
 
   private static final List<String> scopes = List.of("openid", "email", "profile");
 
-  public static String buildRedirectUri(HttpServletRequest req) throws IOException {
+   static String buildRedirectUri(HttpServletRequest req) throws IOException {
     GenericUrl url = new GenericUrl(req.getRequestURL().toString());
     url.setRawPath(getRedirectUrl());
     return url.build();
   }
 
-  public static GoogleAuthorizationCodeFlow buildFlow() throws IOException {
+   static GoogleAuthorizationCodeFlow buildFlow() throws IOException {
     return new GoogleAuthorizationCodeFlow.Builder(
         new NetHttpTransport(),
         JacksonFactory.getDefaultInstance(),
