@@ -1,6 +1,7 @@
 package com.infoshareacademy.wojownicy.dao;
 
 import com.infoshareacademy.wojownicy.domain.entity.Book;
+import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -45,9 +46,9 @@ public class BookDaoBean {
     return query.getResultList();
   }
 
-  public List<Book> getPartOfAudioBooks(int from, long kind) {
+  public List<Book> getPartOfAudioBooks(int from, BigInteger kind) {
     Query query;
-    if (kind==1 || kind==2 || kind==3) {
+    if (kind.equals(1) || kind.equals(2) || kind.equals(3)) {
       query = entityManager.createNamedQuery("Book.FilterAudioBookList")
           .setParameter("kind",kind)
           .setFirstResult(from)

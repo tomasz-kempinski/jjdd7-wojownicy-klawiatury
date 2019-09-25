@@ -54,7 +54,6 @@ public class BooksListServlet extends HttpServlet {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
       kind = new BigInteger(kindString);
-      kind.
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {
