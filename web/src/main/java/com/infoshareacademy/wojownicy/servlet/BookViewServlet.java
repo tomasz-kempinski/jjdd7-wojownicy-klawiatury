@@ -45,11 +45,10 @@ public class BookViewServlet extends HttpServlet {
     Map<String, Object> dataModel = new HashMap<>();
     long id;
     long part;
+    String userEmail = (String) req.getSession().getAttribute("email");
     String audio;
     int isAudioFilter = 0;
     boolean hasAudio;
-    boolean isReserved;
-    String reservation;
 
     if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils
         .isDigits(isAudioString)
@@ -69,20 +68,13 @@ public class BookViewServlet extends HttpServlet {
       audio = "niedostępna";
     }
 
-    isReserved = bookListService.isReserved(id);
-    if (isReserved) {
-      reservation = "Zarezerwowana !";
-    } else {
-      reservation = "Zarezerwuj książkę!";
-    }
-
+    reservationService.newReservation(id, userEmail);
 
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
-    dataModel.put("isReserved", reservation);
 
     PrintWriter printWriter = resp.getWriter();
     try {

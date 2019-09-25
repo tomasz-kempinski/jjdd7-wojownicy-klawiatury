@@ -15,21 +15,18 @@ public class ReservationService {
   @EJB
   private ReservationDaoBean reservationDaoBean;
 
-  public List<Reservation> findReservationByBookId(Long id) {
-    return reservationDaoBean.getReservationsByBookId(id);
-  }
-
-  private User findUserId(Long userId) {
-    return reservationDaoBean.getUserId(userId);
+  private User findUserId(String userEmail) {
+    return reservationDaoBean.getUserId(userEmail);
   }
 
   private Book findBookId(Long id) {
     return reservationDaoBean.getBookId(id);
   }
 
-  public void newReservation(Reservation reservation, Long bookId, Long userId) {
+  public void newReservation(Long bookId, String userEmail) {
+    Reservation reservation = new Reservation();
     reservation.setBook(findBookId(bookId));
-    reservation.setUser(findUserId(userId));
+    reservation.setUser(findUserId(userEmail));
     reservationDaoBean.addReservation(reservation);
   }
 }

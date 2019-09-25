@@ -29,7 +29,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Reservation.getUserId",
-        query = "SELECT u.userId FROM User AS u WHERE u.userId IN :userId"
+        query = "SELECT u.userId FROM User AS u WHERE u.userEmail LIKE :userEmail"
     )
 })
 @Entity

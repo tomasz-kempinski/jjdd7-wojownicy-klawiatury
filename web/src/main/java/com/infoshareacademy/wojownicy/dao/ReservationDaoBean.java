@@ -40,9 +40,9 @@ public class ReservationDaoBean {
     return (Book) queryBookId;
   }
 
-  public User getUserId(Long userId) {
+  public User getUserId(String userEmail) {
     Query queryUserId = entityManager.createNamedQuery("Reservation.getUserId");
-    queryUserId.setParameter("userId", userId);
+    queryUserId.setParameter("userEmail", userEmail);
     return (User) queryUserId;
   }
 
