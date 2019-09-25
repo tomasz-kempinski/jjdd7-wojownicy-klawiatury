@@ -28,11 +28,11 @@ public class User {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long authorId;
+  private Long userId;
 
   @NotNull
   @Column(name = "username")
-  private String authorName;
+  private String userName;
 
   @NotNull
   @Column(name = "is_admin")

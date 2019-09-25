@@ -14,9 +14,11 @@ public class ReservationServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-  String bookId = req.getParameter("id");
-  Long id = Long.parseLong(bookId);
+    String bookId = req.getParameter("bookId");
+    Long parseBookId = Long.parseLong(bookId);
+    String userId = req.getParameter("userId");
+    Long parseUserId = Long.parseLong(userId);
 
 
-
+  }
 }

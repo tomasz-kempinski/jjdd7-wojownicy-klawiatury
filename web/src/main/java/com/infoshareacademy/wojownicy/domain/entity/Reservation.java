@@ -22,6 +22,14 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Reservation.findReservationsByBookId",
         query = "SELECT r FROM Reservation AS r JOIN r.book AS b WHERE b.id IN :id"
+    ),
+    @NamedQuery(
+        name = "Reservation.getBookId",
+        query = "SELECT b.id FROM Book AS b WHERE b.id IN :id"
+    ),
+    @NamedQuery(
+        name = "Reservation.getUserId",
+        query = "SELECT u.userId FROM User AS u WHERE u.userId IN :userId"
     )
 })
 @Entity
