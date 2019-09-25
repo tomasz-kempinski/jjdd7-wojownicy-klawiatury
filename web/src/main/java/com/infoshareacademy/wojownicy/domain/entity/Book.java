@@ -42,7 +42,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.FilterAudioBookList",
-        query = "SELECT b FROM Book b WHERE b.kind = 1"
+        query = "SELECT b FROM Book b WHERE b.kind = :kind"
     )
 })
 @Entity

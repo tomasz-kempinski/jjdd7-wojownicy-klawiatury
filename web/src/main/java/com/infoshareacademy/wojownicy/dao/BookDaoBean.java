@@ -49,6 +49,7 @@ public class BookDaoBean {
     Query query;
     if (kind==1 || kind==2 || kind==3) {
       query = entityManager.createNamedQuery("Book.FilterAudioBookList")
+          .setParameter("kind",kind)
           .setFirstResult(from)
           .setMaxResults(20);
     } else {
