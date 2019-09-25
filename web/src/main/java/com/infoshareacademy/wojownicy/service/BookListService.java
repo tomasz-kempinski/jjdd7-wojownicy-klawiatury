@@ -4,6 +4,7 @@ import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.mapper.BookMapper;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,9 +33,9 @@ public class BookListService {
     pagesMap.put("third", currentPage + 2);
     long bookSize = numberOfBooks(hasAudio);
     if (bookSize % 20 == 0) {
-      pagesMap.put("last", bookSize / 20 -1);
+      pagesMap.put("last", bookSize / 20 - 1);
     } else {
-      pagesMap.put("last", bookSize / 20 );
+      pagesMap.put("last", bookSize / 20);
     }
     return pagesMap;
   }
@@ -57,9 +58,10 @@ public class BookListService {
       }
     return bookDtoList;
   }
+
   public BookDto getSingleBook(long id) {
 
-   return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
+    return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
   }
 
   public boolean hasAudio(long id) {
@@ -68,8 +70,8 @@ public class BookListService {
   }
 
   public long numberOfBooks(int hasAudio) {
-    if (hasAudio==1){
-     return bookDaoBean.numberOfAudioBooks();
+    if (hasAudio == 1) {
+      return bookDaoBean.numberOfAudioBooks();
     }
     return bookDaoBean.numberOfBooks();
   }

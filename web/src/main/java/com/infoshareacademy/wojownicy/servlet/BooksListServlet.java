@@ -8,6 +8,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,8 @@ public class BooksListServlet extends HttpServlet {
     String kindString = req.getParameter("kind");
     int part = 0;
     int hasAudio = 0;
-    long kind = 0;
+    BigInteger kind = new BigInteger("1");
+
 
     if (NumberUtils.isDigits(partString)
         && Integer.parseInt(partString) >= 0
@@ -51,7 +53,8 @@ public class BooksListServlet extends HttpServlet {
         &&NumberUtils.isDigits(kindString)) {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
-      kind = Long.parseLong(kindString);
+      kind = new BigInteger(kindString);
+      kind.
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {
