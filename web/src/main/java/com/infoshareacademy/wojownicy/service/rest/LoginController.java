@@ -23,11 +23,11 @@ public class LoginController {
   @Path("/is-logged")
   public Response isLogged(@Context HttpServletRequest req) {
 
-    String email = (String) req.getSession().getAttribute("email");
+//    String email = (String) req.getSession().getAttribute("email");
 
-//    Optional<String> email = Optional.ofNullable(req.getSession().getAttribute("email"));
+    Optional<String> email = Optional.ofNullable((String) req.getSession().getAttribute("email"));
 
-    if (!userService.checkIfExistByEmail(email)){
+    if (email.isEmpty()){
       return Response.status(Status.UNAUTHORIZED).build();
     }
     return Response.ok().build();
