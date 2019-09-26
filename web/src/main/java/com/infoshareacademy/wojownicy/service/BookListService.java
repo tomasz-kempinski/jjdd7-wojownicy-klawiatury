@@ -4,7 +4,6 @@ import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.mapper.BookMapper;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,20 +40,20 @@ public class BookListService {
   }
 
   public List<BookDto> partOfBooks(int from, long kind) {
-   List<Book> books = bookDaoBean.getPartOfBooks(from, kind);
-   List<BookDto> bookDtoList = new ArrayList<>();
-   for (Book book : books){
-     bookDtoList.add(bookMapper.mapEntityToDto(book));
-   }
-  return  bookDtoList;
+    List<Book> books = bookDaoBean.getPartOfBooks(from, kind);
+    List<BookDto> bookDtoList = new ArrayList<>();
+    for (Book book : books) {
+      bookDtoList.add(bookMapper.mapEntityToDto(book));
+    }
+    return bookDtoList;
   }
 
-  public List<BookDto> partOfAudioBooks(int from, long kind){
+  public List<BookDto> partOfAudioBooks(int from, long kind) {
     List<BookDto> bookDtoList = new ArrayList<>();
     List<Book> books = bookDaoBean.getPartOfAudioBooks(from, kind);
-      for (Book book : books) {
-        bookDtoList.add(bookMapper.mapEntityToDto(book));
-      }
+    for (Book book : books) {
+      bookDtoList.add(bookMapper.mapEntityToDto(book));
+    }
     return bookDtoList;
   }
 

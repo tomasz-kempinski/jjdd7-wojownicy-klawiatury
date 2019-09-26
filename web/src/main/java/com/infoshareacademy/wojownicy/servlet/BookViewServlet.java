@@ -56,8 +56,7 @@ public class BookViewServlet extends HttpServlet {
       id = Long.parseLong(idString);
       part = Long.parseLong(partString);
       kind = Long.parseLong(kindString);
-    }
-    else {
+    } else {
       logger.info("Wrong Parameter for single book view");
     }
     hasAudio = bookListService.hasAudio(id);
@@ -70,7 +69,7 @@ public class BookViewServlet extends HttpServlet {
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
-    dataModel.put("kind",kind);
+    dataModel.put("kind", kind);
 
     PrintWriter printWriter = resp.getWriter();
     try {

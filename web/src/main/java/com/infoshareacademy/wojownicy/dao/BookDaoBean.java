@@ -27,15 +27,15 @@ public class BookDaoBean {
   }
 
   public int numberOfBooks(long kind) {
-    if (kind==1){
+    if (kind == 1) {
       Query query = entityManager.createNamedQuery("Book.LirykaBookListCount");
       Long fromQuery = (Long) query.getSingleResult();
       return fromQuery.intValue();
-    } else if (kind == 2){
+    } else if (kind == 2) {
       Query query = entityManager.createNamedQuery("Book.EpikaBookListCount");
       Long fromQuery = (Long) query.getSingleResult();
       return fromQuery.intValue();
-    } else if (kind == 3){
+    } else if (kind == 3) {
       Query query = entityManager.createNamedQuery("Book.DramatBookListCount");
       Long fromQuery = (Long) query.getSingleResult();
       return fromQuery.intValue();
@@ -46,15 +46,15 @@ public class BookDaoBean {
   }
 
   public int numberOfAudioBooks(long kind) {
-    if (kind == 1){
+    if (kind == 1) {
       Query query = entityManager.createNamedQuery("Book.LirykaAudioBookListCount");
       Long fromQuery = (Long) query.getSingleResult();
       return fromQuery.intValue();
     } else if (kind == 2) {
-        Query query = entityManager.createNamedQuery("Book.EpikaAudioBookListCount");
-        Long fromQuery = (Long) query.getSingleResult();
-        return fromQuery.intValue();
-    } else if (kind == 3){
+      Query query = entityManager.createNamedQuery("Book.EpikaAudioBookListCount");
+      Long fromQuery = (Long) query.getSingleResult();
+      return fromQuery.intValue();
+    } else if (kind == 3) {
       Query query = entityManager.createNamedQuery("Book.DramatAudioBookListCount");
       Long fromQuery = (Long) query.getSingleResult();
       return fromQuery.intValue();
@@ -65,17 +65,17 @@ public class BookDaoBean {
   }
 
   public List<Book> getPartOfBooks(int from, long kind) {
-    if(kind == 1){
+    if (kind == 1) {
       Query query = entityManager.createNamedQuery("Book.getLirykaPartOfBookList")
           .setFirstResult(from)
           .setMaxResults(20);
       return query.getResultList();
-    } else if (kind == 2){
+    } else if (kind == 2) {
       Query query = entityManager.createNamedQuery("Book.getEpikaPartOfBookList")
           .setFirstResult(from)
           .setMaxResults(20);
       return query.getResultList();
-    } else if (kind == 3){
+    } else if (kind == 3) {
       Query query = entityManager.createNamedQuery("Book.getDramatPartOfBookList")
           .setFirstResult(from)
           .setMaxResults(20);

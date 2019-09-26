@@ -6,7 +6,8 @@
                                    href="/book-list?part=${page.first}&hasAudio=${hasAudio}&kind=${kind}">Pierwsza</a>
           </li></#if>
         <#if page.previous gt -1>
-          <li class="page-item"><a class="page-link" href="/book-list?part=${page.previous}&kind=${kind}">Poprzednia</a>
+          <li class="page-item"><a class="page-link"
+                                   href="/book-list?part=${page.previous}&kind=${kind}">Poprzednia</a>
           </li></#if>
         <#if page.previous-1 gt -1>
           <li class="page-item"><a class="page-link"
