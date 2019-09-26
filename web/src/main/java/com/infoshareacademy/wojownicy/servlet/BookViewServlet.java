@@ -34,7 +34,7 @@ public class BookViewServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
-    String idString = req.getParameter("id").replaceAll(",", "");
+    String idString = req.getParameter("id");
     String partString = req.getParameter("part");
     String isAudioString = req.getParameter("hasAudio");
     String kindString = req.getParameter("kind");

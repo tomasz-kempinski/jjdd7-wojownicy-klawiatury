@@ -58,3 +58,8 @@
   cursor: pointer;
   background-color: #c5dbff;
 }
+#filterButton{
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
