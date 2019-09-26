@@ -33,10 +33,11 @@ public class BooksListServlet extends HttpServlet {
   @Inject
   private BookListService bookListService;
 
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+
+
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
@@ -53,6 +54,8 @@ public class BooksListServlet extends HttpServlet {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
       kind = Long.parseLong(kindString);
+    } else {
+      logger.info("Wrong parameter for BookList");
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {

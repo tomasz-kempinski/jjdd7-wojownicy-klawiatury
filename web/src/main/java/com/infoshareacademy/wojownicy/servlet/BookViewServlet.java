@@ -57,6 +57,9 @@ public class BookViewServlet extends HttpServlet {
       part = Long.parseLong(partString);
       kind = Long.parseLong(kindString);
     }
+    else {
+      logger.info("Wrong Parameter for single book view");
+    }
     hasAudio = bookListService.hasAudio(id);
     if (hasAudio) {
       audio = "dostępna";
