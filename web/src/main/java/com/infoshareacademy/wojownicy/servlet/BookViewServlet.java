@@ -39,9 +39,9 @@ public class BookViewServlet extends HttpServlet {
     String isAudioString = req.getParameter("hasAudio");
     String kindString = req.getParameter("kind");
     Map<String, Object> dataModel = new HashMap<>();
-    long id=0;
-    long part=0;
-    long kind=0;
+    long id = 1;
+    long part = 0;
+    long kind = 0;
     String audio = "niedostępne";
     int isAudioFilter = 0;
     boolean hasAudio;
