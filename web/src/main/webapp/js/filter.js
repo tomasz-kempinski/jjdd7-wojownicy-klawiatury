@@ -1,7 +1,3 @@
-function onlyAudioBooks(kind) {
-  location.replace('/book-list?part=0&hasAudio=1&kind=' + kind)
-}
-
 function allBooks(kind, hasAudio) {
   if(hasAudio===1){
     location.replace('/book-list?part=0&hasAudio=1&kind=' + kind)

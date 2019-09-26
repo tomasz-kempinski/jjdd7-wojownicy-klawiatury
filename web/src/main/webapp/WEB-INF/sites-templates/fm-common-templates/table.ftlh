@@ -2,11 +2,11 @@
     <div class="custom-control custom-switch">
       <#if hasAudio=1>
         <input type="checkbox" class="custom-control-input" id="withAudio" checked>
-        <label class="custom-control-label" for="withAudio" onclick=allBooks(${kind})>Filtruj pozycje z
+        <label class="custom-control-label" for="withAudio" onclick=allBooks(${kind},0)>Filtruj pozycje z
           Audiobookiem</label>
       <#else>
         <input type="checkbox" class="custom-control-input" id="withAudio">
-        <label class="custom-control-label" for="withAudio" onclick=onlyAudioBooks(${kind})>Filtruj pozycje
+        <label class="custom-control-label" for="withAudio" onclick=allBooks(${kind},1)>Filtruj pozycje
           z Audiobookiem</label></#if>
   </div>
   <div class="custom-control custom-switch">
