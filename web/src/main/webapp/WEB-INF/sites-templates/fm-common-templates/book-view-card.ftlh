@@ -22,14 +22,6 @@
         </div>
       </div>
       <div>
-          <#if isRese=1>
-            <input type="checkbox" class="custom-control-input" id="withAudio" checked>
-            <label class="custom-control-label" for="withAudio" onclick=allBooks()>Filtruj pozycje z
-              Audiobookiem</label>
-          <#else>
-            <input type="checkbox" class="custom-control-input" id="withAudio">
-            <label class="custom-control-label" for="withAudio" onclick=onlyAudioBooks()>Filtruj pozycje
-              z Audiobookiem</label></#if>
         <a id="reservation-button" class="btn btn-primary" role="button">Zarezerwuj książkę</a>
       </div>
     </div>

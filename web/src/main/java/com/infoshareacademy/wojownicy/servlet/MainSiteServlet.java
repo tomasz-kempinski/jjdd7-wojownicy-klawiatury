@@ -27,7 +27,9 @@ public class MainSiteServlet extends HttpServlet {
   @Inject
   private TemplateProvider templateProvider;
 
-
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "main-site.ftlh");
 

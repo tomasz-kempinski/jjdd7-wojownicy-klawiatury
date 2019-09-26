@@ -34,18 +34,6 @@ public class ReservationDaoBean {
     return query.getResultList();
   }
 
-  public Book getBookId(Long id) {
-    Query queryBookId = entityManager.createNamedQuery("Reservation.getBookId");
-    queryBookId.setParameter("id", id);
-    return (Book) queryBookId;
-  }
-
-  public User getUserId(String userEmail) {
-    Query queryUserId = entityManager.createNamedQuery("Reservation.getUserId");
-    queryUserId.setParameter("userEmail", userEmail);
-    return (User) queryUserId;
-  }
-
   public Reservation editReservation(Reservation reservation) {
     return entityManager.merge(reservation);
   }

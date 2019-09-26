@@ -2,6 +2,7 @@ package com.infoshareacademy.wojownicy.domain.entity;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Reservation.getUserId",
-        query = "SELECT u.userId FROM User AS u WHERE u.userEmail LIKE :userEmail"
+        query = "SELECT u.userId FROM User AS u WHERE u.email LIKE :userEmail"
     )
 })
 @Entity
@@ -51,7 +52,7 @@ public class Reservation {
 
   @NotNull
   @Column(name = "reservation_date")
-  private LocalDate reservationDate;
+  private LocalDateTime reservationDate;
 
 
   public Long getId() {
@@ -78,11 +79,11 @@ public class Reservation {
     this.user = user;
   }
 
-  public LocalDate getReservationDate() {
+  public LocalDateTime getReservationDate() {
     return reservationDate;
   }
 
-  public void setReservationDate(LocalDate reservationDate) {
+  public void setReservationDate(LocalDateTime reservationDate) {
     this.reservationDate = reservationDate;
   }
 }
