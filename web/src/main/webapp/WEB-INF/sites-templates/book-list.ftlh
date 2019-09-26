@@ -46,7 +46,7 @@
         crossorigin="anonymous"></script>
 <script src="js/upload-form.js"></script>
 <script src="js/book.js"></script>
-
+<script src="js/button-switcher.js"></script>
 </body>
 
 </html>
