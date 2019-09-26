@@ -18,7 +18,7 @@
           <#items as book>
               <#if (book.thumbnail)??>
             <tr class="clickable-row" data-href="/book-view?id=${book.id}&part=${page.previous}"
-                data-toggle="popover-hover"
+                data-toggle="popover-hover" id="thumbnail"
                 data-img="https://wolnelektury.pl/media/${book.thumbnail}">
                   <#else><tr class="clickable-row" data-href="/book-view?id=${book.id}&part=${page.previous}"
                     data-toggle="popover-hover"

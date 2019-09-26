@@ -21,7 +21,7 @@
 <body>
 <#include "fm-common-templates/navbar-admin.ftlh">
 
-<#include "fm-common-templates/book-view-card.ftlh">
+<#include "fm-common-templates/book-add-form.ftlh">
 
 <div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
@@ -39,6 +39,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="js/upload-form.js"></script>
+
 </body>
 
 </html>

@@ -22,7 +22,7 @@
 }
 
 #book-form-container {
-  padding-top: 40px;
+  padding-top: 10px;
   margin-top: 60px;
   display: flex;
   align-items: center;
@@ -30,17 +30,21 @@
 }
 
 #book-view {
-  padding-top: 20px;
+  padding-top: 40px;
   padding-left: auto;
   padding-right: auto;
-  margin-top: 80px;
+  margin-top: 60px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
+.nav-button {
+  margin: 20px;
+}
+
 .card-text {
-  line-height: 3em;
+  line-height: 4em;
 }
 
 #return-button {
@@ -60,6 +64,11 @@
 .clickable-row {
   cursor: pointer;
   background-color: #c5dbff;
+}
+
+#thumbnail{
+  max-width: 140px;
+  max-height: 195px;
 }
 
 

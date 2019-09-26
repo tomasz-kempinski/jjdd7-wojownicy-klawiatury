@@ -26,6 +26,16 @@
               książek</a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#"
+             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Panel administratora</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="/book-add">Dodaj książkę</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/books-upload">Załaduj książki z pliku</a>
+          </div>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Search">

@@ -14,12 +14,12 @@
   <!-- Our CSS -->
   <link rel="stylesheet" href="css/main.css">
 
-
+  <link rel="icon" href="/img/logo.png">
   <title>BookHub</title>
 </head>
 
 <body>
-<#include "fm-common-templates/navbar.ftlh">
+<#include "fm-common-templates/navbar-admin.ftlh">
 
 <#include "fm-common-templates/table.ftlh">
 

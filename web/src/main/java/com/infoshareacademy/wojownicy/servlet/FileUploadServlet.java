@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.cdi.FileUploadProcessor;
+import com.infoshareacademy.wojownicy.processor.FileUploadProcessor;
 import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.ApiDataHandler;
@@ -70,13 +70,13 @@ public class FileUploadServlet extends HttpServlet {
     String fileURL = "";
 
     try {
-      fileURL = "/admin-panel/" + fileUploadProcessor
+      fileURL = "/books-upload/" + fileUploadProcessor
           .uploadFile(file).getName();
-      resp.sendRedirect("/admin-panel?upload=successful");
+      resp.sendRedirect("/books-upload?upload=successful");
       logger.info("Json API file has been uploaded");
     } catch (UserFileNotFound userFileNotFound) {
       logger.warn(userFileNotFound.getMessage());
-      resp.sendRedirect("/admin-panel?upload=failed");
+      resp.sendRedirect("/books-upload?upload=failed");
     }
     apiDataHandler.setFileURL(fileURL);
     saveToDataBase.saveBooksFromFile();

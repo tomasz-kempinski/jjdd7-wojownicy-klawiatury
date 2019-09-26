@@ -1,13 +1,13 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.cdi.FileUploadProcessor;
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
 import com.infoshareacademy.wojownicy.domain.entity.Kind;
-import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
+import com.infoshareacademy.wojownicy.exception.UserImageNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
+import com.infoshareacademy.wojownicy.processor.ImageUploadProcessor;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -28,25 +28,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @MultipartConfig
-@WebServlet("/book-create")
-public class BookCreateServlet extends HttpServlet {
+@WebServlet("/book-add")
+public class BookAddServlet extends HttpServlet {
 
   @Inject
   TemplateProvider templateProvider;
 
   @Inject
-  FileUploadProcessor fileUploadProcessor;
+  ImageUploadProcessor imageUploadProcessor;
 
   @Inject
   BookDaoBean bookDaoBean;
 
-  private static final Logger logger = LoggerFactory.getLogger(BookCreateServlet.class.getName());
+  private static final Logger logger = LoggerFactory.getLogger(BookAddServlet.class.getName());
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    Template template = templateProvider.getTemplate(getServletContext(), "book-create-site.ftlh");
+    Template template = templateProvider.getTemplate(getServletContext(), "book-add-site.ftlh");
 
     String upload = req.getParameter("upload");
 
@@ -71,6 +71,7 @@ public class BookCreateServlet extends HttpServlet {
     String authorName = req.getParameter("author");
     String kindName = req.getParameter("kind");
     String genreName = req.getParameter("genre");
+    String audio = req.getParameter("audio");
 
     Part file = req.getPart("file");
 
@@ -91,17 +92,31 @@ public class BookCreateServlet extends HttpServlet {
     book.setKind(kind);
     book.setGenres(genres);
 
+    if (audio.equalsIgnoreCase("tak")) {
+      book.setHasAudio(true);
+    } else {
+      book.setHasAudio(false);
+    }
+
     bookDaoBean.addBook(book);
+
+    Long id = book.getId();
 
     String fileURL = "";
 
     try {
-      fileURL = "/admin-panel/" + fileUploadProcessor
-          .uploadFile(file).getName();
-      resp.sendRedirect("/admin-panel?upload=successful");
-    } catch (UserFileNotFound userFileNotFound) {
-      logger.warn(userFileNotFound.getMessage());
-      resp.sendRedirect("/admin-panel?upload=failed");
+      fileURL = "/book-create/" + imageUploadProcessor
+          .uploadImageFile(file, id).getName();
+      resp.sendRedirect("/book-create?upload=successful");
+    } catch (UserImageNotFound userImageNotFound) {
+      logger.warn(userImageNotFound.getMessage());
+      resp.sendRedirect("/book-create?upload=failed");
     }
+
+    book.setCoverURL(fileURL);
+
+    book.setThumbnail(fileURL);
+
+    bookDaoBean.editBook(book);
   }
 }

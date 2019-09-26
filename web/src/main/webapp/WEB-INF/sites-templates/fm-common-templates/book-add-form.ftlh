@@ -12,13 +12,20 @@
       <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj autora" name="author">
 
       <label for="textInput">Rodzaj</label>
-      <input type="text" id="textInput" class="form-control mb-4"
-             placeholder="Podaj rodzaj literacki" name="kind">
+      <select class="browser-default custom-select mb-4" id="select" name="audio">
+        <option value="" disabled="" selected="">Wybierz rodzaj literacki</option>
+        <option value="1">Epika</option>
+        <option value="2">Liryka</option>
+        <option value="1">Dramat</option>
+        <option value="2">Epika, Liryka</option>
+        <option value="1">Dramat współczesny</option>
+      </select>
 
       <label for="textInput">Gatunek</label>
       <input type="text" id="textInput" class="form-control mb-4"
              placeholder="Podaj gatunek literacki" name="genre">
 
+      <label for="textInput">Audiobook</label>
       <select class="browser-default custom-select mb-4" id="select" name="audio">
         <option value="" disabled="" selected="">Czy książka ma wersję audio?</option>
         <option value="1">Nie</option>
@@ -27,14 +34,14 @@
 
       <div class="form-group">
         <div class="input-group input-file" name="file">
-          <input type="text" class="form-control" placeholder='Wybierz plik z dysku...'/>
+          <input type="text" class="form-control" placeholder='Wybierz plik okładki z dysku...'/>
           <span class="input-group-btn">
        			 <button class="btn btn-warning btn-reset" type="button">Zresetuj</button>
     		</span>
         </div>
       </div>
 
-      <button class="btn btn-primary my-4 btn-block waves-effect" type="submit">Dodaj książkę</button>
+      <button class="btn btn-primary my-4 btn-block" type="submit">Dodaj książkę</button>
 
     </form>
   </div>
