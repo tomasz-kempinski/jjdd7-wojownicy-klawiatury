@@ -44,16 +44,15 @@ public class BooksListServlet extends HttpServlet {
     String kindString = req.getParameter("kind");
     int part = 0;
     int hasAudio = 0;
-    BigInteger kind = new BigInteger("1");
-
+    long kind = 0;
 
     if (NumberUtils.isDigits(partString)
         && Integer.parseInt(partString) >= 0
         && NumberUtils.isDigits(hasAudioString)
-        &&NumberUtils.isDigits(kindString)) {
+        && NumberUtils.isDigits(kindString)) {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
-      kind = new BigInteger(kindString);
+      kind = Long.parseLong(kindString);
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {
@@ -63,7 +62,7 @@ public class BooksListServlet extends HttpServlet {
     }
 
     Map<String, Object> dataModel = new HashMap<>();
-    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio);
+    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio, kind);
 
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);

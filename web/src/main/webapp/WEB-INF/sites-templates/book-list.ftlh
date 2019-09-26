@@ -46,8 +46,6 @@
 <script src="/js/filter.js"></script>
 <script src="/js/upload-form.js"></script>
 <script src="/js/book.js"></script>
->>>>>>> develop
-
 </body>
 
 </html>
