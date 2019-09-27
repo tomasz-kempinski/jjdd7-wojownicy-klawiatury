@@ -26,6 +26,7 @@ public class BookEditServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
+
   @Inject
   private BookListService bookListService;
 
@@ -43,7 +44,6 @@ public class BookEditServlet extends HttpServlet {
     boolean hasAudio = false;
 
     if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString)
-        && Long.parseLong(idString) < bookListService.numberOfBooks()
         && Long.parseLong(idString) > 0) {
       id = Long.parseLong(idString);
       part = Long.parseLong(partString) + 1;

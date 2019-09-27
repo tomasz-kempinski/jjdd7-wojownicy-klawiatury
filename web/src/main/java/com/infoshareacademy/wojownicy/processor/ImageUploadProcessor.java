@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Properties;
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.Part;
 import org.apache.commons.io.FilenameUtils;
@@ -46,16 +45,18 @@ public class ImageUploadProcessor {
   }
 
   private String getUploadImageFilesPath() throws IOException {
-    createImagePathDirectory();
-    Properties settings = new Properties();
-    settings.load(Thread.currentThread()
-        .getContextClassLoader().getResource(SETTINGS_FILE)
-        .openStream());
-    return settings.getProperty("Upload.Path.Images");
+    return createImagePathDirectory();
+//    Properties settings = new Properties();
+//    settings.load(Thread.currentThread()
+//        .getContextClassLoader().getResource(SETTINGS_FILE)
+//        .openStream());
+//    return settings.getProperty("Upload.Path.Images");
   }
 
-  private void createImagePathDirectory() {
-    Path path = Paths.get("/home/media/");
+  private String createImagePathDirectory() {
+    String url;
+    url = System.getenv("HOME");
+    Path path = Paths.get(url + "/media/");
     if (!Files.exists(path)) {
       try {
         Files.createDirectories(path);
@@ -65,5 +66,6 @@ public class ImageUploadProcessor {
         logger.warn("Failed to create path directory for images");
       }
     }
+    return path.toString() + "/";
   }
 }

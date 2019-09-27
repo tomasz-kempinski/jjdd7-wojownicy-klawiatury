@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Genre;
@@ -8,6 +7,7 @@ import com.infoshareacademy.wojownicy.domain.entity.Kind;
 import com.infoshareacademy.wojownicy.exception.UserImageNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.processor.ImageUploadProcessor;
+import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class BookAddServlet extends HttpServlet {
   ImageUploadProcessor imageUploadProcessor;
 
   @Inject
-  BookDaoBean bookDaoBean;
+  BookService bookService;
 
   private static final Logger logger = LoggerFactory.getLogger(BookAddServlet.class.getName());
 
@@ -98,14 +98,14 @@ public class BookAddServlet extends HttpServlet {
       book.setHasAudio(false);
     }
 
-    bookDaoBean.addBook(book);
+    bookService.addBook(book);
 
     Long id = book.getId();
 
     String fileURL = "";
 
     try {
-      fileURL = "/book-create/" + imageUploadProcessor
+      fileURL = imageUploadProcessor
           .uploadImageFile(file, id).getName();
       resp.sendRedirect("/book-create?upload=successful");
     } catch (UserImageNotFound userImageNotFound) {
@@ -117,6 +117,6 @@ public class BookAddServlet extends HttpServlet {
 
     book.setThumbnail(fileURL);
 
-    bookDaoBean.editBook(book);
+    bookService.updateBook(book);
   }
 }

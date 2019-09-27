@@ -12,13 +12,13 @@
       <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj autora" name="author">
 
       <label for="textInput">Rodzaj</label>
-      <select class="browser-default custom-select mb-4" id="select" name="audio">
+      <select class="browser-default custom-select mb-4" id="select" name="kind">
         <option value="" disabled="" selected="">Wybierz rodzaj literacki</option>
-        <option value="1">Epika</option>
-        <option value="2">Liryka</option>
-        <option value="1">Dramat</option>
-        <option value="2">Epika, Liryka</option>
-        <option value="1">Dramat współczesny</option>
+        <option value="Epika">Epika</option>
+        <option value="Liryka">Liryka</option>
+        <option value="Dramat">Dramat</option>
+        <option value="Epika, Liryka">Epika, Liryka</option>
+        <option value="Dramat współczesny">Dramat współczesny</option>
       </select>
 
       <label for="textInput">Gatunek</label>
