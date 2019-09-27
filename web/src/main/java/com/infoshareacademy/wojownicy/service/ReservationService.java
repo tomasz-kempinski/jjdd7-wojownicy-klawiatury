@@ -6,9 +6,7 @@ import com.infoshareacademy.wojownicy.dao.UserDaoBean;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Reservation;
 import com.infoshareacademy.wojownicy.domain.entity.User;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.slf4j.Logger;
@@ -28,9 +26,9 @@ public class ReservationService {
   @EJB
   private UserDaoBean userDaoBean;
 
-  private User findUserId(String userEmail) {
+  private User findUserByEmail(String userEmail) {
     logger.info("User with " + userEmail + "Email has been found");
-    return userDaoBean.findUserIdByEmail(userEmail);
+    return userDaoBean.findUserByEmail(userEmail);
 
   }
 
@@ -42,8 +40,11 @@ public class ReservationService {
   public void newReservation(Long bookId, String userEmail) {
     Reservation reservation = new Reservation();
     reservation.setBook(findBookId(bookId));
-    reservation.setUser(findUserId(userEmail));
+    reservation.setUser(findUserByEmail(userEmail));
     reservation.setReservationDate(LocalDateTime.now());
     reservationDaoBean.addReservation(reservation);
+    Book book = bookDaoBean.getBookById(bookId);
+    book.setReserved(true);
+    bookDaoBean.editBook(book);
   }
 }

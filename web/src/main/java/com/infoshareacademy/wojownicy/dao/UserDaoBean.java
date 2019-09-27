@@ -42,10 +42,4 @@ public class UserDaoBean {
     query.setParameter("email", email);
     return (User) query.getResultList().stream().findFirst().orElse(null);
   }
-
-  public User findUserIdByEmail(String email){
-    Query query = entityManager.createNamedQuery("User.findUserIdByEmail");
-    query.setParameter("email", email);
-    return (User) query.getResultList().stream().findFirst().orElse(null);
-  }
 }

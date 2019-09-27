@@ -24,10 +24,6 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "User.findUserByEmail",
         query = "SELECT u FROM User u WHERE u.email like :email"
-    ),
-    @NamedQuery(
-        name = "User.findUserIdByEmail",
-        query = "SELECT u.userId FROM User u WHERE u.email like :email"
     )
 })
 @Entity

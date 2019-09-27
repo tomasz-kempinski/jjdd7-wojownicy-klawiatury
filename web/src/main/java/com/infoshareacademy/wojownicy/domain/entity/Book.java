@@ -87,7 +87,7 @@ public class Book {
   private String thumbnail;
 
   @NotNull
-  @Column(name = "is_reserved")
+  @Column(name = "is_reserved", columnDefinition = "Boolean")
   private boolean isReserved = false;
 
   @NotNull

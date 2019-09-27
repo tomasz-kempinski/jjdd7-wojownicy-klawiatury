@@ -1,8 +1,6 @@
 package com.infoshareacademy.wojownicy.dao;
 
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.Reservation;
-import com.infoshareacademy.wojownicy.domain.entity.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,12 +23,6 @@ public class ReservationDaoBean {
 
   public List<Reservation> getReservationsList() {
     Query query = entityManager.createNamedQuery("Reservation.findReservationsList");
-    return query.getResultList();
-  }
-
-  public List<Reservation> getReservationsByBookId(Long id) {
-    Query query = entityManager.createNamedQuery("Reservation.findReservationsByBookId");
-    query.setParameter("id", id);
     return query.getResultList();
   }
 
