@@ -1,4 +1,5 @@
 package com.infoshareacademy.wojownicy.domain.entity;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 @NamedQueries({
     @NamedQuery(
         name = "User.findUsersList",
@@ -27,6 +29,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "user", indexes = {@Index(columnList = "email", name = "email_index")})
 public class User {
+
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,16 +75,20 @@ public class User {
   public void setUserType(String userType) {
     this.userType = userType;
   }
+
   public List<Book> getBooksFavourites() {
     return booksFavourites;
   }
+
   public void setBooksFavourites(
       List<Book> booksFavourites) {
     this.booksFavourites = booksFavourites;
   }
+
   public List<Reservation> getUserReservations() {
     return userReservations;
   }
+
   public void setUserReservations(
       List<Reservation> userReservations) {
     this.userReservations = userReservations;

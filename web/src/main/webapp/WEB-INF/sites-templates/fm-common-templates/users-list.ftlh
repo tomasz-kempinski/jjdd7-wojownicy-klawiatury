@@ -16,12 +16,12 @@
       <#assign i=1>
       <#list users>
           <#items as user>
-              <tr>
-            <th scope="row" class="text-center">${i}</th>
-            <td>${user.username}</td>
-            <td>${user.userType}</td>
-            <td></td>
-              </tr>
+            <tr>
+              <th scope="row" class="text-center">${i}</th>
+              <td>${user.username}</td>
+              <td>${user.userType}</td>
+              <td></td>
+            </tr>
               <#assign i=i+1>
           </#items>
       </#list>

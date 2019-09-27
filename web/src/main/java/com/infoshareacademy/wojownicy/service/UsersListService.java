@@ -10,10 +10,11 @@ import javax.transaction.Transactional;
 @Transactional
 @RequestScoped
 public class UsersListService {
+
   @EJB
   UserDaoBean userDaoBean;
 
-  public List<User> getUsersList(){
+  public List<User> getUsersList() {
     return userDaoBean.getUsersList();
   }
 

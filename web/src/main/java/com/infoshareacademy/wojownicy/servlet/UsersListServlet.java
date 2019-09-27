@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 @WebServlet("/users-list")
 public class UsersListServlet extends HttpServlet {
+
   @Inject
   private TemplateProvider templateProvider;
 
@@ -33,7 +34,7 @@ public class UsersListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    Template template = templateProvider.getTemplate(getServletContext(),"user-list.ftlh");
+    Template template = templateProvider.getTemplate(getServletContext(), "user-list.ftlh");
 
     List<User> usersList = usersListService.getUsersList();
 
@@ -44,7 +45,7 @@ public class UsersListServlet extends HttpServlet {
     PrintWriter printWriter = resp.getWriter();
 
     try {
-      template.process(dataModel,printWriter);
+      template.process(dataModel, printWriter);
     } catch (TemplateException e) {
       e.printStackTrace();
     }
