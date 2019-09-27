@@ -1,5 +1,4 @@
 package com.infoshareacademy.wojownicy.domain.entity;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -8,81 +7,79 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 @NamedQueries({
     @NamedQuery(
         name = "User.findUsersList",
         query = "SELECT u FROM User u"
+    ),
+    @NamedQuery(
+        name = "User.findUserByEmail",
+        query = "SELECT u FROM User u WHERE u.email like :email"
     )
 })
 @Entity
-@Table(name = "user")
+@Table(name = "user", indexes = {@Index(columnList = "email", name = "email_index")})
 public class User {
-
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long authorId;
-
+  private Long userId;
   @NotNull
   @Column(name = "username")
-  private String authorName;
-
+  private String username;
   @NotNull
-  @Column(name = "is_admin")
-  private boolean isAdmin = false;
-
+  @Column(name = "email")
+  private String email;
+  @NotNull
+  @Column(name = "user_type")
+  private String userType;
   @ManyToMany(mappedBy = "usersFavourites")
   private List<Book> booksFavourites = new ArrayList<>();
-
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();
-
-  public Long getAuthorId() {
-    return authorId;
+  public Long getUserId() {
+    return userId;
   }
-
-  public void setAuthorId(Long authorId) {
-    this.authorId = authorId;
+  public void setUserId(Long userId) {
+    this.userId = userId;
   }
-
-  public String getAuthorName() {
-    return authorName;
+  public String getUsername() {
+    return username;
   }
-
-  public void setAuthorName(String authorName) {
-    this.authorName = authorName;
+  public void setUsername(String username) {
+    this.username = username;
   }
-
-  public boolean isAdmin() {
-    return isAdmin;
+  public String getUserType() {
+    return userType;
   }
-
-  public void setAdmin(boolean admin) {
-    isAdmin = admin;
+  public void setUserType(String userType) {
+    this.userType = userType;
   }
-
   public List<Book> getBooksFavourites() {
     return booksFavourites;
   }
-
   public void setBooksFavourites(
       List<Book> booksFavourites) {
     this.booksFavourites = booksFavourites;
   }
-
   public List<Reservation> getUserReservations() {
     return userReservations;
   }
-
   public void setUserReservations(
       List<Reservation> userReservations) {
     this.userReservations = userReservations;
+  }
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
