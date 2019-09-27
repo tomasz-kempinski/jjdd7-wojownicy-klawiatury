@@ -18,17 +18,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
   <title>BookHub</title>
 </head>
 
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/table.ftlh">
-
-<#include "fm-common-templates/pagination.ftlh">
+<#include "fm-common-templates/users-list.ftlh">
 
 <div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
