@@ -94,7 +94,6 @@ public class User {
     this.userReservations = userReservations;
   }
 
-
   public String getEmail() {
     return email;
   }
