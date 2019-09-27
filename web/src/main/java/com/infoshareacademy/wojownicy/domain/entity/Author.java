@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Author.findAuthorByName",
         query = "SELECT a FROM Author a WHERE a.authorName = :authorName"
-    )
+    ),
 })
 @Entity
 @Table(name = "author", indexes = {

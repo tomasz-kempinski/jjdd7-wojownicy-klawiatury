@@ -22,36 +22,44 @@ public class BookListService {
   @Inject
   BookMapper bookMapper;
 
-  public Map<String, Object> pages(long currentPage) {
+  public Map<String, Object> pages(long currentPage, int hasAudio, long kind) {
     Map<String, Object> pagesMap = new HashMap<>();
-    pagesMap.put("first", 1);
+    pagesMap.put("first", 0);
     pagesMap.put("previous-1", currentPage - 2);
     pagesMap.put("previous", currentPage - 1);
     pagesMap.put("current", currentPage);
     pagesMap.put("next", currentPage + 1);
     pagesMap.put("third", currentPage + 2);
-    int bookSize = bookDaoBean.numberOfBooks();
+    long bookSize = numberOfBooks(hasAudio, kind);
     if (bookSize % 20 == 0) {
-      pagesMap.put("last", bookSize / 20);
+      pagesMap.put("last", bookSize / 20 - 1);
     } else {
-      pagesMap.put("last", bookSize / 20 + 1);
+      pagesMap.put("last", bookSize / 20);
     }
     return pagesMap;
   }
 
-  public List<BookDto> partOfBooks(long from, long to) {
-   List<Book> books = bookDaoBean.getPartOfBooks(from, to);
-   List<BookDto> bookDtoList = new ArrayList<>();
-   for (Book book : books){
-     bookDtoList.add(bookMapper.mapEntityToDto(book));
-   }
-  return  bookDtoList;
+  public List<BookDto> partOfBooks(int from, long kind) {
+    List<Book> books = bookDaoBean.getPartOfBooks(from, kind);
+    List<BookDto> bookDtoList = new ArrayList<>();
+    for (Book book : books) {
+      bookDtoList.add(bookMapper.mapEntityToDto(book));
+    }
+    return bookDtoList;
+  }
+
+  public List<BookDto> partOfAudioBooks(int from, long kind) {
+    List<BookDto> bookDtoList = new ArrayList<>();
+    List<Book> books = bookDaoBean.getPartOfAudioBooks(from, kind);
+    for (Book book : books) {
+      bookDtoList.add(bookMapper.mapEntityToDto(book));
+    }
+    return bookDtoList;
   }
 
   public BookDto getSingleBook(long id) {
 
-   return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
-
+    return bookMapper.mapEntityToDto(bookDaoBean.getBookById(id));
   }
 
   public boolean hasAudio(long id) {
@@ -59,7 +67,10 @@ public class BookListService {
     return book.isAudio();
   }
 
-  public long numberOfBooks() {
-    return bookDaoBean.numberOfBooks();
+  public long numberOfBooks(int hasAudio, long kind) {
+    if (hasAudio == 1) {
+      return bookDaoBean.numberOfAudioBooks(kind);
+    }
+    return bookDaoBean.numberOfBooks(kind);
   }
 }

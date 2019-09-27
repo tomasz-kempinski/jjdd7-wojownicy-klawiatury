@@ -26,12 +26,73 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "Book.listCount",
-        query = "SELECT count (book_title) FROM Book b"
+        query = "SELECT COUNT (book_title) FROM Book b"
+    ),
+    @NamedQuery(
+        name = "Book.LirykaBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 1"
+    ),
+    @NamedQuery(
+        name = "Book.EpikaBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 2"
+    ),
+    @NamedQuery(
+        name = "Book.DramatBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 3"
+    ),
+    @NamedQuery(
+        name = "Book.AudioBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.hasAudio = 1"
+    ),
+    @NamedQuery(
+        name = "Book.LirykaAudioBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 1 AND b.hasAudio=1"
+    ),
+    @NamedQuery(
+        name = "Book.EpikaAudioBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 2 AND b.hasAudio=1"
+    ),
+    @NamedQuery(
+        name = "Book.DramatAudioBookListCount",
+        query = "SELECT COUNT (book_title) FROM Book b WHERE b.kind = 3 AND b.hasAudio=1"
     ),
     @NamedQuery(
         name = "Book.getPartOfBookList",
-        query = "SELECT b from Book b where id between ?1 and ?2"
+        query = "SELECT b FROM Book b"
     ),
+    @NamedQuery(
+        name = "Book.getLirykaPartOfBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 1"
+    ),
+    @NamedQuery(
+        name = "Book.getEpikaPartOfBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 2"
+    ),
+    @NamedQuery(
+        name = "Book.getDramatPartOfBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 3"
+    ),
+    @NamedQuery(
+        name = "Book.LiveSearch",
+        query = "SELECT b from Book as b INNER JOIN b.author AS a WHERE b.title LIKE :searchParam OR a.authorName LIKE :searchParam"
+    ),
+    @NamedQuery(
+        name = "Book.getPartOfAudioBooks",
+        query = "SELECT b FROM Book b WHERE b.hasAudio = 1"
+    ),
+    @NamedQuery(
+        name = "Book.LirykaAudioBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 1 AND b.hasAudio=1"
+    ),
+    @NamedQuery(
+        name = "Book.EpikaAudioBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 2 AND b.hasAudio=1"
+    ),
+    @NamedQuery(
+        name = "Book.DramatAudioBookList",
+        query = "SELECT b FROM Book b WHERE b.kind = 3 AND b.hasAudio=1"
+    )
+
 })
 @Entity
 @Table(name = "book")
@@ -79,7 +140,7 @@ public class Book {
   private boolean isReserved = false;
 
   @NotNull
-  @Column(name = "has_audio")
+  @Column(name = "has_audio", columnDefinition = "Boolean")
   private boolean hasAudio = false;
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -193,5 +254,4 @@ public class Book {
   public int hashCode() {
     return Objects.hash(title, author, genres, kind, coverURL, thumbnail, hasAudio);
   }
-
 }

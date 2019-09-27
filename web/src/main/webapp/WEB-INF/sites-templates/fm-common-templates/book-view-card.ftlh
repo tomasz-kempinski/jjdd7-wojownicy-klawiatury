@@ -1,7 +1,9 @@
 <div id="book-view" class="container">
   <div class="row">
     <div class="col-md text-center">
-      <a class="btn btn-primary nav-button" href="/book-list?part=${part}" role="button">Powrót do listy</a>
+      <a id="return-button" class="btn btn-primary"
+         href="/book-list?part=${part}&hasAudio=${isAudioFilter}&kind=${kind}" role="button">Powrót
+        do listy</a>
     </div>
     <div class="col-md text-center">
       <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}&part=${part}" role="button">Edytuj książkę</a>

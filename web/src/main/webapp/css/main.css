@@ -53,11 +53,16 @@
 
 #table-container {
   padding-top: 20px;
+  margin-top: 70px;
+}
+
+#table-test-container {
+  padding-top: 20px;
   margin-top: 65px;
 }
 
 .custom-switch {
-  margin: 15px;
+  margin: 20px;
   float: right;
 }
 

@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -35,33 +34,42 @@ public class BookViewServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
-    String idString = req.getParameter("id").replaceAll(",", "");
+    String idString = req.getParameter("id");
     String partString = req.getParameter("part");
+    String isAudioString = req.getParameter("hasAudio");
+    String kindString = req.getParameter("kind");
     Map<String, Object> dataModel = new HashMap<>();
-    long id;
-    long part;
-    String audio;
-    boolean hasAudio = false;
+    long id = 1;
+    long part = 0;
+    long kind = 0;
+    String audio = "niedostępne";
+    int isAudioFilter = 0;
+    boolean hasAudio;
 
-    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString)
-        && Long.parseLong(idString) < bookListService.numberOfBooks()
+    if (NumberUtils.isDigits(idString)
+        && NumberUtils.isDigits(partString)
+        && NumberUtils.isDigits(isAudioString)
+        && NumberUtils.isDigits(kindString)
+        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter, kind)
         && Long.parseLong(idString) > 0) {
+      isAudioFilter = Integer.parseInt(isAudioString);
       id = Long.parseLong(idString);
-      part = Long.parseLong(partString) + 1;
+      part = Long.parseLong(partString);
+      kind = Long.parseLong(kindString);
     } else {
-      id = 1;
-      part = 1;
+      logger.info("Wrong Parameter for single book view");
     }
     hasAudio = bookListService.hasAudio(id);
     if (hasAudio) {
       audio = "dostępna";
-    } else {
-      audio = "niedostępna";
     }
+
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
+    dataModel.put("isAudioFilter", isAudioFilter);
+    dataModel.put("kind", kind);
 
     PrintWriter printWriter = resp.getWriter();
     try {

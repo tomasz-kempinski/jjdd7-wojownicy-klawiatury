@@ -17,6 +17,15 @@ public class BookDto {
   private String cover;
   private String thumbnail;
   private Kind kind;
+  private boolean hasAudio;
+
+  public boolean audioAvailable() {
+    return hasAudio;
+  }
+
+  public void setHasAudio(boolean hasAudio) {
+    this.hasAudio = hasAudio;
+  }
 
   public Long getId() {
     return id;
