@@ -34,32 +34,34 @@ public class BookViewServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-view.ftlh");
-    String idString = req.getParameter("id").replaceAll(",", "");
+    String idString = req.getParameter("id");
     String partString = req.getParameter("part");
     String isAudioString = req.getParameter("hasAudio");
+    String kindString = req.getParameter("kind");
     Map<String, Object> dataModel = new HashMap<>();
-    long id;
-    long part;
-    String audio;
+    long id = 1;
+    long part = 0;
+    long kind = 0;
+    String audio = "niedostępne";
     int isAudioFilter = 0;
     boolean hasAudio;
 
-    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString) && NumberUtils
-        .isDigits(isAudioString)
-        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter)
+    if (NumberUtils.isDigits(idString)
+        && NumberUtils.isDigits(partString)
+        && NumberUtils.isDigits(isAudioString)
+        && NumberUtils.isDigits(kindString)
+        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter, kind)
         && Long.parseLong(idString) > 0) {
       isAudioFilter = Integer.parseInt(isAudioString);
       id = Long.parseLong(idString);
       part = Long.parseLong(partString);
+      kind = Long.parseLong(kindString);
     } else {
-      id = 1;
-      part = 1;
+      logger.info("Wrong Parameter for single book view");
     }
     hasAudio = bookListService.hasAudio(id);
     if (hasAudio) {
       audio = "dostępna";
-    } else {
-      audio = "niedostępna";
     }
 
     BookDto book = bookListService.getSingleBook(id);
@@ -67,6 +69,7 @@ public class BookViewServlet extends HttpServlet {
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
+    dataModel.put("kind", kind);
 
     PrintWriter printWriter = resp.getWriter();
     try {
