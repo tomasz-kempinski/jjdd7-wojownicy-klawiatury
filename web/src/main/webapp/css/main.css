@@ -41,7 +41,7 @@
 
 #table-container {
   padding-top: 20px;
-  margin-top: 65px;
+  margin-top: 70px;
 }
 
 #table-test-container {
@@ -50,16 +50,11 @@
 }
 
 .custom-switch {
-  margin: 15px;
+  margin: 20px;
   float: right;
 }
 
 .clickable-row {
   cursor: pointer;
   background-color: #c5dbff;
-}
-#filterButton{
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
