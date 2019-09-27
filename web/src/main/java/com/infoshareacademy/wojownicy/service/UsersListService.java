@@ -17,5 +17,4 @@ public class UsersListService {
   public List<User> getUsersList() {
     return userDaoBean.getUsersList();
   }
-
 }
