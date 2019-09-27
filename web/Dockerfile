@@ -2,7 +2,7 @@ FROM jboss/wildfly
 
 RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin#98765 --silent
 
-ADD standalone.xml /opt/jboss/wildfly/bin
+ADD standalone.xml /opt/jboss/wildfly/bin/standalone/configuration
 
 ADD target/wojownicy-klawiatury.war /opt/jboss/wildfly/standalone/deployments/
 
