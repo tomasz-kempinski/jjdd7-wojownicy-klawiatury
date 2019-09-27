@@ -33,7 +33,7 @@ public class UsersListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    Template template = templateProvider.getTemplate(getServletContext(),"users-list.ftlh");
+    Template template = templateProvider.getTemplate(getServletContext(),"user-list.ftlh");
 
     List<User> usersList = usersListService.getUsersList();
 

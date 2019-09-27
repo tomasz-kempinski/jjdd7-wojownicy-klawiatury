@@ -14,7 +14,7 @@
       </thead>
       <tbody>
       <#assign i=1>
-      <#list users >
+      <#list users>
           <#items as user>
               <tr>
             <th scope="row" class="text-center">${i}</th>

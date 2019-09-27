@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark py-1 fixed-top"
-     style="background-color: rgb(52,50,50); z-index: 100">
+     style="background-color: rgb(52,50,50); z-index: 100" xmlns="http://java.sun.com/jsf/html">
   <div class="container">
     <a class="navbar-brand"
        href="/">
@@ -36,8 +36,10 @@
                aria-label="Search" autocomplete="off">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
-           role="button" aria-disabled="true">Zaloguj</a>
+          <a class="btn btn-warning" role="button" href="/googlelogin" id="login" style="display: none;">Zaloguj</a>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <a class="btn btn-warning" role="button" href="/logout" id="logout" style="display: none;">Wyloguj</a>
       </ul>
     </div>
   </div>
