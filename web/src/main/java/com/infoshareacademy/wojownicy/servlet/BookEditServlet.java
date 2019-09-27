@@ -35,15 +35,18 @@ public class BookEditServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-edit-site.ftlh");
     String idString = req.getParameter("id").replaceAll(",", "");
+    String partString = req.getParameter("part");
     Map<String, Object> dataModel = new HashMap<>();
-    long id = 1;
+    long id=1;
+    long part=1;
     String audio;
     boolean hasAudio = false;
 
-    if (NumberUtils.isDigits(idString)
+    if (NumberUtils.isDigits(idString) && NumberUtils.isDigits(partString)
         && Long.parseLong(idString) < bookListService.numberOfBooks()
         && Long.parseLong(idString) > 0) {
       id = Long.parseLong(idString);
+      part = Long.parseLong(partString) + 1;
     }
     hasAudio = bookListService.hasAudio(id);
     if (hasAudio) {
@@ -54,6 +57,7 @@ public class BookEditServlet extends HttpServlet {
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
+    dataModel.put("part", part);
 
     PrintWriter printWriter = resp.getWriter();
     try {

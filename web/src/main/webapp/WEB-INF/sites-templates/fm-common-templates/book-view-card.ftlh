@@ -4,7 +4,7 @@
       <a class="btn btn-primary nav-button" href="/book-list?part=${part}" role="button">Powrót do listy</a>
     </div>
     <div class="col-md text-center">
-      <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}" role="button">Edytuj książkę</a>
+      <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}&part=${part}" role="button">Edytuj książkę</a>
     </div>
     <div class="col-md text-center">
       <a class="btn btn-danger nav-button" href="#" role="button">Usuń książkę</a>
