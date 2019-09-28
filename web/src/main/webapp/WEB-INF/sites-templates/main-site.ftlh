@@ -24,14 +24,7 @@
   <title>BookHub</title>
 </head>
 <body>
-<#if siteType == "admin">
-    <#include "fm-common-templates/navbar-admin.ftlh">
-<#elseif siteType == "user">
-    <#include "fm-common-templates/navbar-user.ftlh">
-<#else >
-    <#include "fm-common-templates/navbar.ftlh">
-
-</#if>
+<#include "fm-common-templates/navbar.ftlh">
 <#include "fm-common-templates/jumbotron.ftlh">
 <#include "fm-common-templates/cards-container.ftlh">
 <div id="footer" class="container">

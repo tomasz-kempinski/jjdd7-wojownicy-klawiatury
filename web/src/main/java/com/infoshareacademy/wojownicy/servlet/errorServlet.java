@@ -32,6 +32,11 @@ public class errorServlet extends HttpServlet {
     PrintWriter printWriter = resp.getWriter();
 
     Map<String, String> dataModel = new HashMap<>();
+
+    String siteType = (String) req.getAttribute("siteType");
+
+    dataModel.put("siteType", siteType);
+
     dataModel.put("error","Error");
 
     try {
