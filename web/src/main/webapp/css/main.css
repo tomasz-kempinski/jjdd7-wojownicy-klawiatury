@@ -21,30 +21,18 @@
   justify-content: center;
 }
 
-#book-form-container {
-  padding-top: 10px;
-  margin-top: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #book-view {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: auto;
   padding-right: auto;
-  margin-top: 60px;
+  margin-top: 80px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.nav-button {
-  margin: 20px;
-}
-
 .card-text {
-  line-height: 4em;
+  line-height: 3em;
 }
 
 #return-button {
@@ -75,10 +63,3 @@
   cursor: pointer;
   background-color: #c5dbff;
 }
-
-#thumbnail{
-  max-width: 140px;
-  max-height: 195px;
-}
-
-

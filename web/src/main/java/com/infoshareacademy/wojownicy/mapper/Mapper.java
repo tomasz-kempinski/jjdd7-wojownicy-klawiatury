@@ -62,9 +62,9 @@ public class Mapper {
       book.setKind(kindList.get(0));
     }
 
-    book.setCoverURL("https://wolnelektury.pl/media/" + booksApi.getCover());
+    book.setCoverURL(booksApi.getCover());
 
-    book.setThumbnail("https://wolnelektury.pl/media/" + booksApi.getThumbnail());
+    book.setThumbnail(booksApi.getThumbnail());
 
     book.setHasAudio(booksApi.getHasAudio());
 

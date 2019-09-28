@@ -1,4 +1,4 @@
-package com.infoshareacademy.wojownicy.processor;
+package com.infoshareacademy.wojownicy.cdi;
 
 import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
 import java.io.File;

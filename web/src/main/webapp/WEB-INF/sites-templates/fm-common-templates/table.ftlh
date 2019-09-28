@@ -54,7 +54,7 @@
               <tr class="clickable-row"
                   data-href="/book-view?id=${book.id?c}&part=${page.current}&hasAudio=${hasAudio}&kind=${kind}"
                   data-toggle="popover-hover"
-                  data-img="${book.thumbnail}">
+                  data-img="https://wolnelektury.pl/media/${book.thumbnail}">
               <#else><tr class="clickable-row" data-href="/book-view?id=${book.id?c}&part=${page.current}&hasAudio=${hasAudio}&kind=${kind}"
                 data-toggle="popover-hover"
                 data-img="img/fake-cover-thumbnail.jpg">

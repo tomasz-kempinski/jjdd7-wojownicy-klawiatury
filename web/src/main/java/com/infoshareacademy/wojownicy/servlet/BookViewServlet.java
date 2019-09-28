@@ -3,7 +3,6 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
-import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -27,12 +26,8 @@ public class BookViewServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
-
   @Inject
   private BookListService bookListService;
-
-  @Inject
-  BookService bookService;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -87,14 +82,5 @@ public class BookViewServlet extends HttpServlet {
       e.printStackTrace();
       logger.error(e.getMessage());
     }
-  }
-
-  @Override
-  protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-
-    Long id = Long.parseLong(req.getParameter("id"));
-
-   bookService.deleteBook(id);
   }
 }
