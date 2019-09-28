@@ -36,4 +36,10 @@ public class UserDaoBean {
       entityManager.remove(user);
     }
   }
+
+  public User findUserByEmail(String email){
+    Query query = entityManager.createNamedQuery("User.findUserByEmail");
+    query.setParameter("email", email);
+    return (User) query.getResultList().stream().findFirst().orElse(null);
+  }
 }

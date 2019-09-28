@@ -56,6 +56,11 @@
   margin-top: 70px;
 }
 
+#error-container{
+  padding-top: 20px;
+  margin-top: 100px;
+}
+
 #table-test-container {
   padding-top: 20px;
   margin-top: 65px;
