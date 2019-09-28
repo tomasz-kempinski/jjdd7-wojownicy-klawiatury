@@ -47,8 +47,10 @@ public class BookAddServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-add-site.ftlh");
+    String siteType = (String) req.getAttribute("siteType");
 
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("siteType", siteType);
 
     PrintWriter printWriter = resp.getWriter();
     try {

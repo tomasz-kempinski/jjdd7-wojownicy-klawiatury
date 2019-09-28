@@ -45,6 +45,7 @@ public class BookRestService {
   @Path("/delete/{id}")
   public Response deleteBook(@PathParam("id") String id) {
 
+   id = id.replace(",","");
     Long idParam = Long.parseLong(id);
     bookService.deleteBook(idParam);
     logger.info("Book with id: {} has been deleted", idParam);
