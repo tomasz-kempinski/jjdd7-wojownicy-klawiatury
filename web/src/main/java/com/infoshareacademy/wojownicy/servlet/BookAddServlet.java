@@ -68,6 +68,10 @@ public class BookAddServlet extends HttpServlet {
     String kindName = req.getParameter("kind");
     String genreName = req.getParameter("genre");
     String audio = req.getParameter("audio");
+    String siteType = (String) req.getAttribute("siteType");
+    Map<String, Object> dataModel = new HashMap<>();
+
+    dataModel.put("siteType", siteType);
 
     Part file = req.getPart("file");
 
