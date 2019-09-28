@@ -105,12 +105,12 @@ public class BookAddServlet extends HttpServlet {
     String fileURL = "";
 
     try {
-      fileURL = imageUploadProcessor
+      fileURL = "/home/tomek/media/" + imageUploadProcessor
           .uploadImageFile(file, id).getName();
-      resp.sendRedirect("/book-create?upload=successful");
+      resp.sendRedirect("/book-add?upload=successful");
     } catch (UserImageNotFound userImageNotFound) {
       logger.warn(userImageNotFound.getMessage());
-      resp.sendRedirect("/book-create?upload=failed");
+      resp.sendRedirect("/book-add?upload=failed");
     }
 
     book.setCoverURL(fileURL);
