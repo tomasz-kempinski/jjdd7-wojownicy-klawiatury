@@ -9,7 +9,7 @@
       <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}&part=${part}" role="button">Edytuj książkę</a>
     </div>
     <div class="col-md text-center">
-      <a class="btn btn-danger nav-button " href="#" role="button">Usuń książkę</a>
+      <a href="/" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
     </div>
   </div>
   <div id="book-card" class="card mb-5 shadow-lg p-3 bg-white rounded"
