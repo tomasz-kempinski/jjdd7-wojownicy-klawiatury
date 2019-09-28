@@ -1,8 +1,8 @@
 $(function () {
   $(document).ready(function () {
-    $(".delete-book").click(function () {
+    $(".delete").click(function () {
       $.ajax({
-        url: '/book-view?id=' + $(this).attr('data-id'),
+        url: '/api/books/delete/' + $(this).attr('data-id'),
         type: 'DELETE',
         success: function (result) {
           location.reload();
