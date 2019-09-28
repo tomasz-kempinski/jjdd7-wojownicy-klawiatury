@@ -64,7 +64,7 @@ public class Mapper {
 
     book.setCoverURL("https://wolnelektury.pl/media/" + booksApi.getCover());
 
-    book.setThumbnail(booksApi.getThumbnail());
+    book.setThumbnail("https://wolnelektury.pl/media/" + booksApi.getThumbnail());
 
     book.setHasAudio(booksApi.getHasAudio());
 

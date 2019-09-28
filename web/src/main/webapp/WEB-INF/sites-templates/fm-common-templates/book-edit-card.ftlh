@@ -14,7 +14,7 @@
     <div class="row no-gutters">
       <div class="col-md-5">
           <#if book.cover??>
-            <img src="https://wolnelektury.pl/media/${book.cover}" class="card-img" alt="book">
+            <img src="${book.cover}" class="card-img" alt="book">
           <#else>
             <img src="img/fake-cover.png" alt="book" class="card-img">
           </#if>

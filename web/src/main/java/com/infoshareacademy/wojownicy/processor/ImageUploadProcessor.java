@@ -19,8 +19,6 @@ public class ImageUploadProcessor {
   private static final Logger logger = LoggerFactory
       .getLogger(ImageUploadProcessor.class.getName());
 
-  private static final String SETTINGS_FILE = "settings.properties";
-
   public File uploadImageFile(Part filePart, Long id) throws IOException, UserImageNotFound {
 
     String fileName = Paths.get(filePart.getSubmittedFileName())
@@ -33,6 +31,7 @@ public class ImageUploadProcessor {
     String changedFileName = id + "." + FilenameUtils.getExtension(fileName);
 
     File file = new File(getUploadImageFilesPath() + changedFileName);
+
     Files.deleteIfExists(file.toPath());
 
     InputStream fileContent = filePart.getInputStream();
@@ -46,11 +45,6 @@ public class ImageUploadProcessor {
 
   private String getUploadImageFilesPath() throws IOException {
     return createImagePathDirectory();
-//    Properties settings = new Properties();
-//    settings.load(Thread.currentThread()
-//        .getContextClassLoader().getResource(SETTINGS_FILE)
-//        .openStream());
-//    return settings.getProperty("Upload.Path.Images");
   }
 
   private String createImagePathDirectory() {

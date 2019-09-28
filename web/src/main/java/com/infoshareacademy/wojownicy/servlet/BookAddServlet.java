@@ -105,18 +105,22 @@ public class BookAddServlet extends HttpServlet {
     String fileURL = "";
 
     try {
-      fileURL = "/home/tomek/media/" + imageUploadProcessor
-          .uploadImageFile(file, id).getName();
-      resp.sendRedirect("/book-add?upload=successful");
+      fileURL = imageUploadProcessor
+          .uploadImageFile(file, id).getAbsolutePath();
     } catch (UserImageNotFound userImageNotFound) {
       logger.warn(userImageNotFound.getMessage());
-      resp.sendRedirect("/book-add?upload=failed");
     }
 
-    book.setCoverURL(fileURL);
+    if (!fileURL.isEmpty()) {
+      book.setCoverURL(fileURL);
 
-    book.setThumbnail(fileURL);
+      book.setThumbnail(fileURL);
 
-    bookService.updateBook(book);
+      bookService.updateBook(book);
+
+      resp.sendRedirect("/book-view?id=" + id + "&part=0&hasAudio=0&kind=0");
+    }
+
+    resp.sendRedirect("/book-view?id=" + id + "&part=0&hasAudio=0&kind=0");
   }
 }

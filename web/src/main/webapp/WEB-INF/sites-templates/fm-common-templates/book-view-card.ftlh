@@ -17,8 +17,7 @@
     <div class="row no-gutters">
       <div class="col-md-5">
           <#if book.cover??>
-            <img src="${book.cover}" class="card-img" alt="book">
-<#--            <img src="/home/tomek/media/1.jpg" class="card-img" alt="book">-->
+            <img src="${book.cover}" class="card-img" alt="book-cover">
           <#else>
             <img src="img/fake-cover.png" alt="book" class="card-img">
           </#if>
