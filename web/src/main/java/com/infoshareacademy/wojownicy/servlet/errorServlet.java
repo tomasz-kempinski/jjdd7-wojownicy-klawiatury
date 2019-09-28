@@ -39,7 +39,5 @@ public class errorServlet extends HttpServlet {
     } catch (TemplateException e) {
       e.printStackTrace();
     }
-
-
   }
 }
