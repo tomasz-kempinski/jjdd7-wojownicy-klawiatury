@@ -5,8 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="google-signin-client_id" content="868751336544-1jdvc65i0l7vmcldgct4bnqrc5roll6q.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"
@@ -21,15 +19,17 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+
   <title>BookHub</title>
 </head>
 
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/file-upload-form.ftlh">
+<#include "fm-common-templates/error.ftlh">
 
-<div id="footer" class="container fixed-bottom">
+
+<div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
 </div>
 
@@ -41,8 +41,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="js/upload-form.js"></script>
-<script src="js/book.js"></script>
+
+<script src="/js/filter.js"></script>
+<script src="/js/upload-form.js"></script>
+<script src="/js/book.js"></script>
 <script src="js/button-switcher.js"></script>
 </body>
 

@@ -26,11 +26,12 @@
 </head>
 
 <body>
+
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/book-view-card.ftlh">
+<#include "fm-common-templates/file-upload-form.ftlh">
 
-<div id="footer" class="container">
+<div id="footer" class="container fixed-bottom">
     <#include "fm-common-templates/footer.ftlh">
 </div>
 

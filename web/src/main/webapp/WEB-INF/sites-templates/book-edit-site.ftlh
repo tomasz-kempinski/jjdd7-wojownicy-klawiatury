@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="pl">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="868751336544-1jdvc65i0l7vmcldgct4bnqrc5roll6q.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,24 +15,19 @@
   <!-- Our CSS -->
   <link rel="stylesheet" href="css/main.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet"/>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-  <link rel="icon" href="/img/logo.png">
   <title>BookHub</title>
 </head>
-
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/book-view-card.ftlh">
+<#include "fm-common-templates/book-edit-card.ftlh">
 
 <div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
 </div>
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -46,5 +40,5 @@
 <script src="js/book.js"></script>
 <script src="js/button-switcher.js"></script>
 </body>
-
 </html>
+
