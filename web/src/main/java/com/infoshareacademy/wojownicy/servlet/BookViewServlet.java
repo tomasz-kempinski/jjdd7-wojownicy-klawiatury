@@ -50,7 +50,6 @@ public class BookViewServlet extends HttpServlet {
         && NumberUtils.isDigits(partString)
         && NumberUtils.isDigits(isAudioString)
         && NumberUtils.isDigits(kindString)
-        && Long.parseLong(idString) <= bookListService.numberOfBooks(isAudioFilter, kind)
         && Long.parseLong(idString) > 0) {
       isAudioFilter = Integer.parseInt(isAudioString);
       id = Long.parseLong(idString);
@@ -58,6 +57,7 @@ public class BookViewServlet extends HttpServlet {
       kind = Long.parseLong(kindString);
     } else {
       logger.info("Wrong Parameter for single book view");
+      resp.sendRedirect("/errorServlet");
     }
     hasAudio = bookListService.hasAudio(id);
     if (hasAudio) {
