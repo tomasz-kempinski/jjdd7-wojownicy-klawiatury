@@ -90,13 +90,4 @@ public class BookViewServlet extends HttpServlet {
       logger.error(e.getMessage());
     }
   }
-
-  @Override
-  protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-
-    Long id = Long.parseLong(req.getParameter("id"));
-
-   bookService.deleteBook(id);
-  }
 }
