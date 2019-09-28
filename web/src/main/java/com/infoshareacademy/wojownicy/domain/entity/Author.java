@@ -49,6 +49,15 @@ public class Author {
   @JoinColumn(name="reservation_counter")
   ReservationsAuthorStatistics reservationsAuthorStatistics;
 
+  public ReservationsAuthorStatistics getReservationsAuthorStatistics() {
+    return reservationsAuthorStatistics;
+  }
+
+  public void setReservationsAuthorStatistics(
+      ReservationsAuthorStatistics reservationsAuthorStatistics) {
+    this.reservationsAuthorStatistics = reservationsAuthorStatistics;
+  }
+
   public Long getAuthorId() {
     return authorId;
   }

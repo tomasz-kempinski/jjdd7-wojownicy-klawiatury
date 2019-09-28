@@ -1,9 +1,12 @@
 package com.infoshareacademy.wojownicy.dao;
 
 import com.infoshareacademy.wojownicy.domain.entity.ReservationsAuthorStatistics;
+import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.Query;
+@Stateless
 public class ReservationsAuthorStatisticsDao {
 
   @PersistenceContext
@@ -15,6 +18,11 @@ public class ReservationsAuthorStatisticsDao {
 
   public ReservationsAuthorStatistics getReservationsOfAuthor(long id){
     return entityManager.find(ReservationsAuthorStatistics.class, id);
+  }
+
+  public List<ReservationsAuthorStatistics> getReservationsAuthorList(){
+    return entityManager.createNamedQuery("Statistics.findAuthorStatisticsList").getResultList();
+
   }
 
 
