@@ -11,9 +11,49 @@
     <data-source>
         <name>java:ds/bookhubDS</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-<!--            <url>jdbc:mysql://0.0.0.0:3308/bookhubdb?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
-        <url>jdbc:mysql://mysql/bookhubdb?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+            <url>jdbc:mysql://0.0.0.0:3308/bookhubdb?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+<!--        <url>jdbc:mysql://mysql/bookhubdb?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
         <user>root</user>
         <password>root</password>
     </data-source>
+    <error-page>
+        <error-code>400</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>402</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>501</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>502</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>503</error-code>
+        <location>/errorServlet</location>
+    </error-page>
+    <error-page>
+        <error-code>504</error-code>
+        <location>/errorServlet</location>
+    </error-page>
 </web-app>

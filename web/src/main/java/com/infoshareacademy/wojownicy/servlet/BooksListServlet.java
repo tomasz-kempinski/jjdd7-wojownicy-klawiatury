@@ -52,6 +52,7 @@ public class BooksListServlet extends HttpServlet {
       kind = Long.parseLong(kindString);
     } else {
       logger.info("Wrong parameter for BookList");
+      resp.sendRedirect("/errorServlet");
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {
