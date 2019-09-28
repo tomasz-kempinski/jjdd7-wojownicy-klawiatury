@@ -48,11 +48,7 @@ public class BookAddServlet extends HttpServlet {
 
     Template template = templateProvider.getTemplate(getServletContext(), "book-add-site.ftlh");
 
-    String upload = req.getParameter("upload");
-
     Map<String, Object> dataModel = new HashMap<>();
-
-//    dataModel.put("upload", upload);
 
     PrintWriter printWriter = resp.getWriter();
     try {
