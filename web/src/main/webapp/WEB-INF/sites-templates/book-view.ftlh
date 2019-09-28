@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<#include "fm-common-templates/navbar-admin.ftlh">
+<#include "fm-common-templates/navbar.ftlh">
 
 <#include "fm-common-templates/book-view-card.ftlh">
 

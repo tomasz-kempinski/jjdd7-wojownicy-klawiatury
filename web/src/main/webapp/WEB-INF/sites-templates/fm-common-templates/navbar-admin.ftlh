@@ -17,7 +17,7 @@
              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Menu</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/book-list?part=1">Przeglądanie książek</a>
+            <a class="dropdown-item" href="/book-list?part=0&hasAudio=0&kind=0">Przeglądanie książek</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
               ulubione książki</a>
@@ -41,8 +41,10 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Search">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <a href="#" class="btn btn-primary btn-md disabled btn-outline-warning" tabindex="-1"
-           role="button" aria-disabled="true">Zaloguj</a>
+        <a class="btn btn-warning" role="button" href="/googlelogin" id="login" style="display: none;">Zaloguj</a>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <a class="btn btn-warning" role="button" href="/logout" id="logout" style="display: none;">Wyloguj</a>
       </ul>
     </div>
   </div>
