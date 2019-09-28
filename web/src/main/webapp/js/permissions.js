@@ -5,7 +5,7 @@ $(function () {
     $(".give").click(function () {
 
       $.ajax({
-        url: '/api/admin/give/' + $(this).attr('data-userId'),
+        url: '/api/admin/give/' + $(this).attr('data-id'),
         type: 'PATCH',
         success: function (result) {
           location.reload();
@@ -22,7 +22,7 @@ $(function () {
     $(".revoke").click(function () {
 
       $.ajax({
-        url: '/api/admin/revoke/' + $(this).attr('data-userId'),
+        url: '/api/admin/revoke/' + $(this).attr('data-id'),
         type: 'PATCH',
         success: function (result) {
           location.reload();
