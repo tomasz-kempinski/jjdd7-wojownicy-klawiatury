@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 @NamedQueries({
@@ -145,7 +146,7 @@ public class Book {
   private boolean hasAudio = false;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name ="reservation_counter")
+  @JoinColumn(name ="reservation_counter", unique = true)
   ReservationsBookStatistics reservationsBookStatistics;
 
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)

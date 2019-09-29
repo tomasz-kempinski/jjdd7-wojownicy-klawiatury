@@ -10,7 +10,9 @@ import com.infoshareacademy.wojownicy.domain.entity.ReservationsBookStatistics;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,6 +20,8 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class StatisticsService {
+
+  private Map<Integer, ReservationsAuthorStatistics> authorStats;
 
   @EJB
   private ReservationsAuthorStatisticsDao reservationsAuthorStatisticsDao;
@@ -32,4 +36,9 @@ public class StatisticsService {
   public List<ReservationsBookStatistics> getBookStatisticsList(){
     return reservationsBookStatisticsDao.getReservationsBookList();
   }
+
+//  public Map<Integer, ReservationsAuthorStatistics> getAuthorStats(){
+//
+//
+//  }
 }

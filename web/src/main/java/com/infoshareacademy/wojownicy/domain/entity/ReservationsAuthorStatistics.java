@@ -27,7 +27,7 @@ public class ReservationsAuthorStatistics {
   private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "author_id")
+  @JoinColumn(name = "author_id", unique = true)
   Author author;
 
   @Column(name = "reserved_counter")
