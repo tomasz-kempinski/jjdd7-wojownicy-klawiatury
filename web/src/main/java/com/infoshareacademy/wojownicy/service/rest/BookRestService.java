@@ -1,19 +1,21 @@
 package com.infoshareacademy.wojownicy.service.rest;
 
+import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.User;
 import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import com.infoshareacademy.wojownicy.service.BookService;
-import com.infoshareacademy.wojownicy.service.EmailService;
+import com.infoshareacademy.wojownicy.service.emailmanager.EmailSenderService;
 import com.infoshareacademy.wojownicy.service.ReservationService;
 import com.infoshareacademy.wojownicy.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,7 +45,7 @@ public class BookRestService {
   private ReservationService reservationService;
 
   @EJB
-  private EmailService emailService;
+  private EmailSenderService emailSenderService;
 
   @GET
   @Path("/searchParam/{searchParam}")
@@ -71,7 +73,7 @@ public class BookRestService {
   @GET
   @Path("/reserve/{id}")
   public Response reserveBook(@PathParam("id") String id,
-      @Context HttpServletRequest req) {
+      @Context HttpServletRequest req) throws MessagingException {
 
     Optional<String> emailOpt = Optional
         .ofNullable(req.getSession().getAttribute("email").toString());
@@ -81,8 +83,14 @@ public class BookRestService {
     id = id.replace(",", "");
     Long idParam = Long.parseLong(id);
 
+    Book book = bookService.findBookById(idParam);
+
     reservationService.newReservation(idParam, email);
-    emailService.sendReservationEmailToUser(user.getUserId(), idParam);
+    List<String> recipients = new ArrayList<>();
+    recipients.add(email);
+    String subject = "Rezerwacja książki " +"\"" +book.getTitle()+"\"";
+    emailSenderService.sendMessage(recipients, subject);
+
 
     return Response.ok().build();
   }

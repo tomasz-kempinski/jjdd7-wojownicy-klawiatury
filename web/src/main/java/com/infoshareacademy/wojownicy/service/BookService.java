@@ -16,6 +16,10 @@ public class BookService {
     return bookDaoBean.findBookByLiveSearch(searchParam);
   }
 
+  public Book findBookById(Long id){
+    return bookDaoBean.getBookById(id);
+  }
+
   public void addBook(Book book){
     bookDaoBean.addBook(book);
   }

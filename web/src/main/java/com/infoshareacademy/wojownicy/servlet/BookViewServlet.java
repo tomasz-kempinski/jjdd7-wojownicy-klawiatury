@@ -80,7 +80,6 @@ public class BookViewServlet extends HttpServlet {
     }
 
     BookDto book = bookListService.getSingleBook(id);
-    logger.warn(String.valueOf(book.isReserved()));
     dataModel.put("isReserved", book.isReserved());
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
@@ -96,7 +95,5 @@ public class BookViewServlet extends HttpServlet {
       e.printStackTrace();
       logger.error(e.getMessage());
     }
-
-    resp.setStatus(200);
   }
 }
