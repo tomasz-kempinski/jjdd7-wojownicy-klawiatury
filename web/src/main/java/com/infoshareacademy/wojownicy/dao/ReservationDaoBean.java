@@ -26,6 +26,12 @@ public class ReservationDaoBean {
     return query.getResultList();
   }
 
+  public List<Reservation> getReservationsForUser(Long userId) {
+    Query query = entityManager.createNamedQuery("Reservation.findReservationsForUser");
+    query.setParameter("userId", userId);
+    return query.getResultList();
+  }
+
   public Reservation editReservation(Reservation reservation) {
     return entityManager.merge(reservation);
   }

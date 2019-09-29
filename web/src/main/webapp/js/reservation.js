@@ -1,25 +1,16 @@
 $(function () {
-  $(document).ready(function () {
+  $('#reservation-button').click(function (event) {
+    var buttonId = $(event.target).attr('data-id');
     $.ajax({
-      url: '/api/reservation/book-isReserved',
-      type: 'GET',
-      success: function (result) {
-
-        $("#book-reserved-button").show();
-        $("#reservation-button").hide();
+      url: "/reservation",
+      method: "POST",
+      data: {id: buttonId},
+      success: function () {
+        location.reload();
       },
-      error: function (event) {
-        $("#reservation-button").show();
-        $("#book-reserved-button").hide();
+      error: function (error) {
+        alert('Nie można zarezerwować książki. Książka jest już zarezerwowana');
       }
     });
   });
-});
-
-$("#reservation-button").click(function(){
-  $.ajax({
-    url: "/api/reservation/book-newReservation",
-    success: function(result)
-    {
-    }});
 });

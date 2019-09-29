@@ -22,10 +22,7 @@
         </div>
       </div>
       <div>
-        <a id="reservation-button" class="btn btn-primary" role="button">Zarezerwuj książkę</a>
-      </div>
-      <div>
-        <button id="book-reserved-button" type="button" class="btn btn-lg btn-primary" disabled>Książka jest zarezerwowana</button>
+        <a id="reservation-button" class="btn btn-primary" role="button" data-id="${book.id}">Zarezerwuj książkę</a>
       </div>
     </div>
   </div>

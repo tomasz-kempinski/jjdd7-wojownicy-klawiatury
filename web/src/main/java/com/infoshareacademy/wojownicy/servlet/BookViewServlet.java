@@ -1,5 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
+import com.infoshareacademy.wojownicy.domain.entity.Reservation;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -45,7 +46,6 @@ public class BookViewServlet extends HttpServlet {
     Map<String, Object> dataModel = new HashMap<>();
     long id;
     long part;
-    String userEmail = (String) req.getSession().getAttribute("email");
     String audio;
     int isAudioFilter = 0;
     boolean hasAudio;
@@ -67,9 +67,6 @@ public class BookViewServlet extends HttpServlet {
     } else {
       audio = "niedostępna";
     }
-
-    reservationService.newReservation(id, userEmail);
-
     BookDto book = bookListService.getSingleBook(id);
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
@@ -83,5 +80,14 @@ public class BookViewServlet extends HttpServlet {
       e.printStackTrace();
       logger.error(e.getMessage());
     }
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    String bookIdString = req.getParameter("id");
+    long bookId = Long.parseLong(bookIdString);
+    String userEmail = (String) req.getSession().getAttribute("email");
+    reservationService.newReservation(bookId, userEmail);
   }
 }
