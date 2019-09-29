@@ -21,13 +21,11 @@
               książek</a>
               <#if (siteType) == "guest">
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Rezerwacja
-              książek</a>
+            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje rezerwacje</a>
             </#if>
             <#if (siteType) == "user" || (siteType) == "admin">
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/reservation-list" tabindex="-1" aria-disabled="true">Rezerwacja
-              książek</a>
+            <a class="dropdown-item" href="/reservation-list" tabindex="-1" aria-disabled="true">Twoje rezerwacje</a>
             </#if>
           </div>
         </li>
