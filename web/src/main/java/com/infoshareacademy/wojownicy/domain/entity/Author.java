@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -42,6 +44,19 @@ public class Author {
 
   @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
   private List<Book> books = new ArrayList<>();
+
+  @OneToOne(cascade =  CascadeType.ALL)
+  @JoinColumn(name="reservation_counter")
+  ReservationsAuthorStatistics reservationsAuthorStatistics;
+
+  public ReservationsAuthorStatistics getReservationsAuthorStatistics() {
+    return reservationsAuthorStatistics;
+  }
+
+  public void setReservationsAuthorStatistics(
+      ReservationsAuthorStatistics reservationsAuthorStatistics) {
+    this.reservationsAuthorStatistics = reservationsAuthorStatistics;
+  }
 
   public Long getAuthorId() {
     return authorId;

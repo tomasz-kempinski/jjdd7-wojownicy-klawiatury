@@ -8,18 +8,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 @Transactional
-@RequestScoped
+@Stateless
 public class BookListService {
 
-  @Inject
+  @EJB
   BookDaoBean bookDaoBean;
 
-  @Inject
+  @EJB
   BookMapper bookMapper;
 
   public Map<String, Object> pages(long currentPage, int hasAudio, long kind) {
@@ -72,5 +74,10 @@ public class BookListService {
       return bookDaoBean.numberOfAudioBooks(kind);
     }
     return bookDaoBean.numberOfBooks(kind);
+  }
+
+  public boolean isReserved(Long id) {
+    Book book = bookDaoBean.getBookById(id);
+    return book.isReserved();
   }
 }

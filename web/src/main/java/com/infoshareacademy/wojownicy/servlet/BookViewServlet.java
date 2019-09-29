@@ -3,12 +3,15 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
+import com.infoshareacademy.wojownicy.service.ReservationService;
+import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +29,13 @@ public class BookViewServlet extends HttpServlet {
 
   @Inject
   private TemplateProvider templateProvider;
-
   @Inject
   private BookListService bookListService;
+  @Inject
+  private ReservationService reservationService;
+
+  @Inject
+  private BookService bookService;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -45,6 +52,7 @@ public class BookViewServlet extends HttpServlet {
     long id = 1;
     long part = 0;
     long kind = 0;
+    String userEmail = (String) req.getSession().getAttribute("email");
     String audio = "niedostępna";
     int isAudioFilter = 0;
     boolean hasAudio;
@@ -71,6 +79,7 @@ public class BookViewServlet extends HttpServlet {
     }
 
     BookDto book = bookListService.getSingleBook(id);
+    dataModel.put("isReserved", book.isReserved());
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);

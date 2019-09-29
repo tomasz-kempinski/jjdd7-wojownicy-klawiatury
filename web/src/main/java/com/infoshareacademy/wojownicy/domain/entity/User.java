@@ -72,6 +72,14 @@ public class User {
     return userType;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   public void setUserType(String userType) {
     this.userType = userType;
   }
@@ -92,13 +100,5 @@ public class User {
   public void setUserReservations(
       List<Reservation> userReservations) {
     this.userReservations = userReservations;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
   }
 }

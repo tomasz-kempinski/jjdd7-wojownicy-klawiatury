@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
+
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
@@ -18,16 +19,15 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-  <link rel="icon" href="/img/logo.png">
+
   <title>BookHub</title>
 </head>
 
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/table.ftlh">
+<#include "fm-common-templates/theBestAuthorList.ftlh">
 
-<#include "fm-common-templates/pagination.ftlh">
 
 <div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">
@@ -46,7 +46,6 @@
 <script src="/js/upload-form.js"></script>
 <script src="/js/book.js"></script>
 <script src="js/button-switcher.js"></script>
-<script src="js/reservation.js"></script>
 </body>
 
 </html>

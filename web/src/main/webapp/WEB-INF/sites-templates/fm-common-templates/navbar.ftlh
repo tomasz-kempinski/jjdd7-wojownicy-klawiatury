@@ -19,12 +19,14 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="/book-list?part=0&hasAudio=0&kind=0">Przeglądanie
               książek</a>
+              <#if (siteType) == "guest">
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
-              ulubione książki</a>
+            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje rezerwacje</a>
+            </#if>
+            <#if (siteType) == "user" || (siteType) == "admin">
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Rezerwacja
-              książek</a>
+            <a class="dropdown-item" href="/reservation-list" tabindex="-1" aria-disabled="true">Twoje rezerwacje</a>
+            </#if>
           </div>
         </li>
        <#if (siteType) == "admin">
@@ -38,6 +40,11 @@
             <a class="dropdown-item" href="/books-upload">Załaduj książki z pliku</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/users-list">Zarządzaj użytkownikami</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/best-book">Statystyki książek</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/best-author">Statystyki autorów</a>
+
           </div>
         </li>
         </#if>

@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
+
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
@@ -25,9 +26,8 @@
 <body>
 <#include "fm-common-templates/navbar.ftlh">
 
-<#include "fm-common-templates/table.ftlh">
+<#include "fm-common-templates/reservations-list.ftlh">
 
-<#include "fm-common-templates/pagination.ftlh">
 
 <div id="footer" class="container">
     <#include "fm-common-templates/footer.ftlh">

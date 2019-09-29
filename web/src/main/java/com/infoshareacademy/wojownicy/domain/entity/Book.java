@@ -16,7 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 @NamedQueries({
@@ -91,7 +93,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.DramatAudioBookList",
         query = "SELECT b FROM Book b WHERE b.kind = 3 AND b.hasAudio=1"
-    )
+    ),
 
 })
 @Entity
@@ -136,15 +138,28 @@ public class Book {
   private String thumbnail;
 
   @NotNull
-  @Column(name = "is_reserved")
+  @Column(name = "is_reserved", columnDefinition = "Boolean")
   private boolean isReserved = false;
 
   @NotNull
   @Column(name = "has_audio", columnDefinition = "Boolean")
   private boolean hasAudio = false;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name ="reservation_counter", unique = true)
+  ReservationsBookStatistics reservationsBookStatistics;
+
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
+
+  public ReservationsBookStatistics getReservationsBookStatistics() {
+    return reservationsBookStatistics;
+  }
+
+  public void setReservationsBookStatistics(
+      ReservationsBookStatistics reservationsBookStatistics) {
+    this.reservationsBookStatistics = reservationsBookStatistics;
+  }
 
   public Long getId() {
     return id;
