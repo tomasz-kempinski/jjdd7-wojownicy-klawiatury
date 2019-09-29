@@ -31,7 +31,7 @@ public class BestBooksServlet extends HttpServlet {
 
     Map<String,Object> dataModel = new HashMap<>();
 
-    dataModel.put("bookStatList",statisticsService.getBookStatisticsList());
+    dataModel.put("bookStatList",statisticsService.getBookStatisticsListEntity());
 
     PrintWriter printWriter = resp.getWriter();
 

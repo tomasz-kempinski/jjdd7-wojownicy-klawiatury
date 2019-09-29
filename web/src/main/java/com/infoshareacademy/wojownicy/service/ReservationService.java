@@ -9,6 +9,7 @@ import com.infoshareacademy.wojownicy.domain.entity.User;
 import java.time.LocalDateTime;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +26,9 @@ public class ReservationService {
 
   @EJB
   private UserDaoBean userDaoBean;
+
+  @Inject
+  StatisticsService statisticsService;
 
   private User findUserByEmail(String userEmail) {
     logger.info("User with " + userEmail + "Email has been found");
@@ -44,6 +48,7 @@ public class ReservationService {
     reservation.setReservationDate(LocalDateTime.now());
     reservationDaoBean.addReservation(reservation);
     Book book = bookDaoBean.getBookById(bookId);
+    statisticsService.addStatistic(bookId);
     book.setReserved(true);
     bookDaoBean.editBook(book);
   }

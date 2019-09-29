@@ -33,7 +33,7 @@ public class BestAuthorsServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(),"theBestAuthorList.ftlh");
     Map<String, Object> dataModel = new HashMap<>();
 
-    dataModel.put("authorStatList", statisticsService.getAuthorStatisticsList());
+    dataModel.put("authorStatList", statisticsService.getAuthorStatisticsListEntity());
     PrintWriter printWriter = resp.getWriter();
 
     String siteType = (String) req.getAttribute("siteType");

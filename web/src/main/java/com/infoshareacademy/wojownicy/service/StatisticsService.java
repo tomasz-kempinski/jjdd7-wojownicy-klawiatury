@@ -1,7 +1,11 @@
 package com.infoshareacademy.wojownicy.service;
 
+import com.infoshareacademy.wojownicy.dao.AuthorDaoBean;
+import com.infoshareacademy.wojownicy.dao.BookDaoBean;
 import com.infoshareacademy.wojownicy.dao.ReservationsAuthorStatisticsDao;
 import com.infoshareacademy.wojownicy.dao.ReservationsBookStatisticsDao;
+import com.infoshareacademy.wojownicy.domain.entity.Author;
+import com.infoshareacademy.wojownicy.domain.entity.Book;
 import com.infoshareacademy.wojownicy.domain.entity.ReservationsAuthorStatistics;
 import com.infoshareacademy.wojownicy.domain.entity.ReservationsBookStatistics;
 import com.infoshareacademy.wojownicy.dto.AuthorStatisticsDto;
@@ -14,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
+import javax.transaction.Transactional;
 
 @Stateless
 public class StatisticsService {
@@ -33,6 +37,12 @@ public class StatisticsService {
   @EJB
   private ReservationsBookStatisticsDao reservationsBookStatisticsDao;
 
+  @EJB
+  private BookDaoBean bookDaoBean;
+
+  @EJB
+  private AuthorDaoBean authorDaoBean;
+
   public List<AuthorStatisticsDto> getAuthorStatisticsList(){
     List<AuthorStatisticsDto> statisticsDtoList = new ArrayList<>();
     List<ReservationsAuthorStatistics> authorStatistics =
@@ -45,6 +55,10 @@ public class StatisticsService {
     return statisticsDtoList;
   }
 
+  public List<ReservationsAuthorStatistics> getAuthorStatisticsListEntity(){
+    return reservationsAuthorStatisticsDao.getReservationsAuthorList();
+  }
+
   public List<BookStatisticsDto> getBookStatisticsList(){
     List<BookStatisticsDto> statisticsDtoList = new ArrayList<>();
     List<ReservationsBookStatistics> bookStatistics =
@@ -55,5 +69,22 @@ public class StatisticsService {
       statisticsDtoList.add(statisticsDto);
     });
     return statisticsDtoList;
+  }
+
+  public List<ReservationsBookStatistics> getBookStatisticsListEntity(){
+    return reservationsBookStatisticsDao.getReservationsBookList();
+  }
+
+ public void addStatistic(Long bookId){
+    Author author = bookDaoBean.getBookById(bookId).getAuthor();
+    ReservationsAuthorStatistics reservationsAuthorStatistics = new ReservationsAuthorStatistics();
+    reservationsAuthorStatistics.setAuthor(author);
+    if(reservationsAuthorStatisticsDao.getReservationsOfAuthor(author.getAuthorId()) != null){
+      reservationsAuthorStatistics.setReservedCounter(author.getReservationsAuthorStatistics().getReservedCounter()+1);
+    }else {
+      reservationsAuthorStatistics.setReservedCounter(1l);
+    }
+    author.setReservationsAuthorStatistics(reservationsAuthorStatistics);
+    authorDaoBean.editAuthor(author);
   }
 }

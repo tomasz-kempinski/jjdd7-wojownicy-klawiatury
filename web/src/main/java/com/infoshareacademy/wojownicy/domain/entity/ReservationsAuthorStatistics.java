@@ -28,10 +28,10 @@ public class ReservationsAuthorStatistics {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id", unique = true)
-  Author author;
+  private Author author;
 
   @Column(name = "reserved_counter")
-  private Long reservedCounter;
+  private Long reservedCounter = 0L;
 
   public Author getAuthor() {
     return author;
