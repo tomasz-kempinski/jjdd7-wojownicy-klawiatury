@@ -35,6 +35,9 @@ public class BestBooksServlet extends HttpServlet {
 
     PrintWriter printWriter = resp.getWriter();
 
+    String siteType = (String) req.getAttribute("siteType");
+    dataModel.put("siteType", siteType);
+
     try {
       template.process(dataModel,printWriter);
     } catch (TemplateException e) {

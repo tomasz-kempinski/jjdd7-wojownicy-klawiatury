@@ -36,6 +36,9 @@ public class BestAuthorsServlet extends HttpServlet {
     dataModel.put("authorStatList", statisticsService.getAuthorStatisticsList());
     PrintWriter printWriter = resp.getWriter();
 
+    String siteType = (String) req.getAttribute("siteType");
+    dataModel.put("siteType", siteType);
+
     try {
       template.process(dataModel, printWriter);
     } catch (TemplateException e) {
