@@ -80,11 +80,4 @@ public class BookListService {
     Book book = bookDaoBean.getBookById(id);
     return book.isReserved();
   }
-
-  public long numberOfBooks(int hasAudio, long kind) {
-    if (hasAudio == 1) {
-      return bookDaoBean.numberOfAudioBooks(kind);
-    }
-    return bookDaoBean.numberOfBooks(kind);
-  }
 }

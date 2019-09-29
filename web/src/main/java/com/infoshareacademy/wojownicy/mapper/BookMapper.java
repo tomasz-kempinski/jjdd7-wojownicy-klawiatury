@@ -23,6 +23,7 @@ public class BookMapper {
     bookDto.setKind(book.getKind());
     bookDto.setThumbnail(book.getThumbnail());
     bookDto.setHasAudio(book.isAudio());
+    bookDto.setReserved(book.isReserved());
 
     book.getGenres().forEach(g -> {
       bookDto.getGenresList().add(genreMapper.mapEntityToDto(g));

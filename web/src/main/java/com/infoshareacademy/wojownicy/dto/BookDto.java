@@ -18,6 +18,7 @@ public class BookDto {
   private String thumbnail;
   private Kind kind;
   private boolean hasAudio;
+  private boolean isReserved;
 
   public boolean audioAvailable() {
     return hasAudio;
@@ -89,5 +90,17 @@ public class BookDto {
 
   public void setGenreName(String genreName) {
     this.genreName = genreName;
+  }
+
+  public boolean isHasAudio() {
+    return hasAudio;
+  }
+
+  public boolean isReserved() {
+    return isReserved;
+  }
+
+  public void setReserved(boolean reserved) {
+    isReserved = reserved;
   }
 }

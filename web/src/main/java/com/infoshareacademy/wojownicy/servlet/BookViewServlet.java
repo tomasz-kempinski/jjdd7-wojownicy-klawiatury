@@ -79,14 +79,15 @@ public class BookViewServlet extends HttpServlet {
       audio = "dostępna";
     }
 
-    reservationService.newReservation(id, userEmail);
-
     BookDto book = bookListService.getSingleBook(id);
+    logger.warn(String.valueOf(book.isReserved()));
+    dataModel.put("isReserved", book.isReserved());
     dataModel.put("book", book);
     dataModel.put("hasAudio", audio);
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
     dataModel.put("kind", kind);
+
 
     PrintWriter printWriter = resp.getWriter();
     try {
@@ -95,5 +96,7 @@ public class BookViewServlet extends HttpServlet {
       e.printStackTrace();
       logger.error(e.getMessage());
     }
+
+    resp.setStatus(200);
   }
 }

@@ -37,12 +37,15 @@
           <h4 class="card-text">Wersja audio: ${hasAudio} </h4>
         </div>
       </div>
-      <div>
-        <a id="reservation-button" class="btn btn-primary" role="button">Zarezerwuj książkę</a>
-      </div>
-      <div>
-        <button id="book-reserved-button" type="button" class="btn btn-lg btn-primary" disabled>Książka jest zarezerwowana</button>
-      </div>
+      <#if isReserved == true>
+        <div class="col-md text-center">
+          <button id="book-reserved-button" type="button" class="btn btn-primary" disabled>Książka jest zarezerwowana</button>
+        </div>
+      <#elseif isReserved == false>
+        <div class="col-md text-center">
+          <a class="btn btn-primary nav-button reserve" data-id="${book.id}">Zarezerwuj</a>
+        </div>
+      </#if>
     </div>
   </div>
 </div>
