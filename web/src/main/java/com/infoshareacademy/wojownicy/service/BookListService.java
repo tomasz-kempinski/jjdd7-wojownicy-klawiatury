@@ -24,7 +24,7 @@ public class BookListService {
   @EJB
   BookMapper bookMapper;
 
-  public Map<String, Object> pages(long currentPage, int hasAudio) {
+  public Map<String, Object> pages(long currentPage, int hasAudio, long kind) {
     Map<String, Object> pagesMap = new HashMap<>();
     pagesMap.put("first", 0);
     pagesMap.put("previous-1", currentPage - 2);
@@ -32,7 +32,7 @@ public class BookListService {
     pagesMap.put("current", currentPage);
     pagesMap.put("next", currentPage + 1);
     pagesMap.put("third", currentPage + 2);
-    long bookSize = numberOfBooks(hasAudio);
+    long bookSize = numberOfBooks(hasAudio, kind);
     if (bookSize % 20 == 0) {
       pagesMap.put("last", bookSize / 20 - 1);
     } else {
@@ -41,8 +41,8 @@ public class BookListService {
     return pagesMap;
   }
 
-  public List<BookDto> partOfBooks(int from) {
-    List<Book> books = bookDaoBean.getPartOfBooks(from);
+  public List<BookDto> partOfBooks(int from, long kind) {
+    List<Book> books = bookDaoBean.getPartOfBooks(from, kind);
     List<BookDto> bookDtoList = new ArrayList<>();
     for (Book book : books) {
       bookDtoList.add(bookMapper.mapEntityToDto(book));
@@ -50,9 +50,9 @@ public class BookListService {
     return bookDtoList;
   }
 
-  public List<BookDto> partOfAudioBooks(int from) {
-    List<Book> books = bookDaoBean.getPartOfAudioBooks(from);
+  public List<BookDto> partOfAudioBooks(int from, long kind) {
     List<BookDto> bookDtoList = new ArrayList<>();
+    List<Book> books = bookDaoBean.getPartOfAudioBooks(from, kind);
     for (Book book : books) {
       bookDtoList.add(bookMapper.mapEntityToDto(book));
     }
@@ -69,15 +69,22 @@ public class BookListService {
     return book.isAudio();
   }
 
+  public long numberOfBooks(int hasAudio, long kind) {
+    if (hasAudio == 1) {
+      return bookDaoBean.numberOfAudioBooks(kind);
+    }
+    return bookDaoBean.numberOfBooks(kind);
+  }
+
   public boolean isReserved(Long id) {
     Book book = bookDaoBean.getBookById(id);
     return book.isReserved();
   }
 
-  public long numberOfBooks(int hasAudio) {
+  public long numberOfBooks(int hasAudio, long kind) {
     if (hasAudio == 1) {
-      return bookDaoBean.numberOfAudioBooks();
+      return bookDaoBean.numberOfAudioBooks(kind);
     }
-    return bookDaoBean.numberOfBooks();
+    return bookDaoBean.numberOfBooks(kind);
   }
 }

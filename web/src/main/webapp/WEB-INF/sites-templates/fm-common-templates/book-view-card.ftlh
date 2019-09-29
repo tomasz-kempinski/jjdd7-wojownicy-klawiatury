@@ -1,13 +1,29 @@
 <div id="book-view" class="container">
-  <a id="return-button" class="btn btn-primary"
-     href="/book-list?part=${part}&hasAudio=${isAudioFilter}" role="button">Powrót
-    do listy</a>
-  <div id="book-card" class="card mb-5 shadow-lg p-3 mb-5 bg-white rounded"
-       style="max-width: 1000px;">
+  <div class="row">
+    <div class="col-md text-center">
+      <a id="return-button" class="btn btn-primary"
+         href="/book-list?part=${part}&hasAudio=${isAudioFilter}&kind=${kind}" role="button">Powrót
+        do listy</a>
+    </div>
+        <div class="col-md text-center">
+            <#if (siteType) == "admin">
+              <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}&part=${part}"
+             role="button">Edytuj książkę</a>
+            </#if>
+        </div>
+        <div class="col-md text-center">
+            <#if (siteType) == "admin">
+          <a href="/" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
+          </#if>
+        </div>
+
+  </div>
+  <div id="book-card" class="card mb-5 shadow-lg p-3 bg-white rounded"
+       style="max-width: 1200px;">
     <div class="row no-gutters">
       <div class="col-md-5">
           <#if book.cover??>
-            <img src="https://wolnelektury.pl/media/${book.cover}" class="card-img" alt="book">
+            <img src="${book.cover}" class="card-img" alt="book-cover">
           <#else>
             <img src="img/fake-cover.png" alt="book" class="card-img">
           </#if>

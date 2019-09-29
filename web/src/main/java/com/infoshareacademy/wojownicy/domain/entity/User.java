@@ -49,7 +49,6 @@ public class User {
 
   @ManyToMany(mappedBy = "usersFavourites")
   private List<Book> booksFavourites = new ArrayList<>();
-
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> userReservations = new ArrayList<>();
 

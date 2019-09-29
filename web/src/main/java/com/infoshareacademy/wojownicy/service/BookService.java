@@ -15,4 +15,16 @@ public class BookService {
   public List<Book> findBookForLiveSearch(String searchParam) {
     return bookDaoBean.findBookByLiveSearch(searchParam);
   }
+
+  public void addBook(Book book){
+    bookDaoBean.addBook(book);
+  }
+
+  public void updateBook(Book book){
+    bookDaoBean.editBook(book);
+  }
+
+  public void deleteBook(Long id){
+    bookDaoBean.deleteBookById(id);
+  }
 }

@@ -1,6 +1,6 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.cdi.FileUploadProcessor;
+import com.infoshareacademy.wojownicy.processor.FileUploadProcessor;
 import com.infoshareacademy.wojownicy.exception.UserFileNotFound;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.ApiDataHandler;
@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @MultipartConfig
-@WebServlet("/admin-panel")
+@WebServlet("/books-upload")
 public class FileUploadServlet extends HttpServlet {
 
   @Inject
@@ -44,11 +44,12 @@ public class FileUploadServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    Template template = templateProvider.getTemplate(getServletContext(), "file-upload.ftlh");
+    Template template = templateProvider.getTemplate(getServletContext(), "file-upload-site.ftlh");
 
     String upload = req.getParameter("upload");
-
+    String siteType = (String) req.getAttribute("siteType");
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("siteType", siteType);
 
     dataModel.put("upload", upload);
 
@@ -70,12 +71,13 @@ public class FileUploadServlet extends HttpServlet {
     String fileURL = "";
 
     try {
-      fileURL = "/admin-panel/" + fileUploadProcessor
+      fileURL = "/books-upload/" + fileUploadProcessor
           .uploadFile(file).getName();
-      resp.sendRedirect("/admin-panel?upload=successful");
+      resp.sendRedirect("/books-upload?upload=successful");
+      logger.info("Json API file has been uploaded");
     } catch (UserFileNotFound userFileNotFound) {
       logger.warn(userFileNotFound.getMessage());
-      resp.sendRedirect("/admin-panel?upload=failed");
+      resp.sendRedirect("/books-upload?upload=failed");
     }
     apiDataHandler.setFileURL(fileURL);
     saveToDataBase.saveBooksFromFile();

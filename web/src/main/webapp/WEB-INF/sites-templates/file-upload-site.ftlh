@@ -21,10 +21,12 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+  <link rel="icon" href="/img/logo.png">
   <title>BookHub</title>
 </head>
 
 <body>
+
 <#include "fm-common-templates/navbar.ftlh">
 
 <#include "fm-common-templates/file-upload-form.ftlh">

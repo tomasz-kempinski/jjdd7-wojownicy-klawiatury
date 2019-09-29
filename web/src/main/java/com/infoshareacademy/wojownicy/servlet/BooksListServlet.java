@@ -1,6 +1,5 @@
 package com.infoshareacademy.wojownicy.servlet;
 
-import com.infoshareacademy.wojownicy.dao.GenreDaoBean;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
@@ -32,10 +31,6 @@ public class BooksListServlet extends HttpServlet {
   @Inject
   private BookListService bookListService;
 
-  @Inject
-  GenreDaoBean genreDaoBean;
-
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -43,27 +38,39 @@ public class BooksListServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "book-list.ftlh");
     String partString = req.getParameter("part");
     String hasAudioString = req.getParameter("hasAudio");
+    String kindString = req.getParameter("kind");
+    String siteType = (String) req.getAttribute("siteType");
+
     int part = 0;
     int hasAudio = 0;
+    long kind = 0;
 
-    if (NumberUtils.isDigits(partString) && Integer.parseInt(partString) >= 0 && NumberUtils
-        .isDigits(hasAudioString)) {
+    if (NumberUtils.isDigits(partString)
+        && Integer.parseInt(partString) >= 0
+        && NumberUtils.isDigits(hasAudioString)
+        && NumberUtils.isDigits(kindString)) {
       part = Integer.parseInt(partString);
       hasAudio = Integer.parseInt(hasAudioString);
+      kind = Long.parseLong(kindString);
+    } else {
+      logger.info("Wrong parameter for BookList");
+      resp.sendRedirect("/errorServlet");
     }
     List<BookDto> partOfBooks;
     if (hasAudio == 1) {
-      partOfBooks = bookListService.partOfAudioBooks(part * 20);
+      partOfBooks = bookListService.partOfAudioBooks(part * 20, kind);
     } else {
-      partOfBooks = bookListService.partOfBooks(part * 20);
+      partOfBooks = bookListService.partOfBooks(part * 20, kind);
     }
 
     Map<String, Object> dataModel = new HashMap<>();
+    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio, kind);
 
-    Map<String, Object> pagesMap = bookListService.pages(part, hasAudio);
+    dataModel.put("siteType", siteType);
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
     dataModel.put("hasAudio", hasAudio);
+    dataModel.put("kind", kind);
 
     PrintWriter printWriter = resp.getWriter();
     try {
