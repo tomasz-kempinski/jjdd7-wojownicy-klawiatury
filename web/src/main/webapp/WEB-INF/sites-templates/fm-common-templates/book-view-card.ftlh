@@ -13,7 +13,7 @@
         </div>
         <div class="col-md text-center">
             <#if (siteType) == "admin">
-          <a href="/book-list?part=0&hasAudio=0&kind=0" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
+          <a href="/" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
           </#if>
         </div>
 
