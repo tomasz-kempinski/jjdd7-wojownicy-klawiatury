@@ -65,6 +65,8 @@ public class BookAddServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
 
+
+
     String title = req.getParameter("title");
     String authorName = req.getParameter("author");
     String kindName = req.getParameter("kind");
