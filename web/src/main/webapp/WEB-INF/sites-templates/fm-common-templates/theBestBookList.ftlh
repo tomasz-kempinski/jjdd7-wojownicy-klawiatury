@@ -1,6 +1,7 @@
 <div id="table-container" class="container">
 
   <div class="table-responsive-md">
+    <br>
     <table
         class="table table-bordered table-striped shadow-lg p-3 mb-5 bg-white rounded">
       <thead class="thead-dark">
