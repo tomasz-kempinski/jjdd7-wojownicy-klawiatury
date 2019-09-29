@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="pl" xmlns="http://www.w3.org/1999/html">
 
 <head>
   <!-- Required meta tags -->
@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+  <link rel="icon" href="/img/logo.png">
   <title>BookHub</title>
 </head>
 
@@ -41,9 +42,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 <script src="js/upload-form.js"></script>
 <script src="js/book.js"></script>
 <script src="js/button-switcher.js"></script>
+<script src="js/delete-button.js"></script>
+
 </body>
 
 </html>

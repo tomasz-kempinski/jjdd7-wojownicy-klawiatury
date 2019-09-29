@@ -27,20 +27,6 @@
               książek</a>
           </div>
         </li>
-       <#if (siteType) == "admin">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#"
-             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">Panel administratora</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/book-add">Dodaj książkę</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/books-upload">Załaduj książki z pliku</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/users-list">Zarządzaj użytkownikami</a>
-          </div>
-        </li>
-        </#if>
       </ul>
       <form class="form-inline my-2 my-lg-0" id="form-search">
         <input class="form-control mr-sm-2 ui-autocomplete-input" type="search" id="input-param"
@@ -48,7 +34,7 @@
                aria-label="Search" autocomplete="off">
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <a class="btn btn-warning" role="button" href="/googlelogin" id="login" style="display: none;">Zaloguj</a>
+          <a class="btn btn-warning" role="button" href="/googlelogin" id="login" style="display: none;">Zaloguj</a>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <a class="btn btn-warning" role="button" href="/logout" id="logout" style="display: none;">Wyloguj</a>

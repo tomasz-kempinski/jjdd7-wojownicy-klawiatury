@@ -1,12 +1,7 @@
 package com.infoshareacademy.wojownicy.service;
 
-import com.infoshareacademy.wojownicy.dao.AuthorDaoBean;
 import com.infoshareacademy.wojownicy.dao.BookDaoBean;
-import com.infoshareacademy.wojownicy.domain.entity.Author;
 import com.infoshareacademy.wojownicy.domain.entity.Book;
-import com.infoshareacademy.wojownicy.dto.BookDto;
-import com.infoshareacademy.wojownicy.mapper.BookMapper;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -19,5 +14,17 @@ public class BookService {
 
   public List<Book> findBookForLiveSearch(String searchParam) {
     return bookDaoBean.findBookByLiveSearch(searchParam);
+  }
+
+  public void addBook(Book book){
+    bookDaoBean.addBook(book);
+  }
+
+  public void updateBook(Book book){
+    bookDaoBean.editBook(book);
+  }
+
+  public void deleteBook(Long id){
+    bookDaoBean.deleteBookById(id);
   }
 }

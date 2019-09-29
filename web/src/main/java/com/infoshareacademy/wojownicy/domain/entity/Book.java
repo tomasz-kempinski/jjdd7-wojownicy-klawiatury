@@ -108,11 +108,11 @@ public class Book {
   @Column(name = "book_title")
   private String title;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade ={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
   @JoinColumn(name = "author_id")
   private Author author;
 
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ManyToMany(cascade ={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
   @JoinTable(
       name = "book_genre",
       joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
@@ -126,7 +126,7 @@ public class Book {
       inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
   private List<User> usersFavourites = new ArrayList<>();
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade ={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
   @JoinColumn(name = "kind_id")
   private Kind kind;
 
