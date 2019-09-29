@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
-@Transactional
 @WebServlet("/add-statistics")
 public class StatisticsClass extends HttpServlet {
 
