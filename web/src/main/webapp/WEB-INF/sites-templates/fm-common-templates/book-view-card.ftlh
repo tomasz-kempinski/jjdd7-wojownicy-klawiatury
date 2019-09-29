@@ -46,7 +46,7 @@
               </div>
             <#elseif isReserved == false>
               <div class="col-md text-center">
-                <a class="btn btn-primary nav-button reserve" data-id="${book.id}">Zarezerwuj</a>
+                <a class="btn btn-primary nav-button reserve" data-id="${book.id?c}">Zarezerwuj</a>
               </div>
             </#if>
         </#if>
