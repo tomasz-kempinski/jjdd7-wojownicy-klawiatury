@@ -21,7 +21,7 @@ public class ReservationsAuthorStatisticsDao {
   }
 
   public List<ReservationsAuthorStatistics> getReservationsAuthorList(){
-    return entityManager.createNamedQuery("Statistics.findAuthorStatisticsList").getResultList();
+    return entityManager.createNamedQuery("StatisticsAuthor.findAuthorStatisticsList").getResultList();
 
   }
 

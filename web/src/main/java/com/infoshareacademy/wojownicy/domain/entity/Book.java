@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -143,8 +144,21 @@ public class Book {
   @Column(name = "has_audio", columnDefinition = "Boolean")
   private boolean hasAudio = false;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name ="reservation_counter")
+  ReservationsBookStatistics reservationsBookStatistics;
+
   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Reservation> bookReservation = new ArrayList<>();
+
+  public ReservationsBookStatistics getReservationsBookStatistics() {
+    return reservationsBookStatistics;
+  }
+
+  public void setReservationsBookStatistics(
+      ReservationsBookStatistics reservationsBookStatistics) {
+    this.reservationsBookStatistics = reservationsBookStatistics;
+  }
 
   public Long getId() {
     return id;

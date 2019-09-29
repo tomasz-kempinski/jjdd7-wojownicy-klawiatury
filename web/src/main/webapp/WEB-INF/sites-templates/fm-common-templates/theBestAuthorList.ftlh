@@ -7,7 +7,7 @@
       <thead class="thead-dark">
       <tr>
         <th scope="col" class="text-center">#</th>
-        <th scope="col" class="text-center">Imie i Nazwisko</th>
+        <th scope="col" class="text-center">Autor</th>
         <th scope="col" class="text-center">Liczba wypożyczeń</th>
       </tr>
       </thead>
@@ -17,8 +17,8 @@
           <#items as author>
               <tr>
             <th scope="row" class="text-center">${i}</th>
-            <td>${author.authorName}</td>
-            <td>${author.reservationsAuthorStatistics.id}</td>
+            <td>${author.author.authorName}</td>
+            <td>${author.reservedCounter}</td>
             </tr>
               <#assign i=i+1>
           </#items>

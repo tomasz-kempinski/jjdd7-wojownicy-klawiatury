@@ -45,7 +45,7 @@ public class Author {
   @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
   private List<Book> books = new ArrayList<>();
 
-  @OneToOne
+  @OneToOne(cascade =  CascadeType.ALL)
   @JoinColumn(name="reservation_counter")
   ReservationsAuthorStatistics reservationsAuthorStatistics;
 

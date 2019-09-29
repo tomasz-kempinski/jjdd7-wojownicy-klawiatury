@@ -11,15 +11,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-@NamedQueries({
+@NamedQueries(
     @NamedQuery(
-        name = "StatisticsAuthor.findAuthorStatisticsList",
-        query = "SELECT r FROM ReservationsAuthorStatistics r ORDER BY r.reservedCounter DESC"
+        name = "StatisticsBook.findBookStatistics",
+        query = "SELECT s FROM ReservationsBookStatistics s ORDER BY s.reservedCounter DESC"
     )
-})
+)
 @Entity
-@Table(name = "reservations_author_statistics")
-public class ReservationsAuthorStatistics {
+@Table(name = "reservations_book_statistics")
+public class ReservationsBookStatistics {
 
   @Id
   @Column(name = "id")
@@ -27,19 +27,11 @@ public class ReservationsAuthorStatistics {
   private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "author_id")
-  Author author;
+  @JoinColumn(name = "book_id")
+  Book book;
 
   @Column(name = "reserved_counter")
   private Long reservedCounter;
-
-  public Author getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(Author author) {
-    this.author = author;
-  }
 
   public Long getId() {
     return id;
@@ -47,6 +39,14 @@ public class ReservationsAuthorStatistics {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public Book getBook() {
+    return book;
+  }
+
+  public void setBook(Book book) {
+    this.book = book;
   }
 
   public Long getReservedCounter() {
