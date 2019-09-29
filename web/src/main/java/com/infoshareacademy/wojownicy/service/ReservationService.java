@@ -52,4 +52,8 @@ public class ReservationService {
     book.setReserved(true);
     bookDaoBean.editBook(book);
   }
+
+  public void deleteReservationById(Long id){
+    reservationDaoBean.deleteReservationById(id);
+  }
 }

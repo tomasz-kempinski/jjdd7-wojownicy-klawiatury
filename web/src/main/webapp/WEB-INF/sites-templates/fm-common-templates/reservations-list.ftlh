@@ -12,7 +12,7 @@
         <th scope="col" class="text-center">#</th>
         <th scope="col" class="text-center">Tytuł</th>
         <th scope="col" class="text-center">Autor</th>
-        <th scope="col" class="text-center">DlaRoberta</th>
+        <th scope="col" class="text-center"></th>
       </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
             <th scope="row" class="text-center">${i}</th>
             <td>${reservation.book.title}</td>
             <td>${reservation.book.author.authorName}</td>
-            <td></td>
+            <td><button type="button" data-id="${reservation.id}" class="btn btn-danger cancel">Anuluj rezerwacje</button></td>
             </tr>
               <#assign i=i+1>
           </#items>
