@@ -43,7 +43,7 @@ public class ImageUploadProcessor {
     return file;
   }
 
-  private String getUploadImageFilesPath() throws IOException {
+  public String getUploadImageFilesPath() throws IOException {
     return createImagePathDirectory();
   }
 

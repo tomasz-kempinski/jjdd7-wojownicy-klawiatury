@@ -3,7 +3,6 @@ package com.infoshareacademy.wojownicy.servlet;
 import com.infoshareacademy.wojownicy.dto.BookDto;
 import com.infoshareacademy.wojownicy.freemarker.TemplateProvider;
 import com.infoshareacademy.wojownicy.service.BookListService;
-import com.infoshareacademy.wojownicy.service.BookService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
@@ -31,9 +30,6 @@ public class BookViewServlet extends HttpServlet {
   @Inject
   private BookListService bookListService;
 
-  @Inject
-  BookService bookService;
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -47,17 +43,16 @@ public class BookViewServlet extends HttpServlet {
     long id = 1;
     long part = 0;
     long kind = 0;
-    String audio = "niedostępne";
+    String audio = "niedostępna";
     int isAudioFilter = 0;
     boolean hasAudio;
 
-    if(NumberUtils.isDigits(idString) && Long.parseLong(idString)>0){
+    if (NumberUtils.isDigits(idString) && Long.parseLong(idString) > 0) {
       id = Long.parseLong(idString);
     } else {
       logger.info("Wrong Parameter for single book view");
       resp.sendRedirect("/errorServlet");
     }
-
 
     if (NumberUtils.isDigits(partString)
         && NumberUtils.isDigits(isAudioString)

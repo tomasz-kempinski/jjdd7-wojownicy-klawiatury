@@ -76,7 +76,7 @@
   background-color: #c5dbff;
 }
 
-#thumbnail{
+img.clickable-row {
   max-width: 140px;
   max-height: 195px;
 }
