@@ -77,14 +77,30 @@ public class StatisticsService {
 
  public void addStatistic(Long bookId){
     Author author = bookDaoBean.getBookById(bookId).getAuthor();
-    ReservationsAuthorStatistics reservationsAuthorStatistics = new ReservationsAuthorStatistics();
-    reservationsAuthorStatistics.setAuthor(author);
-    if(reservationsAuthorStatisticsDao.getReservationsOfAuthor(author.getAuthorId()) != null){
-      reservationsAuthorStatistics.setReservedCounter(author.getReservationsAuthorStatistics().getReservedCounter()+1);
+    Long numberOfReservations;
+    if(bookDaoBean.getBookById(bookId).getAuthor().getReservationsAuthorStatistics() != null){
+      ReservationsAuthorStatistics reservationsAuthorStatistics = reservationsAuthorStatisticsDao.getReservationsOfAuthor(author.getAuthorId());
+      reservationsAuthorStatistics.setReservedCounter(reservationsAuthorStatistics.getReservedCounter()+1L);
+      reservationsAuthorStatisticsDao.addReservationToAuthor(reservationsAuthorStatistics);
     }else {
-      reservationsAuthorStatistics.setReservedCounter(1l);
+      ReservationsAuthorStatistics reservationsAuthorStatistics = new ReservationsAuthorStatistics();
+      reservationsAuthorStatistics.setAuthor(author);
+      reservationsAuthorStatistics.setReservedCounter(1L);
+      author.setReservationsAuthorStatistics(reservationsAuthorStatistics);
+      authorDaoBean.editAuthor(author);
     }
-    author.setReservationsAuthorStatistics(reservationsAuthorStatistics);
-    authorDaoBean.editAuthor(author);
+
+    Book book = bookDaoBean.getBookById(bookId);
+    if(bookDaoBean.getBookById(bookId).getReservationsBookStatistics() != null ){
+      ReservationsBookStatistics reservationsBookStatistics = reservationsBookStatisticsDao.getReservationsOfBook(bookId);
+      reservationsBookStatistics.setReservedCounter(reservationsBookStatistics.getReservedCounter()+1L);
+      reservationsBookStatisticsDao.addReservationToBook(reservationsBookStatistics);
+    } else {
+      ReservationsBookStatistics reservationsBookStatistics = new ReservationsBookStatistics();
+      reservationsBookStatistics.setBook(book);
+      reservationsBookStatistics.setReservedCounter(1L);
+      book.setReservationsBookStatistics(reservationsBookStatistics);
+      bookDaoBean.editBook(book);
+    }
   }
 }

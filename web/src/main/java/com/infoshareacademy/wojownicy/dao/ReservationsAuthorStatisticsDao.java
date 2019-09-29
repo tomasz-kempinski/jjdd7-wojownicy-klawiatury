@@ -15,7 +15,7 @@ public class ReservationsAuthorStatisticsDao {
   EntityManager entityManager;
 
   public void addReservationToAuthor(ReservationsAuthorStatistics reservationsAuthorStatistics){
-    entityManager.persist(reservationsAuthorStatistics);
+    entityManager.merge(reservationsAuthorStatistics);
   }
 
   public ReservationsAuthorStatistics getReservationsOfAuthor(long id){

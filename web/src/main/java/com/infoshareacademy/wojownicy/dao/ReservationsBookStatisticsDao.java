@@ -12,8 +12,8 @@ public class ReservationsBookStatisticsDao {
   @PersistenceContext
   EntityManager entityManager;
 
-  public void addReservationToAuthor(ReservationsBookStatistics reservationsBookStatistics){
-    entityManager.persist(reservationsBookStatistics);
+  public void addReservationToBook(ReservationsBookStatistics reservationsBookStatistics){
+    entityManager.merge(reservationsBookStatistics);
   }
 
   public ReservationsBookStatistics getReservationsOfBook(long id){
