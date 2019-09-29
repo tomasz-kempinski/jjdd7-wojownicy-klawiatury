@@ -49,7 +49,9 @@ public class BookEditServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "book-edit-site.ftlh");
     String idString = req.getParameter("id").replaceAll(",", "");
     String partString = req.getParameter("part");
+    String siteType = (String) req.getAttribute("siteType");
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("siteType", siteType);
     long id=1;
     long part=1;
     String audio;

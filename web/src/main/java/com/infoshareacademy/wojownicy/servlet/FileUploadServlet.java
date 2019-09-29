@@ -47,8 +47,9 @@ public class FileUploadServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "file-upload-site.ftlh");
 
     String upload = req.getParameter("upload");
-
+    String siteType = (String) req.getAttribute("siteType");
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("siteType", siteType);
 
     dataModel.put("upload", upload);
 

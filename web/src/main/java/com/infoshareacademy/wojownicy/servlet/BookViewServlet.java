@@ -43,7 +43,9 @@ public class BookViewServlet extends HttpServlet {
     String partString = req.getParameter("part");
     String isAudioString = req.getParameter("hasAudio");
     String kindString = req.getParameter("kind");
+    String siteType = (String) req.getAttribute("siteType");
     Map<String, Object> dataModel = new HashMap<>();
+    dataModel.put("siteType", siteType);
     long id = 1;
     long part = 0;
     long kind = 0;

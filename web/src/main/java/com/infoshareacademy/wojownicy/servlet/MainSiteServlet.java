@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,10 @@ public class MainSiteServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "main-site.ftlh");
 
     Map<String, Object> dataModel = new HashMap<>();
+
+    String siteType = (String) req.getAttribute("siteType");
+
+    dataModel.put("siteType", siteType);
 
     PrintWriter printWriter = resp.getWriter();
     try {

@@ -25,4 +25,8 @@ public class UserService {
   public User getUserByEmail(String email){
    return userDaoBean.findUserByEmail(email);
   }
+
+  public User getUserById(Long id){return userDaoBean.getUserById(id);}
+
+  public void editUser(User user){userDaoBean.editUser(user);}
 }

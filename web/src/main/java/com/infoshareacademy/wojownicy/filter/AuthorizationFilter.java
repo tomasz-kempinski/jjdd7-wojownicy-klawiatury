@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 @WebFilter(
     filterName = "AuthorizationFilter",
-    urlPatterns = {"/home", "/"}
+    urlPatterns = {"/*"}
 )
 public class AuthorizationFilter implements Filter {
 
@@ -29,14 +29,13 @@ public class AuthorizationFilter implements Filter {
     HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
     Optional<Object> userType = Optional.ofNullable(req.getSession().getAttribute("userType"));
-logger.info("user type is: " + userType.toString());
 
     if (userType.isEmpty()) {
-      req.setAttribute("siteType", "-guest");
+      req.setAttribute("siteType", "");
     } else if (userType.get().equals("admin") || userType.get().equals("superadmin")) {
-      req.setAttribute("siteType", "-admin");
+      req.setAttribute("siteType", "admin");
     } else if (userType.get().equals("user")){
-      req.setAttribute("siteType", "-user");
+      req.setAttribute("siteType", "user");
     }
 
     filterChain.doFilter(servletRequest, servletResponse);
