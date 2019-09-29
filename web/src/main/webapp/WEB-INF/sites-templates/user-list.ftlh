@@ -43,10 +43,11 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+<script src="/js/permissions.js"></script>
 <script src="/js/filter.js"></script>
 <script src="/js/upload-form.js"></script>
 <script src="/js/book.js"></script>
-<script src="js/button-switcher.js"></script>
+<script src="/js/button-switcher.js"></script>
+<script src="/js/permissions-button-switcher.js"
 </body>
-
 </html>

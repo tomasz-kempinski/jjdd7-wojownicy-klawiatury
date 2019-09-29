@@ -39,6 +39,8 @@ public class BooksListServlet extends HttpServlet {
     String partString = req.getParameter("part");
     String hasAudioString = req.getParameter("hasAudio");
     String kindString = req.getParameter("kind");
+    String siteType = (String) req.getAttribute("siteType");
+
     int part = 0;
     int hasAudio = 0;
     long kind = 0;
@@ -64,6 +66,7 @@ public class BooksListServlet extends HttpServlet {
     Map<String, Object> dataModel = new HashMap<>();
     Map<String, Object> pagesMap = bookListService.pages(part, hasAudio, kind);
 
+    dataModel.put("siteType", siteType);
     dataModel.put("books", partOfBooks);
     dataModel.put("page", pagesMap);
     dataModel.put("hasAudio", hasAudio);

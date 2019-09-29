@@ -37,9 +37,10 @@ public class UsersListServlet extends HttpServlet {
     Template template = templateProvider.getTemplate(getServletContext(), "user-list.ftlh");
 
     List<User> usersList = usersListService.getUsersList();
+    String siteType = (String) req.getAttribute("siteType");
 
     Map<String, Object> dataModel = new HashMap<>();
-
+    dataModel.put("siteType", siteType);
     dataModel.put("users", usersList);
 
     PrintWriter printWriter = resp.getWriter();
