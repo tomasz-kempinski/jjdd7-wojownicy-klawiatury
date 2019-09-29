@@ -31,7 +31,7 @@ public class AuthorizationFilter implements Filter {
     Optional<Object> userType = Optional.ofNullable(req.getSession().getAttribute("userType"));
 
     if (userType.isEmpty()) {
-      req.setAttribute("siteType", "");
+      req.setAttribute("siteType", "guest");
     } else if (userType.get().equals("admin") || userType.get().equals("superadmin")) {
       req.setAttribute("siteType", "admin");
     } else if (userType.get().equals("user")){

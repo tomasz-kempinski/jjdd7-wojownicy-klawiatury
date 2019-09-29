@@ -19,12 +19,16 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="/book-list?part=0&hasAudio=0&kind=0">Przeglądanie
               książek</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Twoje
-              ulubione książki</a>
+              <#if (siteType) == "guest">
             <div class="dropdown-divider"></div>
             <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Rezerwacja
               książek</a>
+            </#if>
+            <#if (siteType) == "user" || (siteType) == "admin">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/reservation-list" tabindex="-1" aria-disabled="true">Rezerwacja
+              książek</a>
+            </#if>
           </div>
         </li>
        <#if (siteType) == "admin">
