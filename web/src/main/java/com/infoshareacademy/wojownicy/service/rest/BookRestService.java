@@ -1,8 +1,11 @@
 package com.infoshareacademy.wojownicy.service.rest;
 
+import com.infoshareacademy.wojownicy.domain.entity.User;
 import com.infoshareacademy.wojownicy.domain.view.BookLiveSearchView;
 import com.infoshareacademy.wojownicy.service.BookService;
+import com.infoshareacademy.wojownicy.service.EmailService;
 import com.infoshareacademy.wojownicy.service.ReservationService;
+import com.infoshareacademy.wojownicy.service.UserService;
 import java.util.List;
 import java.util.Optional;
 import javax.ejb.EJB;
@@ -34,7 +37,13 @@ public class BookRestService {
   private BookService bookService;
 
   @EJB
+  private UserService userService;
+
+  @EJB
   private ReservationService reservationService;
+
+  @EJB
+  private EmailService emailService;
 
   @GET
   @Path("/searchParam/{searchParam}")
@@ -67,13 +76,26 @@ public class BookRestService {
     Optional<String> emailOpt = Optional
         .ofNullable(req.getSession().getAttribute("email").toString());
     String email = emailOpt.get();
-    logger.warn(email);
+    User user = userService.getUserByEmail(email);
 
     id = id.replace(",", "");
     Long idParam = Long.parseLong(id);
 
     reservationService.newReservation(idParam, email);
+    emailService.sendReservationEmailToUser(user.getUserId(), idParam);
 
+    return Response.ok().build();
+  }
+
+
+  @DELETE
+  @Path("/reserve/{id}")
+  public Response cancelReservation(@PathParam("id") String id) {
+
+    id = id.replace(",", "");
+    Long idParam = Long.parseLong(id);
+    reservationService.deleteReservationById(idParam);
+    logger.info("Book with id: {} has been deleted", idParam);
     return Response.ok().build();
   }
 }
