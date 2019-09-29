@@ -65,6 +65,8 @@ public class BookAddServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
 
+
+
     String title = req.getParameter("title");
     String authorName = req.getParameter("author");
     String kindName = req.getParameter("kind");
@@ -107,8 +109,8 @@ public class BookAddServlet extends HttpServlet {
     String fileURL = "";
 
     try {
-      fileURL = imageUploadProcessor
-          .uploadImageFile(file, id).getAbsolutePath();
+      fileURL = "/images/" + imageUploadProcessor
+          .uploadImageFile(file, id).getName();
     } catch (UserImageNotFound userImageNotFound) {
       logger.warn(userImageNotFound.getMessage());
     }
@@ -119,10 +121,7 @@ public class BookAddServlet extends HttpServlet {
       book.setThumbnail(fileURL);
 
       bookService.updateBook(book);
-
-      resp.sendRedirect("/book-view?id=" + id + "&part=0&hasAudio=0&kind=0");
     }
-
     resp.sendRedirect("/book-view?id=" + id + "&part=0&hasAudio=0&kind=0");
   }
 }

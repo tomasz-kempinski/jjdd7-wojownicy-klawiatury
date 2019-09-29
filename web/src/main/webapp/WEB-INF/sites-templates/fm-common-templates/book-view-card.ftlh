@@ -9,13 +9,13 @@
         <#if (siteType) == "admin">
           <a class="btn btn-info nav-button" href="/book-edit?id=${book.id?c}&part=${part}"
              role="button">Edytuj książkę</a>
-        </#if>
-    </div>
-    <div class="col-md text-center">
-        <#if (siteType) == "admin">
-          <a href="/" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
-        </#if>
-    </div>
+            </#if>
+        </div>
+        <div class="col-md text-center">
+            <#if (siteType) == "admin">
+          <a href="/book-list?part=0&hasAudio=0&kind=0" class="btn btn-danger nav-button delete" data-id="${book.id}">Usuń książkę</a>
+          </#if>
+        </div>
 
   </div>
   <div id="book-card" class="card mb-5 shadow-lg p-3 bg-white rounded"

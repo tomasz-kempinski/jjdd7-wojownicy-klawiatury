@@ -1,9 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-
 <head>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="google-signin-client_id" content="868751336544-1jdvc65i0l7vmcldgct4bnqrc5roll6q.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -5,8 +5,6 @@
          href="/book-view?id=${book.id}&part=${part}" role="button">Powrót</a>
     </div>
     <div class="col-md text-center">
-      <a class="btn btn-success nav-button" href="/book-edit?id=${book.id?c}&part=${part}"
-         role="button">Zapisz zmiany</a>
     </div>
   </div>
   <div id="book-card" class="card mb-5 shadow-lg p-3 mb-5 bg-white rounded"
@@ -24,38 +22,40 @@
 
           <form method="POST" action="#" enctype="multipart/form-data">
 
-            <h2 class="card-title font-weight-bold">${book.title}</h2>
+            <h3 class="card-title font-weight-bold">Tytuł</h3>
 
-            <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
-                   name="title">
+            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
+                   name="title" value="${book.title}">
 
-            <h3 class="card-text font-italic">${book.author.authorName}</h3>
+            <h4 class="card-line font-italic">Autor</h4>
 
-            <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
-                   name="author">
+            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
+                   name="author" value="${book.author.authorName}">
 
-            <h4 class="card-text">Rodzaj: ${book.kind.kind}</h4>
+            <h5 class="card-line">Rodzaj: ${book.kind.kind}</h5>
 
-            <select class="browser-default custom-select mb-4" id="select" name="audio">
-              <option value="" disabled="" selected="">Wybierz rodzaj literacki</option>
-              <option value="1">Epika</option>
-              <option value="2">Liryka</option>
-              <option value="1">Dramat</option>
-              <option value="2">Epika, Liryka</option>
-              <option value="1">Dramat współczesny</option>
+            <select class="browser-default custom-select mb-4" id="select" name="kind">
+              <option value="${book.kind.kind}" selected="selected">Wybierz rodzaj literacki
+              </option>
+              <option value="Epika">Epika</option>
+              <option value="Liryka">Liryka</option>
+              <option value="Dramat">Dramat</option>
+              <option value="Epika, Liryka">Epika, Liryka</option>
+              <option value="Dramat współczesny">Dramat współczesny</option>
             </select>
 
-            <h4 class="card-text">Gatunek: ${book.genreName}</h4>
+            <h5 class="card-line">Gatunek: ${book.genreName}</h5>
 
-            <input type="text" id="textInput" class="form-control mb-4"
-                   placeholder="Podaj gatunek literacki" name="genre">
+            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4"
+                   placeholder="Podaj gatunek literacki" name="genre" value="${book.genreName}">
 
-            <h4 class="card-text">Wersja audio: ${hasAudio} </h4>
+            <h5 class="card-line">Wersja audio: ${hasAudio} </h5>
 
             <select class="browser-default custom-select mb-4" id="select" name="audio">
-              <option value="" disabled="" selected="">Czy książka ma wersję audio?</option>
-              <option value="1">Nie</option>
-              <option value="2">Tak</option>
+              <option value="${hasAudio}" selected="selected">Czy wersja audio jest dostępna?
+              </option>
+              <option value="tak">Tak</option>
+              <option value="nie">Nie</option>
             </select>
 
             <div class="form-group">
@@ -67,7 +67,7 @@
     		</span>
               </div>
             </div>
-
+            <button class="btn btn-success my-4 btn-block" type="submit">Zapisz zmiany</button>
         </div>
       </div>
     </div>

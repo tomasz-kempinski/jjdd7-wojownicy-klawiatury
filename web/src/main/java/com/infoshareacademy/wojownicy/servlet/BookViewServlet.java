@@ -53,17 +53,16 @@ public class BookViewServlet extends HttpServlet {
     long part = 0;
     long kind = 0;
     String userEmail = (String) req.getSession().getAttribute("email");
-    String audio = "niedostępne";
+    String audio = "niedostępna";
     int isAudioFilter = 0;
     boolean hasAudio;
 
-    if(NumberUtils.isDigits(idString) && Long.parseLong(idString)>0){
+    if (NumberUtils.isDigits(idString) && Long.parseLong(idString) > 0) {
       id = Long.parseLong(idString);
     } else {
       logger.info("Wrong Parameter for single book view");
       resp.sendRedirect("/errorServlet");
     }
-
 
     if (NumberUtils.isDigits(partString)
         && NumberUtils.isDigits(isAudioString)
@@ -86,7 +85,6 @@ public class BookViewServlet extends HttpServlet {
     dataModel.put("part", part);
     dataModel.put("isAudioFilter", isAudioFilter);
     dataModel.put("kind", kind);
-
 
     PrintWriter printWriter = resp.getWriter();
     try {

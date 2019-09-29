@@ -24,11 +24,11 @@ public class BookService {
     bookDaoBean.addBook(book);
   }
 
-  public void updateBook(Book book){
+  public void updateBook(Book book) {
     bookDaoBean.editBook(book);
   }
 
-  public void deleteBook(Long id){
+  public void deleteBook(Long id) {
     bookDaoBean.deleteBookById(id);
   }
 }
