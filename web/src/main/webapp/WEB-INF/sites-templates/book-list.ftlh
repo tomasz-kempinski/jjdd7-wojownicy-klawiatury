@@ -47,6 +47,7 @@
 <script src="/js/upload-form.js"></script>
 <script src="/js/book.js"></script>
 <script src="js/button-switcher.js"></script>
+<script src="js/reservation.js"></script>
 </body>
 
 </html>

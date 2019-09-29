@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl" xmlns="http://www.w3.org/1999/html">
+<html lang="pl">
 
 <head>
   <!-- Required meta tags -->
@@ -42,10 +42,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
 <script src="js/upload-form.js"></script>
 <script src="js/book.js"></script>
 <script src="js/button-switcher.js"></script>
+<script src="js/reservation.js"></script>
 <script src="js/delete-button.js"></script>
 
 </body>

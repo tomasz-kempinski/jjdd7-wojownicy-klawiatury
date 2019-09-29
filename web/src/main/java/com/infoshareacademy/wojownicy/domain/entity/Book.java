@@ -91,7 +91,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Book.DramatAudioBookList",
         query = "SELECT b FROM Book b WHERE b.kind = 3 AND b.hasAudio=1"
-    )
+    ),
 
 })
 @Entity
@@ -136,7 +136,7 @@ public class Book {
   private String thumbnail;
 
   @NotNull
-  @Column(name = "is_reserved")
+  @Column(name = "is_reserved", columnDefinition = "Boolean")
   private boolean isReserved = false;
 
   @NotNull
