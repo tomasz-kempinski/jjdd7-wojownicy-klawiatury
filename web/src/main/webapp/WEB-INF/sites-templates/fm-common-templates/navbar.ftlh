@@ -38,6 +38,11 @@
             <a class="dropdown-item" href="/books-upload">Załaduj książki z pliku</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/users-list">Zarządzaj użytkownikami</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/best-book">Statystyki książek</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/best-author">Statystyki autorów</a>
+
           </div>
         </li>
         </#if>
