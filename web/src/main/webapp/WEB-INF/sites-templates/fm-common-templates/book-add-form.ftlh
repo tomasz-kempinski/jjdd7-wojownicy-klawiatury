@@ -7,11 +7,11 @@
         <hr>
 
         <label for="textInput">Tytuł</label>
-        <input type="text" pattern="^[a-zA-Z0-9]+$"  id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
+        <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
                name="title" required>
 
         <label for="textInput">Autor</label>
-        <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
+        <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
                name="author" required>
 
         <label for="textInput">Rodzaj</label>
@@ -25,7 +25,7 @@
         </select>
 
         <label for="textInput">Gatunek</label>
-        <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4"
+        <input type="text" id="textInput" class="form-control mb-4"
                placeholder="Podaj gatunek literacki" name="genre" required>
 
         <label for="textInput">Audiobook</label>
