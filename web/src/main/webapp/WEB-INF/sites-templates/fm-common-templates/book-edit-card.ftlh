@@ -24,12 +24,12 @@
 
             <h3 class="card-title font-weight-bold">Tytuł</h3>
 
-            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
+            <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj tytuł"
                    name="title" value="${book.title}">
 
             <h4 class="card-line font-italic">Autor</h4>
 
-            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
+            <input type="text" id="textInput" class="form-control mb-4" placeholder="Podaj autora"
                    name="author" value="${book.author.authorName}">
 
             <h5 class="card-line">Rodzaj: ${book.kind.kind}</h5>
@@ -46,7 +46,7 @@
 
             <h5 class="card-line">Gatunek: ${book.genreName}</h5>
 
-            <input type="text" pattern="^[a-zA-Z0-9]+$" id="textInput" class="form-control mb-4"
+            <input type="text" id="textInput" class="form-control mb-4"
                    placeholder="Podaj gatunek literacki" name="genre" value="${book.genreName}">
 
             <h5 class="card-line">Wersja audio: ${hasAudio} </h5>
