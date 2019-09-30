@@ -13,9 +13,14 @@
       <p>W dowolnej chwili zarezerwuj wybraną przez siebię książkę, lub anuluj swoją obecną
         rezerwację. Sprawdź, czy
         książka która Cię interesuje, jest aktualnie dostępna.</p>
-      <p><a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button"
-            aria-disabled="true"
-            role="button">Przejdź dalej »</a></p>
+        <#if (siteType) == "guest">
+          <p><a href="#" class="btn btn-secondary disabled" tabindex="-1" aria-disabled="true"
+                role="button">Przejdź dalej »</a></p>
+        </#if>
+        <#if (siteType) == "user" || (siteType) == "admin">
+          <p><a href="/reservation-list" class="btn btn-secondary"
+                role="button">Przejdź dalej »</a></p>
+        </#if>
     </div>
   </div>
 </div>
